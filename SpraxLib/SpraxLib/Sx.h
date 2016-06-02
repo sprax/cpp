@@ -10,15 +10,25 @@ class Sx
 {
 public:
 
+    //// print and println as in Java ////
+
     inline static void print(char *c_str) {
-        puts(c_str);
+        printf(c_str);
     }
 
     inline static void print(std::string str) {
+        printf(str.c_str());
+    }
+
+    inline static void println(char *c_str) {
+        puts(c_str);
+    }
+
+    inline static void println(std::string str) {
         puts(str.c_str());
     }
 
-    inline static void print(void) {
+    inline static void println(void) {
         puts("");
     }
 
