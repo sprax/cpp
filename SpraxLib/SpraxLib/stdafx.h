@@ -12,14 +12,11 @@
 #include <tchar.h>
 #include <assert.h>
 #include <time.h>
-#include <signal.h>
+
 #include <limits.h>
 
 #include <string>
 #include <iostream>
-#include <map>
-#include <hash_map>
-#include <hash_set>
 
 #define WIN32_LEAN_AND_MEAN             // Exclude rarely-used stuff from Windows headers
 

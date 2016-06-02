@@ -5,6 +5,8 @@
 
 #pragma once
 
+#define _SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS // TODO: switch to unordered_map
+
 #include "targetver.h"
 
 #include <stdio.h>
