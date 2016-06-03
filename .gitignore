@@ -233,6 +233,6 @@ UpgradeLog*.htm
 
 
 # Other ??
-.VC.VC.opendb
-.VC.db
+*.VC.VC.opendb
+*.VC.db
 
