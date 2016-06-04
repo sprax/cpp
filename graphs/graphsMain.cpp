@@ -31,9 +31,9 @@ public:
     {
         for (int j = 0; j < nV; j++)
             addVertex(vertices[j]);
-    }   
+    }
 
-    bool addVertex(Vertex *vert) 
+    bool addVertex(Vertex *vert)
     {
         return mVerts.insert(vert).second;
     }
@@ -41,7 +41,7 @@ public:
     /**
     *  Add an edge if both vertices are non-NULL and distinct
     */
-    bool addEdge(Vertex *vertA, Vertex *vertB) 
+    bool addEdge(Vertex *vertA, Vertex *vertB)
     {
         if (vertA == NULL || vertB == NULL || vertA == vertB)
             return false;                   // no side effects on failure
@@ -59,7 +59,7 @@ public:
     * Breadth-first search for a path from start vertex to end vertex.
     * If found, the first such path is placed in the path argument (a vector
     * of vertices), and the function returns true.
-    * If no such path is found, the functions returns false, and the supplied 
+    * If no such path is found, the functions returns false, and the supplied
     * path will be empty.
     */
     bool findBfsVertexPath(vector<Vertex*> &path, Vertex *start, Vertex *end) const
@@ -70,12 +70,12 @@ public:
         VertMap preVerts;
         if (mEdges.find(start) != mEdges.end()) {
             vertQ.push(start);
-            while ( ! vertQ.empty() ) {
+            while (!vertQ.empty()) {
                 Vertex *vert = vertQ.back();
                 vertQ.pop();
                 if (mEdges.find(vert) != mEdges.end()) {
                     VertSet *nexts = mEdges.at(vert);
-                    for (auto it = nexts->begin(); it != nexts->end(); ++it) {                
+                    for (auto it = nexts->begin(); it != nexts->end(); ++it) {
                         preVerts.insert(VertMap::value_type(*it, vert));
                         if (*it == end) {
                             found = true;
@@ -98,10 +98,10 @@ public:
     }
 
 
-            /**
-    * Return first path found from start vertex to end vertex
-    * as a vector of edges, or NULL of no such path is found.
-    */
+    /**
+* Return first path found from start vertex to end vertex
+* as a vector of edges, or NULL of no such path is found.
+*/
 
 
 
@@ -132,7 +132,7 @@ public:
                     mMarks.insert(vert);
                     path.push_back(vert);
                     bool found = findBfsVertexPathMarkingRec(path, end);
-                    if ( found )
+                    if (found)
                         return found;
                     else
                         path.pop_back();
@@ -145,7 +145,7 @@ public:
     /**
      *  Beware of loops; this method only works on directed acyclic graphs
      */
-    bool findAndShowVertPath(Vertex& vertA, Vertex& vertB, bool bMarking=false)
+    bool findAndShowVertPath(Vertex& vertA, Vertex& vertB, bool bMarking = false)
     {
         cout << "DFS Vert Path from " << vertA.getData() << " to " << vertB.getData() << ": ";
         vector<Vertex*> path;
@@ -154,9 +154,9 @@ public:
             found = findBfsVertexPathMarking(path, &vertA, &vertB);
         else
             found = findBfsVertexPath(path, &vertA, &vertB);
-        if ( found ) {
+        if (found) {
             cout << "YES  ";
-            if ( ! path.empty() ) {
+            if (!path.empty()) {
                 auto it = path.rbegin();
                 cout << (*it)->getData();
                 ++it;
@@ -164,7 +164,8 @@ public:
                     cout << " : " << (*it)->getData();
                 }
             }
-        } else {
+        }
+        else {
             cout << "-none-";
         }
         cout << endl;
@@ -208,7 +209,6 @@ int test_BVGraph()
     return 0;
 }
 
-int test_FileReader();
 int testGridGuards();
 
 int main(int argc, char* argv[])
@@ -225,7 +225,6 @@ int main(int argc, char* argv[])
     //test_DEGraph();
     test_DVGraph();
     //test_BVGraph();
-    //test_FileReader();
 
     testGridGuards();
     Sx::unit_test();

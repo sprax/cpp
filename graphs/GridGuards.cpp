@@ -1,6 +1,5 @@
 //
-//  main.cpp
-//  grids
+//  GridGuards.cpp
 //
 //  Created by Sprax Lines on 5/25/16.
 //  Copyright © 2016 Sprax Lines. All rights reserved.
@@ -8,42 +7,128 @@
 
 #include "stdafx.h"
 #include <iostream>
+#include <queue>
 
 #include "Sx.h"
 
-//void putsArray(const char *preLabel, int A[], int len);
+using namespace std;
+
+static const char o = '-';
+static const char G = 'G';
+static const char x = 'X';
 
 class GridGuards
 {
+    typedef pair<int, int> square;
+
+protected:
+    int **mDistance;
+    const int UNVISITED = -1, OBSTACLE = -2;
 public:
-    static const char o = '-';
-    static const char G = 'G';
-    static const char x = 'X';
-    static const size_t wide = 10;
-    static const size_t tall = 12;
+    int mCols;
+    int mRows;
+    const char **mLayout;
 
-    const static char floor[tall][wide];
-    static int one[];
+    GridGuards(const char *layout[], int rows, int cols) {
+        mLayout = layout;
+        mRows = rows;
+        mCols = cols;
+        mDistance = new int *[rows];
+        for (int j = 0; j < mRows; j++)
+            mDistance[j] = new int[cols];
 
+        queue<square> marked;
 
-    static void showFloor()
+        markGuards(marked);
+        markDistances(marked);
+    }
+
+    ~GridGuards() {
+        delete[] mDistance;
+    }
+
+    void markGuards(queue<square> &marked)
     {
-        for (int j = 0; j < tall; j++) {
-            for (int k = 0; k < wide; k++) {
-                std::cout << floor[j][k];
+        for (int row = 0; row < mRows; row++) {
+            for (int col = 0; col < mCols; col++) {
+                char chr = mLayout[row][col];
+                switch (chr) {
+                    case o:
+                        mDistance[row][col] = UNVISITED;
+                        break;
+                    case x:
+                        mDistance[row][col] = OBSTACLE;
+                        break;
+                    case G:
+                        mDistance[row][col] = 0;
+                        marked.push(square(row, col));
+                        break;
+                    default:
+                        throw invalid_argument("invalid layout");
+                }
             }
-            std::cout << std::endl;
         }
     }
 
-    static void printit()
+    void markDistances(queue<square> &marked)
     {
-        int AA[] = { 1, -4, 9 };
-        Sx::putsArray(one, 3);
+        while (!marked.empty()) {
+            square& sqr = marked.front();
+            marked.pop();
+            int row = sqr.first;
+            int col = sqr.second;
+            int dst = mDistance[row][col] + 1;
+
+            // West (Left)
+            col--;
+            if (col >= 0 && mDistance[row][col] == UNVISITED) {
+                addToMarked(row, col, dst, marked);
+            }
+
+            // East (Right)
+            col += 2;
+            if (col < mCols && mDistance[row][col] == UNVISITED) {
+                addToMarked(row, col, dst, marked);
+            }
+
+            // North (Up)
+            row--;
+            col--;
+            if (row >= 0 && mDistance[row][col] == UNVISITED) {
+                addToMarked(row, col, dst, marked);
+            }
+
+            // South (Down)
+            row += 2;
+            if (row < mRows && mDistance[row][col] == UNVISITED) {
+                addToMarked(row, col, dst, marked);
+            }
+        }
+        //assert(marked.empty());
     }
+
+    void addToMarked(int row, int col, int dst, queue<square> &marked) {
+        mDistance[row][col] = dst;
+        marked.push(square(row, col));
+    }
+
+    void showLayout()
+    {
+        Sx::putsArrayByPtrPtr2(mLayout, mRows, mCols);
+    }
+
+    void showDistance()
+    {
+        Sx::putsArrayByPtrPtr2((const int **)mDistance, mRows, mCols);
+    }
+
 };
 
-const char GridGuards::floor[GridGuards::tall][wide] = {
+
+
+static const int sRows = 12;
+static const int sCols = 10;
+static const char sLayout[sRows][sCols] = {
     { o, o, o, o, o, o, o, o, o, o },
     { o, G, o, o, x, o, o, x, o, o },
     { o, o, o, o, x, o, o, x, o, o },
@@ -52,50 +137,13 @@ const char GridGuards::floor[GridGuards::tall][wide] = {
     { o, x, x, o, x, o, G, x, o, o },
     { o, o, x, o, x, o, o, o, o, o },
     { o, x, x, o, x, o, o, x, o, o },
-    { o, x, o, o, x, o, o, x, o, o },
+    { o, x, o, o, x, x, o, x, o, o },
     { o, o, o, o, o, o, o, o, o, x },
     { o, o, o, o, x, o, o, x, o, o },
     { o, o, o, o, x, o, o, x, o, o },
-}; 
+};
 
-int GridGuards::one[] = { 1, -2, 3 };
 
-/** 
-* print a 2d array passed by reference.
-* This may work only for automatic arrays (usually abiding on the stack)
-* whose dimensions are known at compile time (and thus can be used
-* to evaluate the Rows and Cols template arguments).
-* For dynamic (freestore) arrays on the heap, it may not compile.
-*/
-template <typename T, size_t Rows, size_t Cols>
-void putsArrayByRef2(const T(&array)[Rows][Cols])
-{
-    for (size_t row = 0; row < Rows; row++) {
-        for (size_t col = 0; col < Cols; col++) {
-            Sx::printOne(array[row][col]);
-        }
-        puts("");
-    }
-    puts("");
-}
-
-/** 
-* print a 2d array passed by as a pointer to the array of templatized width (number
-* of columns per row).
-* This may work only for automatic arrays or an array of pointers to automatic
-* arrays (one for each row) where the width (number of columns) is known at compile time.
-*/
-template <typename T, size_t Cols>
-void putsArrayByPtrRef2(const T(*array)[][Cols], size_t rows)
-{
-    for (size_t row = 0; row < rows; row++) {
-        for (size_t col = 0; col < Cols; col++) {
-            Sx::printOne((*array)[row][col]);
-        }
-        puts("");
-    }
-    puts("");
-}
 
 /**
 * print a 2d array by passing (by value) a pointer to the decayed type
@@ -103,43 +151,16 @@ void putsArrayByPtrRef2(const T(*array)[][Cols], size_t rows)
 * constant width.  This width must be a constant specified in the original
 * declaration of the calling argument array, or in a cast of a pointer to
 * that array (so that one way or another, the width is specified at compile time).
-* Since the argument type does not specified the number of rows, this number 
+* Since the argument type does not specified the number of rows, this number
 * must be passed in to the method as a separate argument.  The compiler can
-* only check that the number of columns matches that specified in the 
+* only check that the number of columns matches that specified in the
 * second dimension of the argument type.
 */
 template <typename T>
-void putsArrayByPtr2(const T(*array)[GridGuards::wide], size_t rows)
+void putsArrayByPtr2(const T(*array)[sCols], int rows)
 {
-    for (size_t row = 0; row < rows; row++) {
-        for (size_t col = 0; col < GridGuards::wide; col++) {
-            Sx::printOne(array[row][col]);
-        }
-        puts("");
-    }
-    puts("");
-}
-
-/**
-* print a 2d array by passing a pointer to a pointer, taking advantage
-* of the decay of arrays into pointers (which C++ "inherited" from C, 
-* i.e. allows for backward compatibility with C).  This method is not
-* safe for actual 2d arrays, but is guaranteed to work with a 1D array 
-* of pointers to 1D arrays (the rows as separate arrays).  Due to array 
-* flattening or memory padding/alignment, the offsets to each row might 
-* not be the expected multiple of the number of columns.  That is, while
-* some compilers might let you get away with casting a 2D array to a 
-* pointer to a pointer (as in (const T **)&array[0][0]), the only portably
-* safe way to call this method is to define an auxiliary array of pointers
-* to each rows (as in T *X[Rows]; for (int r = 0; r < Rows; r++) X[r] = A[r];), 
-* and then to pass this auxiliary array as the argument to the method.
-* See the tests below.
-*/
-template <typename T>
-void putsArrayByPtrPtr2(const T *array[], size_t rows, size_t cols)
-{
-    for (size_t row = 0; row < rows; row++) {
-        for (size_t col = 0; col < cols; col++) {
+    for (int row = 0; row < rows; row++) {
+        for (int col = 0; col < sCols; col++) {
             Sx::printOne(array[row][col]);
         }
         puts("");
@@ -150,37 +171,31 @@ void putsArrayByPtrPtr2(const T *array[], size_t rows, size_t cols)
 
 int testGridGuards()
 {
-    std::cout << "Hello, GridGuards!\n";
-    GridGuards::printit();
-    GridGuards::showFloor();
-    std::cout << std::endl;
+    cout << "Hello, GridGuards!\n";
 
     puts("putsArrayByRef2");
-    putsArrayByRef2(GridGuards::floor);
+    Sx::putsArrayByRef2(sLayout);
 
     puts("putsArrayByPtrRef2");
-    putsArrayByPtrRef2((const char(*)[][GridGuards::wide]) &GridGuards::floor, GridGuards::tall);
+    Sx::putsArrayByPtrRef2((const char(*)[][sCols]) &sLayout, sRows);
 
     puts("putsArrayByPtr2");
-    putsArrayByPtr2((const char(*)[GridGuards::wide]) &GridGuards::floor, GridGuards::tall);
+    putsArrayByPtr2((const char(*)[sCols]) &sLayout, sRows);
 
     puts("putsArrayByPtrPtr2");
-    const char *rows[GridGuards::tall];   // surrogate array of rows
-    for (size_t j = 0; j < GridGuards::tall; j++)
-        rows[j] = GridGuards::floor[j];
+    const char *rows[sRows];   // surrogate array of rows
+    for (int j = 0; j < sRows; j++)
+        rows[j] = sLayout[j];
+    Sx::putsArrayByPtrPtr2(rows, sRows, sCols);
 
-    putsArrayByPtrPtr2(rows, GridGuards::tall, GridGuards::wide);
-
-    /****
-    try {
-        putsArrayByPtrPtr2((const char **)&GridGuards::floor[0][0], GridGuards::tall, GridGuards::wide);
+    const char *pRows[sRows];
+    for (int j = 0; j < sRows; j++) {
+        pRows[j] = sLayout[j];
     }
-    catch (...) {
-        Sxs::put("exception caught");
-    }
-    ****/
+    GridGuards gg(pRows, sRows, sCols);
+    gg.showLayout();
+    cout << endl;
+    gg.showDistance();
 
-
-    //Sxc::printArray2(&(GridGuards::floor), GridGuards::tall, GridGuards::wide);
     return 0;
 }

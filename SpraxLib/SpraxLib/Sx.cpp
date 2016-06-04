@@ -18,10 +18,6 @@ int Sx::unit_test()
         { 'I', 'J', 'K', 'L' },
     };
 
-    const char *rowArray[rows];   // surrogate array of rows
-    for (size_t j = 0; j < rows; j++)
-        rowArray[j] = charArray[j];
-
     puts("putsArrayByRef2");
     Sx::putsArrayByRef2(charArray);
 
@@ -32,8 +28,11 @@ int Sx::unit_test()
     Sx::putsArrayByPtr2((const char(*)[][cols]) &charArray, rows, cols);
 
     puts("putsArrayByPtrPtr2");
+    const char *rowArray[rows];   // surrogate array of rows
+    for (size_t j = 0; j < rows; j++)
+        rowArray[j] = charArray[j];
     Sx::putsArrayByPtrPtr2(rowArray, rows, cols);
-    
+
     /****
     try {
     putsArrayByPtrPtr2((const char **)&GridGuards::floor[0][0], GridGuards::tall, GridGuards::wide);
