@@ -4,7 +4,7 @@
 #include <queue>
 
 #include "graphs.hpp"
-#include "GridGuards.hpp"
+#include "GridGuardsTest.hpp"
 #include "Sx.h"
 
 using namespace std;

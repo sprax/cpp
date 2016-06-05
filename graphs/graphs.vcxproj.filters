@@ -43,6 +43,9 @@
     <ClInclude Include="GridGuards.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GridGuardsTest.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -58,6 +61,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GridGuards.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GridGuardsTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
