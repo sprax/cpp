@@ -82,6 +82,7 @@
     <ClInclude Include="DEGraph.hpp" />
     <ClInclude Include="DVGraph.hpp" />
     <ClInclude Include="graphs.hpp" />
+    <ClInclude Include="GridGuards.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Vertex.hpp" />

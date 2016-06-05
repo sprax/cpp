@@ -4,6 +4,7 @@
 #include <queue>
 
 #include "graphs.hpp"
+#include "GridGuards.hpp"
 #include "Sx.h"
 
 using namespace std;
@@ -209,8 +210,6 @@ int test_BVGraph()
     return 0;
 }
 
-int testGridGuards();
-
 int main(int argc, char* argv[])
 {
     vector<int> vec;
@@ -226,7 +225,7 @@ int main(int argc, char* argv[])
     test_DVGraph();
     //test_BVGraph();
 
-    testGridGuards();
+    GridGuardsTest::testGridGuards();
     Sx::unit_test();
 
     return 0;
