@@ -13,6 +13,8 @@
 #include "GridGuards.hpp"
 #include "GridGuardsTest.hpp"
 
+using namespace std;
+
 /**
 * print a 2d array by passing (by value) a pointer to the decayed type
 * of the array, which is a pointer to a variable number of rows of known

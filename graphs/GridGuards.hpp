@@ -13,13 +13,11 @@
 
 #include "Sx.h"
 
-using namespace std;
-
-typedef pair<int, int> square;
-
 class GridGuards
 {
 public:
+    typedef std::pair<int, int> square;
+
     static const char Empty = '-';
     static const char Guard = 'G';
     static const char Obstacle = 'X';
@@ -35,9 +33,9 @@ public:
 	void showDistance();
 
 protected:
-    void markGuards(queue<square> &marked);
-    void markDistances(queue<square> &marked);
-    void addToMarked(int row, int col, int dst, queue<square> &marked);
+    void markGuards(std::queue<square> &marked);
+    void markDistances(std::queue<square> &marked);
+    void addToMarked(int row, int col, int dst, std::queue<square> &marked);
 
     int **mDistance;
     const int UNVISITED = -1, OBSTACLE = -2;
