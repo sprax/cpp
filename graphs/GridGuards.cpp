@@ -34,6 +34,11 @@ static const char x = 'X';
 		markGuards(marked);
 		markDistances(marked);
 	}
+    GridGuards::~GridGuards() {
+        for (int j = 0; j < mRows; j++)
+            delete[] mDistance[j];
+        delete[] mDistance;
+    }
 
 	void GridGuards::markGuards(queue<square> &marked)
 	{

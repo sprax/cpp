@@ -28,9 +28,7 @@ public:
     const char **mLayout;
 
 	GridGuards(const char *layout[], int rows, int cols);
-    ~GridGuards() {
-        delete[] mDistance;
-    }
+    ~GridGuards();
 
 	void markGuards(queue<square> &marked);
 	void markDistances(queue<square> &marked);
