@@ -11,7 +11,7 @@
 
 int main(int argc, const char * argv[])
 {
-    const char *cstr = "press one if you meant 'one'";
+    const char *cstr = "Press one if you meant 'one'.";
     printOne(cstr);
 
     const std::string sstr(cstr);
