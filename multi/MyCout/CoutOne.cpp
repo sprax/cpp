@@ -6,7 +6,7 @@
 //  Copyright © 2016 Sprax Lines. All rights reserved.
 //
 
-#include "CoutOne.hpp"
+#include "CoutOne.h"
 
 #include <iostream>
 
