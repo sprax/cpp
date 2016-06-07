@@ -1,0 +1,266 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C6A5309B1D064F4B00C371A3 /* printArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6A530911D064F4B00C371A3 /* printArray.cpp */; };
+		C6A5309C1D064F4B00C371A3 /* printArray.h in Headers */ = {isa = PBXBuildFile; fileRef = C6A530921D064F4B00C371A3 /* printArray.h */; };
+		C6A5309D1D064F4B00C371A3 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6A530961D064F4B00C371A3 /* stdafx.cpp */; };
+		C6A5309E1D064F4B00C371A3 /* stdafx.h in Headers */ = {isa = PBXBuildFile; fileRef = C6A530971D064F4B00C371A3 /* stdafx.h */; };
+		C6A5309F1D064F4B00C371A3 /* Sx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6A530981D064F4B00C371A3 /* Sx.cpp */; };
+		C6A530A01D064F4B00C371A3 /* Sx.h in Headers */ = {isa = PBXBuildFile; fileRef = C6A530991D064F4B00C371A3 /* Sx.h */; };
+		C6A530A11D064F4B00C371A3 /* targetver.h in Headers */ = {isa = PBXBuildFile; fileRef = C6A5309A1D064F4B00C371A3 /* targetver.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C6A530841D064E9C00C371A3 /* libSpraxLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSpraxLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6A530911D064F4B00C371A3 /* printArray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = printArray.cpp; path = SpraxLib/printArray.cpp; sourceTree = "<group>"; };
+		C6A530921D064F4B00C371A3 /* printArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = printArray.h; path = SpraxLib/printArray.h; sourceTree = "<group>"; };
+		C6A530931D064F4B00C371A3 /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ReadMe.txt; path = SpraxLib/ReadMe.txt; sourceTree = "<group>"; };
+		C6A530941D064F4B00C371A3 /* SpraxLib.vcxproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = SpraxLib.vcxproj; path = SpraxLib/SpraxLib.vcxproj; sourceTree = "<group>"; };
+		C6A530951D064F4B00C371A3 /* SpraxLib.vcxproj.filters */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = SpraxLib.vcxproj.filters; path = SpraxLib/SpraxLib.vcxproj.filters; sourceTree = "<group>"; };
+		C6A530961D064F4B00C371A3 /* stdafx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = stdafx.cpp; path = SpraxLib/stdafx.cpp; sourceTree = "<group>"; };
+		C6A530971D064F4B00C371A3 /* stdafx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stdafx.h; path = SpraxLib/stdafx.h; sourceTree = "<group>"; };
+		C6A530981D064F4B00C371A3 /* Sx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Sx.cpp; path = SpraxLib/Sx.cpp; sourceTree = "<group>"; };
+		C6A530991D064F4B00C371A3 /* Sx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sx.h; path = SpraxLib/Sx.h; sourceTree = "<group>"; };
+		C6A5309A1D064F4B00C371A3 /* targetver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = targetver.h; path = SpraxLib/targetver.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C6A530811D064E9C00C371A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C6A5307B1D064E9C00C371A3 = {
+			isa = PBXGroup;
+			children = (
+				C6A530911D064F4B00C371A3 /* printArray.cpp */,
+				C6A530921D064F4B00C371A3 /* printArray.h */,
+				C6A530931D064F4B00C371A3 /* ReadMe.txt */,
+				C6A530941D064F4B00C371A3 /* SpraxLib.vcxproj */,
+				C6A530951D064F4B00C371A3 /* SpraxLib.vcxproj.filters */,
+				C6A530961D064F4B00C371A3 /* stdafx.cpp */,
+				C6A530971D064F4B00C371A3 /* stdafx.h */,
+				C6A530981D064F4B00C371A3 /* Sx.cpp */,
+				C6A530991D064F4B00C371A3 /* Sx.h */,
+				C6A5309A1D064F4B00C371A3 /* targetver.h */,
+				C6A530851D064E9C00C371A3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C6A530851D064E9C00C371A3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C6A530841D064E9C00C371A3 /* libSpraxLib.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		C6A530821D064E9C00C371A3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C6A5309E1D064F4B00C371A3 /* stdafx.h in Headers */,
+				C6A530A11D064F4B00C371A3 /* targetver.h in Headers */,
+				C6A530A01D064F4B00C371A3 /* Sx.h in Headers */,
+				C6A5309C1D064F4B00C371A3 /* printArray.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		C6A530831D064E9C00C371A3 /* SpraxLib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C6A530881D064E9C00C371A3 /* Build configuration list for PBXNativeTarget "SpraxLib" */;
+			buildPhases = (
+				C6A530801D064E9C00C371A3 /* Sources */,
+				C6A530811D064E9C00C371A3 /* Frameworks */,
+				C6A530821D064E9C00C371A3 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SpraxLib;
+			productName = SpraxLib;
+			productReference = C6A530841D064E9C00C371A3 /* libSpraxLib.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C6A5307C1D064E9C00C371A3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Sprax Lines";
+				TargetAttributes = {
+					C6A530831D064E9C00C371A3 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+				};
+			};
+			buildConfigurationList = C6A5307F1D064E9C00C371A3 /* Build configuration list for PBXProject "SpraxLib" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C6A5307B1D064E9C00C371A3;
+			productRefGroup = C6A530851D064E9C00C371A3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C6A530831D064E9C00C371A3 /* SpraxLib */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C6A530801D064E9C00C371A3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C6A5309F1D064F4B00C371A3 /* Sx.cpp in Sources */,
+				C6A5309B1D064F4B00C371A3 /* printArray.cpp in Sources */,
+				C6A5309D1D064F4B00C371A3 /* stdafx.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C6A530861D064E9C00C371A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		C6A530871D064E9C00C371A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		C6A530891D064E9C00C371A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C6A5308A1D064E9C00C371A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C6A5307F1D064E9C00C371A3 /* Build configuration list for PBXProject "SpraxLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C6A530861D064E9C00C371A3 /* Debug */,
+				C6A530871D064E9C00C371A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C6A530881D064E9C00C371A3 /* Build configuration list for PBXNativeTarget "SpraxLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C6A530891D064E9C00C371A3 /* Debug */,
+				C6A5308A1D064E9C00C371A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C6A5307C1D064E9C00C371A3 /* Project object */;
+}
