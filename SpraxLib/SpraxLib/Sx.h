@@ -186,7 +186,7 @@ public:
         puts("");
     }
 
-    static int unit_test();
+    int unit_test();
 
 };
 

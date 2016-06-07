@@ -13,6 +13,7 @@
 		C6A530621D061F7900C371A3 /* GridGuards.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6A530561D061F7900C371A3 /* GridGuards.cpp */; };
 		C6A530631D061F7900C371A3 /* GridGuardsTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6A530581D061F7900C371A3 /* GridGuardsTest.cpp */; };
 		C6A530641D061F7900C371A3 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6A5305B1D061F7900C371A3 /* stdafx.cpp */; };
+		C6A530A41D0660E100C371A3 /* libSpraxLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C6A530901D064E9E00C371A3 /* libSpraxLib.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -21,6 +22,13 @@
 			containerPortal = C6A5308B1D064E9C00C371A3 /* SpraxLib.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = C6A530841D064E9C00C371A3;
+			remoteInfo = SpraxLib;
+		};
+		C6A530A21D0660BD00C371A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C6A5308B1D064E9C00C371A3 /* SpraxLib.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = C6A530831D064E9C00C371A3;
 			remoteInfo = SpraxLib;
 		};
 /* End PBXContainerItemProxy section */
@@ -63,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6A530A41D0660E100C371A3 /* libSpraxLib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +140,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				C6A530A31D0660BD00C371A3 /* PBXTargetDependency */,
 			);
 			name = graphs;
 			productName = graphs;
@@ -199,6 +209,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C6A530A31D0660BD00C371A3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SpraxLib;
+			targetProxy = C6A530A21D0660BD00C371A3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		C608F8811CF6913A00DDD57C /* Debug */ = {
