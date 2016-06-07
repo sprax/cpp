@@ -6,8 +6,8 @@
 //  Copyright © 2016 Sprax Lines. All rights reserved.
 //
 
-#include "PrintOne.h"
-#include "CoutOne.hpp"
+#include "coutOne.h"
+#include "printOne.h"
 
 int main(int argc, const char * argv[])
 {
