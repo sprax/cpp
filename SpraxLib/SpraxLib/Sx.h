@@ -13,11 +13,11 @@ public:
     //// print and println as in Java ////
 
     inline static void print(char *c_str) {
-        printf(c_str);
+        printf("%s", c_str);
     }
 
     inline static void print(std::string str) {
-        printf(str.c_str());
+        printf("%s", str.c_str());
     }
 
     inline static void println(char *c_str) {
