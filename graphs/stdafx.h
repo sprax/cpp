@@ -7,15 +7,17 @@
 
 #define _SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS // TODO: switch to unordered_map
 
+#ifdef WIN32
 #include "targetver.h"
+#include <tchar.h>
+#include <hash_map>
+#include <hash_set>
+#endif
 
 #include <stdio.h>
-#include <tchar.h>
 
 #include <map>
-#include <hash_map>
 #include <set>
-#include <hash_set>
 #include <vector>
 
 #include <iostream>

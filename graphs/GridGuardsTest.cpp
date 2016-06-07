@@ -27,7 +27,7 @@ using namespace std;
 * second dimension of the argument type.
 */
 template <typename T>
-static void GridGuardsTest::putsArrayByPtr2(const T(*array)[sCols], int rows)
+void GridGuardsTest::putsArrayByPtr2(const T(*array)[sCols], int rows)
 {
 	for (int row = 0; row < rows; row++) {
 		for (int col = 0; col < sCols; col++) {

@@ -18,7 +18,7 @@ public:
     DVGraph();
     DVGraph(Vertex *vertices[], int nV);
 
-    bool DVGraph::addVertex(Vertex *vert);
+    bool addVertex(Vertex *vert);
 
     /**
     *  Add an edge if both vertices are non-NULL and distinct
