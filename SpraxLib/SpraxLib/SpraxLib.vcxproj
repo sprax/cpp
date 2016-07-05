@@ -14,6 +14,7 @@
     <ProjectGuid>{1D9F658F-B7EC-4D54-9F87-4EF988ABC219}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>SpraxLib</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.10240.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

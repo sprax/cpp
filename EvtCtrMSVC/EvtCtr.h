@@ -85,7 +85,7 @@ public: // instantiable derived classes must use one of the enum'd value types
         eFlt  = 2,
         eDbl  = 3,
         eBool = 4,
-    } ;
+    } EvtCtrValType;
 
     // static constants
     static const unsigned int DefaultNumHeld;   // default number of events to hold
