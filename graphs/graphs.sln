@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "histarea", "..\histarea\his
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "observer", "..\observer\observer.vcxproj", "{C23B0EE8-D294-497F-8C24-ADDC33DEEA96}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "octal2int", "..\octal2int\octal2int\octal2int.vcxproj", "{2F8D6CEC-969B-40A6-B3A7-833976C97774}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -39,6 +41,10 @@ Global
 		{C23B0EE8-D294-497F-8C24-ADDC33DEEA96}.Debug|x86.Build.0 = Debug|Win32
 		{C23B0EE8-D294-497F-8C24-ADDC33DEEA96}.Release|x86.ActiveCfg = Release|Win32
 		{C23B0EE8-D294-497F-8C24-ADDC33DEEA96}.Release|x86.Build.0 = Release|Win32
+		{2F8D6CEC-969B-40A6-B3A7-833976C97774}.Debug|x86.ActiveCfg = Debug|Win32
+		{2F8D6CEC-969B-40A6-B3A7-833976C97774}.Debug|x86.Build.0 = Debug|Win32
+		{2F8D6CEC-969B-40A6-B3A7-833976C97774}.Release|x86.ActiveCfg = Release|Win32
+		{2F8D6CEC-969B-40A6-B3A7-833976C97774}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
