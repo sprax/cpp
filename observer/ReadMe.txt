@@ -1,40 +1,12 @@
-========================================================================
-    CONSOLE APPLICATION : observer Project Overview
-========================================================================
+From a class in Design Patterns by Robert Schwartz, circa 2008.
 
-AppWizard has created this observer application for you.
+Basically this is all Robert Schwartz's code, with possibly some 
+minor modifications.  He wrote code with pieces missing, but he 
+also supplied his own solution, so the code here may be his 
+solution, not mine.  
 
-This file contains a summary of what you will find in each of the files that
-make up your observer application.
-
-
-observer.vcxproj
-    This is the main project file for VC++ projects generated using an Application Wizard.
-    It contains information about the version of Visual C++ that generated the file, and
-    information about the platforms, configurations, and project features selected with the
-    Application Wizard.
-
-observer.vcxproj.filters
-    This is the filters file for VC++ projects generated using an Application Wizard. 
-    It contains information about the association between the files in your project 
-    and the filters. This association is used in the IDE to show grouping of files with
-    similar extensions under a specific node (for e.g. ".cpp" files are associated with the
-    "Source Files" filter).
+-sprax lines,      2016.
 
 observer.cpp
     This is the main application source file.
 
-/////////////////////////////////////////////////////////////////////////////
-Other standard files:
-
-StdAfx.h, StdAfx.cpp
-    These files are used to build a precompiled header (PCH) file
-    named observer.pch and a precompiled types file named StdAfx.obj.
-
-/////////////////////////////////////////////////////////////////////////////
-Other notes:
-
-AppWizard uses "TODO:" comments to indicate parts of the source code you
-should add to or customize.
-
-/////////////////////////////////////////////////////////////////////////////
