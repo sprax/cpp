@@ -20,7 +20,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CoutOne.hpp">
+    <ClInclude Include="CoutOne.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
