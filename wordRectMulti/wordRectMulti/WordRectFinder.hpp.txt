@@ -1,0 +1,91 @@
+// wordRectFinder.hpp : find largest dense rectangles of words from a dictionary, multi-threaded
+// Sprax Lines, July 2010
+
+#ifndef WordRectFinder_hpp
+#define WordRectFinder_hpp
+
+#include "WordTrie.hpp"
+#include <time.h>
+
+#pragma warning( disable : 4512 )   // assignment operator could not be generated
+
+class WordRectFinder
+{
+public:
+
+	WordRectFinder(const WordTrie& rT, const WordTrie& cT, bool findAll, const WordMap *maps=NULL) 
+		: mRowTrie(rT), mColTrie(cT)
+		, mWantWideM1(rT.getWordLength()-1)
+		, mWantTall(  cT.getWordLength()  )
+		, mWantArea((mWantWideM1+1) * mWantTall)
+		, mHaveTall(0), mStartTime(-1), mFindAll(findAll), mWordMaps(maps)     
+		// start time < 0 means never; maps used as an option
+	{
+        int wantTall = mColTrie.getWordLength();
+		for (int j = 0; j < wantTall; j++) {
+			mRowNodes[j]     = &mRowNodesMem[j][1];  // put row nodes on the local stack: 1 row per stack level.
+			mRowNodes[j][-1] =  mRowTrie.getRoot();
+		}
+
+		// For each column j, make colNodes[j][-1] point to the mColTrie root
+		int wantWide = mRowTrie.getWordLength();
+		for (int j = 0; j < wantWide; j++) {
+			mColNodes[j]     = &mColNodesMem[j][1];
+			mColNodes[j][-1] = mColTrie.getRoot();
+		}
+	}
+
+	WordRectFinder(const WordRectFinder&);       // Prevent pass-by-value by not defining copy constructor.
+	WordRectFinder& operator=(const WordTrie&);  // Prevent assigment by not defining this operator.
+	~WordRectFinder() {}                          // This class points only to const shared memory.
+
+	inline static int       getFoundArea()                  { return sFoundArea; }    
+	inline static void      setFoundArea(int area)          { sFoundArea = area; } 
+	inline static int       getMinimumArea()                { return sMinimumArea; }    
+	inline static void      setMinimumArea(int area)        { sMinimumArea = area; } 
+	inline static time_t    getCollectiveStartTime()        { return sCollectiveStartTime; }    
+	inline static void      setCollectiveStartTime(time_t t){ sCollectiveStartTime = t; } 
+
+	inline void             setId(int id)           { mId = id; }
+	inline time_t           getStartTime()  const   { return mStartTime;  }
+	inline int              getWide()       const   { return mRowTrie.getWordLength(); }  
+	inline int              getTall()       const   { return mColTrie.getWordLength(); }
+	inline bool             getFindAll()    const   { return mFindAll; }
+
+	int doSearch();
+
+	void printWordRect(bool complete, time_t timeNow) const;
+
+private:
+
+	int findWordRectRowsUsingTrieLinks(int haveTall);
+	int findWordRectRowsMapUpper(int haveTall, const WordMap& rowMap, char wordCols[MAXLEN][MAXLEN]);
+
+#ifdef         findWordRectRowsUsingGetNextWordNodeAndIndex       // obsolete, but left here as a reference implementation
+	static int findWordRectRowsUsingGetNextWordNodeAndIndex(  int wantWide, int wantTall, int haveTall, WordTrie& mRowTrie, WordTrie& mColTrie
+		, const char *wordRows[MAXLEN], const TrieNode ** colNodes[BUFSIZE] );
+#endif
+
+	const WordTrie   &  mRowTrie;
+	const WordTrie   &  mColTrie;
+	const int           mWantTall;
+	const int           mWantWideM1;
+	const int           mWantArea;
+	int                 mHaveTall;
+	int                 mId;                    // Any unique id, but in practice, this is the thread index.
+	time_t              mStartTime;             // Negative value means never started.
+	const char       *  mWordRows[MAXLEN];
+	const bool          mFindAll;
+
+	// TODO: allocate these dynamically, to dims [wantWide][wantTall+1]?
+	const TrieNode  **  mRowNodes[BUFSIZE], * mRowNodesMem[BUFSIZE][BUFSIZE];
+	const TrieNode  **  mColNodes[BUFSIZE], * mColNodesMem[BUFSIZE][BUFSIZE];
+
+	const WordMap    *  mWordMaps;            // used only by findWordRectRowsMapUpper; to add more finders, consider using templates or a factory
+
+	static int          sFoundArea;
+	static int          sMinimumArea;
+	static time_t       sCollectiveStartTime;
+};
+
+#endif // WordRectFinder_hpp
