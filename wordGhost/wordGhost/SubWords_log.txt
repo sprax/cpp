@@ -1,0 +1,71 @@
+SubWords_log.txt
+
+==================================== RELEASE: ====================================
+
+BEST:
+typedef std::hash_set<char *, std::hash_compare<const char *, lessCharStrCmp>> WordSet;
+Opened ../WORD.LST.txt . . . Read 173528 words, kept 173432, 3 <= lengths <= 28
+MAX   9   2  compliers
+MAX  10   3  sobersides
+MAX  16   4  slatternlinesses
+MAX  16   5  cartographically
+MAX  21   6  photolithographically
+test_SubWords: finished in elapsed time 0.118000 seconds
+
+
+SECOND:
+typedef std::hash_set<std::string, std::hash_compare<std::string, lessStringStrCmp>> WordSet;
+Opened ../WORD.LST.txt . . . Read 173528 words, kept 173432, 3 <= lengths <= 28
+MAX   9   2  compliers
+MAX  10   3  sobersides
+MAX  16   4  slatternlinesses
+MAX  16   5  cartographically
+MAX  21   6  photolithographically
+test_SubWords: finished in elapsed time 0.149000 seconds
+
+
+THIRD:
+typedef std::set<const std::string, lessStringStrCmp> WordSet;
+Opened ../WORD.LST.txt . . . Read 173528 words, kept 173432, 3 <= lengths <= 28
+MAX   8   2  abapical
+MAX  10   3  abolishers
+MAX  13   4  abolitionisms
+MAX  17   5  anticonservations
+MAX  21   6  photolithographically
+test_SubWords: finished in elapsed time 0.510000 seconds
+
+===================================== DEBUG: =====================================
+
+BEST:
+typedef std::hash_set<char *, std::hash_compare<const char *, lessCharStrCmp>> WordSet;
+Opened ../WORD.LST.txt . . . Read 173528 words, kept 173432, 3 <= lengths <= 28
+MAX   9   2  compliers
+MAX  10   3  sobersides
+MAX  16   4  slatternlinesses
+MAX  16   5  cartographically
+MAX  21   6  photolithographically
+test_SubWords: finished in elapsed time 14.405000 seconds
+
+
+SECOND:
+typedef std::hash_set<std::string, std::hash_compare<std::string, lessStringStrCmp>> WordSet:
+Opened ../WORD.LST.txt
+MAX   9   2  compliers
+MAX  10   3  sobersides
+MAX  16   4  slatternlinesses
+MAX  16   5  cartographically
+MAX  21   6  photolithographically
+test_SubWords: finished in elapsed time 18.387000 seconds
+
+
+THIRD:
+typedef std::set<const std::string, lessStringStrCmp> WordSet;
+Opened ../WORD.LST.txt
+MAX   8   2  abapical
+MAX  10   3  abolishers
+MAX  13   4  abolitionisms
+MAX  17   5  anticonservations
+MAX  21   6  photolithographically
+test_SubWords: finished in elapsed time 30.030000 seconds
+
+

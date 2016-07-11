@@ -1,0 +1,392 @@
+Opened WORD.LST.txt ... Read 173528 words, kept 43622 with 4 <= lengths <= 28
+
+A                              1 3 5 7 9 1 3 5 7 9 1
+ 1  Human wins:  8 turns: a -> aardvark                     21
+ 2  Human wins: 10 turns: b -> abacterial                   74
+ 3  Human wins: 12 turns: c -> acciaccatura                112
+ 4  Human wins: 11 turns: d -> adjacencies                  72
+ 5  Human wins:  8 turns: e -> aecidium                      9
+ 6  Human wins:  4 turns: f -> afar                          3
+ 7  Human wins:  7 turns: g -> ageless                      24
+ 8  Human wins:  6 turns: h -> ahchoo                        5
+ 9  Human wins:  8 turns: i -> aiguille                     30
+10  Human wins:  4 turns: j -> ajar                          3
+11  Human wins:  6 turns: k -> akimbo                       10
+12  Human wins:  9 turns: l -> alabaster                    25
+13  Human wins: 13 turns: m -> amicabilities               118
+14  Human wins: 15 turns: n -> anfractuosities             152
+15  Human wins:  6 turns: o -> aorist                        9
+16  Human wins: 12 turns: p -> apochromatic                223
+17  Robot wins: 11 turns: q -> aquiculture                  27
+18  Human wins: 11 turns: r -> arabilities                  93
+19  Human wins: 10 turns: s -> asafoetida                   22
+20  Human wins: 11 turns: t -> atelectases                  58
+21  Human wins: 10 turns: u -> audacities                   37
+22  Robot wins:  9 turns: v -> avuncular                    67
+23  Human wins:  7 turns: w -> aweless                      24
+24  Human wins:  4 turns: x -> axal                          3
+25  Human wins:  9 turns: y -> ayatollah                    11
+26  Human wins: 12 turns: z -> azathioprine                 15
+ROBOT takes A, max turns 15:   anfractuosities
+
+B                              1 3 5 7 9 1 3 5 7 9 1
+ 1  Human wins:  8 turns: a -> babbling                     49
+ 2  Human wins:  8 turns: d -> bdellium                      7
+ 3  Human wins: 10 turns: e -> bedabbling                  109
+ 4  Human wins:  8 turns: h -> bheestie                     14
+ 5  Human wins: 13 turns: i -> biddabilities                79
+ 6  Robot wins:  7 turns: l -> blister                      40
+ 7  Human wins:  4 turns: o -> boar                          5
+ 8  Human wins:  9 turns: r -> brabbling                    49
+ 9  Human wins: 10 turns: u -> buccinator                   36
+10  Robot wins:  5 turns: w -> bwana                         4
+11  Human wins:  6 turns: y -> byelaw                        6
+ROBOT takes B, max turns 13:   biddabilities
+
+C                              1 3 5 7 9 1 3 5 7 9 1
+ 1  Human wins: 10 turns: a -> cacciatore                   69
+ 2  Human wins:  9 turns: e -> ceanothus                    20
+ 3  Robot wins: 14 turns: h -> chrestomathies              112
+ 4  Human wins:  4 turns: i -> ciao                          3
+ 5  Robot wins:  9 turns: l -> cleavable                    56
+ 6  Robot wins:  9 turns: n -> cnidarian                     8
+ 7  Human wins: 16 turns: o -> coadministration            139
+ 8  Human wins: 10 turns: r -> crevassing                   94
+ 9  Robot wins:  9 turns: t -> ctenidium                    12
+10  Human wins:  9 turns: u -> cuadrilla                    33
+11  Human wins:  4 turns: w -> cwms                          3
+12  Human wins:  4 turns: y -> cyan                          3
+13  Human wins:  4 turns: z -> czar                          3
+ROBOT takes C, max turns 16:   coadministration
+
+D                              1 3 5 7 9 1 3 5 7 9 1
+ 1  Human wins:  8 turns: a -> dabchick                     12
+ 2  Human wins: 17 turns: e -> dedifferentiating           224
+ 3  Human wins:  7 turns: h -> dharmic                      11
+ 4  Human wins: 23 turns: i -> dichlorodifluoromethane     150
+ 5  Human wins:  8 turns: j -> djellaba                     10
+ 6  Human wins:  6 turns: o -> doable                        6
+ 7  Robot wins:  9 turns: r -> dryasdust                    53
+ 8  Human wins:  4 turns: u -> duad                          4
+ 9  Robot wins:  9 turns: w -> dwindling                    22
+10  Human wins:  9 turns: y -> dyarchies                    18
+ROBOT takes D, max turns 23:   dichlorodifluoromethane
+
+E                              1 3 5 7 9 1 3 5 7 9 1
+ 1  Human wins:  4 turns: a -> each                          3
+ 2  Human wins:  5 turns: b -> ebbed                         7
+ 3  Human wins:  8 turns: c -> ecaudate                     10
+ 4  Human wins:  9 turns: d -> edacities                    19
+ 5  Human wins:  8 turns: e -> eelgrass                     18
+ 6  Human wins: 12 turns: f -> efficiencies                 66
+ 7  Human wins:  4 turns: g -> egad                          4
+ 8  Human wins: 10 turns: i -> eicosanoid                    9
+ 9  Human wins: 11 turns: j -> ejaculating                  13
+10  Human wins:  4 turns: k -> eked                          4
+11  Human wins: 11 turns: l -> elaborating                  54
+12  Human wins: 11 turns: m -> embrittling                  87
+13  Human wins:  9 turns: n -> enchilada                    71
+14  Human wins:  8 turns: o -> eohippus                     12
+15  Human wins: 14 turns: p -> epidemiologies              170
+16  Robot wins: 14 turns: q -> equitabilities              117
+17  Human wins: 11 turns: r -> eradicating                  23
+18  Robot wins: 14 turns: s -> eschatological              171
+19  Human wins:  8 turns: t -> etcetera                     13
+20  Human wins: 14 turns: u -> eugeosynclinal               70
+21  Human wins:  8 turns: v -> evacuant                     18
+22  Human wins:  4 turns: w -> ewer                          4
+23  Human wins: 12 turns: x -> exacerbating                 98
+24  Human wins:  4 turns: y -> eyas                          3
+ROBOT takes E, max turns 14:   epidemiologies
+
+F                              1 3 5 7 9 1 3 5 7 9 1
+ 1  Human wins: 12 turns: a -> facilitating                 60
+ 2  Human wins:  8 turns: e -> feasance                     53
+ 3  Human wins: 10 turns: i -> fianchetti                   75
+ 4  Robot wins:  5 turns: j -> fjeld                         7
+ 5  Robot wins: 15 turns: l -> flibbertigibbet              62
+ 6  Human wins:  4 turns: o -> foal                          4
+ 7  Robot wins: 14 turns: r -> fructification               63
+ 8  Human wins:  6 turns: u -> fubbed                        6
+ 9  Human wins:  4 turns: y -> fyce                          3
+ROBOT takes F, max turns 15:   flibbertigibbet
+
+G                              1 3 5 7 9 1 3 5 7 9 1
+ 1  Human wins:  9 turns: a -> gabardine                    42
+ 2  Human wins: 11 turns: e -> geanticline                  12
+ 3  Human wins:  7 turns: h -> gharial                      19
+ 4  Human wins:  6 turns: i -> gibbed                       18
+ 5  Robot wins:  7 turns: j -> gjetost                       6
+ 6  Robot wins: 10 turns: l -> glaciating                   66
+ 7  Human wins:  6 turns: n -> gneiss                        9
+ 8  Human wins:  6 turns: o -> goanna                        9
+ 9  Robot wins:  9 turns: r -> greasiest                    43
+10  Human wins: 13 turns: u -> gubernatorial                32
+11  Human wins:  6 turns: w -> gweduc                        5
+12  Human wins:  6 turns: y -> gybing                        6
+ROBOT takes G, max turns 13:   gubernatorial
+
+H                              1 3 5 7 9 1 3 5 7 9 1
+ 1  Human wins:  4 turns: a -> haaf                          4
+ 2  Human wins: 12 turns: e -> hebraization                 37
+ 3  Human wins:  6 turns: i -> hiatal                        5
+ 4  Human wins: 11 turns: o -> holoblastic                 104
+ 5  Human wins:  8 turns: u -> huarache                      8
+ 6  Human wins:  4 turns: w -> hwan                          3
+ 7  Human wins:  8 turns: y -> hyacinth                     17
+HUMAN takes H, max turns 12:   hebraization
+
+I                              1 3 5 7 9 1 3 5 7 9 1
+ 1  Human wins:  4 turns: a -> iamb                          3
+ 2  Human wins:  4 turns: b -> ibex                          3
+ 3  Robot wins: 11 turns: c -> icosahedron                  57
+ 4  Human wins: 12 turns: d -> identifiable                 49
+ 5  Human wins:  8 turns: f -> iffiness                     12
+ 6  Robot wins:  9 turns: g -> iguanodon                    20
+ 7  Robot wins:  5 turns: h -> ihram                         4
+ 8  Human wins:  4 turns: k -> ikat                          3
+ 9  Human wins:  9 turns: l -> ileitides                    17
+10  Human wins: 12 turns: m -> imbecilities                114
+11  Human wins: 18 turns: n -> incombustibilities          395
+12  Human wins:  8 turns: o -> iodating                     23
+13  Human wins:  6 turns: p -> ipecac                        5
+14  Human wins: 14 turns: r -> irritabilities               86
+15  Human wins:  9 turns: s -> isallobar                    16
+16  Human wins: 12 turns: t -> italianating                 19
+17  Human wins: 10 turns: v -> ivermectin                    9
+18  Human wins:  4 turns: w -> iwis                          3
+19  Human wins:  4 turns: x -> ixia                          3
+20  Human wins:  4 turns: z -> izar                          3
+ROBOT takes I, max turns 18:   incombustibilities
+
+J                              1 3 5 7 9 1 3 5 7 9 1
+ 1  Human wins:  9 turns: a -> jaborandi                    33
+ 2  Human wins:  7 turns: e -> jealous                      18
+ 3  Human wins:  4 turns: i -> jiao                          3
+ 4  Robot wins:  5 turns: n -> jnana                         4
+ 5  Human wins: 10 turns: o -> jocosities                   34
+ 6  Human wins: 10 turns: u -> jubilarian                   21
+ROBOT takes J, max turns 10:   jocosities
+
+K                              1 3 5 7 9 1 3 5 7 9 1
+ 1  Human wins:  4 turns: a -> kaas                          3
+ 2  Human wins:  4 turns: b -> kbar                          3
+ 3  Human wins:  4 turns: e -> keas                          3
+ 4  Human wins:  8 turns: h -> khedival                     15
+ 5  Human wins:  8 turns: i -> kibbling                     21
+ 6  Human wins:  8 turns: l -> klystron                     35
+ 7  Robot wins: 13 turns: n -> knickerbocker                30
+ 8  Human wins:  5 turns: o -> koala                         7
+ 9  Robot wins: 10 turns: r -> krugerrand                   45
+10  Human wins:  6 turns: u -> kuchen                        5
+11  Human wins:  4 turns: v -> kvas                          3
+12  Robot wins: 11 turns: w -> kwashiorkor                  16
+13  Human wins:  6 turns: y -> kybosh                        8
+ROBOT takes K, max turns 13:   knickerbocker
+
+L                              1 3 5 7 9 1 3 5 7 9 1
+ 1  Human wins: 12 turns: a -> labanotation                 66
+ 2  Human wins: 10 turns: e -> lederhosen                   49
+ 3  Human wins: 13 turns: i -> liebfraumilch                66
+ 4  Robot wins:  5 turns: l -> llama                         4
+ 5  Human wins: 10 turns: o -> loblollies                   72
+ 6  Human wins:  4 turns: u -> luau                          3
+ 7  Human wins:  4 turns: w -> lwei                          3
+ 8  Human wins: 13 turns: y -> lycanthropies                26
+ROBOT takes L, max turns 13:   liebfraumilch
+
+M                              1 3 5 7 9 1 3 5 7 9 1
+ 1  Human wins:  4 turns: a -> maar                          3
+ 2  Robot wins:  5 turns: b -> mbira                         4
+ 3  Human wins: 15 turns: e -> measurabilities              32
+ 4  Human wins:  4 turns: h -> mhos                          3
+ 5  Human wins:  5 turns: i -> miaou                         7
+ 6  Human wins:  8 turns: n -> mnemonic                      7
+ 7  Human wins:  4 turns: o -> moan                          5
+ 8  Human wins:  8 turns: r -> mridanga                      7
+ 9  Human wins: 13 turns: u -> mucocutaneous                94
+10  Human wins: 13 turns: y -> mycobacterium                44
+ROBOT takes M, max turns 15:   measurabilities
+
+N                              1 3 5 7 9 1 3 5 7 9 1
+ 1  Human wins:  4 turns: a -> naan                          3
+ 2  Human wins: 13 turns: e -> necessitarian                43
+ 3  Human wins:  8 turns: g -> ngultrum                      7
+ 4  Human wins: 10 turns: i -> nifedipine                   65
+ 5  Human wins: 11 turns: o -> nociceptive                  52
+ 6  Human wins:  6 turns: u -> nuance                        5
+ 7  Human wins: 10 turns: y -> nyctalopia                   12
+HUMAN takes N, max turns 13:   necessitarian
+
+O                              1 3 5 7 9 1 3 5 7 9 1
+ 1  Human wins:  6 turns: a -> oafish                        6
+ 2  Human wins: 10 turns: b -> obduracies                   28
+ 3  Human wins:  9 turns: c -> occluding                    39
+ 4  Robot wins: 13 turns: d -> odontoglossum                65
+ 5  Human wins: 11 turns: e -> oecumenical                  32
+ 6  Human wins:  4 turns: f -> ofay                          3
+ 7  Human wins:  4 turns: g -> ogam                          3
+ 8  Human wins:  4 turns: h -> ohed                          3
+ 9  Human wins:  6 turns: i -> oidium                        6
+10  Human wins:  8 turns: k -> okeydoke                     12
+11  Human wins: 12 turns: l -> olfactometer                 75
+12  Human wins:  6 turns: m -> omasum                        6
+13  Human wins: 14 turns: n -> onchocerciases               48
+14  Human wins:  6 turns: o -> oocyst                        5
+15  Human wins: 10 turns: p -> operettist                   33
+16  Robot wins:  7 turns: q -> oquassa                       6
+17  Human wins: 10 turns: r -> ordinarier                   66
+18  Human wins:  4 turns: s -> osar                          3
+19  Human wins:  8 turns: t -> otalgies                     10
+20  Human wins:  9 turns: u -> oubliette                    15
+21  Human wins:  7 turns: v -> ovarial                      12
+22  Human wins:  4 turns: w -> owed                          4
+23  Human wins:  9 turns: x -> oxacillin                    17
+24  Human wins:  4 turns: y -> oyer                          5
+25  Robot wins:  9 turns: z -> ozocerite                     8
+ROBOT takes O, max turns 14:   onchocerciases
+
+P                              1 3 5 7 9 1 3 5 7 9 1
+ 1  Human wins: 10 turns: a -> pacifiable                   42
+ 2  Human wins:  9 turns: e -> pebbliest                    23
+ 3  Human wins:  7 turns: f -> pfennig                       8
+ 4  Human wins: 11 turns: h -> phlebitides                  40
+ 5  Human wins:  8 turns: i -> piacular                     20
+ 6  Robot wins: 13 turns: l -> placabilities               128
+ 7  Human wins: 12 turns: n -> pneumococcal                 12
+ 8  Human wins:  8 turns: o -> poaceous                      7
+ 9  Robot wins: 12 turns: r -> predeceasing                245
+10  Human wins: 13 turns: s -> psephological                57
+11  Human wins: 10 turns: t -> pteranodon                   16
+12  Human wins:  9 turns: u -> puddliest                    52
+13  Human wins: 10 turns: y -> pycnogonid                   32
+ROBOT takes P, max turns 13:   placabilities
+
+Q                              1 3 5 7 9 1 3 5 7 9 1
+ 1  Human wins:  4 turns: a -> qaid                          3
+ 2  Human wins:  6 turns: i -> qindar                        8
+ 3  Human wins:  4 turns: o -> qoph                          3
+ 4  Robot wins:  9 turns: u -> queasiest                    46
+ 5  Human wins:  6 turns: w -> qwerty                        5
+ROBOT takes Q, max turns 9:   queasiest
+
+R                              1 3 5 7 9 1 3 5 7 9 1
+ 1  Human wins:  7 turns: a -> raccoon                      15
+ 2  Human wins: 15 turns: e -> reacclimatizing             312
+ 3  Robot wins: 11 turns: h -> rhabdocoele                  60
+ 4  Human wins:  8 turns: i -> ribgrass                     55
+ 5  Human wins:  8 turns: o -> rocaille                     29
+ 6  Human wins:  9 turns: u -> rudbeckia                    40
+ 7  Human wins:  4 turns: y -> ryas                          3
+ROBOT takes R, max turns 15:   reacclimatizing
+
+S                              1 3 5 7 9 1 3 5 7 9 1
+ 1  Human wins: 12 turns: a -> saccharoidal                126
+ 2  Human wins: 13 turns: c -> schadenfreude                96
+ 3  Human wins: 14 turns: e -> separabilities              264
+ 4  Human wins:  9 turns: f -> sforzandi                    16
+ 5  Robot wins:  9 turns: g -> sgraffiti                     9
+ 6  Human wins:  9 turns: h -> shabbiest                    34
+ 7  Human wins: 10 turns: i -> sibilating                   34
+ 8  Robot wins:  7 turns: j -> sjambok                       6
+ 9  Human wins:  8 turns: k -> skiagram                     30
+10  Robot wins:  9 turns: l -> sludgiest                    64
+11  Human wins:  9 turns: m -> smudgiest                    30
+12  Human wins: 12 turns: n -> snollygoster                 50
+13  Human wins: 13 turns: o -> sociabilities                70
+14  Human wins: 10 turns: p -> splurgiest                   87
+15  Robot wins: 15 turns: q -> squeezabilities              60
+16  Human wins:  7 turns: r -> sraddha                       8
+17  Human wins: 13 turns: t -> structuration               164
+18  Human wins: 11 turns: u -> suabilities                 118
+19  Human wins:  6 turns: v -> svaraj                        5
+20  Robot wins:  7 turns: w -> swacked                      26
+21  Human wins: 10 turns: y -> sybaritism                   12
+ROBOT takes S, max turns 15:   squeezabilities
+
+T                              1 3 5 7 9 1 3 5 7 9 1
+ 1  Human wins:  9 turns: a -> tacamahac                    27
+ 2  Robot wins:  9 turns: c -> tchotchke                     8
+ 3  Human wins: 10 turns: e -> teaberries                   59
+ 4  Human wins: 13 turns: h -> thiabendazole                73
+ 5  Human wins: 11 turns: i -> tibiofibula                  46
+ 6  Human wins:  6 turns: m -> tmeses                        5
+ 7  Human wins:  7 turns: o -> tobacco                      33
+ 8  Robot wins: 17 turns: r -> trichloroethylene           181
+ 9  Human wins:  6 turns: s -> tsetse                        9
+10  Human wins:  8 turns: u -> tubbable                     35
+11  Human wins:  9 turns: w -> twaddling                    28
+12  Human wins:  6 turns: y -> tycoon                        5
+13  Human wins:  7 turns: z -> tzaddik                      10
+ROBOT takes T, max turns 17:   trichloroethylene
+
+U                              1 3 5 7 9 1 3 5 7 9 1
+ 1  Human wins: 10 turns: b -> ubiquinone                   16
+ 2  Human wins:  8 turns: d -> udometer                     11
+ 3  Robot wins: 10 turns: f -> ufological                   12
+ 4  Human wins:  4 turns: g -> ughs                          3
+ 5  Robot wins:  5 turns: h -> uhlan                         4
+ 6  Robot wins:  9 turns: i -> uintahite                     8
+ 7  Robot wins:  7 turns: k -> ukelele                      14
+ 8  Human wins:  6 turns: l -> ullage                       14
+ 9  Human wins:  8 turns: m -> umangite                      7
+10  Human wins: 13 turns: n -> unabbreviated               116
+11  Human wins:  4 turns: p -> upas                          3
+12  Human wins: 13 turns: r -> uranographies                52
+13  Human wins: 11 turns: s -> usabilities                  37
+14  Human wins:  4 turns: t -> utas                          3
+15  Human wins:  9 turns: v -> uvarovite                    25
+16  Robot wins:  7 turns: x -> uxorial                       6
+ROBOT takes U, max turns 13:   unabbreviated
+
+V                              1 3 5 7 9 1 3 5 7 9 1
+ 1  Human wins: 11 turns: a -> vacillating                  53
+ 2  Human wins:  4 turns: e -> veal                          3
+ 3  Human wins: 11 turns: i -> viabilities                  39
+ 4  Human wins:  8 turns: o -> vocation                     19
+ 5  Robot wins:  5 turns: r -> vroom                         4
+ 6  Human wins:  4 turns: u -> vugg                          5
+ 7  Robot wins:  5 turns: y -> vying                         4
+ROBOT takes V, max turns 11:   vacillating
+
+W                              1 3 5 7 9 1 3 5 7 9 1
+ 1  Human wins:  9 turns: a -> wabbliest                    14
+ 2  Human wins:  7 turns: e -> weasand                      50
+ 3  Human wins:  8 turns: h -> whodunit                     33
+ 4  Human wins:  8 turns: i -> wicopies                     10
+ 5  Human wins:  8 turns: o -> wobblier                     19
+ 6  Robot wins:  6 turns: r -> wreath                       30
+ 7  Human wins: 10 turns: u -> wunderkind                   16
+ 8  Human wins:  9 turns: y -> wyandotte                    10
+ROBOT takes W, max turns 10:   wunderkind
+
+X                              1 3 5 7 9 1 3 5 7 9 1
+ 1  Robot wins:  8 turns: a -> xanthate                     14
+ 2  Robot wins:  7 turns: e -> xerarch                      13
+ 3  Human wins: 12 turns: i -> xiphisternum                 12
+ 4  Human wins:  5 turns: y -> xylan                         6
+ROBOT takes X, max turns 12:   xiphisternum
+
+Y                              1 3 5 7 9 1 3 5 7 9 1
+ 1  Human wins:  6 turns: a -> yabber                        5
+ 2  Robot wins:  7 turns: c -> ycleped                       6
+ 3  Human wins:  7 turns: e -> yealing                      14
+ 4  Human wins:  4 turns: i -> yids                          3
+ 5  Human wins:  4 turns: l -> ylem                          3
+ 6  Human wins:  5 turns: o -> yobbo                         6
+ 7  Robot wins:  7 turns: p -> yperite                       6
+ 8  Robot wins:  9 turns: t -> ytterbium                    10
+ 9  Human wins:  4 turns: u -> yuan                          3
+10  Human wins:  4 turns: w -> ywis                          3
+ROBOT takes Y, max turns 9:   ytterbium
+
+Z                              1 3 5 7 9 1 3 5 7 9 1
+ 1  Human wins: 10 turns: a -> zabaglione                    9
+ 2  Human wins:  6 turns: e -> zeatin                        6
+ 3  Human wins: 10 turns: i -> zidovudine                   20
+ 4  Robot wins:  7 turns: l -> zloties                       8
+ 5  Human wins: 11 turns: o -> zoantharian                  14
+ 6  Robot wins:  9 turns: u -> zucchetto                     8
+ 7  Human wins: 10 turns: w -> zwitterion                   14
+ 8  Human wins:  6 turns: y -> zydeco                        5
+ROBOT takes Z, max turns 11:   zoantharian

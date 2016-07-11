@@ -1,0 +1,491 @@
+========================================================================
+    CONSOLE APPLICATION : wordGhost Project Overview
+========================================================================
+
+
+// wordGhost.cpp : Outcomes for the word game ghost.
+// Sprax Lines, July 2010
+// This program shows the optimal outcomes from all possible first 2 moves 
+// of the word game called ghost.  Optimal means here that both players (human
+// first, computer second) play to win/lose as quickly/slowly as possible.
+
+/**
+  Optimal Ghost
+
+  In the game of Ghost, two players take turns building up an English word
+  from left to right. Each player adds one letter per turn. The goal is to 
+  not complete the spelling of a word: if you add a letter that completes 
+  a word (of 4+ letters), or if you add a letter that produces a string 
+  that cannot be extended into a word, you lose. (Bluffing plays and 
+  "challenges" may be ignored for the purpose of this puzzle.)
+
+  Write a program that allows a user to play Ghost against the computer.
+
+  The computer should play optimally given the following dictionary: WORD.LST. 
+  Allow the human to play first. If the computer thinks it will win, it should 
+  play randomly among all its winning moves; if the computer thinks it will 
+  lose, it should play so as to extend the game as long as possible (choosing 
+  randomly among choices that force the maximal game length).
+
+  Your program should be written as a Java web application that provides a basic
+  GUI for a human to play against the optimal computer player from inside the 
+  Firefox browser. The web page should access a server using JavaScript's 
+  XMLHttpRequest object, and display the results using DOM manipulation.
+
+  Please submit your source code, configuration instructions, and any comments 
+  on your approach. Please also include a WAR file that we can test against 
+  Tomcat 5.5.x on Sun's J2SE 6.0. Finally, in your submission email, answer 
+  this question: if the human starts the game with 'n', and the computer plays 
+  according to the strategy above, what unique word will complete the human's 
+  victory? 
+
+    Winning: Given current stem, add letter s.t. only odd-length (len >= 4) words complete it.
+        If there is more than one, play one with least max word length (win as quickly as possible.)
+            If there is more than one of those, choose among them randomly using random picker.)
+
+    Losing: Given current stem, add letter s.t. only the longest of even-length words complete it.
+        A)  Absolute criterion: if there is no E-letter completion, he'll have to win on at least E+2 letters.
+        B)  relative criterion (turn-taking game): All even length turns are mine, so I can prevent the worst
+            case for me.  I can either: 
+            1) evaluate his best move for each of my possible moves, and choose the least worst for me, or
+            2) (pre)evaluate the entire series of remaining moves, assuming he plays optimally.
+
+    Data: A trie that holds only words of length >= 4, and only one word per 4-letter stem.
+    For example, it keeps "base" but not "ba" or "bas" or "baseball", "baseboard", "based", etc,
+    because all words extending "base" are unreachable in the game.  The player who spess "base"
+    has alraedy lost.
+
+*/
+
+
+AppWizard has created this wordGhost application for you.
+
+This file contains a summary of what you will find in each of the files that
+make up your wordGhost application.
+
+
+wordGhost.vcxproj
+    This is the main project file for VC++ projects generated using an Application Wizard.
+    It contains information about the version of Visual C++ that generated the file, and
+    information about the platforms, configurations, and project features selected with the
+    Application Wizard.
+
+wordGhost.vcxproj.filters
+    This is the filters file for VC++ projects generated using an Application Wizard. 
+    It contains information about the association between the files in your project 
+    and the filters. This association is used in the IDE to show grouping of files with
+    similar extensions under a specific node (for e.g. ".cpp" files are associated with the
+    "Source Files" filter).
+
+wordGhost.cpp
+    This is the main application source file.
+
+/////////////////////////////////////////////////////////////////////////////
+Other standard files:
+
+StdAfx.h, StdAfx.cpp
+    These files are used to build a precompiled header (PCH) file
+    named wordGhost.pch and a precompiled types file named StdAfx.obj.
+
+/////////////////////////////////////////////////////////////////////////////
+Other notes:
+
+AppWizard uses "TODO:" comments to indicate parts of the source code you
+should add to or customize.
+
+/////////////////////////////////////////////////////////////////////////////
+
+
+Opened ../WORD.LST.txt ... Read 173528 words, kept 43622, 4 <= lengths <= 28
+
+A                                                  1 3 5 7 9 1 3 5 7 9 1
+ 1 H HUMan:   8 ==  8 turns: a -> aasvogel         aasvogel             37
+ 2 H HUMan:   6 ==  6 turns: b -> abvolt           abvolt              616
+ 3 H HUMan:   6 ==  6 turns: c -> acnode           acnode              905
+ 4 H HUMan:   6 ==  6 turns: d -> adzuki           adzuki              655
+ 5 H HUMan:   6 ==  6 turns: e -> aecium           aecium              125
+ 6 H HUMan:   4 ==  4 turns: f -> afar             afar                203
+ 7 H HUMan:   4 ==  4 turns: g -> agha             agha                464
+ 8 H HUMan:   6 ==  6 turns: h -> ahchoo           ahchoo               30
+ 9 H HUMan:   4 ==  4 turns: i -> ains             ains                278
+10 H HUMan:   4 ==  4 turns: j -> ajar             ajar                 16
+11 H HUMan:   6 ==  6 turns: k -> akimbo           akimbo               18
+12 H HUMan:   6 ==  6 turns: l -> alnico           alnico              941
+13 H HUMan:   6 ==  6 turns: m -> amtrac           amtrac              733
+14 H HUMan:   6 ==  6 turns: n -> anlace           anlace             1282
+15 H HUMan:   6 ==  6 turns: o -> aorist           aorist               25
+16 H HUMan:   8 ==  8 turns: p -> apyretic         apyretic            921
+17 r roBOT:  11 == 11 turns: q -> aquiculture      aquiculture          40
+18 H HUMan:   4 ==  4 turns: r -> arfs             arfs                868
+19 H HUMan:   6 ==  6 turns: s -> aslant           aslant              782
+20 H HUMan:   6 ==  6 turns: t -> atlatl           atlatl              394
+21 H HUMan:   4 ==  4 turns: u -> aunt             aunt                294
+22 r roBOT:   9 ==  9 turns: v -> avuncular        avuncular           193
+23 H HUMan:   4 ==  4 turns: w -> awry             awry                 84
+24 H HUMan:   4 ==  4 turns: x -> axal             axal                 63
+25 H HUMan:   4 ==  4 turns: y -> ayes             ayes                 20
+26 H HUMan:  12 == 12 turns: z -> azathioprine     azathioprine         91
+ROBOT (Player 2) takes A, max turns 12:    azathioprine
+
+B                                                  1 3 5 7 9 1 3 5 7 9 1
+ 1 H HUMan:   4 ==  4 turns: a -> baff             baff                910
+ 2 H HUMan:   8 ==  8 turns: d -> bdellium         bdellium              8
+ 3 H HUMan:   6 ==  6 turns: e -> bekiss           bekiss             1307
+ 4 H HUMan:   4 ==  4 turns: h -> bhut             bhut                 29
+ 5 H HUMan:   6 ==  6 turns: i -> biking           biking             1446
+ 6 r roBOT:   7 ==  7 turns: l -> blister          blister             258
+ 7 H HUMan:   4 ==  4 turns: o -> boar             boar                759
+ 8 H HUMan:   4 ==  4 turns: r -> brrr             brrr                441
+ 9 H HUMan:   4 ==  4 turns: u -> buff             buff                389
+10 r roBOT:   5 ==  5 turns: w -> bwana            bwana                 5
+11 H HUMan:   6 ==  6 turns: y -> byelaw           byelaw               80
+ROBOT (Player 2) takes B, max turns 8:    bdellium
+
+C                                                  1 3 5 7 9 1 3 5 7 9 1
+ 1 H HUMan:   6 ==  6 turns: a -> caecum           caecum             1975
+ 2 H HUMan:   4 ==  4 turns: e -> cees             cees                419
+ 3 r roBOT:   9 ==  9 turns: h -> chlamydes        chlamydes          1281
+ 4 H HUMan:   4 ==  4 turns: i -> ciao             ciao                537
+ 5 r roBOT:   7 ==  7 turns: l -> clypeus          clypeus             500
+ 6 r roBOT:   9 ==  9 turns: n -> cnidarian        cnidarian             9
+ 7 H HUMan:   6 ==  6 turns: o -> cojoin           cojoin             3331
+ 8 H HUMan:  10 == 10 turns: r -> crevassing       crevassing          775
+ 9 r roBOT:   9 ==  9 turns: t -> ctenidium        ctenidium            20
+10 H HUMan:   4 ==  4 turns: u -> cuff             cuff                594
+11 H HUMan:   4 ==  4 turns: w -> cwms             cwms                  4
+12 H HUMan:   4 ==  4 turns: y -> cyan             cyan                379
+13 H HUMan:   4 ==  4 turns: z -> czar             czar                  4
+ROBOT (Player 2) takes C, max turns 10:    crevassing
+
+D                                                  1 3 5 7 9 1 3 5 7 9 1
+ 1 H HUMan:   4 ==  4 turns: a -> daff             daff                526
+ 2 H HUMan:   4 ==  4 turns: e -> deys             deys               2994
+ 3 H HUMan:   6 ==  6 turns: h -> dharna           dharna               43
+ 4 H HUMan:   6 ==  6 turns: i -> dikdik           dikdik             2682
+ 5 H HUMan:   4 ==  4 turns: j -> djin             djin                 13
+ 6 H HUMan:   4 ==  4 turns: o -> doff             doff                672
+ 7 r roBOT:   7 ==  7 turns: r -> dryness          dryness             300
+ 8 H HUMan:   4 ==  4 turns: u -> duad             duad                377
+ 9 r roBOT:   9 ==  9 turns: w -> dwindling        dwindling            26
+10 H HUMan:   6 ==  6 turns: y -> dybbuk           dybbuk              259
+ROBOT (Player 2) takes D, max turns 9:    dwindling
+
+E                                                  1 3 5 7 9 1 3 5 7 9 1
+ 1 H HUMan:   4 ==  4 turns: a -> each             each                120
+ 2 H HUMan:   4 ==  4 turns: b -> ebon             ebon                 29
+ 3 H HUMan:   6 ==  6 turns: c -> ecesis           ecesis              380
+ 4 H HUMan:   4 ==  4 turns: d -> edhs             edhs                144
+ 5 H HUMan:   6 ==  6 turns: e -> eerily           eerily               37
+ 6 H HUMan:   4 ==  4 turns: f -> efts             efts                129
+ 7 H HUMan:   4 ==  4 turns: g -> egad             egad                108
+ 8 H HUMan:   6 ==  6 turns: i -> either           either               81
+ 9 H HUMan:  10 == 10 turns: j -> ejaculator       ejaculator           19
+10 H HUMan:   4 ==  4 turns: k -> eked             eked                 27
+11 H HUMan:   4 ==  4 turns: l -> elhi             elhi                400
+12 H HUMan:   4 ==  4 turns: m -> emfs             emfs                565
+13 H HUMan:   6 ==  6 turns: n -> enhalo           enhalo             1579
+14 H HUMan:   6 ==  6 turns: o -> eonian           eonian               38
+15 H HUMan:  12 == 12 turns: p -> epithalamion     epithalamion        565
+16 r roBOT:  13 == 13 turns: q -> equivalencies    equivalencies       179
+17 H HUMan:   4 ==  4 turns: r -> erne             erne                303
+18 r roBOT:  13 == 13 turns: s -> eschatologies    eschatologies       361
+19 H HUMan:   4 ==  4 turns: t -> etna             etna                285
+20 H HUMan:   6 ==  6 turns: u -> eunuch           eunuch              406
+21 H HUMan:   6 ==  6 turns: v -> evzone           evzone              210
+22 H HUMan:   4 ==  4 turns: w -> ewer             ewer                  5
+23 H HUMan:  12 == 12 turns: x -> exhilarating     exhilarating       1285
+24 H HUMan:   4 ==  4 turns: y -> eyas             eyas                124
+ROBOT (Player 2) takes E, max turns 13:    equivalencies
+
+F                                                  1 3 5 7 9 1 3 5 7 9 1
+ 1 H HUMan:   4 ==  4 turns: a -> fawn             fawn                694
+ 2 H HUMan:   4 ==  4 turns: e -> fehs             fehs                677
+ 3 H HUMan:   4 ==  4 turns: i -> five             five                558
+ 4 r roBOT:   5 ==  5 turns: j -> fjeld            fjeld                 8
+ 5 r roBOT:   5 ==  5 turns: l -> flail            flail               488
+ 6 H HUMan:   4 ==  4 turns: o -> foal             foal                417
+ 7 r roBOT:   5 ==  5 turns: r -> frass            frass               388
+ 8 H HUMan:   4 ==  4 turns: u -> fuji             fuji                585
+ 9 H HUMan:   4 ==  4 turns: y -> fyce             fyce                 13
+ROBOT (Player 2) takes F, max turns 5:    fjeld
+
+G                                                  1 3 5 7 9 1 3 5 7 9 1
+ 1 H HUMan:   4 ==  4 turns: a -> gaff             gaff                730
+ 2 H HUMan:   4 ==  4 turns: e -> geck             geck                696
+ 3 H HUMan:   6 ==  6 turns: h -> gherao           gherao               45
+ 4 H HUMan:   4 ==  4 turns: i -> gift             gift                257
+ 5 r roBOT:   7 ==  7 turns: j -> gjetost          gjetost               7
+ 6 r roBOT:   7 ==  7 turns: l -> glacier          glacier             446
+ 7 H HUMan:   4 ==  4 turns: n -> gnus             gnus                 44
+ 8 H HUMan:   6 ==  6 turns: o -> goanna           goanna              467
+ 9 r roBOT:   7 ==  7 turns: r -> gryphon          gryphon             450
+10 H HUMan:   4 ==  4 turns: u -> guck             guck                419
+11 H HUMan:   6 ==  6 turns: w -> gweduc           gweduc                6
+12 H HUMan:   6 ==  6 turns: y -> gybing           gybing              188
+ROBOT (Player 2) takes G, max turns 7:    gjetost
+
+H                                                  1 3 5 7 9 1 3 5 7 9 1
+ 1 H HUMan:   4 ==  4 turns: a -> haaf             haaf                831
+ 2 H HUMan:   4 ==  4 turns: e -> heft             heft               1061
+ 3 H HUMan:   6 ==  6 turns: i -> hiatal           hiatal              299
+ 4 H HUMan:   4 ==  4 turns: o -> hove             hove                733
+ 5 H HUMan:   4 ==  4 turns: u -> huck             huck                272
+ 6 H HUMan:   4 ==  4 turns: w -> hwan             hwan                  4
+ 7 H HUMan:   4 ==  4 turns: y -> hyte             hyte                306
+HUMAN (Player 1) takes H, max turns 6:    hiatal
+
+I                                                  1 3 5 7 9 1 3 5 7 9 1
+ 1 H HUMan:   4 ==  4 turns: a -> iamb             iamb                 14
+ 2 H HUMan:   4 ==  4 turns: b -> ibex             ibex                 25
+ 3 r roBOT:  11 == 11 turns: c -> icosahedron      icosahedron         157
+ 4 H HUMan:   4 ==  4 turns: d -> idyl             idyl                133
+ 5 H HUMan:   8 ==  8 turns: f -> iffiness         iffiness             13
+ 6 r roBOT:   9 ==  9 turns: g -> iguanodon        iguanodon           111
+ 7 r roBOT:   5 ==  5 turns: h -> ihram            ihram                 5
+ 8 H HUMan:   4 ==  4 turns: k -> ikat             ikat                 11
+ 9 H HUMan:   4 ==  4 turns: l -> ilka             ilka                195
+10 H HUMan:   8 ==  8 turns: m -> immodest         immodest           1417
+11 H HUMan:   6 ==  6 turns: n -> inmate           inmate             4735
+12 H HUMan:   4 ==  4 turns: o -> iota             iota                107
+13 H HUMan:   6 ==  6 turns: p -> ipecac           ipecac               28
+14 H HUMan:  12 == 12 turns: r -> irrotational     irrotational        540
+15 H HUMan:   4 ==  4 turns: s -> isba             isba                464
+16 H HUMan:   4 ==  4 turns: t -> itch             itch                 85
+17 H HUMan:  10 == 10 turns: v -> ivermectin       ivermectin           25
+18 H HUMan:   4 ==  4 turns: w -> iwis             iwis                  4
+19 H HUMan:   4 ==  4 turns: x -> ixia             ixia                 13
+20 H HUMan:   4 ==  4 turns: z -> izar             izar                  8
+ROBOT (Player 2) takes I, max turns 12:    irrotational
+
+J                                                  1 3 5 7 9 1 3 5 7 9 1
+ 1 H HUMan:   4 ==  4 turns: a -> jail             jail                326
+ 2 H HUMan:   4 ==  4 turns: e -> jefe             jefe                173
+ 3 H HUMan:   4 ==  4 turns: i -> jiao             jiao                137
+ 4 r roBOT:   5 ==  5 turns: n -> jnana            jnana                 5
+ 5 H HUMan:   4 ==  4 turns: o -> joes             joes                251
+ 6 H HUMan:   6 ==  6 turns: u -> juking           juking              288
+ROBOT (Player 2) takes J, max turns 6:    juking
+
+K                                                  1 3 5 7 9 1 3 5 7 9 1
+ 1 H HUMan:   4 ==  4 turns: a -> kaas             kaas                369
+ 2 H HUMan:   4 ==  4 turns: b -> kbar             kbar                  4
+ 3 H HUMan:   4 ==  4 turns: e -> keas             keas                313
+ 4 H HUMan:   8 ==  8 turns: h -> khedival         khedival             49
+ 5 H HUMan:   4 ==  4 turns: i -> kick             kick                220
+ 6 H HUMan:   8 ==  8 turns: l -> klystron         klystron             71
+ 7 r roBOT:   9 ==  9 turns: n -> knubbiest        knubbiest            95
+ 8 H HUMan:   4 ==  4 turns: o -> kobo             kobo                114
+ 9 r roBOT:   7 ==  7 turns: r -> kruller          kruller              94
+10 H HUMan:   4 ==  4 turns: u -> kues             kues                 81
+11 H HUMan:   4 ==  4 turns: v -> kvas             kvas                  8
+12 r roBOT:  11 == 11 turns: w -> kwashiorkor      kwashiorkor          17
+13 H HUMan:   6 ==  6 turns: y -> kybosh           kybosh               64
+ROBOT (Player 2) takes K, max turns 11:    kwashiorkor
+
+L                                                  1 3 5 7 9 1 3 5 7 9 1
+ 1 H HUMan:   4 ==  4 turns: a -> lall             lall                922
+ 2 H HUMan:   4 ==  4 turns: e -> left             left                668
+ 3 H HUMan:   4 ==  4 turns: i -> life             life                626
+ 4 r roBOT:   5 ==  5 turns: l -> llama            llama                 7
+ 5 H HUMan:   4 ==  4 turns: o -> loft             loft                467
+ 6 H HUMan:   4 ==  4 turns: u -> luau             luau                263
+ 7 H HUMan:   4 ==  4 turns: w -> lwei             lwei                  4
+ 8 H HUMan:   4 ==  4 turns: y -> lyes             lyes                152
+ROBOT (Player 2) takes L, max turns 5:    llama
+
+M                                                  1 3 5 7 9 1 3 5 7 9 1
+ 1 H HUMan:   4 ==  4 turns: a -> maar             maar               1628
+ 2 r roBOT:   5 ==  5 turns: b -> mbira            mbira                 5
+ 3 H HUMan:   4 ==  4 turns: e -> meou             meou               1284
+ 4 H HUMan:   4 ==  4 turns: h -> mhos             mhos                  4
+ 5 H HUMan:   4 ==  4 turns: i -> mibs             mibs               1843
+ 6 H HUMan:   8 ==  8 turns: n -> mnemonic         mnemonic              8
+ 7 H HUMan:   4 ==  4 turns: o -> moan             moan                710
+ 8 H HUMan:   8 ==  8 turns: r -> mridanga         mridanga              8
+ 9 H HUMan:   4 ==  4 turns: u -> muon             muon               1309
+10 H HUMan:   4 ==  4 turns: y -> myth             myth                472
+ROBOT (Player 2) takes M, max turns 8:    mnemonic
+
+N                                                  1 3 5 7 9 1 3 5 7 9 1
+ 1 H HUMan:   4 ==  4 turns: a -> naan             naan                544
+ 2 H HUMan:   4 ==  4 turns: e -> need             need               1142
+ 3 H HUMan:   8 ==  8 turns: g -> ngultrum         ngultrum             11
+ 4 H HUMan:   6 ==  6 turns: i -> nipped           nipped              340
+ 5 H HUMan:   4 ==  4 turns: o -> nogg             nogg               4983
+ 6 H HUMan:   4 ==  4 turns: u -> null             null                439
+ 7 H HUMan:  10 == 10 turns: y -> nyctalopia       nyctalopia           36
+HUMAN (Player 1) takes N, max turns 10:    nyctalopia
+
+O                                                  1 3 5 7 9 1 3 5 7 9 1
+ 1 H HUMan:   6 ==  6 turns: a -> oafish           oafish               69
+ 2 H HUMan:   6 ==  6 turns: b -> obiism           obiism              397
+ 3 H HUMan:   6 ==  6 turns: c -> ocular           ocular              246
+ 4 r roBOT:   9 ==  9 turns: d -> odalisque        odalisque            99
+ 5 H HUMan:   6 ==  6 turns: e -> oeuvre           oeuvre               85
+ 6 H HUMan:   4 ==  4 turns: f -> ofay             ofay                104
+ 7 H HUMan:   4 ==  4 turns: g -> ogam             ogam                 29
+ 8 H HUMan:   4 ==  4 turns: h -> ohed             ohed                 20
+ 9 H HUMan:   6 ==  6 turns: i -> oidium           oidium               90
+10 H HUMan:   4 ==  4 turns: k -> okra             okra                 17
+11 H HUMan:   4 ==  4 turns: l -> olla             olla                212
+12 H HUMan:   6 ==  6 turns: m -> omasum           omasum              161
+13 H HUMan:   4 ==  4 turns: n -> onus             onus                214
+14 H HUMan:   6 ==  6 turns: o -> oocyst           oocyst              150
+15 H HUMan:  10 == 10 turns: p -> operettist       operettist          308
+16 r roBOT:   7 ==  7 turns: q -> oquassa          oquassa               7
+17 H HUMan:   4 ==  4 turns: r -> oryx             oryx                395
+18 H HUMan:   4 ==  4 turns: s -> osar             osar                354
+19 H HUMan:   8 ==  8 turns: t -> otalgies         otalgies            120
+20 H HUMan:   4 ==  4 turns: u -> ouch             ouch               1020
+21 H HUMan:   4 ==  4 turns: v -> oven             oven                140
+22 H HUMan:   4 ==  4 turns: w -> owed             owed                 33
+23 H HUMan:   4 ==  4 turns: x -> oxid             oxid                176
+24 H HUMan:   4 ==  4 turns: y -> oyer             oyer                 10
+25 r roBOT:   9 ==  9 turns: z -> ozocerite        ozocerite            53
+ROBOT (Player 2) takes O, max turns 10:    operettist
+
+P                                                  1 3 5 7 9 1 3 5 7 9 1
+ 1 H HUMan:   6 ==  6 turns: a -> pajama           pajama             1195
+ 2 H HUMan:   4 ==  4 turns: e -> pehs             pehs               1347
+ 3 H HUMan:   4 ==  4 turns: f -> pfft             pfft                 11
+ 4 H HUMan:   4 ==  4 turns: h -> phut             phut               1139
+ 5 H HUMan:   4 ==  4 turns: i -> pika             pika                788
+ 6 r roBOT:   9 ==  9 turns: l -> plethoric        plethoric           493
+ 7 H HUMan:  12 == 12 turns: n -> pneumococcal     pneumococcal         57
+ 8 H HUMan:   6 ==  6 turns: o -> pokier           pokier              733
+ 9 r roBOT:   7 ==  7 turns: r -> prequel          prequel            3112
+10 H HUMan:   4 ==  4 turns: s -> psst             psst                133
+11 H HUMan:   6 ==  6 turns: t -> ptisan           ptisan               95
+12 H HUMan:   4 ==  4 turns: u -> puff             puff                589
+13 H HUMan:   4 ==  4 turns: y -> pyic             pyic                427
+ROBOT (Player 2) takes P, max turns 12:    pneumococcal
+
+Q                                                  1 3 5 7 9 1 3 5 7 9 1
+ 1 H HUMan:   4 ==  4 turns: a -> qaid             qaid                  9
+ 2 H HUMan:   6 ==  6 turns: i -> qindar           qindar               13
+ 3 H HUMan:   4 ==  4 turns: o -> qoph             qoph                  4
+ 4 r roBOT:   5 ==  5 turns: u -> quack            quack               347
+ 5 H HUMan:   6 ==  6 turns: w -> qwerty           qwerty                6
+ROBOT (Player 2) takes Q, max turns 6:    qindar
+
+R                                                  1 3 5 7 9 1 3 5 7 9 1
+ 1 H HUMan:   4 ==  4 turns: a -> raff             raff                699
+ 2 H HUMan:   8 ==  8 turns: e -> relucent         relucent           5051
+ 3 r roBOT:   7 ==  7 turns: h -> rhamnus          rhamnus             297
+ 4 H HUMan:   6 ==  6 turns: i -> riling           riling              480
+ 5 H HUMan:   6 ==  6 turns: o -> roving           roving              389
+ 6 H HUMan:   4 ==  4 turns: u -> ruin             ruin                384
+ 7 H HUMan:   4 ==  4 turns: y -> ryas             ryas                 23
+ROBOT (Player 2) takes R, max turns 8:    relucent
+
+S                                                  1 3 5 7 9 1 3 5 7 9 1
+ 1 H HUMan:   4 ==  4 turns: a -> sake             sake               1293
+ 2 H HUMan:   8 ==  8 turns: c -> sclereid         sclereid            824
+ 3 H HUMan:   8 ==  8 turns: e -> sequitur         sequitur           1311
+ 4 H HUMan:   8 ==  8 turns: f -> sforzato         sforzato             22
+ 5 r roBOT:   9 ==  9 turns: g -> sgraffiti        sgraffiti            10
+ 6 H HUMan:   6 ==  6 turns: h -> shnaps           shnaps              517
+ 7 H HUMan:   4 ==  4 turns: i -> sike             sike                608
+ 8 r roBOT:   7 ==  7 turns: j -> sjambok          sjambok               7
+ 9 H HUMan:   6 ==  6 turns: k -> sklent           sklent              252
+10 r roBOT:   5 ==  5 turns: l -> slack            slack               209
+11 H HUMan:   8 ==  8 turns: m -> smudgily         smudgily            142
+12 H HUMan:   4 ==  4 turns: n -> snye             snye                154
+13 H HUMan:   6 ==  6 turns: o -> soever           soever              790
+14 H HUMan:   8 ==  8 turns: p -> splutter         splutter            809
+15 r roBOT:   7 ==  7 turns: q -> squoosh          squoosh             153
+16 H HUMan:   4 ==  4 turns: r -> sris             sris                 11
+17 H HUMan:  10 == 10 turns: t -> strychnine       strychnine         1027
+18 H HUMan:   4 ==  4 turns: u -> sued             sued               2250
+19 H HUMan:   6 ==  6 turns: v -> svaraj           svaraj               15
+20 r roBOT:   5 ==  5 turns: w -> swail            swail               164
+21 H HUMan:   4 ==  4 turns: y -> syke             syke                498
+ROBOT (Player 2) takes S, max turns 10:    strychnine
+
+T                                                  1 3 5 7 9 1 3 5 7 9 1
+ 1 H HUMan:   4 ==  4 turns: a -> taos             taos                655
+ 2 r roBOT:   9 ==  9 turns: c -> tchotchke        tchotchke             9
+ 3 H HUMan:   6 ==  6 turns: e -> teched           teched              847
+ 4 H HUMan:   6 ==  6 turns: h -> thrave           thrave              643
+ 5 H HUMan:   4 ==  4 turns: i -> tiff             tiff                465
+ 6 H HUMan:   6 ==  6 turns: m -> tmeses           tmeses                8
+ 7 H HUMan:   4 ==  4 turns: o -> toff             toff                675
+ 8 r roBOT:   5 ==  5 turns: r -> trash            trash              1376
+ 9 H HUMan:   6 ==  6 turns: s -> tsetse           tsetse               68
+10 H HUMan:   6 ==  6 turns: u -> tuchun           tuchun              444
+11 H HUMan:   8 ==  8 turns: w -> twopence         twopence            103
+12 H HUMan:   4 ==  4 turns: y -> tyee             tyee                127
+13 H HUMan:   6 ==  6 turns: z -> tzetze           tzetze               30
+ROBOT (Player 2) takes T, max turns 9:    tchotchke
+
+U                                                  1 3 5 7 9 1 3 5 7 9 1
+ 1 H HUMan:  10 == 10 turns: b -> ubiquinone       ubiquinone           25
+ 2 H HUMan:   8 ==  8 turns: d -> udometer         udometer             17
+ 3 r roBOT:   9 ==  9 turns: f -> ufologies        ufologies            15
+ 4 H HUMan:   4 ==  4 turns: g -> ughs             ughs                 33
+ 5 r roBOT:   5 ==  5 turns: h -> uhlan            uhlan                 5
+ 6 r roBOT:   9 ==  9 turns: i -> uintahite        uintahite            12
+ 7 r roBOT:   7 ==  7 turns: k -> ukelele          ukelele              16
+ 8 H HUMan:   4 ==  4 turns: l -> ulna             ulna                 56
+ 9 H HUMan:   6 ==  6 turns: m -> umlaut           umlaut               73
+10 H HUMan:   8 ==  8 turns: n -> unkingly         unkingly           7740
+11 H HUMan:   4 ==  4 turns: p -> upas             upas                467
+12 H HUMan:   4 ==  4 turns: r -> urds             urds                285
+13 H HUMan:   8 ==  8 turns: s -> usquabae         usquabae             81
+14 H HUMan:   4 ==  4 turns: t -> utas             utas                 74
+15 H HUMan:   8 ==  8 turns: v -> uvulitis         uvulitis             29
+16 r roBOT:   7 ==  7 turns: x -> uxorial          uxorial              14
+ROBOT (Player 2) takes U, max turns 10:    ubiquinone
+
+V                                                  1 3 5 7 9 1 3 5 7 9 1
+ 1 H HUMan:   4 ==  4 turns: a -> vail             vail                585
+ 2 H HUMan:   4 ==  4 turns: e -> veal             veal                605
+ 3 H HUMan:   4 ==  4 turns: i -> vied             vied                669
+ 4 H HUMan:   4 ==  4 turns: o -> voes             voes                335
+ 5 r roBOT:   5 ==  5 turns: r -> vroom            vroom                 8
+ 6 H HUMan:   4 ==  4 turns: u -> vugg             vugg                111
+ 7 r roBOT:   5 ==  5 turns: y -> vying            vying                 5
+ROBOT (Player 2) takes V, max turns 5:    vroom
+
+W                                                  1 3 5 7 9 1 3 5 7 9 1
+ 1 H HUMan:   4 ==  4 turns: a -> wack             wack                468
+ 2 H HUMan:   4 ==  4 turns: e -> weft             weft                259
+ 3 H HUMan:   6 ==  6 turns: h -> whydah           whydah              131
+ 4 H HUMan:   6 ==  6 turns: i -> wikiup           wikiup              310
+ 5 H HUMan:   4 ==  4 turns: o -> wogs             wogs                190
+ 6 r roBOT:   5 ==  5 turns: r -> wrack            wrack               106
+ 7 H HUMan:   4 ==  4 turns: u -> wuss             wuss                 29
+ 8 H HUMan:   4 ==  4 turns: y -> wych             wych                 36
+ROBOT (Player 2) takes W, max turns 6:    whydah
+
+X                                                  1 3 5 7 9 1 3 5 7 9 1
+ 1 r roBOT:   7 ==  7 turns: a -> xanthic          xanthic              29
+ 2 r roBOT:   5 ==  5 turns: e -> xebec            xebec               150
+ 3 H HUMan:  12 == 12 turns: i -> xiphisternum     xiphisternum         16
+ 4 H HUMan:   4 ==  4 turns: y -> xyst             xyst                 55
+ROBOT (Player 2) takes X, max turns 12:    xiphisternum
+
+Y                                                  1 3 5 7 9 1 3 5 7 9 1
+ 1 H HUMan:   4 ==  4 turns: a -> yaff             yaff                151
+ 2 r roBOT:   7 ==  7 turns: c -> ycleped          ycleped               8
+ 3 H HUMan:   4 ==  4 turns: e -> yegg             yegg                 77
+ 4 H HUMan:   4 ==  4 turns: i -> yids             yids                 32
+ 5 H HUMan:   4 ==  4 turns: l -> ylem             ylem                  4
+ 6 H HUMan:   4 ==  4 turns: o -> yock             yock                 91
+ 7 r roBOT:   7 ==  7 turns: p -> yperite          yperite               7
+ 8 r roBOT:   7 ==  7 turns: t -> yttrium          yttrium              17
+ 9 H HUMan:   4 ==  4 turns: u -> yuan             yuan                 41
+10 H HUMan:   4 ==  4 turns: w -> ywis             ywis                  4
+ROBOT (Player 2) takes Y, max turns 7:    ycleped
+
+Z                                                  1 3 5 7 9 1 3 5 7 9 1
+ 1 H HUMan:   6 ==  6 turns: a -> zaffar           zaffar              157
+ 2 H HUMan:   4 ==  4 turns: e -> zees             zees                118
+ 3 H HUMan:   6 ==  6 turns: i -> zither           zither              119
+ 4 r roBOT:   7 ==  7 turns: l -> zloties          zloties               9
+ 5 H HUMan:   6 ==  6 turns: o -> zodiac           zodiac              208
+ 6 r roBOT:   9 ==  9 turns: u -> zucchetto        zucchetto            12
+ 7 H HUMan:  10 == 10 turns: w -> zwitterion       zwitterion           15
+ 8 H HUMan:   6 ==  6 turns: y -> zydeco           zydeco               96
+ROBOT (Player 2) takes Z, max turns 10:    zwitterion
+
