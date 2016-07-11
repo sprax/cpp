@@ -16,12 +16,12 @@ class OctalToUint32
 {
 public:
 
-	typedef enum ErrorCode {
+	typedef enum tagErrorCode {
 	    NO_ERROR 			= 0,
 		NULL_ARGUMENT		= 1,
 		NON_OCTAL_DIGIT 	= 2,
 		UINT32_OVERFLOW 	= 3
-	};
+	} ErrorCode;
 
 	static const unsigned int uint32_max = 0xffffffff;	// Let's not depend on limits.h
 
