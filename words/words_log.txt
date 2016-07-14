@@ -1,0 +1,432 @@
+C:\__SRC\_MSVC\words>Release\words_map_upper.exe
+Opened WORD.LST.txt
+====Words of length 11==== printNext:
+
+
+
+/*
+TRY   2 *  2 because   4 >    0
+word rectangle  2 *  2 = 4:
+aa
+aa
+TRY   3 *  2 because   6 >    4
+word rectangle  3 *  2 = 6:
+aah
+aba
+TRY   4 *  2 because   8 >    6
+word rectangle  4 *  2 = 8:
+aahs
+agio
+TRY   5 *  2 because  10 >    8
+word rectangle  5 *  2 = 10:
+aahed
+abase
+TRY   6 *  2 because  12 >   10
+word rectangle  6 *  2 = 12:
+aaliis
+anatto
+TRY   7 *  2 because  14 >   12
+word rectangle  7 *  2 = 14:
+abalone
+aegises
+TRY   8 *  2 because  16 >   14
+word rectangle  8 *  2 = 16:
+abalones
+doloroso
+TRY   9 *  2 because  18 >   16
+word rectangle  9 *  2 = 18:
+abamperes
+meseemeth
+TRY  10 *  2 because  20 >   18
+word rectangle 10 *  2 = 20:
+abiogenist
+mythomania
+TRY  11 *  2 because  22 >   20
+word rectangle 11 *  2 = 22:
+abolishable
+mesothelial
+TRY  12 *  2 because  24 >   22
+word rectangle 12 *  2 = 24:
+inappeasable
+semiarboreal
+TRY  13 *  2 because  26 >   24
+word rectangle 13 *  2 = 26:
+antihistamine
+guanethidines
+TRY  14 *  2 because  28 >   26
+TRY  15 *  2 because  30 >   26
+TRY  16 *  2 because  32 >   26
+TRY  17 *  2 because  34 >   26
+TRY  18 *  2 because  36 >   26
+TRY  19 *  2 because  38 >   26
+TRY  20 *  2 because  40 >   26
+TRY  21 *  2 because  42 >   26
+TRY  22 *  2 because  44 >   26
+TRY  23 *  2 because  46 >   26
+TRY  24 *  2 because  48 >   26
+TRY  25 *  2 because  50 >   26
+TRY  26 *  2 because  52 >   26
+TRY  27 *  2 because  54 >   26
+TRY  28 *  2 because  56 >   26
+Skip  3 *  3 because   9 <=  26
+Skip  4 *  3 because  12 <=  26
+Skip  5 *  3 because  15 <=  26
+Skip  6 *  3 because  18 <=  26
+Skip  7 *  3 because  21 <=  26
+Skip  8 *  3 because  24 <=  26
+TRY   9 *  3 because  27 >   26
+word rectangle  9 *  3 = 27:
+abamperes
+caballero
+eponymies
+TRY  10 *  3 because  30 >   27
+word rectangle 10 *  3 = 30:
+abatements
+managerial
+anemometry
+TRY  11 *  3 because  33 >   30
+word rectangle 11 *  3 = 33:
+abolishable
+makereadies
+iratenesses
+TRY  12 *  3 because  36 >   33
+word rectangle 12 *  3 = 36:
+alliterative
+neurological
+timepleasers
+TRY  13 *  3 because  39 >   36
+word rectangle 13 *  3 = 39:
+acetazolamide
+aeromedicines
+serriednesses
+TRY  14 *  3 because  42 >   39
+TRY  15 *  3 because  45 >   39
+TRY  16 *  3 because  48 >   39
+TRY  17 *  3 because  51 >   39
+TRY  18 *  3 because  54 >   39
+TRY  19 *  3 because  57 >   39
+TRY  20 *  3 because  60 >   39
+TRY  21 *  3 because  63 >   39
+TRY  22 *  3 because  66 >   39
+TRY  23 *  3 because  69 >   39
+TRY  24 *  3 because  72 >   39
+TRY  25 *  3 because  75 >   39
+TRY  26 *  3 because  78 >   39
+TRY  27 *  3 because  81 >   39
+TRY  28 *  3 because  84 >   39
+Skip  4 *  4 because  16 <=  39
+Skip  5 *  4 because  20 <=  39
+Skip  6 *  4 because  24 <=  39
+Skip  7 *  4 because  28 <=  39
+Skip  8 *  4 because  32 <=  39
+Skip  9 *  4 because  36 <=  39
+TRY  10 *  4 because  40 >   39
+word rectangle 10 *  4 = 40:
+abasements
+maceration
+integrable
+reassessed
+TRY  11 *  4 because  44 >   40
+word rectangle 11 *  4 = 44:
+gastrotrich
+agoraphobia
+delineating
+seaminesses
+TRY  12 *  4 because  48 >   44
+...
+
+
+C:\__SRC\_MSVC\words>release\words.exe 48 6
+release\words.exe:  area(48)
+wordRect using findWordRectRowsTrie: starting at Thu Mar 04 01:54:39 2010
+
+Opened WORD.LST.txt
+Skip  6 *  6 because  36 <=  48
+Skip  7 *  6 because  42 <=  48
+Skip  8 *  6 because  48 <=  48
+TRY   9 *  6 because  54 >   48 (time:    0.00  total:    0.02)
+word rectangle  9 *  4 = 36:
+ A A R D V A R K S
+ T H E R E F O R E
+ T I T A N I T E S
+ A B A N D O N E R
+word rectangle  9 *  5 = 45:
+ A D O P T A B L E
+ L E C H E R I E S
+ B A R R E T T E S
+ R E P T I L I U M
+ E M O L L I E N T
+word rectangle  9 *  5 = 45:
+ A N A P H A S E S
+ B A L L I S T A E
+ R E P E N T E R S
+ O V E R C U R E S
+ N O S E P I E C E
+word rectangle  9 *  5 = 45:
+ A R G O N A U T S
+ E U R H Y T H M Y
+ T R A I N A B L E
+ N E M E R T I N E
+ E N S H R I N E E
+word rectangle  9 *  5 = 45:
+ B A A S K A A P S
+ I M P A R T I A L
+ P A R S I M O N Y
+ C R E A S I E S T
+ E S U R I E N C E
+word rectangle  9 *  5 = 45:
+ B L O C K A D E R
+ L I T H E S O M E
+ A P H O R I S E S
+ S T A T O L I T H
+ E N C H A I N E D
+word rectangle  9 *  5 = 45:
+ C A R A C A R A S
+ A N I M A T E L Y
+ D E L I V E R E R
+ R A T T E N I N G
+ D E A D E N E R S
+word rectangle  9 *  5 = 45:
+ C H A P A R R A L
+ R E P U D I A T E
+ U N I C Y C L E S
+ S T E A R I N E S
+ R E G E L A T E S
+word rectangle  9 *  5 = 45:
+ C O P E S E T I C
+ A R E C O L I N E
+ L O B E L I N E S
+ A B B O T C I E S
+ T O L I D I N E S
+word rectangle  9 *  5 = 45:
+ D E C E P T I V E
+ E P I S T O L E R
+ T I C K E T I N G
+ A C C E S S I O N
+ T I T A N I T E S
+word rectangle  9 *  5 = 45:
+ D I O C E S A N S
+ A N T H R O P I C
+ M A T R I M O N Y
+ C O R T I S O L S
+ D E C I L I T E R
+word rectangle  9 *  5 = 45:
+ E G L A T E R E S
+ R H O D O N I T E
+ B E D R I D D E N
+ A R T E M I S I A
+ X E R O S E R E S
+word rectangle  9 *  5 = 45:
+ E V O C A T I V E
+ D O L E R I T I C
+ I T I N E R A T E
+ T O L E R A T O R
+ T A I L E N D E R
+word rectangle  9 *  5 = 45:
+ G A R R I S O N S
+ E C H I N A C E A
+ S K E P T I C A L
+ T E S S I T U R A
+ A N T I S E N S E
+word rectangle  9 *  5 = 45:
+ H A U S T O R I A
+ A C T U A T O R S
+ D E E P W A T E R
+ T R A V E L L E D
+ R E G E N C I E S
+word rectangle  9 *  5 = 45:
+ I S O M E R A S E
+ R E P A N E L E D
+ R E E C H O I N G
+ S U N S C R E E N
+ T E N D E R E S T
+word rectangle  9 *  5 = 45:
+ L O U S E W O R T
+ O P P I L A T E S
+ P A T R O N I S E
+ G N A R L I E S T
+ R E P U D I A T E
+word rectangle  9 *  5 = 45:
+ M E M O R I T E R
+ I T E R A T I V E
+ C O L O C A T E D
+ H A T C H M E N T
+ I N H E R E N C E
+word rectangle  9 *  5 = 45:
+ M O N O A M I N E
+ O V E R E A T E N
+ S A T I R I S T S
+ I R R I D E N T A
+ D A T E L I N E D
+word rectangle  9 *  5 = 45:
+ O R A T O R I E S
+ V E G E T A B L E
+ U R I N A R I E S
+ N A S A L I S E S
+ D E M A R C A T E
+word rectangle  9 *  5 = 45:
+ P A S S A G I N G
+ I G U A N O D O N
+ P R I V I L E G E
+ A I R S P E E D S
+ A R T E R I O L E
+word rectangle  9 *  5 = 45:
+ P L A S M A T I C
+ L I B R A T O R Y
+ O L E A S T E R S
+ S T I R A B O U T
+ M I C R O C Y T E
+word rectangle  9 *  5 = 45:
+ P R O T O T Y P E
+ S A F E G U A R D
+ O U T A R G U E D
+ P E R M I T T E R
+ M E S E N T E R A
+word rectangle  9 *  5 = 45:
+ R E G A R D I N G
+ A V I F A U N A L
+ F O R T I T U D E
+ O R D A I N E R S
+ N O N M E T A L S
+word rectangle  9 *  5 = 45:
+ R E T R O A C T S
+ I N S O M N I A C
+ A G E L E S S L Y
+ H Y D R O L A S E
+ S C E N E R I E S
+
+Caught 2 signal...
+word rectangle  9 *  5 = 45:
+ R U T A B A G A S
+ E P I M E R A S E
+ A S S I S T O R S
+ D I S L I M N E D
+ F E L L A T I O S
+
+To exit, hit Ctrl-C twice.
+
+^C
+C:\__SRC\_MSVC\words>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Skip  3 *  3 because   9 <=  38
+Skip  4 *  3 because  12 <=  38
+Skip  5 *  3 because  15 <=  38
+Skip  6 *  3 because  18 <=  38
+Skip  7 *  3 because  21 <=  38
+Skip  8 *  3 because  24 <=  38
+Skip  9 *  3 because  27 <=  38
+Skip 10 *  3 because  30 <=  38
+Skip 11 *  3 because  33 <=  38
+Skip 12 *  3 because  36 <=  38
+TRY  13 *  3 because  39 >   38 (time:    0.00  total:    1.00)
+word rectangle 13 *  3 = 39:
+acetazolamide
+aeromedicines
+serriednesses
+TRY  14 *  3 because  42 >   39 (time:    0.00  total:    1.00)
+TRY  15 *  3 because  45 >   39 (time:    1.00  total:    2.00)
+TRY  16 *  3 because  48 >   39 (time:    0.00  total:    2.00)
+TRY  17 *  3 because  51 >   39 (time:    0.00  total:    2.00)
+TRY  18 *  3 because  54 >   39 (time:    0.00  total:    2.00)
+TRY  19 *  3 because  57 >   39 (time:    0.00  total:    2.00)
+TRY  20 *  3 because  60 >   39 (time:    0.00  total:    2.00)
+TRY  21 *  3 because  63 >   39 (time:    0.00  total:    2.00)
+TRY  22 *  3 because  66 >   39 (time:    0.00  total:    2.00)
+TRY  23 *  3 because  69 >   39 (time:    0.00  total:    2.00)
+TRY  24 *  3 because  72 >   39 (time:    0.00  total:    2.00)
+TRY  25 *  3 because  75 >   39 (time:    0.00  total:    2.00)
+TRY  26 *  3 because  78 >   39 (time:    0.00  total:    2.00)
+TRY  27 *  3 because  81 >   39 (time:    0.00  total:    2.00)
+TRY  28 *  3 because  84 >   39 (time:    0.00  total:    2.00)
+Skip  4 *  4 because  16 <=  39
+Skip  5 *  4 because  20 <=  39
+Skip  6 *  4 because  24 <=  39
+Skip  7 *  4 because  28 <=  39
+Skip  8 *  4 because  32 <=  39
+Skip  9 *  4 because  36 <=  39
+TRY  10 *  4 because  40 >   39 (time:    0.00  total:    2.00)
+word rectangle 10 *  4 = 40:
+abasements
+maceration
+integrable
+reassessed
+TRY  11 *  4 because  44 >   40 (time:    1.00  total:    3.00)
+word rectangle 11 *  4 = 44:
+gastrotrich
+agoraphobia
+delineating
+seaminesses
+TRY  12 *  4 because  48 >   44 (time:   71.00  total:   74.00)
+TRY  13 *  4 because  52 >   44 (time:   58.00  total:  132.00)
+TRY  14 *  4 because  56 >   44 (time:   16.00  total:  148.00)
+TRY  15 *  4 because  60 >   44 (time:    5.00  total:  153.00)
+TRY  16 *  4 because  64 >   44 (time:    1.00  total:  154.00)
+TRY  17 *  4 because  68 >   44 (time:    0.00  total:  154.00)
+TRY  18 *  4 because  72 >   44 (time:    0.00  total:  154.00)
+TRY  19 *  4 because  76 >   44 (time:    0.00  total:  154.00)
+TRY  20 *  4 because  80 >   44 (time:    0.00  total:  154.00)
+TRY  21 *  4 because  84 >   44 (time:    0.00  total:  154.00)
+TRY  22 *  4 because  88 >   44 (time:    0.00  total:  154.00)
+TRY  23 *  4 because  92 >   44 (time:    0.00  total:  154.00)
+TRY  24 *  4 because  96 >   44 (time:    0.00  total:  154.00)
+TRY  25 *  4 because 100 >   44 (time:    0.00  total:  154.00)
+TRY  26 *  4 because 104 >   44 (time:    0.00  total:  154.00)
+TRY  27 *  4 because 108 >   44 (time:    0.00  total:  154.00)
+TRY  28 *  4 because 112 >   44 (time:    0.00  total:  154.00)
+Skip  5 *  5 because  25 <=  44
+Skip  6 *  5 because  30 <=  44
+Skip  7 *  5 because  35 <=  44
+Skip  8 *  5 because  40 <=  44
+TRY   9 *  5 because  45 >   44 (time:    0.00  total:  154.00)
+word rectangle  9 *  5 = 45:
+aggravate
+marinaras
+pluckiest
+lamellate
+expresser
+TRY  10 *  5 because  50 >   45 (time:  525.00  total:  679.00)
+TRY  11 *  5 because  55 >   45 (time: 2959.00  total: 3638.00)
+TRY  12 *  5 because  60 >   45 (time:  635.00  total: 4273.00)
+TRY  13 *  5 because  65 >   45 (time:  138.00  total: 4411.00)
+TRY  14 *  5 because  70 >   45 (time:   29.00  total: 4440.00)
+TRY  15 *  5 because  75 >   45 (time:    7.00  total: 4447.00)
+TRY  16 *  5 because  80 >   45 (time:    1.00  total: 4448.00)
+TRY  17 *  5 because  85 >   45 (time:    1.00  total: 4449.00)
+TRY  18 *  5 because  90 >   45 (time:    0.00  total: 4449.00)
+TRY  19 *  5 because  95 >   45 (time:    0.00  total: 4449.00)
+TRY  20 *  5 because 100 >   45 (time:    0.00  total: 4449.00)
+TRY  21 *  5 because 105 >   45 (time:    0.00  total: 4449.00)
+TRY  22 *  5 because 110 >   45 (time:    0.00  total: 4449.00)
+TRY  23 *  5 because 115 >   45 (time:    0.00  total: 4449.00)
+TRY  24 *  5 because 120 >   45 (time:    0.00  total: 4449.00)
+TRY  25 *  5 because 125 >   45 (time:    0.00  total: 4449.00)
+TRY  26 *  5 because 130 >   45 (time:    0.00  total: 4449.00)
+TRY  27 *  5 because 135 >   45 (time:    0.00  total: 4449.00)
+TRY  28 *  5 because 140 >   45 (time:    0.00  total: 4449.00)
+Skip  6 *  6 because  36 <=  45
+Skip  7 *  6 because  42 <=  45
+TRY   8 *  6 because  48 >   45 (time:    0.00  total: 4449.00)
+word rectangle  8 *  6 = 48:
+acidemia
+ninepins
+unslings
+reticule
+imamates
+careless
+TRY   9 *  6 because  54 >   48 (time: 4405.00  total: 8854.00)
+
