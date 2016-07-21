@@ -65,8 +65,10 @@ reassembleCutupRotatedSortedCompleteString(string[] ars)
 
 ideas:
 1) cut up further into pairs from the get to, or, probably better, only as needed
-2) use pair of hash tables or sorted hash maps, mapping strings to first and last letter, and sorting keys on number of distinct letters (or using an array of tables, indexed by number of unique chars.
-3) Finally learn how to represent a DAG.  First char in the set is the one that has only edges going out, not edges coming in.  Next is the one whose incoming edges come only from the first, etc. (topological sort).
+2) use pair of hash tables or sorted hash maps, mapping strings to first and last letter, and sorting keys on
+   number of distinct letters (or using an array of tables, indexed by number of unique chars.
+3) Represent as DAG(s).  First char in the set is the one that has only edges going out, not edges coming in.  
+   Next is the one whose incoming edges come only from the first, etc. (topological sort).
 4) the "dumb" way: no DS except strings, just clever splicing.
 */
 class ReassembleCutupRotatedSortedCompleteString
