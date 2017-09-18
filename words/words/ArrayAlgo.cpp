@@ -32,10 +32,10 @@ int ArrayAlgo::maxPositiveContiguousProduct(int A[], unt len)
 
 pair<int, int> ArrayAlgo::indicesContainsTwoEntriesThatSumToN(int arr[], size_t size, int sum)
 {
-    hash_map<int, int> val2idx;
+    unordered_map<int, int> val2idx;
     for (size_t j = 1; j < size; j++) {
         int needed = sum - arr[j];
-        hash_map<int, int>::const_iterator found = val2idx.find(needed);
+        unordered_map<int, int>::const_iterator found = val2idx.find(needed);
         if (found != val2idx.end()) {
             return pair<int, int>(arr[j], j);
         }
@@ -46,7 +46,7 @@ pair<int, int> ArrayAlgo::indicesContainsTwoEntriesThatSumToN(int arr[], size_t 
 
 bool ArrayAlgo::arrayContainsTwoEntriesThatSumToN(int *pint, int len, int sum)
 {
-    hash_set<int> seen;
+    unordered_set<int> seen;
     while (--len >= 0) {
         if (seen.count(sum - *pint) > 0) {
             return true;
