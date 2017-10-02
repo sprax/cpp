@@ -71,7 +71,7 @@ struct lessCharStrCmp
 
 // BEST, like 0.167 seconds
 
-typedef std::hash_map<WordT, CountT, std::hash_compare<const char *, lessCharStrCmp>> CharPtrHashMap;
+typedef std::unordered_map<WordT, CountT, std::hash_compare<const char *, lessCharStrCmp>> CharPtrHashMap;
 
 class WordCPHM : public CharPtrHashMap, public IWordContainer<WordT, CountT>
 {
@@ -105,7 +105,7 @@ protected:
 };
 
 // SECOND, like 0.170 seconds
-typedef std::hash_set<char *, std::hash_compare<const char *, lessCharStrCmp>> CharPtrHashSet; 
+typedef std::unordered_set<char *, std::hash_compare<const char *, lessCharStrCmp>> CharPtrHashSet; 
 class WordCPHS : public IWordContainer<WordT, CountT>
 {
     CharPtrHashSet mWords;
@@ -118,7 +118,7 @@ public:
 };
 
 // 25% slower
-typedef std::hash_set<std::string, std::hash_compare<std::string, lessStringStrCmp>> StringHashSet; 
+typedef std::unordered_set<std::string, std::hash_compare<std::string, lessStringStrCmp>> StringHashSet; 
 class WordSSHS : public StringHashSet, public IWordContainer<WordT, CountT>
 {
 public:

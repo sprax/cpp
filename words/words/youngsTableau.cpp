@@ -68,8 +68,8 @@ int test_bs(int k)
 {
     int **AA = JJ;
     printf("size JJ:  %d   size J0:  %d   size AA  %d\n", sizeof(JJ), sizeof(J0), sizeof(AA) );
-    printf("AA(%x) == JJ(%x), but sizeof(AA)(%d) != sizeof(JJ)(%d)\n"
-        , AA, JJ, sizeof(AA), sizeof(JJ) );
+    printf("AA(%x) == JJ(%x), but sizeof(AA)(%ud) != sizeof(JJ)(%d)\n"
+        , (unsigned int)AA, (unsigned int)JJ, sizeof(AA), sizeof(JJ) );
     //int nRows = sizeof(AA)
     
     int nRows = 5, nCols = 5;

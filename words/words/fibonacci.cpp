@@ -3,7 +3,7 @@
 #include "stdafx.h"
 
 #include <map>
-#include <hash_map>
+#include <unordered_map>
 using namespace std;
  
 unsigned long long fibmem_fixed_array(int n)
@@ -49,7 +49,7 @@ unsigned long  fibmem(int n)
 
 unsigned long long fibmemo(int n)
 {
-    static hash_map<int,unsigned long long> fmemo;
+    static unordered_map<int,unsigned long long> fmemo;
     //assert(n > 0);
     // liberal definition for n < 1:
     if (n < 1)
