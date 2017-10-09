@@ -10,7 +10,7 @@ using namespace std;
 int main() {
     int n, q, size, value, which, index;
     cin >> n >> q;
-    vector<vector<int>> nvec;
+    vector<vector<int> > nvec;
     for (int i = 0; i < n; ++i) {
         cin >> size;
         vector<int> ivec;
