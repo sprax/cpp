@@ -13,6 +13,7 @@ class SubWords
 {
 public:
 
+
     WordCPHM    mCharPtrHashMap;
 #if 00
     WordCPHS    mCharPtrHashSet;
@@ -47,7 +48,7 @@ public:
 
     CountT numSubWords(char * word, int len)
     {
-        if (len < 6) {
+        if (len <= sMinWordLen) {
             return isWord(word);
         }
         CountT maxNumWords = 0;
@@ -261,35 +262,38 @@ public:
 
     int test_SubWords(const char *dictFilePath, WordContainerType conType) {
         
-        int maxNum = 0, maxLen = 0;
+        int maxNum = 0;
         WordContainerType containerType = conType;
         IWordContainer<WordT, CountT> * iWordContainer = NULL;
 
-            switch (containerType) {
-            case eCharPtrHashMap : iWordContainer = &mCharPtrHashMap;
-                break;
+        switch (containerType) {
+        case eCharPtrHashMap : iWordContainer = &mCharPtrHashMap;
+            break;
 #if 00
-            case eCharPtrHashSet : iWordContainer = &mCharPtrHashSet;
-                    break;
-            case eStringHashSet  : iWordContainer = &mStringHashSet;
+        case eCharPtrHashSet : iWordContainer = &mCharPtrHashSet;
                 break;
-            case eStringSet      : iWordContainer = &mStringSet;
-                break;
+        case eStringHashSet  : iWordContainer = &mStringHashSet;
+            break;
+        case eStringSet      : iWordContainer = &mStringSet;
+            break;
 #endif
-            default:
-                printf("Invalid enum type in initFromDictionaryFile\n");
-                exit(0);
-            }
+        default:
+            printf("Invalid enum type in initFromDictionaryFile\n");
+            exit(0);
+        }
             
-            mWordContainer = iWordContainer;
-            const type_info& typeInfo = typeid(mWordContainer);
-            const char *typeName = typeInfo.name();
-            printf("typeName: %s\n", typeName);
+        mWordContainer = iWordContainer;
+        const type_info& typeInfo = typeid(mWordContainer);
+        const char *typeName = typeInfo.name();
+        printf("typeName: %s\n", typeName);
 
-            maxLen = initFromDictionaryFile(dictFilePath);
+        int numKept = initFromDictionaryFile(dictFilePath);
 
-        if (maxLen < sMinWordLen) {
-            printf("Error: longest word length %d < %d\n", maxLen, sMinWordLen);
+		printf("Is test a word?  %d\n", mWordContainer->hasWord("test"));
+		exit(0);
+
+        if (numKept < 100) {
+            printf("Error: number of words kept %d < %d\n", numKept, 100);
             return 0;
         }
         TimeT begTime = GetTime();

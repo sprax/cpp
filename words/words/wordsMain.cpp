@@ -301,7 +301,7 @@ int main(int argc, char* argv[])
     //make_heap(1, 3);
 
     int status = 0;
-    bool testAll = false;
+    bool testAll = true;
     if  (testAll) {
         status += test_rotatedString();
         //status += test_isArrayConsecutive(isArrayConsecutiveMod_bust, 23, -4);
