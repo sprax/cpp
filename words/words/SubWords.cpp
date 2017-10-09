@@ -48,7 +48,7 @@ public:
 // BEST, like 0.167 seconds
 // #include <hash_map>
 #include <unordered_map>
-typedef std::hash_map<char *, unsigned int, std::hash_compare<const char *, lessCharStrCmp>> CharPtrHashMap; 
+typedef std::unordered_map<char *, unsigned int, std::hash_compare<const char *, lessCharStrCmp>> CharPtrHashMap;
 class WordCPHM : public CharPtrHashMap, public IAddWord<char *>
 {
 public:
@@ -153,7 +153,7 @@ public:
             // Test the left hand substring, that is, the beg string:
             register char * pEnd = word + j;
             register char   cEnd = *pEnd;
-            *pEnd = NULL; 
+            *pEnd = '\0';
             CountT leftNumber = numSubWords(word, j);
             *pEnd = cEnd;
             if (leftNumber < 1) {
@@ -189,7 +189,7 @@ public:
             // Test the left hand substring, that is, the beg string:
             register char * pEnd = word + j;
             register char   cEnd = *pEnd;
-            *pEnd = NULL; 
+            *pEnd = '\0';
             CountT leftNumber = numSubWordsWithParse(word, j, leftParse);
             *pEnd = cEnd;
             if (leftNumber < 1) {
@@ -337,7 +337,7 @@ public:
             WordLenT length = (WordLenT)strlen(word);
             WordLenT lenM1  = length - 1;
             if (word[lenM1] < 'a') {
-                word[lenM1] = NULL;
+                word[lenM1] = '\0';
                 length = lenM1;
             }
             numRead++;
