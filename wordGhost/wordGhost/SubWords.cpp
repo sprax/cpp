@@ -261,7 +261,6 @@ public:
 
     int test_SubWords(const char *dictFilePath, WordContainerType conType) {
         
-        
         int maxNum = 0, maxLen = 0;
         WordContainerType containerType = conType;
         IWordContainer<WordT, CountT> * iWordContainer = NULL;

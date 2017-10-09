@@ -130,7 +130,7 @@ public:
 };
 
 // set take 3 times as long as has_set!
-typedef std::set<const std::string, lessStringStrCmp> StringSet;  
+typedef std::set<std::string, lessStringStrCmp> StringSet;  
 
 class WordSSSS : public StringSet, public IWordContainer<WordT, CountT>
 {

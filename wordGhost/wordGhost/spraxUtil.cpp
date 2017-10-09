@@ -5,7 +5,7 @@
 #include "spraxUtil.hpp"
 
 #include <random>
-
+#include <chrono>
 
 #if TIME_IS_MILLISECONDS        // defined in stdafx.h
 extern TimeT  GetTime( void ) {  return timeGetTime(); } // milliseconds
@@ -16,6 +16,18 @@ extern TimeT  GetTime( void ) {  return time(0); } // seconds since 1969
 extern int    DiffTimeSeconds(TimeT later, TimeT earlier) { return (later - earlier); }
 extern double DeltaTimeSeconds(TimeT later, TimeT earlier) { return (double)(later - earlier); }
 #endif
+
+#ifndef WIN32
+//TODO use this?
+#include <sys/sysinfo.h>
+TimeT GetTime() {
+	TimeT milliseconds_since_epoch =
+		std::chrono::duration_cast<std::chrono::milliseconds>
+		(std::chrono::system_clock::now().time_since_epoch()).count();
+	return milliseconds_since_epoch;
+}
+#endif
+
 
 bool randBool()
 {

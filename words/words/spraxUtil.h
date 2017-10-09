@@ -31,6 +31,7 @@ typedef unsigned short  WordLenT;   // word length type (unsigned)
 #define WIN32_LEAN_AND_MEAN		// Exclude rarely-used stuff from Windows headers
 #define VC_EXTRALEAN		// Exclude rarely-used stuff from Windows headers
 #include <windows.h>
+//#include <TimeAPI.h>
 #include <mmsystem.h>               // for timeGetTime
 typedef   DWORD  TimeT;             // wrap-around is possible, type must be unsigned
 #else

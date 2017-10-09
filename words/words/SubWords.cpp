@@ -368,6 +368,7 @@ public:
         return numKept;
     }
 
+
     int test_SubWords(const char *dictFilePath) {
 
         int maxNum = 0;
