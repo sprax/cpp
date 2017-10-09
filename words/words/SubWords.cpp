@@ -46,7 +46,8 @@ public:
 };
 
 // BEST, like 0.167 seconds
-#include <hash_map>
+// #include <hash_map>
+#include <unordered_map>
 typedef std::hash_map<char *, unsigned int, std::hash_compare<const char *, lessCharStrCmp>> CharPtrHashMap; 
 class WordCPHM : public CharPtrHashMap, public IAddWord<char *>
 {
@@ -59,7 +60,8 @@ public:
 };
 
 // SECOND, like 0.170 seconds
-#include <hash_set>
+#include <unordered_map>
+// #include <hash_set>
 typedef std::hash_set<char *, std::hash_compare<const char *, lessCharStrCmp>> CharPtrHashSet;
 class WordCPHS : public IAddWord<char *>
 {

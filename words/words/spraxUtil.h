@@ -11,7 +11,9 @@
 #include <assert.h>
 #else
 #define NDEBUG          1
+#ifndef assert
 #define assert(_expr_)  ((void)0)
+#endif
 #endif
 #endif
 
