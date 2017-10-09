@@ -25,9 +25,11 @@ typedef unsigned short  WordLenT;   // word length type (unsigned)
 #define TIME_IS_MILLISECONDS    1
 #ifdef  TIME_IS_MILLISECONDS
 
+#ifdef WIN32
 #include <mmsystem.h>               // for timeGetTime
 typedef   DWORD  TimeT;             // wrap-around is possible, type must be unsigned
 extern TimeT  GetTime( void );      // milliseconds since system boot
+#endif
 
 
 #else

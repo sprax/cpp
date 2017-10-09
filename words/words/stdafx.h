@@ -5,11 +5,13 @@
 
 #pragma once
 
+#ifdef _WIN32
 #include "targetver.h"
+#include <tchar.h>
+#endif
 
 #include <stdio.h>
 //#include <stdlib.h>
-#include <tchar.h>
 #include <assert.h>
 #include <time.h>
 #include <signal.h>

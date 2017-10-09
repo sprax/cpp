@@ -5,7 +5,7 @@
 #define SubWords_hpp
 
 #include "stdafx.h"
-#include "spraxUtil.hpp"
+#include "spraxUtil.h"
 
 int test_SubWords(const char *dictFilePath);
 
