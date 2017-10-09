@@ -87,6 +87,9 @@
     <ClInclude Include="TrieNode.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SubWords.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="charString.cpp">
@@ -213,6 +216,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="hourGlassArraySum.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SubWords.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

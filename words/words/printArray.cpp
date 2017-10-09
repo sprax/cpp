@@ -9,7 +9,7 @@ void printArray(int *A, int len) {
 
 void printArray(std::string A[], int len) {
     for (int j = 0; j < len; j++)
-        printf(" % s", A[j]);
+        printf(" % s", A[j].c_str());
 }
 
 void putsArray(int *A, int len)

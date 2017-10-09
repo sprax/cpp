@@ -48,7 +48,7 @@ public:
 // BEST, like 0.167 seconds
 // #include <hash_map>
 #include <unordered_map>
-typedef std::unordered_map<char *, unsigned int, std::hash_compare<const char *, lessCharStrCmp>> CharPtrHashMap;
+typedef std::unordered_map<char *, unsigned int, std::hash_compare<char *, lessCharStrCmp>> CharPtrHashMap;
 class WordCPHM : public CharPtrHashMap, public IAddWord<char *>
 {
 public:
@@ -62,7 +62,7 @@ public:
 // SECOND, like 0.170 seconds
 #include <unordered_map>
 // #include <hash_set>
-typedef std::hash_set<char *, std::hash_compare<const char *, lessCharStrCmp>> CharPtrHashSet;
+typedef std::unordered_set<char *, std::hash_compare<char *, lessCharStrCmp>> CharPtrHashSet;
 class WordCPHS : public IAddWord<char *>
 {
     CharPtrHashSet mWords;
@@ -70,12 +70,12 @@ public:
     virtual void addWord(char *tempWord, CountT=0)  // default value for omitted (unnamed) argument
     {
         char * saveWord = _strdup(tempWord);
-        mWords.insert(saveWord);
+        mWords.insert(saveWord);	
     }
 };
 
 // 25% slower
-typedef std::hash_set<std::string, std::hash_compare<std::string, lessStringStrCmp>> StringHashSet; 
+typedef std::unordered_set<std::string, std::hash_compare<std::string, lessStringStrCmp>> StringHashSet;
 class WordSSHS : public StringHashSet, IAddWord<char *>
 {
 public:
@@ -88,7 +88,7 @@ public:
 
 // set take 3 times as long as hash_set!
 #include <set>
-typedef std::set<const std::string, lessStringStrCmp> StringSet;  
+typedef std::set<std::string, lessStringStrCmp> StringSet;  
 
 class WordSSSS : public StringSet, IAddWord<char *>
 {

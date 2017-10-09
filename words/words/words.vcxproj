@@ -103,6 +103,7 @@
     <ClInclude Include="slicingProblem.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="strUtil.h" />
+    <ClInclude Include="SubWords.hpp" />
     <ClInclude Include="Sum123.hpp" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="testFunctions.h" />
@@ -150,6 +151,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="strUtil.cpp" />
+    <ClCompile Include="SubWords.cpp" />
     <ClCompile Include="Sum123.cpp" />
     <ClCompile Include="testFunctions.cpp" />
     <ClCompile Include="TrieNode.cpp" />
