@@ -11,7 +11,8 @@
 #include <windows.h>
 #define SLEEP_MS(A) Sleep(A)
 #else
-#define SLEEP_MS(A) usleep(A * 1000)
+#define SLEEP_MS(A) usleep(A * 1000) //  Linux and Mac OS X
+// Could also use boost::this_thread::sleep() if already using Boost
 #endif
 
 using namespace std;
