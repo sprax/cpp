@@ -289,7 +289,9 @@ public:
 
         int numKept = initFromDictionaryFile(dictFilePath);
 
-		printf("Is test a word?  %d\n", mWordContainer->hasWord("test"));
+		char *myTest = "test";
+		mWordContainer->addWord(myTest);
+		printf("Is test a word?  %d\n", mWordContainer->hasWord(myTest));
 		exit(0);
 
         if (numKept < 100) {

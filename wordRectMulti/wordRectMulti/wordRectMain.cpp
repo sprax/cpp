@@ -24,7 +24,7 @@
 #include <iostream>
 
 // default values:
-static const char *defDictFileName = "EnuWords.txt";
+static const char *defDictFileName = "../WORD.LST.txt"; // "EnuWords.txt";
 static const char *defProgramName  = "wordRectMulti";
 static const int   defMinTall = 2;
 static const int   defMaxTall = MAXLEN; // TODO: remove

@@ -4,6 +4,8 @@
 #include "stdafx.h"
 #include "SubWords.hpp"
 
+#define _SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS
+
 using namespace std;
 
 typedef unsigned int CountT;
@@ -32,6 +34,17 @@ struct lessCharStrCmp
   }
 };
 
+
+struct eqCharStrCmp
+{
+	inline bool operator()(const char* s1, const char* s2) const
+	{
+		return strcmp(s1, s2) == 0;
+	}
+};
+
+
+
 template <typename T>
 class IAddWord
 {   // Interface methods should almost always be declared public, as is the default in Java.   
@@ -46,9 +59,8 @@ public:
 };
 
 // BEST, like 0.167 seconds
-// #include <hash_map>
-#include <unordered_map>
-typedef std::unordered_map<char *, unsigned int, std::hash_compare<char *, lessCharStrCmp>> CharPtrHashMap;
+#include <hash_map>
+typedef std::hash_map<char *, unsigned int, std::hash_compare<char *, lessCharStrCmp>> CharPtrHashMap;
 class WordCPHM : public CharPtrHashMap, public IAddWord<char *>
 {
 public:
@@ -60,9 +72,8 @@ public:
 };
 
 // SECOND, like 0.170 seconds
-#include <unordered_map>
-// #include <hash_set>
-typedef std::unordered_set<char *, std::hash_compare<char *, lessCharStrCmp>> CharPtrHashSet;
+#include <hash_set>
+typedef std::hash_set<char *, std::hash_compare<char *, lessCharStrCmp>> CharPtrHashSet;
 class WordCPHS : public IAddWord<char *>
 {
     CharPtrHashSet mWords;
@@ -75,7 +86,7 @@ public:
 };
 
 // 25% slower
-typedef std::unordered_set<std::string, std::hash_compare<std::string, lessStringStrCmp>> StringHashSet;
+typedef stdext::hash_set<std::string, std::hash_compare<std::string, lessStringStrCmp>> StringHashSet;
 class WordSSHS : public StringHashSet, IAddWord<char *>
 {
 public:

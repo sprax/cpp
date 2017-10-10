@@ -252,7 +252,7 @@ public:
 int main(int argc, char* argv[])    // NB: This is more a unit test than an app; it does not play ghost!
 {
     const char *dictionaryFilePath = (argc > 0 && argv[1]) ? argv[1] : defDictionaryFile;
-    bool just_test = false;
+    bool just_test = true;
     if ( just_test ) {
         //test_spraxUtil();
         test_SubWords(dictionaryFilePath);

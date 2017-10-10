@@ -71,8 +71,16 @@ struct lessCharStrCmp
 
 // BEST, like 0.167 seconds
 
-typedef std::unordered_map<WordT, CountT, std::hash_compare<const char *, lessCharStrCmp>> CharPtrHashMap;
+typedef std::unordered_map<WordT, CountT, 
+	std::hash<WordT>,
+	std::equal_to<WordT>
+//	std::hash_compare<WordT, lessCharStrCmp>
+> CharPtrHashMap;
 
+/** WARNING: This container keeps pointers to char* strings, and only compares those pointers, so it is
+only good for tracking the original input strings, not for comparing other strings that may have the same
+content.
+*/
 class WordCPHM : public CharPtrHashMap, public IWordContainer<WordT, CountT>
 {
 public:
@@ -129,7 +137,7 @@ public:
     }
 };
 
-// set take 3 times as long as has_set!
+// set take 3 times as long as hash_set!
 typedef std::set<std::string, lessStringStrCmp> StringSet;  
 
 class WordSSSS : public StringSet, public IWordContainer<WordT, CountT>
