@@ -66,8 +66,9 @@ public:
 
 int main(int argc, char *argv[]) {
 	
-	const char * octalStr[9] =	{ "012"
+	const char * octalStr[10] =	{ "012"
 								, "-012"
+                                , NULL
 								, "01234567"
 								, "012345678"
 								, "17777777777"		// max int32
@@ -81,7 +82,7 @@ int main(int argc, char *argv[]) {
 	printf("Testing: %s\n", argv[0]);
 	printf("Converts C-style octal number strings to uint32, with these error codes:\n");
 	printf("    0 = no error, 1 = null arg, 2 = invalid character, 3 = overflow.\n\n");
-	for (int j = 0; j < 9; j++) {
+	for (int j = 0; j < 10; j++) {
 		unsigned int value = OctalToUint32::convert(octalStr[j], errorCode);
 		printf("%2d  \"%s\" -> %u,  error code %d\n", j, octalStr[j], value, errorCode);
 	}
