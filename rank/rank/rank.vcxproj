@@ -11,18 +11,21 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{09BBE41F-F9BA-4C0D-A9FF-B48F5F8008F5}</ProjectGuid>
+    <ProjectGuid>{0AE8551A-EED1-44E1-AA30-FFBC45428B5A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>words</RootNamespace>
+    <RootNamespace>rank</RootNamespace>
+    <ProjectName>rank</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v140</PlatformToolset>
@@ -47,35 +50,22 @@
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <MinimalRebuild>true</MinimalRebuild>
-      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalOptions>/EHsc %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winmm.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <WarningLevel>Level4</WarningLevel>
+      <WarningLevel>Level3</WarningLevel>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>MaxSpeed</Optimization>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <OmitFramePointers>true</OmitFramePointers>
-      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -88,79 +78,15 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ArrayAlgo.hpp" />
-    <ClInclude Include="arrayUtil.h" />
-    <ClInclude Include="BinLink.hpp" />
-    <ClInclude Include="BinTree.hpp" />
-    <ClInclude Include="BoggleBoard.hpp" />
-    <ClInclude Include="BoggleNode.hpp" />
-    <ClInclude Include="bunny.h" />
-    <ClInclude Include="FuzzyStrings.hpp" />
-    <ClInclude Include="linkedLists.h" />
-    <ClInclude Include="MaxHeap.hpp" />
-    <ClInclude Include="maxSubArrays.h" />
-    <ClInclude Include="printArray.h" />
-    <ClInclude Include="RandModN.hpp" />
-    <ClInclude Include="slicingProblem.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="strUtil.h" />
-    <ClInclude Include="SubWords.hpp" />
-    <ClInclude Include="Sum123.hpp" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="testFunctions.h" />
-    <ClInclude Include="tests.h" />
-    <ClInclude Include="TrieNode.hpp" />
-    <ClInclude Include="WordMap.hpp" />
-    <ClInclude Include="WordTrie.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\stacks\stacks\namedCtorHiddenDtor.cpp" />
-    <ClCompile Include="ArrayAlgo.cpp" />
-    <ClCompile Include="arrayUtil.cpp" />
-    <ClCompile Include="AVLTree.cpp" />
-    <ClCompile Include="BinLink.cpp" />
-    <ClCompile Include="BinTree.cpp" />
-    <ClCompile Include="bitfield.cpp" />
-    <ClCompile Include="BoggleBoard.cpp" />
-    <ClCompile Include="BoggleNode.cpp" />
-    <ClCompile Include="BoyerMoore.cpp" />
-    <ClCompile Include="charString.cpp" />
-    <ClCompile Include="decode.cpp" />
-    <ClCompile Include="divisible.cpp" />
-    <ClCompile Include="dynamicArrays.cpp" />
-    <ClCompile Include="fibonacci-viscomp.cpp" />
-    <ClCompile Include="fibonacci.cpp" />
-    <ClCompile Include="FuzzyStrings.cpp" />
-    <ClCompile Include="heaper.cpp" />
-    <ClCompile Include="interleaveInPlace.cpp" />
-    <ClCompile Include="linkedLists.cpp" />
-    <ClCompile Include="longestNonRepeat.cpp" />
-    <ClCompile Include="macro.cpp" />
-    <ClCompile Include="MaxHeap.cpp" />
-    <ClCompile Include="maxSubArrays.cpp" />
-    <ClCompile Include="numerical.cpp" />
-    <ClCompile Include="hourGlassArraySum.cpp" />
-    <ClCompile Include="partitionThreeWay.cpp" />
-    <ClCompile Include="printArray.cpp" />
-    <ClCompile Include="puzzleOfNSquaredTogglers.cpp" />
-    <ClCompile Include="rotatedString.cpp" />
-    <ClCompile Include="searchInfinite.cpp" />
-    <ClCompile Include="sequences.cpp" />
-    <ClCompile Include="slicingProblem.cpp" />
-    <ClCompile Include="spraxUtil.cpp" />
+    <ClCompile Include="rank.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="strUtil.cpp" />
-    <ClCompile Include="SubWords.cpp" />
-    <ClCompile Include="Sum123.cpp" />
-    <ClCompile Include="testFunctions.cpp" />
-    <ClCompile Include="TrieNode.cpp" />
-    <ClCompile Include="wordsMain.cpp" />
-    <ClCompile Include="WordTrie.cpp" />
-    <ClCompile Include="word_stl.cpp" />
-    <ClCompile Include="youngsTableau.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

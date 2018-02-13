@@ -11,7 +11,9 @@
 #include <assert.h>
 #else
 #define NDEBUG          1
+#ifndef assert
 #define assert(_expr_)  ((void)0)
+#endif
 #endif
 #endif
 
@@ -25,8 +27,17 @@ typedef unsigned short  WordLenT;   // word length type (unsigned)
 #define TIME_IS_MILLISECONDS    1
 #ifdef  TIME_IS_MILLISECONDS
 
+#ifdef WIN32
+#define WIN32_LEAN_AND_MEAN		// Exclude rarely-used stuff from Windows headers
+#define VC_EXTRALEAN		// Exclude rarely-used stuff from Windows headers
+#include <windows.h>
+//#include <TimeAPI.h>
 #include <mmsystem.h>               // for timeGetTime
 typedef   DWORD  TimeT;             // wrap-around is possible, type must be unsigned
+#else
+typedef unsigned long TimeT;
+#define _strdup(A) strdup(A)
+#endif
 extern TimeT  GetTime( void );      // milliseconds since system boot
 
 

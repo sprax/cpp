@@ -7,8 +7,8 @@
 #include "stdafx.h"
 #ifndef WIN32
 #include <map>
-#include <hash_map>
-#include <hash_set>
+#include <unordered_map>
+#include <unordered_set>
 #endif
 
 struct ltstr
@@ -43,8 +43,8 @@ struct lessCharStrCmp
 };
 
 typedef std::map<const char*, int,      ltstr> WordMap;
-typedef std::hash_map<const char *, unsigned int, std::hash_compare<const char *, lessCharStrCmp>> WordHashMap; 
-typedef std::hash_set<const char*,      ltstr> WordHashSet;
+typedef std::unordered_map<const char *, unsigned int, std::hash_compare<const char *, lessCharStrCmp>> WordHashMap; 
+typedef std::unordered_set<const char*,      ltstr> WordHashSet;
 
 
 

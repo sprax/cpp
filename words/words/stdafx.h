@@ -5,11 +5,13 @@
 
 #pragma once
 
+#ifdef _WIN32
 #include "targetver.h"
+#include <tchar.h>
+#endif
 
 #include <stdio.h>
 //#include <stdlib.h>
-#include <tchar.h>
 #include <assert.h>
 #include <time.h>
 #include <signal.h>
@@ -18,8 +20,8 @@
 #include <string>
 #include <iostream>
 #include <map>
-#include <hash_map>
-#include <hash_set>
+#include <unordered_map>
+#include <unordered_set>
 
 #include "WordTrie.hpp"
 #include "printArray.h"

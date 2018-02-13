@@ -3,7 +3,7 @@
 
 #include "WordTrie.hpp"
 
-typedef std::hash_set<const TrieNode *>    WordNodeHashSet;
+typedef std::unordered_set<const TrieNode *>    WordNodeHashSet;
 
 class    BoggleNode;                    // forward declaration
 typedef  BoggleNode * BoggleNodePtr;

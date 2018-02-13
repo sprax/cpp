@@ -13,7 +13,9 @@
 #include <assert.h>
 #else
 #define NDEBUG          1
+#ifndef assert
 #define assert(e_x_p_r)  ((void)0)
+#endif
 #endif
 
 const int MAXLEN  = 28;			// Maximum word length

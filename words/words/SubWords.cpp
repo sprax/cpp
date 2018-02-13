@@ -4,6 +4,8 @@
 #include "stdafx.h"
 #include "SubWords.hpp"
 
+#define _SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS
+
 using namespace std;
 
 typedef unsigned int CountT;
@@ -32,6 +34,17 @@ struct lessCharStrCmp
   }
 };
 
+
+struct eqCharStrCmp
+{
+	inline bool operator()(const char* s1, const char* s2) const
+	{
+		return strcmp(s1, s2) == 0;
+	}
+};
+
+
+
 template <typename T>
 class IAddWord
 {   // Interface methods should almost always be declared public, as is the default in Java.   
@@ -47,7 +60,7 @@ public:
 
 // BEST, like 0.167 seconds
 #include <hash_map>
-typedef std::hash_map<char *, unsigned int, std::hash_compare<const char *, lessCharStrCmp>> CharPtrHashMap; 
+typedef std::hash_map<char *, unsigned int, std::hash_compare<char *, lessCharStrCmp>> CharPtrHashMap;
 class WordCPHM : public CharPtrHashMap, public IAddWord<char *>
 {
 public:
@@ -60,7 +73,7 @@ public:
 
 // SECOND, like 0.170 seconds
 #include <hash_set>
-typedef std::hash_set<char *, std::hash_compare<const char *, lessCharStrCmp>> CharPtrHashSet;
+typedef std::hash_set<char *, std::hash_compare<char *, lessCharStrCmp>> CharPtrHashSet;
 class WordCPHS : public IAddWord<char *>
 {
     CharPtrHashSet mWords;
@@ -68,12 +81,12 @@ public:
     virtual void addWord(char *tempWord, CountT=0)  // default value for omitted (unnamed) argument
     {
         char * saveWord = _strdup(tempWord);
-        mWords.insert(saveWord);
+        mWords.insert(saveWord);	
     }
 };
 
 // 25% slower
-typedef std::hash_set<std::string, std::hash_compare<std::string, lessStringStrCmp>> StringHashSet; 
+typedef stdext::hash_set<std::string, std::hash_compare<std::string, lessStringStrCmp>> StringHashSet;
 class WordSSHS : public StringHashSet, IAddWord<char *>
 {
 public:
@@ -86,7 +99,7 @@ public:
 
 // set take 3 times as long as hash_set!
 #include <set>
-typedef std::set<const std::string, lessStringStrCmp> StringSet;  
+typedef std::set<std::string, lessStringStrCmp> StringSet;  
 
 class WordSSSS : public StringSet, IAddWord<char *>
 {
@@ -151,7 +164,7 @@ public:
             // Test the left hand substring, that is, the beg string:
             register char * pEnd = word + j;
             register char   cEnd = *pEnd;
-            *pEnd = NULL; 
+            *pEnd = '\0';
             CountT leftNumber = numSubWords(word, j);
             *pEnd = cEnd;
             if (leftNumber < 1) {
@@ -187,7 +200,7 @@ public:
             // Test the left hand substring, that is, the beg string:
             register char * pEnd = word + j;
             register char   cEnd = *pEnd;
-            *pEnd = NULL; 
+            *pEnd = '\0';
             CountT leftNumber = numSubWordsWithParse(word, j, leftParse);
             *pEnd = cEnd;
             if (leftNumber < 1) {
@@ -335,7 +348,7 @@ public:
             WordLenT length = (WordLenT)strlen(word);
             WordLenT lenM1  = length - 1;
             if (word[lenM1] < 'a') {
-                word[lenM1] = NULL;
+                word[lenM1] = '\0';
                 length = lenM1;
             }
             numRead++;
@@ -365,6 +378,7 @@ public:
         printf("Read %d words, kept %d, %d <= lengths <= %d\n", numRead, numKept, sMinWordLen, mMaxWordLen); 
         return numKept;
     }
+
 
     int test_SubWords(const char *dictFilePath) {
 

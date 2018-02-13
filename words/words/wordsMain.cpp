@@ -12,11 +12,14 @@
 #include "slicingProblem.h"
 #include "maxSubArrays.h"
 #include "printArray.h"
+#include "SubWords.hpp"
 #include "tests.h"
 
 #include "FieldInt.hpp"
 
 static int sDbg = 1;
+
+static const char *defDictionaryFile = "../WORD.LST.txt";
 
 /*
 #ifndef WIN32
@@ -345,6 +348,7 @@ int main(int argc, char* argv[])
     // test_heaper();
 
     test_AVL_Tree_insert();
+	test_SubWords(defDictionaryFile);
 
     //getchar(); // modify commnad window properties while waiting for input
     return status;
