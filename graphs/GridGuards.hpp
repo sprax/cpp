@@ -27,7 +27,7 @@ public:
     const char **mLayout;
 
 	GridGuards(const char *layout[], int rows, int cols);
-    ~GridGuards();
+    virtual ~GridGuards();
 
 	void showLayout();
 	void showDistance();
