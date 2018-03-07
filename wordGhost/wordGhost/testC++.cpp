@@ -1,19 +1,17 @@
 // testC++.cpp : test some inobvious features of C++
 
-#include <signal.h>
-#include <typeinfo>
-
-#include <map>
-#include <unordered_map>
-#include <unordered_set>
-#include <set>
-
-#include <thread>
 #include <chrono>
-
-
+#include <iostream>
+#include <list>
+#include <map>
+#include <set>
+#include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <thread>
+#include <typeinfo>
+#include <unordered_map>
+#include <unordered_set>
 
 #ifdef _DEBUG
 #include <assert.h>
@@ -21,7 +19,6 @@
 #define NDEBUG          1
 #define assert(_expr_)  ((void)0)
 #endif
-#include <list>
 
 static const char *defProgramName  = "testC++";
 
@@ -63,7 +60,7 @@ class MyInitList
 {
 };
 
-#if 0
+#if 1
 template<typename T>
 class IsClassT {
   private:
@@ -77,19 +74,44 @@ class IsClassT {
     enum { No = !Yes };
 };
 
-template<int N>
-struct Vector {
-    template<int M>
-    Vector(MyInitList<M> const& i,
-           typename enable_if_c<(M <= N)>::type* = 0) { /* ... */ }
-};
+// template<int N>
+// struct Vector {
+//     template<int M>
+//     Vector(MyInitList<M> const& i,
+//            typename enable_if_c<(M <= N)>::type* = 0) { /* ... */ }
+// };
 
 template<int N>
 struct Vector {
     template<int M>
-    Vector(MyInitList<M> const& i, char(*)[M <= N] = 0) { /* ... */ }
+    Vector(MyInitList<int> const& i, char(*)[M <= N] = 0) { /* ... */ }
 };
 #endif
+
+
+template <int N>
+struct Factorial
+{
+     enum { value = N * Factorial<N - 1>::value };
+};
+
+template <>
+struct Factorial<0>
+{
+    enum { value = 1 };
+};
+
+// Factorial<4>::value == 24
+// Factorial<0>::value == 1
+void factorials()
+{
+    int x = Factorial<4>::value; // == 24
+    int y = Factorial<5>::value; // == 1
+    int z = Factorial<0>::value; // == 1
+    std::cout << "x = fac(4) == " << x << std::endl;
+    std::cout << "y = fac(5) == " << y << std::endl;
+    std::cout << "z = fac(0) == " << z << std::endl;
+}
 
 
 typedef enum { blood, blue  } blister;
@@ -107,7 +129,7 @@ public:
     Consty(int n) : bar(n)  {}
     Consty& operator=(const Consty& other) {
         Consty dude(other.bar);
-        (Consty*)this = &dude; // modifies a local copy?  The Consty on the LHS of the assignment is NOT changed. // warning C4213: nonstandard extension used : cast on l-value
+        //(Consty*)this = &dude; // modifies a local copy?  The Consty on the LHS of the assignment is NOT changed. // warning C4213: nonstandard extension used : cast on l-value
         return *this;
     }
 
@@ -160,15 +182,16 @@ void sleep(unsigned millis)
 int main(int argc, char* argv[])    // NB: This is more a unit test than an app; it does not play ghost!
 {
     const char *dictionaryFilePath = (argc > 0 && argv[1]) ? argv[1] : "Ha ha stitches";
-    const unsigned millis = 2999;
+    const unsigned millis = 2222;
     bool just_test = true;
     if ( just_test ) {
-        printf("Just testing...  sleep %d milliseconds\n", millis);
 #ifdef _DEBUG
         printf("Hit <RETURN> to quit . . .\n");
         getchar();
 #endif
-        sleep(millis);
+        factorials();
+        // printf("Just testing...  sleep %d milliseconds\n", millis);
+        // sleep(millis);
         exit(0);    // zoid
     }
     return 0;
