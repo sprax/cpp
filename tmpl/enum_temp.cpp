@@ -89,7 +89,7 @@ void listMotionTypes()
         MotionType typer = template_arg_vec[j];
         printf("MotionType(%d)\n", typer);
         const int tt = static_cast<int>(typer);
-        Mover<SCOOP_TYPE_2> mover;
+        Mover<typer> mover;
         mover.showMover();
     }
 }
