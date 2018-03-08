@@ -181,12 +181,13 @@ void sleep(unsigned millis)
 
 int main(int argc, char* argv[])    // NB: This is more a unit test than an app; it does not play ghost!
 {
-    const char *dictionaryFilePath = (argc > 0 && argv[1]) ? argv[1] : "Ha ha stitches";
+    const char *progName = argv[0] ? argv[0] : defProgramName;
+    const char *yourName = (argc > 0 && argv[1]) ? argv[1] : "No Name";
     const unsigned millis = 2222;
     bool just_test = true;
     if ( just_test ) {
 #ifdef _DEBUG
-        printf("Hit <RETURN> to quit . . .\n");
+        printf("Hi %s!  Hit <RETURN> to quit . . .\n", yourName);
         getchar();
 #endif
         factorials();

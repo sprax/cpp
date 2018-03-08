@@ -4,7 +4,7 @@
 *	0 = no error, 1 = argument string is NULL, 2 = invalid character, 3 = overflow.
 *   The evaluation iterates through the input string only once and from left to right.
 *   Consequently, an input string such as "7777777777777777e99" will get the "overflow"
-*   rathern than the "non-octal-digit" error code.  Input strings are not required to 
+*   rathern than the "non-octal-digit" error code.  Input strings are not required to
 *   begin with 0.  We assume that an "unsigned int" is 32 bits on the target platform.
 *   Of course this code would be divided into a .cpp and a header file in an real project.
 *
@@ -12,7 +12,7 @@
 */
 
 
-class OctalToUint32 
+class OctalToUint32
 {
 public:
 
@@ -31,7 +31,7 @@ public:
 		if (octalStr == 0) {							// 0 is NULL, as defined in stdio.h, etc.
 			errorCode = NULL_ARGUMENT;
 			return 0;
-		} 
+		}
 		unsigned int value = 0;
 		for ( ; *octalStr; octalStr++) {
 			int octalDigit = *octalStr - '0';
@@ -62,10 +62,10 @@ public:
 #define UNIT_TEST
 #ifdef  UNIT_TEST
 
-#include <stdio.h>	// Assumes the unit test environment has access to a standard C library. 
+#include <stdio.h>	// Assumes the unit test environment has access to a standard C library.
 
 int main(int argc, char *argv[]) {
-	
+
 	const char * octalStr[10] =	{ "012"
 								, "-012"
                                 , NULL
