@@ -17,32 +17,39 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-template <int N>
-struct Factorial
+
+#define SequentialEnum(Name, ...)   \
+enum Name { __VA_ARGS__ };          \
+namespace                           \
+{   const std::initializer_list<Name> Name##List { __VA_ARGS__ }; };
+
+SequentialEnum(Shape,
+    Circle,
+    Square,
+    Triangle,
+    Oval,
+    Polygon
+);
+
+template<Shape S>
+class Shaper
 {
-     enum { value = N * Factorial<N - 1>::value };
+public:
+    void show() {
+        cout << "Shaper of type: " << S << endl;
+    }
 };
 
-template <>
-struct Factorial<0>
+void shapes()
 {
-    enum { value = 1 };
-};
-
-// Factorial<4>::value == 24
-// Factorial<0>::value == 1
-void factorials()
-{
-    int x = Factorial<4>::value; // == 24
-    int y = Factorial<5>::value; // == 1
-    int z = Factorial<0>::value; // == 1
-    std::cout << "x = fac(4) == " << x << std::endl;
-    std::cout << "y = fac(5) == " << y << std::endl;
-    std::cout << "z = fac(0) == " << z << std::endl;
+    for (Shape s : ShapeList)
+    {
+        cout << "Shape: " << s << endl;
+        Shaper<Polygon> shaper;
+        shaper.show();
+    }
 }
 
-typedef enum { blood, blue  } blister;
-typedef enum { naval, seedless, /*blood*/ } orange;  /* blood gets a redefinition error; previous def was 'enumerator' */
 
 typedef enum tagMotionType {
     FIRST_MotionType    = 0,
@@ -50,9 +57,6 @@ typedef enum tagMotionType {
     SCOOP_TYPE_2 		= 1,
     NUM_MotionTypes 	= 2
 } MotionType;
-
-
-
 
 
 template<MotionType M>
@@ -101,8 +105,8 @@ void listMotionTypes()
 int main(int argc, char* argv[])    // NB: This is more a unit test than an app; it does not play ghost!
 {
     const unsigned millis = 2222;
-    factorials();
     listMotionTypes();
+    shapes();
 
     return 0;
 }
