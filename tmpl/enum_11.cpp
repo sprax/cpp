@@ -1,5 +1,9 @@
 // enum_temp.cpp : template classes using enum values as template parameters
+// Requires C11 or later
+// BUILD: clang++ -std=c++11 enum_11.cpp -o tmpl && tmpl
+// BUILD: clang++ -std=c++14 enum_11.cpp -o tmpl && tmpl
 
+#include <iostream>
 #include <chrono>
 #include <iostream>
 #include <list>
@@ -8,6 +12,7 @@
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string>
 #include <typeinfo>
 #include <unordered_map>
 #include <unordered_set>
@@ -16,7 +21,6 @@
 using std::cin;
 using std::cout;
 using std::endl;
-
 
 #define SequentialEnum(Name, ...)   \
 enum Name { __VA_ARGS__ };          \
@@ -31,22 +35,64 @@ SequentialEnum(Shape,
     Polygon
 );
 
-template<Shape S>
-class Shaper
+class BaseShaper
 {
 public:
-    void show() {
-        cout << "Shaper of type: " << S << endl;
+    virtual void show() {
+        cout << "I'm a base shaper." << endl;
     }
+};
+
+template<Shape S>
+class Shaper : public BaseShaper
+{
+public:
+    virtual void show() {
+        cout << "I'm a shaper of type: " << S << endl;
+    }
+};
+
+
+
+
+
+template <class TKey, class TType>
+class ShaperFactory
+{
+   // This class implements a generic factory that can be used to create any type with any number of arguments.
+   //
+   typedef TType* (*CreateObjFn)(std::vector<void*> &args); // Defines the CreateObjFn function pointer that points to the object creation function.
+   typedef std::unordered_map<TKey, CreateObjFn> FactoryMap; // Hash table to map the key to the function used to create the object.
+public:
+   void Register(const TKey &keyName, CreateObjFn pCreateFn)
+   {
+      // Store the function pointer to create this object in the hash table.
+      FactMap[keyName] = pCreateFn;
+   }
+
+   TType* CreateObj(const TKey &keyName, std::vector<void*> &args)
+   {
+      // This method looks for the name in the hash map.  If it is not found, then an exception is thrown.
+      // If it is found, then it creates the specified object and returns a pointer to it.
+      //
+      typename FactoryMap::iterator It = FactMap.find(keyName);
+      if (It != FactMap.end())
+      {
+         return It->second(args);
+      }
+      throw "GenericFactory::CreateObj: key was not found in hashtable.  Did you forget to register it?";
+   }
+private:
+   FactoryMap FactMap;
 };
 
 void shapes()
 {
-    for (Shape s : ShapeList)
+    for (Shape shape : ShapeList)
     {
-        cout << "Shape: " << s << endl;
-        Shaper<Polygon> shaper;
-        shaper.show();
+        cout << "Shape: " << shape << endl;
+        BaseShaper *shaper = new Shaper<Oval>();
+        shaper->show();
     }
 }
 
