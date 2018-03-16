@@ -56,34 +56,36 @@ public:
 
 
 
-template <class TKey, class TType>
-class ShaperFactory
+template <class Key, class Type>
+class GenericFactory
 {
    // This class implements a generic factory that can be used to create any type with any number of arguments.
    //
-   typedef TType* (*CreateObjFn)(std::vector<void*> &args); // Defines the CreateObjFn function pointer that points to the object creation function.
-   typedef std::unordered_map<TKey, CreateObjFn> FactoryMap; // Hash table to map the key to the function used to create the object.
+   typedef Type* (*TypeMaker)(std::vector<void*> &argvec);  // Defines the TypeMaker function pointer that points to the object creation function.
+   typedef std::unordered_map<Key, TypeMaker> MakerMap;   // Hash table to map the key to the function used to create the object.
+
 public:
-   void Register(const TKey &keyName, CreateObjFn pCreateFn)
+   void Register(const Key &key, TypeMaker maker)
    {
-      // Store the function pointer to create this object in the hash table.
-      FactMap[keyName] = pCreateFn;
+      // Store the maker, that is, map the key to a pointer to a function that can make an object of type Type.
+      maker_map_[key] = maker;
    }
 
-   TType* CreateObj(const TKey &keyName, std::vector<void*> &args)
+   Type* Make(const Key &key, std::vector<void*> &argvec)
    {
       // This method looks for the name in the hash map.  If it is not found, then an exception is thrown.
       // If it is found, then it creates the specified object and returns a pointer to it.
       //
-      typename FactoryMap::iterator It = FactMap.find(keyName);
-      if (It != FactMap.end())
+      typename MakerMap::iterator it = maker_map_.find(key);
+      if (it != maker_map_.end())
       {
-         return It->second(args);
+         return it->second(argvec);
       }
-      throw "GenericFactory::CreateObj: key was not found in hashtable.  Did you forget to register it?";
+      throw "GenericFactory::Make: key was not found in hashtable.  Did you forget to register it?";
    }
+
 private:
-   FactoryMap FactMap;
+   MakerMap maker_map_;
 };
 
 void shapes()
