@@ -172,5 +172,11 @@ int main(int argc, char* argv[]) {
     cout << "vvmA: " << vvmA.getRows() << " x " << vvmA.getCols() << " value: "
          << vvmA(0, 0) << " == " << vvmA[0][0] << endl;
 
+    std::vector<double> vec = {1.1, 2.2, 3.3};
+    std::cout << "vec * 1: " << vec[0] << ", " << vec[1] << ", " << vec[2] << std::endl;
+    for (double& dd : vec) {
+         dd *= 2;
+    }
+    std::cout << "vec * 2: " << vec[0] << ", " << vec[1] << ", " << vec[2] << std::endl;
     return 0;
 }
