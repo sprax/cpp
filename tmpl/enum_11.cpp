@@ -34,8 +34,10 @@ SequentialEnum(Shape,
     Oval,
     Polygon
 );
+// FIXME: duplication is not DRY
+const std::string ShapeNames[]{ "Circle", "Square", "Triangle", "Oval", "Polygon"};
 
-class BaseShaper
+class BaseUser
 {
 public:
     virtual void show() {
@@ -44,56 +46,79 @@ public:
 };
 
 template<Shape S>
-class Shaper : public BaseShaper
+class ShapeUser : public BaseUser
 {
 public:
     virtual void show() {
-        cout << "I'm a shaper of type: " << S << endl;
+        cout << "I'm a shape-user using shape: " << S << endl;
     }
 };
 
+typedef std::vector<void*> MakeArgsType;
 
-
-
-
-template <class Key, class Type>
-class GenericFactory
+class IUserMaker
 {
-   // This class implements a generic factory that can be used to create any type with any number of arguments.
-   //
-   typedef Type* (*TypeMaker)(std::vector<void*> &argvec);  // Defines the TypeMaker function pointer that points to the object creation function.
-   typedef std::unordered_map<Key, TypeMaker> MakerMap;   // Hash table to map the key to the function used to create the object.
-
 public:
-   void Register(const Key &key, TypeMaker maker)
-   {
-      // Store the maker, that is, map the key to a pointer to a function that can make an object of type Type.
-      maker_map_[key] = maker;
-   }
-
-   Type* Make(const Key &key, std::vector<void*> &argvec)
-   {
-      // This method looks for the name in the hash map.  If it is not found, then an exception is thrown.
-      // If it is found, then it creates the specified object and returns a pointer to it.
-      //
-      typename MakerMap::iterator it = maker_map_.find(key);
-      if (it != maker_map_.end())
-      {
-         return it->second(argvec);
-      }
-      throw "GenericFactory::Make: key was not found in hashtable.  Did you forget to register it?";
-   }
-
-private:
-   MakerMap maker_map_;
+    virtual BaseUser * Make(MakeArgsType &args) const = 0;
+    virtual ~IUserMaker() {}
 };
 
-void shapes()
+std::map<Shape, IUserMaker> duh;
+
+class ShapeUserFactory
+{
+    typedef std::unordered_map<Shape, IUserMaker *> MakerMap;   // Hash table to map the shape to the function used to create the object.
+
+public:
+    void Register(Shape shape, IUserMaker *maker)
+    {
+        // Store the maker, that is, map the shape to a pointer to a
+        // UserMaker instance that can make the ShapeUser.
+        maker_map_[shape] = maker;
+    }
+
+    BaseUser* Make(Shape shape, MakeArgsType &args)
+    {
+        // This method looks for the name in the hash map.  If it is not found, then an exception is thrown.
+        // If it is found, then it creates the specified object and returns a pointer to it.
+        //
+        typename MakerMap::iterator it = maker_map_.find(shape);
+        if (it == maker_map_.end())
+        {
+            throw "UserFactory::Make: shape " + std::to_string(shape) + " not registered in the MakerMap";
+        }
+        return it->second->Make(args);
+    }
+
+    int Size() {
+        return maker_map_.size();
+    }
+
+private:
+    MakerMap maker_map_;
+};
+
+
+int register_shapes(ShapeUserFactory &factory)
+{
+
+    MakeArgsType args;      // dummy args
+    for (Shape shape : ShapeList)
+    {
+        cout << "Regsistering shape: " << shape << endl;
+        factory.Register(shape, userMaker(shape));
+        auto shaper = factory.Make(shape, args);
+        shaper->show();
+    }
+    return factory.Size();
+}
+
+void list_shapes()
 {
     for (Shape shape : ShapeList)
     {
         cout << "Shape: " << shape << endl;
-        BaseShaper *shaper = new Shaper<Oval>();
+        BaseUser *shaper = new User<Oval>();
         shaper->show();
     }
 }
@@ -152,9 +177,11 @@ void listMotionTypes()
 
 int main(int argc, char* argv[])    // NB: This is more a unit test than an app; it does not play ghost!
 {
-    const unsigned millis = 2222;
-    listMotionTypes();
-    shapes();
+    // listMotionTypes();
+    ShapeUserFactory factory;
+    int num_reg = register_shapes(factory);
+    cout << "Registered " << num_reg << " ShapeUserMakers in the ShapeUserFactory" << endl;
+    list_shapes();
 
     return 0;
 }
