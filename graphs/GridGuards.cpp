@@ -27,6 +27,7 @@ GridGuards::GridGuards(const char *layout[], int rows, int cols) {
     markGuards(marked);
     markDistances(marked);
 }
+
 GridGuards::~GridGuards() {
     for (int j = 0; j < mRows; j++)
         delete[] mDistance[j];
