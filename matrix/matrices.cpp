@@ -161,16 +161,22 @@ class MM_Matrix {
 
 
 int main(int argc, char* argv[]) {
-    // Using std string plus operator:  std::string + const char * = std::string
+    cout << argv[0] << ":" << endl;
+
     VVMatrix<double> vvmA(2, 4, 5.0);
     cout << "vvmA: " << vvmA.getRows() << " x " << vvmA.getCols() << " value: "
          << vvmA(0, 0) << " == " << vvmA[0][0] << endl;
     VVMatrix<double> vvmB(3, 5, 6.0);
-
+    cout << "Reassigning: vvmA = vvmB:" << endl;
     vvmA = vvmB;
+    cout << "vvmA: " << vvmA.getRows() << " x " << vvmA.getCols() << " value: "
+         << vvmA(0, 0) << " == " << vvmA[0][0] << endl;
 
-    const string usage = string(" [usage: ") + argv[0] + " name]";
-    const string name = argc > 1 ? argv[1] : string("Nameless One") + usage;
-    cout << "This is " << argv[0] << ", just saying Hello, " << name << "."  << endl;
+    std::vector<double> vec = {1.1, 2.2, 3.3};
+    std::cout << "vec * 1: " << vec[0] << ", " << vec[1] << ", " << vec[2] << std::endl;
+    for (double& dd : vec) {
+         dd *= 2;
+    }
+    std::cout << "vec * 2: " << vec[0] << ", " << vec[1] << ", " << vec[2] << std::endl;
     return 0;
 }

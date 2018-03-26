@@ -1,23 +1,41 @@
 // testC++.cpp : test some inobvious features of C++
 
-#include "stdafx.h"
-
+#include <chrono>
+#include <iostream>
 #include <list>
+#include <map>
+#include <set>
+#include <signal.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <thread>
+#include <typeinfo>
+#include <unordered_map>
+#include <unordered_set>
 
-// Substitution failure is not an error (SFINAE) refers to a situation in C++ 
+#ifdef _DEBUG
+#include <assert.h>
+#else
+#define NDEBUG          1
+#define assert(_expr_)  ((void)0)
+#endif
+
+static const char *defProgramName  = "testC++";
+
+// Substitution failure is not an error (SFINAE) refers to a situation in C++
 // where an invalid substitution of template parameters is not in itself an error
-struct Test 
+struct Test
 {
     typedef int Type;
 };
- 
-template < typename T > 
+
+template < typename T >
 void f(typename T::Type) {} // definition #1
- 
-template < typename T > 
+
+template < typename T >
 void f(T) {}                // definition #2
- 
-// Problem: write an interface containing a template function that resolves 
+
+// Problem: write an interface containing a template function that resolves
 // to functions that only take an even (but variable) number of args.
 // Hints below:
 
@@ -31,18 +49,18 @@ template<int I> void div(char(*)[I % 2 == 1] = 0) {
 
 void foo()
 {
-    f<Test>(10); // call #1 
+    f<Test>(10); // call #1
     f<int>(10);  // call #2 without error thanks to SFINAE: int is not a type with an nested type named Type,
                  //      but a valid function candidate remains after the compiler removes int (or "f<int>()")
                  //      from the pool of candidate functions, namely f<Test>().
 }
 
-template<typename T> 
+template<typename T>
 class MyInitList
 {
 };
 
-#if 0
+#if 1
 template<typename T>
 class IsClassT {
   private:
@@ -56,19 +74,44 @@ class IsClassT {
     enum { No = !Yes };
 };
 
-template<int N>
-struct Vector {
-    template<int M> 
-    Vector(MyInitList<M> const& i, 
-           typename enable_if_c<(M <= N)>::type* = 0) { /* ... */ }
-};
+// template<int N>
+// struct Vector {
+//     template<int M>
+//     Vector(MyInitList<M> const& i,
+//            typename enable_if_c<(M <= N)>::type* = 0) { /* ... */ }
+// };
 
 template<int N>
 struct Vector {
-    template<int M> 
-    Vector(MyInitList<M> const& i, char(*)[M <= N] = 0) { /* ... */ }
+    template<int M>
+    Vector(MyInitList<int> const& i, char(*)[M <= N] = 0) { /* ... */ }
 };
 #endif
+
+
+template <int N>
+struct Factorial
+{
+     enum { value = N * Factorial<N - 1>::value };
+};
+
+template <>
+struct Factorial<0>
+{
+    enum { value = 1 };
+};
+
+// Factorial<4>::value == 24
+// Factorial<0>::value == 1
+void factorials()
+{
+    int x = Factorial<4>::value; // == 24
+    int y = Factorial<5>::value; // == 1
+    int z = Factorial<0>::value; // == 1
+    std::cout << "x = fac(4) == " << x << std::endl;
+    std::cout << "y = fac(5) == " << y << std::endl;
+    std::cout << "z = fac(0) == " << z << std::endl;
+}
 
 
 typedef enum { blood, blue  } blister;
@@ -86,7 +129,7 @@ public:
     Consty(int n) : bar(n)  {}
     Consty& operator=(const Consty& other) {
         Consty dude(other.bar);
-        (Consty*)this = &dude; // modifies a local copy?  The Consty on the LHS of the assignment is NOT changed. // warning C4213: nonstandard extension used : cast on l-value
+        //(Consty*)this = &dude; // modifies a local copy?  The Consty on the LHS of the assignment is NOT changed. // warning C4213: nonstandard extension used : cast on l-value
         return *this;
     }
 
@@ -130,3 +173,27 @@ class EE {
 
 
 #endif
+
+void sleep(unsigned millis)
+{
+    std::this_thread::sleep_for(std::chrono::milliseconds(millis));
+}
+
+int main(int argc, char* argv[])    // NB: This is more a unit test than an app; it does not play ghost!
+{
+    const char *progName = argv[0] ? argv[0] : defProgramName;
+    const char *yourName = (argc > 0 && argv[1]) ? argv[1] : "No Name";
+    const unsigned millis = 2222;
+    bool just_test = true;
+    if ( just_test ) {
+#ifdef _DEBUG
+        printf("Hi %s!  Hit <RETURN> to quit . . .\n", yourName);
+        getchar();
+#endif
+        factorials();
+        // printf("Just testing...  sleep %d milliseconds\n", millis);
+        // sleep(millis);
+        exit(0);    // zoid
+    }
+    return 0;
+}
