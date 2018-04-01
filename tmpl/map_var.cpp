@@ -29,6 +29,7 @@ static const std::vector<std::string> default_map_keys {
     "three"
 };
 
+
 template <typename TV>
 class MapTraj {
 public:
@@ -128,15 +129,74 @@ public:
 
 };
 
+typedef struct Duf {
+    int Int;
+    std::string Str;
+    Duf(int i, std::string str) : Int(i), Str(str) {}
+    std::string to_string() {
+        return "<Duf: " + std::to_string(Int) + " => " + Str + ">";
+    }
+} Duf;
+
+
+namespace std{
+    string to_string(Duf duf) { return duf.to_string(); }
+}
+
+void test_duf()
+{
+    Duf dA = Duf(1, "one");
+    cout<< dA.to_string() << endl;
+    Duf dB = Duf(2, "two");
+    cout<< std::to_string(dB) << endl;
+}
+
+namespace zoid {
+inline static int64_t getHash() { return 1; };
+}
+typedef struct ___lcm_hash_ptr __lcm_hash_ptr;
+struct ___lcm_hash_ptr
+{
+    const __lcm_hash_ptr *parent;
+    int64_t (*v)(void);
+};
+
+typedef struct ___derp_ptr ___derp_ptr;
+struct ___derp_ptr
+{
+    int64_t (*v)(void);
+    const void *parent;
+};
 
 int main(int argc, char* argv[])    // NB: unit tests for MapTraj
 {
+    cout << "00000000============================================" << endl;
+    const __lcm_hash_ptr *p = 0;
+    const __lcm_hash_ptr cp = { p, zoid::getHash };
+    // void *z = 0;
+    const ___derp_ptr dp = { p, zoid::getHash };
+
+    cout << "CP: " << cp.parent << endl;
+    cout << "DP: " << dp.parent << endl;
+    return 0;
+
+    test_duf();
+    // return 0;
+
     MapTrajVec map_vec;
     map_vec.show();
     vint_t vintA = {};
-    std::vector<int> vintB = {1,2,3};
+    std::vector<int> vintB = {1, 2, 3};
     cout<< "updateTraj('three', 4) returns: " << map_vec.updateTraj("three", vintA) << "; now show:" << endl;
     map_vec.show();
+
+
+    const std::vector< std::string > vecs { "one", "TWO", "tHrEe", "FoUr"};
+    const std::vector< std::string > copy(vecs);
+    const std::string sp = ", ";
+    cout<< "The copy of vecs: " << copy[0] << sp << copy[1] << sp << copy[2] << sp << copy[3] << endl;
+
+
     // cout<< "setTraj('four', 4) returns: " << map_vec.setTraj("four", 4) << "; now show:" << endl;
     // map_vec.show();
     // cout<< "getTraj('forty') returns: " << map_vec.getTraj("forty", -9999) << "; now show:" << endl;
