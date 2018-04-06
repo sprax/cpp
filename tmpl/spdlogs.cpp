@@ -1,8 +1,36 @@
-#include <iostream>
 #include "spdlog/spdlog.h"
+#include <exception>    // For std::exception
+#include <iostream>
+#include <sys/stat.h>
+
+void make_dir(const std::string& path)
+{
+    if (mkdir(path.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH) == -1)
+    {
+        if( errno == EEXIST ) {
+           // alredy exists
+        } else {
+           // something else
+            std::cout << "cannot create error:" << strerror(errno) << std::endl;
+            throw std::runtime_error( strerror(errno) );
+        }
+    }
+}
+
+
 
 int main(int, char* [])
 {
+    std::string log_dir_name("logs");
+    try
+    {
+        make_dir(log_dir_name);
+    }
+    catch (const spdlog::spdlog_ex& ex)
+    {
+        std::cout << "Error on make_dir: " << ex.what() << std::endl;
+    }
+
     //Multithreaded console logger(with color support)
     auto console = spdlog::stdout_color_mt("console");
     console->info("Welcome to spdlog!") ;
@@ -11,11 +39,11 @@ int main(int, char* [])
     try
     {
         // Create basic file logger (not rotated)
-        auto my_logger = spdlog::basic_logger_mt("basic_logger", "logs/basic.txt");
+        auto my_logger = spdlog::basic_logger_mt("base", log_dir_name + "/basic.txt");
         my_logger->info("Hello {} {} !!", "param1", 123.4);
 
         // create a file rotating logger with 5mb size max and 3 rotated files
-        auto file_logger = spdlog::rotating_logger_mt("file_logger", "myfilename", 1024 * 1024 * 5, 3);
+        auto file_logger = spdlog::rotating_logger_mt("frot", log_dir_name + "/rotated.txt", 1024 * 1024 * 5, 3);
         file_logger->info("Howdy {} {} !!", "param1", 4.5678);
     }
     catch (const spdlog::spdlog_ex& ex)
