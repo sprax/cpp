@@ -170,7 +170,6 @@ struct ___derp_ptr
 
 int main(int argc, char* argv[])    // NB: unit tests for MapTraj
 {
-    cout << "00000000============================================" << endl;
     const __lcm_hash_ptr *p = 0;
     const __lcm_hash_ptr cp = { p, zoid::getHash };
     // void *z = 0;
