@@ -161,8 +161,8 @@ struct ___lcm_hash_ptr
     int64_t (*v)(void);
 };
 
-typedef struct ___derp_ptr ___derp_ptr;
-struct ___derp_ptr
+typedef struct ___reversed_ptr ___reversed_ptr;
+struct ___reversed_ptr
 {
     int64_t (*v)(void);
     const void *parent;
@@ -173,10 +173,10 @@ int main(int argc, char* argv[])    // NB: unit tests for MapTraj
     const __lcm_hash_ptr *p = 0;
     const __lcm_hash_ptr cp = { p, zoid::getHash };
     // void *z = 0;
-    const ___derp_ptr dp = { p, zoid::getHash };
+    const ___reversed_ptr rp = { zoid::getHash, };  // p defaults to 0x0
 
     cout << "CP: " << cp.parent << endl;
-    cout << "DP: " << dp.parent << endl;
+    cout << "RP: " << rp.parent << endl;
     return 0;
 
     test_duf();
