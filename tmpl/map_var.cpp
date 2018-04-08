@@ -29,6 +29,12 @@ static const std::vector<std::string> default_map_keys {
     "three"
 };
 
+/// stupid trick
+namespace std{
+    template<typename T>
+    string to_string(vector<T> vec) { return "std::vector(size=" + to_string(vec.size()) + ")"; }
+}
+
 
 template <typename TV>
 class MapTraj {
@@ -76,7 +82,7 @@ public:
     }
 
 
-    void show(int verbose=1)
+    void showSizes(int verbose=1)
     {
         if (verbose > 0) {
             cout << "Using keys array:" << endl;
@@ -177,51 +183,42 @@ int main(int argc, char* argv[])    // NB: unit tests for MapTraj
 
     cout << "CP: " << cp.parent << endl;
     cout << "RP: " << rp.parent << endl;
-    return 0;
-
-    test_duf();
-    // return 0;
-
-    MapTrajVec map_vec;
-    map_vec.show();
-    vint_t vintA = {};
-    std::vector<int> vintB = {1, 2, 3};
-    cout<< "updateTraj('three', 4) returns: " << map_vec.updateTraj("three", vintA) << "; now show:" << endl;
-    map_vec.show();
-
 
     const std::vector< std::string > vecs { "one", "TWO", "tHrEe", "FoUr"};
     const std::vector< std::string > copy(vecs);
     const std::string sp = ", ";
     cout<< "The copy of vecs: " << copy[0] << sp << copy[1] << sp << copy[2] << sp << copy[3] << endl;
 
+    test_duf();
+    // return 0;
 
-    // cout<< "setTraj('four', 4) returns: " << map_vec.setTraj("four", 4) << "; now show:" << endl;
-    // map_vec.show();
-    // cout<< "getTraj('forty') returns: " << map_vec.getTraj("forty", -9999) << "; now show:" << endl;
-    // map_vec.show();
-    // map_vec.showMap();
+    MapTrajVec map_vec;
+    map_vec.showSizes();
+    vint_t vintA = {};
+    std::vector<int> vintB = {1, 2, 3};
+    cout<< "updateTraj('three', 4) returns: " << map_vec.updateTraj("three", vintA) << "; now show:" << endl;
+    map_vec.showSizes();
+    //map_vec.showMap();
 
-    // MapTraj<int> map_int(-1);
-    // map_int.show();
-    // cout<< "updateTraj('three', 4) returns: " << map_int.updateTraj("three", 4) << "; now show:" << endl;
-    // map_int.show();
-    // cout<< "setTraj('four', 4) returns: " << map_int.setTraj("four", 4) << "; now show:" << endl;
-    // map_int.show();
-    // cout<< "getTraj('forty') returns: " << map_int.getTraj("forty", -9999) << "; now show:" << endl;
-    // map_int.show();
-    // map_int.showMap();
-    //
-    //
-    // MapTraj<std::string> map_str("DEF_STR");
-    // map_str.show();
-    // cout<< "updateTraj('three', 'FOUR') returns: " << map_str.updateTraj("three", "FOUR") << "; now show:" << endl;
-    // map_str.show();
-    // cout<< "setTraj('four', 'FOUR') returns: " << map_str.setTraj("four", "FOUR") << "; now show:" << endl;
-    // map_str.show();
-    // cout<< "getTraj('forty') returns: " << map_str.getTraj("forty", "NaN") << "; now show:" << endl;
-    // map_str.show();
-    // map_str.showMap();
+    MapTraj<int> map_int(-1);
+    map_int.showMap();
+    cout<< "updateTraj('three', 4) returns: " << map_int.updateTraj("three", 4) << "; now show:" << endl;
+    map_int.showMap();
+    cout<< "setTraj('four', 4) returns: " << map_int.setTraj("four", 4) << "; now show:" << endl;
+    map_int.showMap();
+    cout<< "getTraj('forty') returns: " << map_int.getTraj("forty", -9999) << "; now show:" << endl;
+    map_int.showMap();
+
+
+    MapTraj<std::string> map_str("DEF_STR");
+    map_str.showSizes();
+    cout<< "updateTraj('three', 'FOUR') returns: " << map_str.updateTraj("three", "FOUR") << "; now show:" << endl;
+    map_str.showSizes();
+    cout<< "setTraj('four', 'FOUR') returns: " << map_str.setTraj("four", "FOUR") << "; now show:" << endl;
+    map_str.showSizes();
+    cout<< "getTraj('forty') returns: " << map_str.getTraj("forty", "NaN") << "; now show:" << endl;
+    map_str.showSizes();
+    map_str.showMap();
 
 
     return 0;
