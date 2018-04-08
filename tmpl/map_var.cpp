@@ -30,17 +30,17 @@ static const std::vector<std::string> default_map_keys {
 };
 
 /// stupid trick
-namespace std{
+namespace std {
     template<typename T>
     string to_string(vector<T> vec) { return "std::vector(size=" + to_string(vec.size()) + ")"; }
 }
 
 
 template <typename TV>
-class MapTraj {
+class MapTraj
+{
 public:
-
-    MapTraj(TV default_value)
+    MapTraj(TV default_value, const std::string& name="UNK") : name_(name)
     {
         map_keys_ = default_map_keys;
         for (auto& key : map_keys_) {
@@ -101,8 +101,8 @@ public:
         }
     }
 
-    void showMap() {
-        cout<< "showMap..." << endl;
+    void showMap(const std::string& label="") {
+        cout<< (label == "" ? name_ : label) << ": showMap..." << endl;
         for (auto& entry: traj_map_) {
             cout << "KEY: " << entry.first << " => " << entry.second << endl;
         }
@@ -119,10 +119,10 @@ public:
         return true;
     }
 
-public:
+private:
     std::vector<std::string>  map_keys_;
     std::map<std::string, TV> traj_map_;
-
+    const std::string name_;
 };
 
 typedef std::vector<int> vint_t;
