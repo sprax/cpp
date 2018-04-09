@@ -1,6 +1,9 @@
 #include "spdlog/spdlog.h"
 #include <exception>    // For std::exception
+#include <iomanip>
 #include <iostream>
+#include <string>
+#include <sstream>
 #include <sys/stat.h>
 
 void make_dir(const std::string& path)
@@ -17,7 +20,18 @@ void make_dir(const std::string& path)
     }
 }
 
+std::string make_name( const std::string& base, unsigned seq_num
+                     , double xx, double yy, double zz
+) {
+    static const std::string sep("_");
+    std::ostringstream oss;
+    oss.precision(4);
 
+    oss << base << sep << std::setfill('0') << std::setw(4) << seq_num
+        << std::fixed << sep << abs(xx) << sep << abs(yy) << sep << abs(zz)
+        << ".txt";
+    return oss.str();
+}
 
 int main(int, char* [])
 {
@@ -27,7 +41,10 @@ int main(int, char* [])
     //Multithreaded console logger(with color support)
     auto console = spdlog::stdout_color_mt("console");
     console->info("Welcome to spdlog!") ;
-    console->info("An info message example {}..", 1);
+
+    auto name = make_name("name", 23, -0.1234, 0.5678, -0.9012);
+    console->info("The name: <{}>", name);
+
 
     try
     {

@@ -40,7 +40,8 @@ template <typename TV>
 class MapTraj
 {
 public:
-    MapTraj(TV default_value, const std::string& name="UNK") : name_(name)
+    MapTraj( TV default_value, const std::string& name="UNK")
+           : name_(name != "" ? name : "ANONYMOUS_" + std::to_string(time(NULL)) )
     {
         map_keys_ = default_map_keys;
         for (auto& key : map_keys_) {
@@ -210,7 +211,7 @@ int main(int argc, char* argv[])    // NB: unit tests for MapTraj
     map_int.showMap();
 
 
-    MapTraj<std::string> map_str("DEF_STR");
+    MapTraj<std::string> map_str("DEF_STR", "");
     map_str.showSizes();
     cout<< "updateTraj('three', 'FOUR') returns: " << map_str.updateTraj("three", "FOUR") << "; now show:" << endl;
     map_str.showSizes();
