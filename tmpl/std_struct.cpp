@@ -6,6 +6,7 @@
 #include <iostream>
 #include <chrono>
 #include <iostream>
+#include <iterator>
 #include <list>
 #include <map>
 #include <set>
@@ -21,6 +22,7 @@
 using std::cin;
 using std::cout;
 using std::endl;
+using std::string;
 
 static const std::vector<std::string> default_map_keys {
     "zero",
@@ -195,6 +197,12 @@ int main(int argc, char* argv[])    // NB: unit tests for MapTraj
         cout << str << endl;
     }
 
+
+    string name_f = name_list.front();
+    auto nit = name_list.begin();
+    std::advance(nit, 1);
+    string name_n = *nit;
+    cout << "name_f: " << name_f << "  name_n: " << name_n << endl;
 
     return 0;
 

@@ -26,7 +26,7 @@ using std::endl;
 using std::string;
 
 
-inline bool glob(const std::string& pat, std::vector<std::string>& result)
+inline bool glob_b(const std::string& pat, std::vector<std::string>& result)
 {
     using namespace std;
     glob_t glob_result;
@@ -39,13 +39,26 @@ inline bool glob(const std::string& pat, std::vector<std::string>& result)
     return result.size() > 0;
 }
 
+inline std::vector<std::string> glob_v(const std::string& pat)
+{
+    using namespace std;
+    glob_t glob_result;
+    glob(pat.c_str(), GLOB_TILDE, NULL, &glob_result);
+    vector<string> ret;
+    for (unsigned int i = 0; i < glob_result.gl_pathc; ++i) {
+        ret.push_back(string(glob_result.gl_pathv[i]));
+    }
+    globfree(&glob_result);
+    return ret;
+}
+
 static std::vector<std::string> keys{"keyA", "keyB", "keyC", "keyD"};
 
 int main(int argc, char* argv[])
 {
     string pattern = "*.cpp";
     std::vector<std::string> files;
-    if (glob(pattern, files)) {
+    if (glob_b(pattern, files)) {
         int j = 0;
         for (auto& key : files) {
             cout << "key: " << key << endl;
