@@ -32,7 +32,7 @@ static const std::vector<std::string> default_map_keys {
 template<class Container, typename T>
 int copy_into(Container &container, std::vector<T> vec)
 {
-    for (T& elt : vec) {
+    for (auto& elt : vec) {
         container.push_back(elt);
     }
     return container.size();

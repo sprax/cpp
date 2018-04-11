@@ -20,6 +20,7 @@ std::string make_name( const std::string& base, unsigned seq_num
     return oss.str();
 }
 
+
 int main(int, char* [])
 {
     auto console = spdlog::stdout_color_st("console");
