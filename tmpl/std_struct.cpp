@@ -188,7 +188,8 @@ int main(int argc, char* argv[])    // NB: unit tests for MapTraj
     }
 
     std::vector<std::string> myvector(default_map_keys);
-    std::sort (myvector.begin(), myvector.begin()+4, [](std::string& aa, std::string& bb) -> bool{ return aa.length() < bb.length(); });
+    std::sort( myvector.begin(), myvector.end()
+             , [](std::string& aa, std::string& bb) -> bool{ return aa.length() > bb.length(); });
     cout << "sorted vector copy:" << endl;
     for (auto& str : myvector) {
         cout << str << endl;
