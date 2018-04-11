@@ -26,7 +26,10 @@ static const std::vector<std::string> default_map_keys {
     "zero",
     "one",
     "two",
-    "three"
+    "forty-two",
+    "three",
+    "four",
+    "ninety"
 };
 
 template<class Container, typename T>
@@ -165,9 +168,10 @@ int main(int argc, char* argv[])    // NB: unit tests for MapTraj
     int j = 2;
     for (auto& key : default_map_keys) {
         cout << "key: " << key << endl;
-        if (--j == 0) break;
+        if (--j == 0) {
+            break;
+        }
     }
-    test_duf();
 
     std::list<std::string> name_list;
     int count = copy_into(name_list, default_map_keys);
@@ -175,8 +179,27 @@ int main(int argc, char* argv[])    // NB: unit tests for MapTraj
     for (auto& name : name_list) {
         cout << name << endl;
     }
+
+    //std::sort(name_list.begin(), name_list.begin());
+    name_list.sort();
+    cout << "After sorting, name_list:" << endl;
+    for (auto& name : name_list) {
+        cout << name << endl;
+    }
+
+    std::vector<std::string> myvector(default_map_keys);
+    std::sort (myvector.begin(), myvector.begin()+4, [](std::string& aa, std::string& bb) -> bool{ return aa.length() < bb.length(); });
+    cout << "sorted vector copy:" << endl;
+    for (auto& str : myvector) {
+        cout << str << endl;
+    }
+
+
     return 0;
 
+
+
+    test_duf();
     MapTrajVec map_vec;
     map_vec.show();
     vint_t vintA = {};
