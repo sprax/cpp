@@ -29,6 +29,14 @@ static const std::vector<std::string> default_map_keys {
     "three"
 };
 
+template<class Container, typename T>
+int copy_into(Container &container, std::vector<T> vec)
+{
+    for (T& elt : vec) {
+        container.push_back(elt);
+    }
+    return container.size();
+}
 
 template <typename TV>
 class MapTraj {
@@ -160,6 +168,13 @@ int main(int argc, char* argv[])    // NB: unit tests for MapTraj
         if (--j == 0) break;
     }
     test_duf();
+
+    std::list<std::string> name_list;
+    int count = copy_into(name_list, default_map_keys);
+    cout << "copy_into copied " << count << " keys from default_map_keys into name_list:" << endl;
+    for (auto& name : name_list) {
+        cout << name << endl;
+    }
     return 0;
 
     MapTrajVec map_vec;
