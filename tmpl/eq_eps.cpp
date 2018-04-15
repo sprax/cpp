@@ -17,6 +17,8 @@
 #include <typeinfo>
 #include <vector>
 
+#include <Eigen/Dense>
+
 using std::cin;
 using std::cout;
 using std::endl;
@@ -35,6 +37,18 @@ bool eq_eps(T a, T b, T rel_epsison = std::numeric_limits<T>::epsilon())
     }
     return false;
 }
+
+bool vec_eq_eps(Eigen::VectorXd a, Eigen::VectorXd b){
+    if(a.size() != b.size()){
+        return false;
+    }
+    bool valid = true;
+    for(int i=0; i<a.size(); i++){
+        valid = valid && du::EpsEq(a(i), b(i));
+    }
+    return valid;
+}
+
 
 template<typename T>
 T median_odd(std::vector<T> vec)
