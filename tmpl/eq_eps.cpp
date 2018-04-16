@@ -18,6 +18,8 @@
 #include <typeinfo>
 #include <vector>
 
+#include <boost/range/combine.hpp>
+
 #ifdef HAVE_EIGEN
 #include <Eigen/Dense>
 #else
@@ -32,26 +34,34 @@ using std::endl;
 using std::string;
 
 
-/** Determins if two values are 'close enough' based on a scaled tolerance */
-template<typename T>
-bool eq_eps(T a, T b, T rel_epsison = std::numeric_limits<T>::epsilon())
+/// Determins if two values are 'close enough' based on a scaled tolerance.
+/// NOTE: for integral types, the numeric_limits<T>::epsilon() will return 1.
+template<typename T, typename std::enable_if<std::is_floating_point<T>::value, T>::type* = 0)>
+bool eq_eps(T a, T b, T rel_epsilon = std::numeric_limits<T>::epsilon())
 {
     T value_range[] = {T(1.0), a, b};
-    // FIXME: elminated the + 3 below:
-    if (fabs(a - b) <= rel_epsison * *std::max_element(value_range, value_range + 3))
+    if (fabs(a - b) <= rel_epsilon * *std::max_element(value_range, value_range + 3))
     {
+        cout << "rel_epsilon::::::: " << rel_epsilon
+             << "  fabs(a - b): " << fabs(a - b)
+             << "  std::abs(a - b): " <<  std::abs(a - b)
+             << "  value_range: [ "
+             << value_range[0] << ", "
+             << value_range[1] << ", "
+             << value_range[2] << " ]" << endl;
         return true;
     }
     return false;
 }
 
+
 bool eq_eps_vec(Eigen::VectorXd a, Eigen::VectorXd b){
     if (a.size() != b.size()) {
         return false;
     }
-    #if 1
+    #if 0
     bool valid = true;
-    for(int i=0; i<a.size(); i++){
+    for(int i = 0; i < a.size(); i++) {
         #ifdef HAVE_EIGEN
         valid = valid && eq_eps(a(i), b(i));
         #else
@@ -59,9 +69,30 @@ bool eq_eps_vec(Eigen::VectorXd a, Eigen::VectorXd b){
         #endif
     }
     return valid;
+    #elif defined(HAVE_REDI)
+    #include <redi/zip.h>   // for a zip function which works with range-base for
+                            // and accepts any number of ranges, which can be
+                            // rvalues or lvalues and can be different lengths
+                            // (iteration will stop at the end of the shortest range).
+
+    void redi_zip() {
+    std::vector<int> vi{ 0, 2, 4 };
+    std::vector<std::string> vs{ "1", "3", "5", "7" };
+    for (auto i : redi::zip(vi, vs))
+        std::cout << i.get<0>() << ' ' << i.get<1>() << ' ';
+    }
     #else
-    return internal::array_zip_and_reduce<eq_eps, a, b, a.size()>;  // same size
+        for (auto tup : boost::combine(a, b, a)) {    // <---
+            double x, y, w;
+            boost::tie(x, y, w) = tup;
+            printf("%g %g %g\n", x, y, w);
+            if (! eq_eps(x, y)) {
+                return false;
+            }
+        }
+    //return internal::array_zip_and_reduce<eq_eps, a, b, a.size()>;  // same size
     #endif
+    return true;
 }
 
 
