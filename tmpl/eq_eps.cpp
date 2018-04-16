@@ -45,10 +45,11 @@ bool eq_eps(T a, T b, T rel_epsison = std::numeric_limits<T>::epsilon())
     return false;
 }
 
-bool vec_eq_eps(Eigen::VectorXd a, Eigen::VectorXd b){
-    if(a.size() != b.size()){
+bool eq_eps_vec(Eigen::VectorXd a, Eigen::VectorXd b){
+    if (a.size() != b.size()) {
         return false;
     }
+    #if 1
     bool valid = true;
     for(int i=0; i<a.size(); i++){
         #ifdef HAVE_EIGEN
@@ -58,6 +59,9 @@ bool vec_eq_eps(Eigen::VectorXd a, Eigen::VectorXd b){
         #endif
     }
     return valid;
+    #else
+    return internal::array_zip_and_reduce<eq_eps, a, b, a.size()>;  // same size
+    #endif
 }
 
 
