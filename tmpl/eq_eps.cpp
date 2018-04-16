@@ -94,5 +94,11 @@ T median(std::vector<T> vec, typename std::enable_if<std::is_floating_point<T>::
 
 int main(int argc, char* argv[])    // NB: unit tests for MapTraj
 {
+    cout << "eq_eps(  1, 1): " << eq_eps(1,1) << endl;
+    cout << "eq_eps(1.1, 1.1): " << eq_eps(1.1, 1.1) << endl;
+    cout << "eq_eps(111, 111): " << eq_eps(111,111, 1) << endl;
+    cout << "eq_eps(111, 112): " << eq_eps(111,112) << endl;
+    cout << "eq_eps(111, 112, 0.001): " << eq_eps(111,112, 1) << endl;
+    cout << "eq_eps(111, 112, 2): " << eq_eps(111,112, 2) << endl;
     return 0;
 }
