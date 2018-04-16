@@ -3,8 +3,9 @@
 // BUILD: clang++ -std=c++11 traj_map_.cpp -o tmpl && tmpl
 // BUILD: clang++ -std=c++14 traj_map_.cpp -o tmpl && tmpl
 
-#include <iostream>
 #include <chrono>
+#include <cmath>
+#include <iostream>
 #include <iostream>
 #include <iterator>
 #include <list>
@@ -17,7 +18,13 @@
 #include <typeinfo>
 #include <vector>
 
+#ifdef HAVE_EIGEN
 #include <Eigen/Dense>
+#else
+namespace Eigen {
+    typedef std::vector<double> VectorXd;
+}
+#endif
 
 using std::cin;
 using std::cout;
@@ -44,7 +51,11 @@ bool vec_eq_eps(Eigen::VectorXd a, Eigen::VectorXd b){
     }
     bool valid = true;
     for(int i=0; i<a.size(); i++){
-        valid = valid && du::EpsEq(a(i), b(i));
+        #ifdef HAVE_EIGEN
+        valid = valid && eq_eps(a(i), b(i));
+        #else
+        valid = valid && eq_eps(a[i], b[i]);
+        #endif
     }
     return valid;
 }
