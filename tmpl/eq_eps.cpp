@@ -59,11 +59,7 @@ bool eq_eps( ValueT a, ValueT b, DeltaT rel_epsilon = std::numeric_limits<DeltaT
          << value_range[1] << ", "
          << value_range[2] << " ]" << endl;
 
-    if (std::abs(a - b) <= limit)
-    {
-        return true;
-    }
-    return false;
+    return (std::abs(a - b) <= limit);
 }
 
 
