@@ -36,7 +36,7 @@ using std::string;
 
 /// Determins if two values are 'close enough' based on a scaled tolerance.
 /// NOTE: for integral types, the numeric_limits<T>::epsilon() will return 1.
-template<typename T, typename std::enable_if<std::is_floating_point<T>::value, T>::type* = 0)>
+template<typename T, typename std::enable_if<std::is_floating_point<T>::value, T>::type* = 0>
 bool eq_eps(T a, T b, T rel_epsilon = std::numeric_limits<T>::epsilon())
 {
     T value_range[] = {T(1.0), a, b};
@@ -53,6 +53,12 @@ bool eq_eps(T a, T b, T rel_epsilon = std::numeric_limits<T>::epsilon())
     }
     return false;
 }
+//
+// template <typename IntegerT, typename = std::enable_if<std::is_integral<IntegerT>::value> >
+// bool eq_eps(IntegerT a)
+// {
+//     return false;
+// }
 
 
 bool eq_eps_vec(Eigen::VectorXd a, Eigen::VectorXd b){
@@ -129,11 +135,13 @@ T median(std::vector<T> vec, typename std::enable_if<std::is_floating_point<T>::
 
 int main(int argc, char* argv[])    // NB: unit tests for MapTraj
 {
-    cout << "eq_eps(  1, 1): " << eq_eps(1,1) << endl;
-    cout << "eq_eps(1.1, 1.1): " << eq_eps(1.1, 1.1) << endl;
-    cout << "eq_eps(111, 111): " << eq_eps(111,111, 1) << endl;
-    cout << "eq_eps(111, 112): " << eq_eps(111,112) << endl;
-    cout << "eq_eps(111, 112, 0.001): " << eq_eps(111,112, 1) << endl;
-    cout << "eq_eps(111, 112, 2): " << eq_eps(111,112, 2) << endl;
+    double aa = 1.1, bb = 1.1, eps = 0.001;
+    cout << "eq_eps(1.1, 1.1): " << eq_eps(aa, bb, eps) << endl;
+    // cout << "eq_eps(1.1, 1.1): " << eq_eps(1.1, 1.1, 0.0001) << endl;
+    // cout << "eq_eps(  1, 1): " << eq_eps(1,1) << endl;
+    // cout << "eq_eps(1.1, 1.1): " << eq_eps(1.1, 1.1) << endl;
+    // cout << "eq_eps(111, 111): " << eq_eps(111,111, 1) << endl;
+    // cout << "eq_eps(111, 112): " << eq_eps(111,112) << endl;
+    // cout << "eq_eps(111, 112, 0.001): " << eq_eps(111,112, 1) << endl;
     return 0;
 }
