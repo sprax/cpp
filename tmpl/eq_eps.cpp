@@ -36,11 +36,12 @@ using std::string;
 
 /// Determins if two values are 'close enough' based on a scaled tolerance.
 /// NOTE: for integral types, the numeric_limits<T>::epsilon() will return 1.
-template<typename T, typename std::enable_if<std::is_floating_point<T>::value, T>::type* = 0>
-bool eq_eps(T a, T b, T rel_epsilon = std::numeric_limits<T>::epsilon())
+template<typename T>
+bool eq_eps( T a, T b, T rel_epsilon = std::numeric_limits<T>::epsilon()
+           , typename std::enable_if<std::is_floating_point<T>::value, T>::type* = 0)
 {
     T value_range[] = {T(1.0), a, b};
-    if (fabs(a - b) <= rel_epsilon * *std::max_element(value_range, value_range + 3))
+    if (std::abs(a - b) <= rel_epsilon * *std::max_element(value_range, value_range + 3))
     {
         cout << "rel_epsilon::::::: " << rel_epsilon
              << "  fabs(a - b): " << fabs(a - b)
@@ -53,12 +54,28 @@ bool eq_eps(T a, T b, T rel_epsilon = std::numeric_limits<T>::epsilon())
     }
     return false;
 }
-//
-// template <typename IntegerT, typename = std::enable_if<std::is_integral<IntegerT>::value> >
-// bool eq_eps(IntegerT a)
-// {
-//     return false;
-// }
+
+template<typename T>
+bool eq_eps( T a, T b, T rel_epsilon = std::numeric_limits<T>::epsilon()
+           , typename std::enable_if<std::is_integral<T>::value, T>::type* = 0)
+{
+    T value_range[] = {T(1), a, b};
+    T limit = rel_epsilon * *std::max_element(value_range, value_range + 3);
+    cout << "  rel_epsilon::::::: " << rel_epsilon
+         << "  limit: " << limit
+         << "  fabs(a - b): " << fabs(a - b)
+         << "  std::abs(a - b): " <<  std::abs(a - b)
+         << "  value_range: [ "
+         << value_range[0] << ", "
+         << value_range[1] << ", "
+         << value_range[2] << " ]" << endl;
+
+    if (std::abs(a - b) <= limit)
+    {
+        return true;
+    }
+    return false;
+}
 
 
 bool eq_eps_vec(Eigen::VectorXd a, Eigen::VectorXd b){
@@ -136,12 +153,18 @@ T median(std::vector<T> vec, typename std::enable_if<std::is_floating_point<T>::
 int main(int argc, char* argv[])    // NB: unit tests for MapTraj
 {
     double aa = 1.1, bb = 1.1, eps = 0.001;
-    cout << "eq_eps(1.1, 1.1): " << eq_eps(aa, bb, eps) << endl;
-    // cout << "eq_eps(1.1, 1.1): " << eq_eps(1.1, 1.1, 0.0001) << endl;
-    // cout << "eq_eps(  1, 1): " << eq_eps(1,1) << endl;
-    // cout << "eq_eps(1.1, 1.1): " << eq_eps(1.1, 1.1) << endl;
-    // cout << "eq_eps(111, 111): " << eq_eps(111,111, 1) << endl;
-    // cout << "eq_eps(111, 112): " << eq_eps(111,112) << endl;
-    // cout << "eq_eps(111, 112, 0.001): " << eq_eps(111,112, 1) << endl;
+    cout << "eq_eps(aa, bb, eps): " << eq_eps(aa,   bb,    eps) << endl;
+    cout << "eq_eps(1.1, 1.1, 0.0001): " << eq_eps(1.1, 1.1, 0.0001) << endl;
+    cout << "eq_eps(  1, 1  ): " << eq_eps(1,   1          ) << endl;
+    cout << "eq_eps(1.1, 1.1): " << eq_eps(1.1, 1.1) << endl;
+    cout << "eq_eps(111, 111): " << eq_eps(111,111, 1) << endl;
+    cout << "eq_eps(111, 112): " << eq_eps(111,112) << endl;
+    cout << "eq_eps(111, 112, int(0.001)): " << eq_eps(111,112, int(0.001)) << endl;
+    cout << "eq_eps(111, 112,  0): " << eq_eps(111,  112, 0) << endl;
+    cout << "eq_eps(111, 113    ): " << eq_eps(111,  113   ) << endl;
+    cout << "eq_eps(111, 113,  2): " << eq_eps(111,  113, 2) << endl;
+    cout << "eq_eps(111, 114,  2): " << eq_eps(111,  113, 2) << endl;
+    cout << "eq_eps(111, 5555  0): " << eq_eps(111, 5555, 0) << endl;
+    cout << "eq_eps(111, 5555, 0): " << eq_eps(111, 5555, 0) << endl;
     return 0;
 }
