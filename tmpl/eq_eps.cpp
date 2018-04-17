@@ -41,18 +41,7 @@ bool eq_eps( T a, T b, T rel_epsilon = std::numeric_limits<T>::epsilon()
            , typename std::enable_if<std::is_floating_point<T>::value, T>::type* = 0)
 {
     T value_range[] = {T(1.0), a, b};
-    if (std::abs(a - b) <= rel_epsilon * *std::max_element(value_range, value_range + 3))
-    {
-        cout << "rel_epsilon::::::: " << rel_epsilon
-             << "  fabs(a - b): " << fabs(a - b)
-             << "  std::abs(a - b): " <<  std::abs(a - b)
-             << "  value_range: [ "
-             << value_range[0] << ", "
-             << value_range[1] << ", "
-             << value_range[2] << " ]" << endl;
-        return true;
-    }
-    return false;
+    return (std::abs(a - b) <= rel_epsilon * *std::max_element(value_range, value_range + 3));
 }
 
 template<typename T>
@@ -155,6 +144,8 @@ int main(int argc, char* argv[])    // NB: unit tests for MapTraj
     double aa = 1.1, bb = 1.1, eps = 0.001;
     cout << "eq_eps(aa, bb, eps): " << eq_eps(aa,   bb,    eps) << endl;
     cout << "eq_eps(1.1, 1.1, 0.0001): " << eq_eps(1.1, 1.1, 0.0001) << endl;
+    assert(eq_eps(1.1, 1.1, 0.0001));
+    assert(! eq_eps(1.0001, 1.00025, 0.0001));
     cout << "eq_eps(  1, 1  ): " << eq_eps(1,   1          ) << endl;
     cout << "eq_eps(1.1, 1.1): " << eq_eps(1.1, 1.1) << endl;
     cout << "eq_eps(111, 111): " << eq_eps(111,111, 1) << endl;
