@@ -35,7 +35,6 @@ using std::string;
 
 
 /// Determins if two values are 'close enough' based on a scaled tolerance.
-/// NOTE: for integral types, the numeric_limits<T>::epsilon() will return 1.
 template<typename T>
 bool eq_eps( T a, T b, T rel_epsilon = std::numeric_limits<T>::epsilon()
            , typename std::enable_if<std::is_floating_point<T>::value, T>::type* = 0)
@@ -44,12 +43,13 @@ bool eq_eps( T a, T b, T rel_epsilon = std::numeric_limits<T>::epsilon()
     return (std::abs(a - b) <= rel_epsilon * *std::max_element(value_range, value_range + 3));
 }
 
-template<typename T>
-bool eq_eps( T a, T b, T rel_epsilon = std::numeric_limits<T>::epsilon()
-           , typename std::enable_if<std::is_integral<T>::value, T>::type* = 0)
+/// NOTE: for integral types, the numeric_limits<ValueT>::epsilon() will return 1.
+template<typename ValueT, typename DeltaT>
+bool eq_eps( ValueT a, ValueT b, DeltaT rel_epsilon = std::numeric_limits<DeltaT>::epsilon()
+           , typename std::enable_if<std::is_integral<ValueT>::value, ValueT>::type* = 0)
 {
-    T value_range[] = {T(1), a, b};
-    T limit = rel_epsilon * *std::max_element(value_range, value_range + 3);
+    ValueT value_range[] = {ValueT(1), a, b};
+    DeltaT limit = rel_epsilon * *std::max_element(value_range, value_range + 3);
     cout << "  rel_epsilon::::::: " << rel_epsilon
          << "  limit: " << limit
          << "  fabs(a - b): " << fabs(a - b)
