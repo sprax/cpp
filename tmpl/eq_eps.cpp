@@ -134,6 +134,22 @@ T median(std::vector<T> vec, typename std::enable_if<std::is_floating_point<T>::
     return (vec.size() % 2) ? median_odd(vec) : median_even(vec);
 }
 
+void try_switch(int pick)
+{
+    switch (pick) {     // int 2, 3, or 4
+        case 3:
+        cout << "Pick 3" << endl;
+        break;
+        case 4:
+        cout << "Pick 4" << endl;
+        break;
+        default:
+        std::cout << "Defaulting to Pick2 (from pick = "
+                  << pick << ")" << std::endl;
+        case 2:
+        cout << "Pick 2" << endl;
+    }
+}
 
 int main(int argc, char* argv[])    // NB: unit tests for MapTraj
 {
@@ -142,16 +158,19 @@ int main(int argc, char* argv[])    // NB: unit tests for MapTraj
     cout << "eq_eps(1.1, 1.1, 0.0001): " << eq_eps(1.1, 1.1, 0.0001) << endl;
     assert(eq_eps(1.1, 1.1, 0.0001));
     assert(! eq_eps(1.0001, 1.00025, 0.0001));
-    cout << "eq_eps(  1, 1  ): " << eq_eps(1,   1          ) << endl;
+    cout << "eq_eps(  1, 1, 0): " << eq_eps(1,   1, 0) << endl;
     cout << "eq_eps(1.1, 1.1): " << eq_eps(1.1, 1.1) << endl;
     cout << "eq_eps(111, 111): " << eq_eps(111,111, 1) << endl;
-    cout << "eq_eps(111, 112): " << eq_eps(111,112) << endl;
+    cout << "eq_eps(111, 112, 1): " << eq_eps(111,   112, 1) << endl;
     cout << "eq_eps(111, 112, int(0.001)): " << eq_eps(111,112, int(0.001)) << endl;
     cout << "eq_eps(111, 112,  0): " << eq_eps(111,  112, 0) << endl;
-    cout << "eq_eps(111, 113    ): " << eq_eps(111,  113   ) << endl;
+    cout << "eq_eps(111, 113   1): " << eq_eps(111,  113, 1) << endl;
     cout << "eq_eps(111, 113,  2): " << eq_eps(111,  113, 2) << endl;
-    cout << "eq_eps(111, 114,  2): " << eq_eps(111,  113, 2) << endl;
+    cout << "eq_eps(111, 114,  2): " << eq_eps(111,  113, 2.0) << endl;
     cout << "eq_eps(111, 5555  0): " << eq_eps(111, 5555, 0) << endl;
     cout << "eq_eps(111, 5555, 0): " << eq_eps(111, 5555, 0) << endl;
+
+    for (int j = 0; j < 5; j++)
+        try_switch(j);
     return 0;
 }
