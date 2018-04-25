@@ -47,6 +47,14 @@ time_t get_file_mtime(const char *path)
     return attr.st_mtime;
 }
 
+std::string get_file_extension(std::string file_path)
+{
+    // Finds the last persiod character of the string
+    int dot_pos = file_path.find_last_of(".");
+    std::string ext = file_path.substr(dot_pos + 1);
+    return ext;
+}
+
 char * get_latest_file_name(const char *dir_path, const char *extension)
 {
     char * latest_file_name = NULL;
@@ -57,14 +65,16 @@ char * get_latest_file_name(const char *dir_path, const char *extension)
     if (pDIR) {
         while ((pDirent = readdir(pDIR)) != NULL)
         {
+            char *file_name = pDirent->d_name;
             //exclude "." and ".."
-            if (strcmp( pDirent->d_name, "." ) == 0 ||
-            strcmp( pDirent->d_name, ".." ) == 0 )
-            {
+            if (strcmp(file_name, "." ) == 0 || strcmp(file_name, "..") == 0) {
                 continue;
             }
-            char *file_name = pDirent->d_name;
             printf("%s\n", file_name);
+            std::string file_ext = get_file_extension(file_name);
+            if (file_ext != extension) {
+                continue;
+            }
             time_t file_time = get_file_mtime(file_name);
             if (latest_file_time < file_time) {
                 latest_file_time = file_time;
@@ -124,7 +134,13 @@ std::vector<std::string> get_cpp_files(int max_num_files)
 
 int main(int argc, char* argv[])
 {
+    std::string sepl = "--------------------------\n";
     int max_num_files = 0;
     std::vector<std::string> cpp_files = get_cpp_files(max_num_files);
+    cout << sepl;
+    const char *dir_path = ".";
+    const char *extension = "cpp";
+    char *latest_file_name = get_latest_file_name(dir_path, extension);
+    cout << sepl << "latest_file_name: " << latest_file_name << endl;
     return 0;
 }
