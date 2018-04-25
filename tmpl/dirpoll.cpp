@@ -3,28 +3,22 @@
 // BUILD: clang++ -std=c++11 traj_map_.cpp -o tmpl && tmpl
 // BUILD: clang++ -std=c++14 traj_map_.cpp -o tmpl && tmpl
 
+/// TODO: use full_path or rel_path, not .
+#include <dirent.h>
 #include <chrono>
+#include <cstring>
 #include <glob.h>
 #include <iostream>
-#include <iterator>
-#include <list>
-#include <map>
-#include <set>
-#include <signal.h>
+#include <string>
+#include <sys/stat.h>
+#include <sys/types.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string>
+#include <time.h>
 #include <typeinfo>
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <dirent.h>
-#include <cstring>
 
 using std::cin;
 using std::cout;
