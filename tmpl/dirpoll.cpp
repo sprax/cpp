@@ -20,10 +20,10 @@
 #include <unordered_set>
 #include <vector>
 
-using std::cin;
-using std::cout;
-using std::endl;
-using std::string;
+// using std::cin;
+// using std::cout;
+// using std::endl;
+// using std::string;
 
 time_t get_file_ctime(char *path)
 {
@@ -43,13 +43,13 @@ time_t get_file_mtime(const char *path)
 
 std::string get_file_extension(std::string file_path)
 {
-    // Finds the last persiod character of the string
+    // Finds the last persiod character of the std::string
     int dot_pos = file_path.find_last_of(".");
     std::string ext = file_path.substr(dot_pos + 1);
     return ext;
 }
 
-char * get_latest_file_name(const char *dir_path, const char *extension)
+char * get_latest_file_name(const char *dir_path, const char *extension, int verbose=1)
 {
     char * latest_file_name = NULL;
     time_t latest_file_time = 0;
@@ -64,7 +64,9 @@ char * get_latest_file_name(const char *dir_path, const char *extension)
             if (strcmp(file_name, "." ) == 0 || strcmp(file_name, "..") == 0) {
                 continue;
             }
-            printf("%s\n", file_name);
+            if (verbose > 1) {
+                printf("GLFN ANY: %s\n", file_name);
+            }
             std::string file_ext = get_file_extension(file_name);
             if (file_ext != extension) {
                 continue;
@@ -85,9 +87,9 @@ inline bool glob_b(const std::string& pat, std::vector<std::string>& result)
     using namespace std;
     glob_t glob_result;
     glob(pat.c_str(), GLOB_TILDE, NULL, &glob_result);
-    result = vector<string>();
+    result = vector<std::string>();
     for (unsigned int i = 0; i < glob_result.gl_pathc; ++i) {
-        result.push_back(string(glob_result.gl_pathv[i]));
+        result.push_back(std::string(glob_result.gl_pathv[i]));
     }
     globfree(&glob_result);
     return result.size() > 0;
@@ -98,9 +100,9 @@ inline std::vector<std::string> glob_v(const std::string& pat)
     using namespace std;
     glob_t glob_result;
     glob(pat.c_str(), GLOB_TILDE, NULL, &glob_result);
-    vector<string> ret;
+    vector<std::string> ret;
     for (unsigned int i = 0; i < glob_result.gl_pathc; ++i) {
-        ret.push_back(string(glob_result.gl_pathv[i]));
+        ret.push_back(std::string(glob_result.gl_pathv[i]));
     }
     globfree(&glob_result);
     return ret;
@@ -110,18 +112,18 @@ static std::vector<std::string> keys{"keyA", "keyB", "keyC", "keyD"};
 
 std::vector<std::string> get_cpp_files(int max_num_files)
 {
-    string pattern = "*.cpp";
+    std::string pattern = "*.cpp";
     std::vector<std::string> files;
     if (glob_b(pattern, files)) {
         int j = max_num_files;
         for (auto& file : files) {
-            cout << "file: " << file << endl;
+            std::cout << "file: " << file << std::endl;
             if (--j == 0) {
                 break;
             }
         }
     } else {
-        cout << "No files found for: " << pattern << endl;
+        std::cout << "No files found for: " << pattern << std::endl;
     }
     return files;
 }
@@ -129,14 +131,15 @@ std::vector<std::string> get_cpp_files(int max_num_files)
 int main(int argc, char* argv[])
 {
     const char *dir_path = argc > 1 ? argv[1] : "/Users/sprax/asdf/cpp";
+    int verbose = argc > 2 ? atoi(argv[2]) : 1;
 
     std::string sepl = "--------------------------\n";
     int max_num_files = 0;
     std::vector<std::string> cpp_files = get_cpp_files(max_num_files);
-    cout << sepl;
+    std::cout << sepl;
     const char *extension = "cpp";
-    char *latest_file_name = get_latest_file_name(dir_path, extension);
+    char *latest_file_name = get_latest_file_name(dir_path, extension, verbose);
     std::string fname(latest_file_name ? latest_file_name : "[NONE]");
-    cout << sepl << "latest_file_name: " << fname << endl;
+    std::cout << sepl << "latest_file_name: " << fname << std::endl;
     return 0;
 }
