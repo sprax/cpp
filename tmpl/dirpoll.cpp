@@ -128,13 +128,15 @@ std::vector<std::string> get_cpp_files(int max_num_files)
 
 int main(int argc, char* argv[])
 {
+    const char *dir_path = argc > 1 ? argv[1] : "/Users/sprax/asdf/cpp";
+
     std::string sepl = "--------------------------\n";
     int max_num_files = 0;
     std::vector<std::string> cpp_files = get_cpp_files(max_num_files);
     cout << sepl;
-    const char *dir_path = ".";
     const char *extension = "cpp";
     char *latest_file_name = get_latest_file_name(dir_path, extension);
-    cout << sepl << "latest_file_name: " << latest_file_name << endl;
+    std::string fname(latest_file_name ? latest_file_name : "[NONE]");
+    cout << sepl << "latest_file_name: " << fname << endl;
     return 0;
 }
