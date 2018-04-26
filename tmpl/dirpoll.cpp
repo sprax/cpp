@@ -54,15 +54,15 @@ bool get_latest_file_name( const char *dir_path
                          , std::string& fname
                          , int verbose=1
 ) {
-    bool latest_file_found = false;    // return value
-    const char * latest_file_name = NULL;
+    bool latest_file_found = false;     // return value
+    std::string latest_fname_str;       // keep in outer scope
+    const char *latest_file_name = "";
     time_t latest_file_time = 0;
     DIR           *pDIR;
     struct dirent *pDirent;
     pDIR = opendir(dir_path);
     if (pDIR) {
-        while ((pDirent = readdir(pDIR)) != NULL)
-        {
+        while ((pDirent = readdir(pDIR)) != NULL) {
             char *file_name = pDirent->d_name;
             //exclude "." and ".."
             if (strcmp(file_name, "." ) == 0 || strcmp(file_name, "..") == 0) {
@@ -81,19 +81,21 @@ bool get_latest_file_name( const char *dir_path
             time_t file_time = get_file_mtime(file_name);
             if (latest_file_time < file_time) {
                 latest_file_time = file_time;
-                std::string name = name_str.substr(0, dot_pos);
-                latest_file_name = name.c_str();
+                latest_fname_str = name_str.substr(0, dot_pos);
+                latest_file_name = latest_fname_str.c_str();
+                latest_file_found = true;
                 if (verbose > 3) {
-                    std::cout << "retained: " << latest_file_name << ", ok?" << std::endl;
+                    std::cout << "retained: " << latest_fname_str << " + " << ext << std::endl;
                 }
             }
         }
         closedir(pDIR);
     }
     if (verbose > 2) {
-        std::cout << "returning: " << std::string(latest_file_name) << ", ok?" << std::endl;
+        std::cout << "returning: " << latest_fname_str << ", ok?" << std::endl;
     }
-    return latest_file_found;
+    fname = latest_fname_str;   // return by ref
+    return latest_file_found;   // return status
 }
 
 inline bool glob_b(const std::string& pat, std::vector<std::string>& result)
@@ -153,10 +155,12 @@ int main(int argc, char* argv[])
 
     std::string sepl = "--------------------------\n";
     int max_num_files = 0;
-    std::vector<std::string> cpp_files = get_cpp_files(max_num_files, verbose);
-    std::cout << sepl;
-    const char *latest_file_name = get_latest_file_name(dir_path, file_ext, verbose);
-    std::string fname(latest_file_name ? latest_file_name : "[NONE]");
+    // std::vector<std::string> cpp_files = get_cpp_files(max_num_files, verbose);
+    // std::cout << sepl;
+
+    std::string latest_file_name;
+    bool found_latest = get_latest_file_name(dir_path, file_ext, latest_file_name, verbose);
+    std::string fname(found_latest ? latest_file_name : "[NONE]");
     std::cout << sepl << "latest_file_name: " << fname << std::endl;
     return 0;
 }
