@@ -49,9 +49,9 @@ std::string get_file_extension(std::string file_path)
     return ext;
 }
 
-char * get_latest_file_name(const char *dir_path, const char *extension, int verbose=1)
+const char * get_latest_file_name(const char *dir_path, const char *extension, int verbose=1)
 {
-    char * latest_file_name = NULL;
+    const char * latest_file_name = NULL;
     time_t latest_file_time = 0;
     DIR           *pDIR;
     struct dirent *pDirent;
@@ -67,14 +67,17 @@ char * get_latest_file_name(const char *dir_path, const char *extension, int ver
             if (verbose > 1) {
                 printf("GLFN ANY: %s\n", file_name);
             }
-            std::string file_ext = get_file_extension(file_name);
+            std::string name_str = file_name;
+            int dot_pos = name_str.find_last_of(".");
+            std::string ext = name_str.substr(dot_pos + 1);            std::string file_ext = get_file_extension(file_name);
             if (file_ext != extension) {
                 continue;
             }
             time_t file_time = get_file_mtime(file_name);
             if (latest_file_time < file_time) {
                 latest_file_time = file_time;
-                latest_file_name = file_name;
+                std::string name = name_str.substr(0, dot_pos);
+                latest_file_name = name.c_str();
             }
         }
         closedir(pDIR);
