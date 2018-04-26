@@ -141,7 +141,7 @@ int main(int argc, char* argv[])
     std::vector<std::string> cpp_files = get_cpp_files(max_num_files);
     std::cout << sepl;
     const char *extension = "cpp";
-    char *latest_file_name = get_latest_file_name(dir_path, extension, verbose);
+    const char *latest_file_name = get_latest_file_name(dir_path, extension, verbose);
     std::string fname(latest_file_name ? latest_file_name : "[NONE]");
     std::cout << sepl << "latest_file_name: " << fname << std::endl;
     return 0;
