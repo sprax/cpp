@@ -78,7 +78,9 @@ bool get_latest_file_name( const char *dir_path
                 std::cout << "continue: " << name_str << "  ext: " << ext << std::endl;
                 continue;
             }
-            time_t file_time = get_file_mtime(file_name);
+            std::string pref_path(dir_path);
+            std::string full_path = pref_path + "/" + name_str;
+            time_t file_time = get_file_mtime(full_path.c_str());
             if (latest_file_time < file_time) {
                 latest_file_time = file_time;
                 latest_fname_str = name_str.substr(0, dot_pos);
@@ -154,7 +156,7 @@ int main(int argc, char* argv[])
     std::cout << "$RUN " << argv[0] << " " << dir_path << " " << file_ext << std::endl;
 
     std::string sepl = "--------------------------\n";
-    int max_num_files = 0;
+    // int max_num_files = 0;
     // std::vector<std::string> cpp_files = get_cpp_files(max_num_files, verbose);
     // std::cout << sepl;
 
