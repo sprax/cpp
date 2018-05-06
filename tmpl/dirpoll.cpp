@@ -1,7 +1,6 @@
-// enum_temp.cpp : template classes using enum values as template parameters
+// dirpoll.cpp : template classes using enum values as template parameters
 // Requires C11 or later
-// BUILD: clang++ -std=c++11 traj_map_.cpp -o tmpl && tmpl
-// BUILD: clang++ -std=c++14 traj_map_.cpp -o tmpl && tmpl
+// BUILD: clang++ -std=c++11 dirpoll.cpp -o tmpl && tmpl
 
 /// TODO: use full_path or rel_path, not .
 #include <dirent.h>
@@ -16,6 +15,8 @@
 #include <stdlib.h>
 #include <time.h>
 #include <typeinfo>
+#include <vector>
+
 
 // using std::cin;
 // using std::cout;
@@ -162,8 +163,9 @@ int main(int argc, char* argv[])
     // std::vector<std::string> cpp_files = get_cpp_files(max_num_files, verbose);
     // std::cout << sepl;
 
+    time_t t_zero = 0;
     std::string latest_file_name;
-    bool found_latest = get_latest_file_name(dir_path, file_ext, latest_file_name, verbose);
+    bool found_latest = get_latest_file_name(dir_path, file_ext, latest_file_name, t_zero, verbose);
     std::string fname(found_latest ? latest_file_name : "[NONE]");
     std::cout << sepl << "latest_file_name: " << fname << std::endl;
     return 0;
