@@ -16,9 +16,6 @@
 #include <stdlib.h>
 #include <time.h>
 #include <typeinfo>
-#include <unordered_map>
-#include <unordered_set>
-#include <vector>
 
 // using std::cin;
 // using std::cout;
@@ -51,13 +48,12 @@ std::string get_file_extension(std::string file_path)
 
 bool get_latest_file_name( const char *dir_path
                          , const char *file_ext
-                         , std::string& fname
-                         , int verbose=1
+                         , std::string& latest_file_name
+                         , time_t &latest_file_time
+                         , int verbose = 1
 ) {
-    bool latest_file_found = false;     // return value
+    bool later_file_found = false;     // return value
     std::string latest_fname_str;       // keep in outer scope
-    const char *latest_file_name = "";
-    time_t latest_file_time = 0;
     DIR           *pDIR;
     struct dirent *pDirent;
     pDIR = opendir(dir_path);
@@ -81,13 +77,18 @@ bool get_latest_file_name( const char *dir_path
             std::string pref_path(dir_path);
             std::string full_path = pref_path + "/" + name_str;
             time_t file_time = get_file_mtime(full_path.c_str());
+            if (verbose > 3) {
+                std::cout << "    file_name: " << file_name
+                          << "    late_time: " << latest_file_time << " ? "
+                          << "    file_time: " << file_time << std::endl;
+            }
             if (latest_file_time < file_time) {
                 latest_file_time = file_time;
                 latest_fname_str = name_str.substr(0, dot_pos);
-                latest_file_name = latest_fname_str.c_str();
-                latest_file_found = true;
+                later_file_found = true;
                 if (verbose > 3) {
-                    std::cout << "retained: " << latest_fname_str << " + " << ext << std::endl;
+                    std::cout << "  retained: " << latest_fname_str << " + " << ext
+                              << "  file_time: " << file_time << std::endl;
                 }
             }
         }
@@ -96,9 +97,10 @@ bool get_latest_file_name( const char *dir_path
     if (verbose > 2) {
         std::cout << "returning: " << latest_fname_str << ", ok?" << std::endl;
     }
-    fname = latest_fname_str;   // return by ref
-    return latest_file_found;   // return status
+    latest_file_name = latest_fname_str;   // return by ref
+    return later_file_found;   // return status
 }
+
 
 inline bool glob_b(const std::string& pat, std::vector<std::string>& result)
 {
