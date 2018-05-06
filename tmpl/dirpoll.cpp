@@ -18,11 +18,6 @@
 #include <vector>
 
 
-// using std::cin;
-// using std::cout;
-// using std::endl;
-// using std::string;
-
 time_t get_file_ctime(char *path)
 {
     struct stat attr;
@@ -151,7 +146,7 @@ std::vector<std::string> get_cpp_files(int max_num_files, int verbose)
     return files;
 }
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
     const char *dir_path = argc > 1 ? argv[1] : "/Users/sprax/asdf/cpp/tmpl";
     const char *file_ext = argc > 2 ? argv[2] : "cpp";
