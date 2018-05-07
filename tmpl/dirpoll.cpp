@@ -163,5 +163,23 @@ int main(int argc, char *argv[])
     bool found_latest = get_latest_file_name(dir_path, file_ext, latest_file_name, t_zero, verbose);
     std::string fname(found_latest ? latest_file_name : "[NONE]");
     std::cout << sepl << "latest_file_name: " << fname << std::endl;
+
+    std::string full_path = "/usr/homes/sprax/tea/cup/tempest.txt";
+    size_t dir_pos = full_path.find_last_of("/");
+    std::string file_name = (dir_pos == std::string::npos) ? full_path : full_path.substr(dir_pos + 1);
+    size_t dot_pos = file_name.find_last_of(".");
+    std::string base_name = (dot_pos == std::string::npos) ? file_name : file_name.substr(0, dot_pos);
+    std::string file_extn = file_name.substr(dot_pos + 1);
+    std::cout << "Using find_last_of: " << std::endl;
+    std::cout << full_path << " => " << file_name << ", " << base_name << ", " << file_extn << std::endl;
+
+    full_path = "tempest.in.teacup";
+    dir_pos = full_path.find_last_of("/");
+    file_name = (dir_pos == std::string::npos) ? full_path : full_path.substr(dir_pos + 1);
+    dot_pos = file_name.find_last_of(".");
+    base_name = (dot_pos == std::string::npos) ? file_name : file_name.substr(0, dot_pos);
+    file_extn = file_name.substr(dot_pos + 1);
+    std::cout << "Using find_last_of: " << std::endl;
+    std::cout << full_path << " => " << file_name << ", " << base_name << ", " << file_extn << std::endl;
     return 0;
 }
