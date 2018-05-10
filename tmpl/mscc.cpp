@@ -2,6 +2,8 @@
 // Requires C11 or later
 // BUILD: clang++ -std=c++11 traj_map_.cpp -o tmpl && tmpl
 // BUILD: clang++ -std=c++14 traj_map_.cpp -o tmpl && tmpl
+// Windows:
+// BUILD in Developer Command Prompt: cl mscc.cpp && link mscc.obj && mscc.exe
 
 #include <iostream>
 #include <chrono>
@@ -110,7 +112,7 @@ int main(int argc, char* argv[])    // NB: unit tests for MapTraj
         cout << name << endl;
     }
 
-    /*
+#ifndef _WIN32
     std::vector<std::string> myvector(default_map_keys);
     std::sort( myvector.begin(), myvector.end()
              , [](std::string& aa, std::string& bb) -> bool{ return aa.length() > bb.length(); });
@@ -118,7 +120,7 @@ int main(int argc, char* argv[])    // NB: unit tests for MapTraj
     for (auto& str : myvector) {
         cout << str << endl;
     }
-    */
+#endif
 
 
     string name_f = name_list.front();
