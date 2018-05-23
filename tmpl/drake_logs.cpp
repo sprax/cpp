@@ -52,12 +52,10 @@ int main(int argc, char* argv[])
     const std::vector<spdlog::sink_ptr> my_sinks = logger->sinks();
 
 
-    for (auto const& value : std_vec)
-    {
+    for (auto const& value : std_vec) {
         drake::log()->info("Test C: std::vector: {}", value);
     }
-    for (auto const& sink : my_sinks)
-    {
+    for (auto const& sink : my_sinks) {
         drake::log()->info("Test D: sinks: {}", sink);
     }
 
