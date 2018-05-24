@@ -20,7 +20,7 @@ void make_dir(const std::string& path)
     }
 }
 
-std::string make_name( const std::string& base, unsigned seq_num
+std::string make_xyz_name( const std::string& base, unsigned seq_num
                      , double xx, double yy, double zz
 ) {
     static const std::string sep("_");
@@ -42,9 +42,8 @@ int main(int, char* [])
     auto console = spdlog::stdout_color_mt("console");
     console->info("Welcome to spdlog!") ;
 
-    auto name = make_name("name", 23, -0.1234, 0.5678, -0.9012);
+    auto name = make_xyz_name("name", 23, -0.1234, 0.5678, -0.9012);
     console->info("The name: <{}>", name);
-
 
     try
     {
