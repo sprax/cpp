@@ -59,6 +59,7 @@ int main(int argc, char* argv[])
         drake::log()->info("Test D: sinks: {}", sink);
     }
 
+
     // try
     // {
     //     // Create basic file logger (not rotated)
