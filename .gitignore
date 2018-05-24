@@ -32,6 +32,7 @@ build/
 *_i.c
 *_p.c
 *.ilk
+*.log
 *.meta
 *.obj
 *.pch
@@ -45,12 +46,10 @@ build/
 *.tlh
 *.tmp
 *.tmp_proj
-*.log
 *.vspscc
 *.vssscc
 .builds
 *.pidb
-*.log
 *.scc
 
 # OS generated files #
@@ -268,7 +267,7 @@ DerivedData/
 # NB: slash on the end, so we only remove the FOLDER, not any files that were badly named "build"
 
 build/
-
+logs/
 
 #####
 # Xcode private settings (window sizes, bookmarks, breakpoints, custom executables, smart groups)

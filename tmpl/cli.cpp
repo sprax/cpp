@@ -1,6 +1,6 @@
 // dirpoll.cpp : template classes using enum values as template parameters
 // Requires C11 or later
-// BUILD: clang++ -std=c++11 cli.cpp -o tmpl && tmpl
+// BUILD: clang++ -std=c++11 cli.cpp -o cli.out && ./cli.out
 #include "CLI11.hpp"
 #include <iostream>
 
@@ -29,6 +29,7 @@ int main(int argc, char **argv) {
     std::string ts("first part, " "second part.");
     std::cout << "TEST STRING: " <<  ts << std::endl;
 
+    // throw std::runtime_error("one, " "two, " "three!");
 
     return 0;
 }

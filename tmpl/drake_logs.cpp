@@ -11,7 +11,7 @@
 #if 0
 #include "spdlog/spdlog.h"
 #else
-#include "drake/common/text_logging_gflags.h"
+#include "/opt/drake/include/drake/common/text_logging_gflags.h"
 #endif
 
 void make_dir(const std::string& path)
@@ -37,7 +37,7 @@ int main(int argc, char* argv[])
     std::string log_dir_path("logs");
     make_dir(log_dir_path);
 
-    //Multithreaded console logger(with color support)
+    // Multithreaded console logger(with color support)
     // auto console = spdlog::stdout_color_mt("console");
     // console->info("Welcome to spdlog!") ;
     // console->info("An info message example {}..", 1);
