@@ -43,7 +43,12 @@ int main(int, char* [])
     console->info("Welcome to spdlog!") ;
 
     auto name = make_xyz_name("name", 23, -0.1234, 0.5678, -0.9012);
-    console->info("The name: <{}>", name);
+    console->info("The xyz-name: <{}>", name);
+
+    console->info("name.c_str(): <{}>", name.c_str());  // 2nd argument is lost
+    console->info("(                )", name.c_str());
+    console->info(name.c_str());
+    console->info(name);
 
     try
     {
