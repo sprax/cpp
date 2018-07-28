@@ -53,4 +53,6 @@ int main(int, char* [])
     console->info("Welcome to spdlog!") ;
     auto name = make_name("name", 23, -0.1234, 0.5678, -0.9012);
     console->info("The name: <{}>", name);
+    const char *full_path = get_program_full_path();
+    console->info("The program's full path, from proc: {}", (full_path == nullptr ? "NULL" : full_path));
 }
