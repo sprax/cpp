@@ -28,7 +28,7 @@ char *get_program_full_path()
     char *path = (char *)malloc(PATH_MAX);
     if (path != NULL) {
         if (readlink("/proc/self/exe", path, PATH_MAX) == -1) {
-            std::cout << "get_program_full_path FAILED! -- readlink returned -1" << std::endl;
+            std::cout << "get_program_full_path FAILED! -- readlink(\"/proc/self/exe\") returned -1" << std::endl;
             free(path);
             path = NULL;
         }
