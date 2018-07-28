@@ -1,3 +1,4 @@
+// BUILD: clang++ -std=c++14 log_name.cpp -o tmpl && tmpl
 #include "spdlog/spdlog.h"
 #include <iomanip>
 #include <iostream>
@@ -19,6 +20,31 @@ std::string make_name( const std::string& base, unsigned seq_num
         << ".txt";
     return oss.str();
 }
+
+
+/// old-school way of getting the executable's full path in a *nix-like system.
+char *get_program_full_path()
+{
+    char *path = (char *)malloc(PATH_MAX);
+    if (path != NULL) {
+        if (readlink("/proc/self/exe", path, PATH_MAX) == -1) {
+            free(path);
+            path = NULL;
+        }
+    }
+    return path;
+}
+
+std::string get_program_short_name()
+{
+    std::string full_path = get_program_full_path();
+    size_t dir_pos = full_path.find_last_of("/");
+    std::string file_name = (dir_pos == std::string::npos) ? full_path : full_path.substr(dir_pos + 1);
+    size_t dot_pos = file_name.find_last_of(".");
+    std::string base_name = (dot_pos == std::string::npos) ? file_name : file_name.substr(0, dot_pos);
+    return base_name;
+}
+
 
 
 int main(int, char* [])

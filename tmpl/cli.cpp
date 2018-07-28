@@ -29,6 +29,13 @@ int main(int argc, char **argv) {
     std::string ts("first part, " "second part.");
     std::cout << "TEST STRING: " <<  ts << std::endl;
 
+    s = "";
+    if (s.empty()) {
+        std::cout << "nothing is true, and truth is empty!  (" << s << ")" << std::endl;
+    } else {
+        std::cout << "nothing is not only empty, it's also false!  (" << s << ")" << std::endl;
+    }
+
     // throw std::runtime_error("one, " "two, " "three!");
 
     return 0;
