@@ -46,9 +46,8 @@ std::string get_program_short_name()
     return base_name;
 }
 
-
-
-int main(int, char* [])
+///////////////////////////////////////////////////////////////////////////////
+int main(int argc, char* argv[])
 {
     auto console = spdlog::stdout_color_st("console");
     console->info("Welcome to spdlog!") ;
@@ -56,4 +55,5 @@ int main(int, char* [])
     console->info("The name: <{}>", name);
     const char *full_path = get_program_full_path();
     console->info("The program's full path, from proc: {}", (full_path == nullptr ? "NULL" : full_path));
+    console->info("The program argv[0]=({})", argv[0]);
 }
