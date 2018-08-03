@@ -49,7 +49,6 @@ else()
 endif()
 message("============== That SharedLibExt is ${SharedLibExt} ==============")
 
- 
 find_package(PythonLibs 2.7.12 COMPONENTS Interpreter Development)
 if (${PYTHONLIBS_FOUND})
     message("Found PythonLibs: PYTHON_LIBRARIES: [${PYTHON_LIBRARIES}]")
@@ -58,6 +57,11 @@ else()
 endif()
 return()
 
+if (True)
+    execute_process(COMMAND python2-config --libs OUTPUT_VARIABLE PYLIB)
+    string(REGEX REPLACE "\n$" "" PYLIB "${PYLIB}")
+    message("What I got of PYIB is sick: ${PYLIB} <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
+endif()
 
 if (False)
   if ($ENV{Python2_ROOT_DIR})
@@ -101,9 +105,9 @@ if (${NO_WAY})
   else()
     find_package(Python2 2.7.12)
     # find_package(PythonLibs 2.7 REQUIRED) # deprecated: https://cmake.org/cmake/help/latest/module/FindPythonInterp.html
-    if (${Python2_LIBRARIES}) 
+    if (${Python2_LIBRARIES})
         find_package( Python2 2.7.12 REQUIRED COMPONENTS Interpreter Development)
-        set(PYTHON_LIBRARIES ${Python2_LIBRARIES} ) 
+        set(PYTHON_LIBRARIES ${Python2_LIBRARIES} )
         set(PYTHON_INCLUDE_DIRS "${Python2_INCLUDE_DIRS}"
             "${Python2_LIBRARY_DIRS}/python2.7/dist-packages/numpy/core/include"
             "${Python2_LIBRARY_DIRS}/python2.7/site-packages/numpy/core/include")
