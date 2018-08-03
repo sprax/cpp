@@ -48,7 +48,12 @@ if ($ENV{Python2_ROOT_DIR})
     message("=========================== Python2_ROOT_DIR is ${Python2_ROOT_DIR}")
 else()
     message("--------------------------- Python2_ROOT_DIR is not defined . . .")
-    set(Python2_ROOT_DIR "/Users/sprax/.pyenv/versions/2.7.15")
+    IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+        set(Python2_ROOT_DIR "/Users/sprax/.pyenv/versions/2.7.15")
+    ELSE()
+        set(Python2_ROOT_DIR "/usr/lib/python2.7")
+    ENDIF()
+
     message("--------------------------- Python2_ROOT_DIR is now ${Python2_ROOT_DIR}")
 endif()
 
