@@ -43,6 +43,12 @@ pkg_check_modules(PC_ZeroMQ QUIET zmq)
 #     message("####################################################################################################################")
 # endif()
  
+if (True)
+    execute_process(COMMAND python2-config --libs OUTPUT_VARIABLE PYLIB)
+    string(REGEX REPLACE "\n$" "" PYLIB "${PYLIB}")
+    message("What I got of PYIB is sick: ${PYLIB} <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
+endif()
+
 if ($ENV{Python2_ROOT_DIR})
     set(Python2_ROOT_DIR $ENV{Python2_ROOT_DIR})
     message("=========================== Python2_ROOT_DIR is ${Python2_ROOT_DIR}")
