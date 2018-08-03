@@ -42,36 +42,62 @@ pkg_check_modules(PC_ZeroMQ QUIET zmq)
 #     message("# If the compiler says fatal error: 'Python.h' file not found', see the PYTHON ENVIRONMENT section in CMakeLists.txt")
 #     message("####################################################################################################################")
 # endif()
- 
+if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+        set(ShardLibExt "dylib")
+else()
+        set(ShardLibExt "so")
+endif()
+
+
 if (True)
     execute_process(COMMAND python2-config --libs OUTPUT_VARIABLE PYLIB)
     string(REGEX REPLACE "\n$" "" PYLIB "${PYLIB}")
     message("What I got of PYIB is sick: ${PYLIB} <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
 endif()
 
-if ($ENV{Python2_ROOT_DIR})
+if (False)
+  if ($ENV{Python2_ROOT_DIR})
     set(Python2_ROOT_DIR $ENV{Python2_ROOT_DIR})
     message("=========================== Python2_ROOT_DIR is ${Python2_ROOT_DIR}")
-else()
+  else()
     message("--------------------------- Python2_ROOT_DIR is not defined . . .")
-    set(Python2_ROOT_DIR "/Users/sprax/.pyenv/versions/2.7.15")
+    IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+        set(Python2_ROOT_DIR "/Users/sprax/.pyenv/versions/2.7.15")
+    ELSE()
+        set(Python2_ROOT_DIR "/usr/lib/python2.7")
+    ENDIF()
+
     message("--------------------------- Python2_ROOT_DIR is now ${Python2_ROOT_DIR}")
+  endif()
 endif()
 
 # return()
-# find_package( Python2 2.7.15 REQUIRED COMPONENTS Interpreter Development)
+find_package(PythonLibs 2.7.12 REQUIRED COMPONENTS Interpreter Development)
 
-if ($ENV{CIRCLECI})
+execute_process(COMMAND python-config --prefix OUTPUT_VARIABLE PYTHON_SEARCH_PATH)
+string(REGEX REPLACE "\n$" "" PYTHON_SEARCH_PATH "${PYTHON_SEARCH_PATH}")
+# file(GLOB_RECURSE PYTHON_DY_LIBS ${PYTHON_SEARCH_PATH}/lib/libpython2.7*.${SharedLibExt})
+file(GLOB_RECURSE PYTHON_DY_LIBS ${PYTHON_SEARCH_PATH}/lib/libpython2.7*.so)
+if (PYTHON_DY_LIBS)
+    list(GET PYTHON_DY_LIBS 0 PYTHON_LIBRARY)
+    message(">>>> Find shared libpython: ${PYTHON_LIBRARY}")
+else()
+    message(WARNING ">>>> Cannot find shared libpython, try find_package")
+endif()
+
+
+if (${NO_WAY})
+  if ($ENV{CIRCLECI})
     find_package(Python2 2.7.12 REQUIRED Interpreter Development)
     set(PYTHON_LIBRARIES ${Python2_LIBRARIES} ) #"${PYTHON_BASE_DIR}/lib/libpython2.7.dylib")
     set(PYTHON_INCLUDE_DIRS "${Python2_INCLUDE_DIRS}"
         "/usr/lib/python2.7/dist-packages/numpy/core/include")
-else()
+  else()
     find_package(Python2 2.7.12)
     # find_package(PythonLibs 2.7 REQUIRED) # deprecated: https://cmake.org/cmake/help/latest/module/FindPythonInterp.html
-    if (${Python2_LIBRARIES}) 
+    if (${Python2_LIBRARIES})
         find_package( Python2 2.7.12 REQUIRED COMPONENTS Interpreter Development)
-        set(PYTHON_LIBRARIES ${Python2_LIBRARIES} ) 
+        set(PYTHON_LIBRARIES ${Python2_LIBRARIES} )
         set(PYTHON_INCLUDE_DIRS "${Python2_INCLUDE_DIRS}"
             "${Python2_LIBRARY_DIRS}/python2.7/dist-packages/numpy/core/include"
             "${Python2_LIBRARY_DIRS}/python2.7/site-packages/numpy/core/include")
@@ -80,7 +106,9 @@ else()
         set(PYTHON_INCLUDE_DIRS $ENV{HOME}/.pyenv/versions/2.7.15/include/python2.7
             $ENV{HOME}/.pyenv/versions/2.7.15/lib/python2.7/site-packages/numpy/core/include)
     endif()
+  endif()
 endif()
+
 
 message(STATUS "CMake found this configuration for Python2:")
 message(STATUS "Python2_LIBRARIES:    [${Python2_LIBRARIES}]")
