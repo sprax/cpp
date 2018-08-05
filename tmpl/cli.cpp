@@ -1,7 +1,12 @@
 // dirpoll.cpp : template classes using enum values as template parameters
 // Requires C11 or later
 // BUILD: clang++ -std=c++11 cli.cpp -o cli.out && ./cli.out
-#include "CLI11.hpp"
+#if 1
+#include <CLI11.hpp>
+#else
+#include <CLI/CLI.hpp>
+#endif
+
 #include <iostream>
 
 int main(int argc, char **argv) {
