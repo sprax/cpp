@@ -52,7 +52,7 @@ endif()
 if (True)
     execute_process(COMMAND python2-config --libs OUTPUT_VARIABLE PYLIB)
     string(REGEX REPLACE "\n$" "" PYLIB "${PYLIB}")
-    message("What I got of PYIB is sick: ${PYLIB} <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
+    message("What I got of PYLIB is sick: ${PYLIB} <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
 endif()
 
 if (False)
