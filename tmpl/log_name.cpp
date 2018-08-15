@@ -25,7 +25,9 @@ std::string make_name( const std::string& base, unsigned seq_num
 /// old-school way of getting the executable's full path in a *nix-like system.
 char *get_program_full_path()
 {
-    char *path = (char *)malloc(PATH_MAX);
+    char *path = nullptr; 
+#if defined(__linux__) || defined(__CYGWIN__) || defined(__sun)
+    path = (char *)malloc(PATH_MAX);
     if (path != NULL) {
         if (readlink("/proc/self/exe", path, PATH_MAX) == -1) {
             std::cout << "get_program_full_path FAILED! -- readlink(\"/proc/self/exe\") returned -1" << std::endl;
@@ -33,6 +35,9 @@ char *get_program_full_path()
             path = NULL;
         }
     }
+#elif defined(__APPLE__)
+
+#endif
     return path;
 }
 
