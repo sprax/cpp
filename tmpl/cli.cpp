@@ -24,7 +24,7 @@ int main(int argc, char **argv) {
 
     CLI11_PARSE(app, argc, argv);
 
-    std::cout << "bool flag value: " << f << std::endl;
+    std::cout << "bool flag" " value: " << f << std::endl;
     std::cout << "int param value: " << p << std::endl;
     std::cout << "str param value: " << s << std::endl;
     std::cout << "===========================" << std::endl;
