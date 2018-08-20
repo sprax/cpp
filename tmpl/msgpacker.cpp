@@ -54,7 +54,7 @@ int test_msgpack(void)
     msgpack::packer<msgpack::sbuffer> packer(&w_buffer);
     packer.pack_map(2);
     packer.pack(std::string("x"));
-    packer.pack(3);
+    packer.pack(4);
     packer.pack(std::string("y"));
     packer.pack(3.4321);
 
@@ -68,11 +68,27 @@ int test_msgpack(void)
     }
 
     // read from saved file
-    void *result = malloc(max_bytes);
-    if (! read_binary_file(full_path, result, max_bytes)) {
+    void *v_result = malloc(max_bytes);
+    if (! read_binary_file(full_path, v_result, max_bytes)) {
         std::cerr << "read_binary_file FAILED!" << std::endl;
         return 2;
     }
+
+    const char *c_result = (const char *)v_result;
+    msgpack::object_handle oh = msgpack::unpack(c_result, max_bytes);
+
+     // deserialized object is valid during the msgpack::object_handle instance is alive.
+     msgpack::object deserialized = oh.get();
+
+     // msgpack::object supports ostream.
+     std::cout << deserialized << std::endl;
+
+     // // convert msgpack::object instance into the original type.
+     // // if the type is mismatched, it throws msgpack::type_error exception.
+     // msgpack::type::tuple<int, bool, std::string> dst;
+     // deserialized.convert(dst);
+
+
 
     return 0;
 }
