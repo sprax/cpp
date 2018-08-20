@@ -46,7 +46,7 @@ bool read_binary_file(const std::string& full_path, void *result, unsigned max_b
 
 
 
-int test_msgpack(void)
+int test_msgpack_bin(void)
 {
     // serializes multiple objects into one message containing a map using msgpack::packer.
     msgpack::sbuffer w_buffer;
@@ -133,5 +133,5 @@ int main(int argc, char **argv) {
     }
 
     std::cout << MSGPACK_VERSION << std::endl;
-    return test_msgpack();
+    return test_msgpack_bin();
 }
