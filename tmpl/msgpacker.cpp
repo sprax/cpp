@@ -44,7 +44,51 @@ bool read_binary_file(const std::string& full_path, void *result, unsigned max_b
     return false;
 }
 
+// hex_dump is not a part of msgpack-c.
+inline std::ostream& hex_dump(std::ostream& o, std::string const& v) {
+    std::ios::fmtflags f(o.flags());
+    o << std::hex;
+    for (auto c : v) {
+        o << "0x" << std::setw(2) << std::setfill('0') << (static_cast<int>(c) & 0xff) << ' ';
+    }
+    o.flags(f);
+    return o;
+}
 
+int read_into_map(const std::string& full_path, unsigned max_bytes, int verbose = 1)
+{
+    // read from saved file
+    void *v_result = malloc(max_bytes);
+    if (! read_binary_file(full_path, v_result, max_bytes)) {
+        std::cerr << "read_binary_file FAILED!" << std::endl;
+        return 2;
+    }
+
+    const char *c_result = (const char *)v_result;
+    msgpack::object_handle oh = msgpack::unpack(c_result, max_bytes);
+
+    // deserialized object is valid during the msgpack::object_handle instance is alive.
+    msgpack::object deserialized = oh.get();
+
+    // msgpack::object supports ostream.
+    std::cout << deserialized << std::endl;
+
+    // // convert msgpack::object instance into the original type.
+    // // if the type is mismatched, it throws msgpack::type_error exception.
+    // msgpack::type::tuple<int, bool, std::string> dst;
+
+    std::map<std::string, float> dst_map;
+    deserialized.convert(dst_map);
+
+    std::cout << "Printing deserialized and converted dst_map" << std::endl;
+    for (auto const& pr : dst_map) {
+        std::cout << pr.first  // string (key)
+                  << ":\t"
+                  << pr.second // string's value
+                  << std::endl;
+    }
+    return 0;
+}
 
 int test_msgpack_bin(void)
 {
@@ -67,40 +111,37 @@ int test_msgpack_bin(void)
         return 1;
     }
 
-    // read from saved file
-    void *v_result = malloc(max_bytes);
-    if (! read_binary_file(full_path, v_result, max_bytes)) {
-        std::cerr << "read_binary_file FAILED!" << std::endl;
-        return 2;
-    }
-
-    const char *c_result = (const char *)v_result;
-    msgpack::object_handle oh = msgpack::unpack(c_result, max_bytes);
-
-     // deserialized object is valid during the msgpack::object_handle instance is alive.
-     msgpack::object deserialized = oh.get();
-
-     // msgpack::object supports ostream.
-     std::cout << deserialized << std::endl;
-
-     // // convert msgpack::object instance into the original type.
-     // // if the type is mismatched, it throws msgpack::type_error exception.
-     // msgpack::type::tuple<int, bool, std::string> dst;
-
-    std::map<std::string, float> dst_map;
-    deserialized.convert(dst_map);
-
-    std::cout << "Printing deserialized and converted dst_map" << std::endl;
-    for (auto const& pr : dst_map) {
-        std::cout << pr.first  // string (key)
-                  << ":\t"
-                  << pr.second // string's value
-                  << std::endl;
-    }
-    return 0;
+    int verbose = 2;
+    return read_into_map(full_path, max_bytes, verbose);
 }
 
-int main(int argc, char **argv) {
+
+
+
+int test_msgpack_map()
+{
+    std::stringstream ss;
+    std::map<std::string, int> v { { "ABC", 5 }, { "DEFG", 2 } };
+    msgpack::pack(ss, v);
+    hex_dump(std::cout, ss.str()) << std::endl;
+
+    unsigned max_bytes = ss.str().size();
+    // write to file
+    void *data = (void *)ss.str().data();
+    std::string full_path = "packed.map";
+    if (! write_binary_file(full_path, data, max_bytes)) {
+        std::cerr << "write_binary_file FAILED!" << std::endl;
+        return 1;
+    }
+
+    // read from saved file
+    int verbose = 2;
+    return read_into_map(full_path, max_bytes, verbose);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+int main(int argc, char **argv)
+{
     CLI::App app{"App description"};
 
     // Define options
@@ -133,5 +174,7 @@ int main(int argc, char **argv) {
     }
 
     std::cout << MSGPACK_VERSION << std::endl;
-    return test_msgpack_bin();
+    int bad = test_msgpack_bin();
+    int err = test_msgpack_map();
+    return bad + err;
 }
