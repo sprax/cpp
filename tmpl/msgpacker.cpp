@@ -86,10 +86,17 @@ int test_msgpack(void)
      // // convert msgpack::object instance into the original type.
      // // if the type is mismatched, it throws msgpack::type_error exception.
      // msgpack::type::tuple<int, bool, std::string> dst;
-     // deserialized.convert(dst);
 
+    std::map<std::string, float> dst_map;
+    deserialized.convert(dst_map);
 
-
+    std::cout << "Printing deserialized and converted dst_map" << std::endl;
+    for (auto const& pr : dst_map) {
+        std::cout << pr.first  // string (key)
+                  << ":\t"
+                  << pr.second // string's value
+                  << std::endl;
+    }
     return 0;
 }
 
