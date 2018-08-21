@@ -8,6 +8,7 @@
 #endif
 #include <msgpack.hpp>
 
+#include <limits.h>
 #include <iostream>
 #include <string>
 
@@ -116,7 +117,36 @@ int test_msgpack_bin(void)
 }
 
 
+struct Thing {
+    char    chr = SCHAR_MAX;
+    short   shn = SHRT_MIN;
+    int     tin = INT_MAX;
+    long    lin = LONG_MIN;
+    long long lln = LLONG_MAX;
+    MSGPACK_DEFINE(chr, shn, tin, lin, lln);
+};
 
+
+int test_thing()
+{
+    Thing thing;
+
+    std::string path("thing.bin");
+    {
+        std::ofstream ofs(path);
+        msgpack::pack(ofs, thing);
+    }   // ofstream destructor closes file here.
+
+    // Deserialize the serialized data
+    std::ifstream ifs(path, std::ifstream::in);
+    std::stringstream buffer;
+    buffer << ifs.rdbuf();
+    msgpack::unpacked upd;
+    msgpack::unpack(upd, buffer.str().data(), buffer.str().size());
+    std::cout << upd.get() << std::endl;
+
+    return 0;
+}
 
 int test_msgpack_map()
 {
@@ -176,5 +206,6 @@ int main(int argc, char **argv)
     std::cout << MSGPACK_VERSION << std::endl;
     int bad = test_msgpack_bin();
     int err = test_msgpack_map();
-    return bad + err;
+    int res = test_thing();
+    return bad + err + res;
 }
