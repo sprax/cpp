@@ -118,11 +118,11 @@ int test_msgpack_bin(void)
 
 
 struct Thing {
-    char    chr = SCHAR_MAX;
-    short   shn = SHRT_MIN;
-    int     tin = INT_MAX;
-    long    lin = LONG_MIN;
-    long long lln = LLONG_MAX;
+    char        chr = SCHAR_MAX;
+    short       shn = SHRT_MIN;
+    int         tin = INT_MAX;
+    long        lin = LONG_MIN;
+    long long   lln = LLONG_MAX;
     MSGPACK_DEFINE(chr, shn, tin, lin, lln);
 };
 
