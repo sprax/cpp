@@ -25,7 +25,7 @@ std::string make_name( const std::string& base, unsigned seq_num
 /// old-school way of getting the executable's full path in a *nix-like system.
 char *get_program_full_path()
 {
-    char *path = nullptr; 
+    char *path = nullptr;
 #if defined(__linux__) || defined(__CYGWIN__) || defined(__sun)
     path = (char *)malloc(PATH_MAX);
     if (path != NULL) {
