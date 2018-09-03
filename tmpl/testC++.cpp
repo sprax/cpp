@@ -181,6 +181,12 @@ void sleep(unsigned millis)
 
 int main(int argc, char* argv[])    // NB: This is more a unit test than an app; it does not play ghost!
 {
+
+    vector<double> vd { 1.1, 2.2, 3.3 }, vr& = vd;
+    vr = { 1, 2};
+
+    std::cout << vd[0] << std::endl;
+
     const char *progName = argv[0] ? argv[0] : defProgramName;
     const char *yourName = (argc > 0 && argv[1]) ? argv[1] : "No Name";
     const unsigned millis = 2222;
