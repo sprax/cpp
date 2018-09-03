@@ -12,6 +12,7 @@
 #include <typeinfo>
 #include <unordered_map>
 #include <unordered_set>
+#include <vector>
 
 #ifdef _DEBUG
 #include <assert.h>
@@ -19,6 +20,8 @@
 #define NDEBUG          1
 #define assert(_expr_)  ((void)0)
 #endif
+
+using std::vector;
 
 static const char *defProgramName  = "testC++";
 
@@ -181,11 +184,12 @@ void sleep(unsigned millis)
 
 int main(int argc, char* argv[])    // NB: This is more a unit test than an app; it does not play ghost!
 {
-
-    vector<double> vd { 1.1, 2.2, 3.3 }, vr& = vd;
-    vr = { 1, 2};
+    vector<double> vd { 1.1, 2.2, 3.3 };
+    vector<double>& vr = vd;
+    vr = { 9.9, 8.2 };
 
     std::cout << vd[0] << std::endl;
+    std::cout << vr[0] << std::endl;
 
     const char *progName = argv[0] ? argv[0] : defProgramName;
     const char *yourName = (argc > 0 && argv[1]) ? argv[1] : "No Name";
