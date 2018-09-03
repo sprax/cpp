@@ -25,6 +25,8 @@
 using std::cout;
 using std::endl;
 
+using std::vector;
+
 static const char *defProgramName  = "testC++";
 
 // Substitution failure is not an error (SFINAE) refers to a situation in C++
@@ -186,6 +188,13 @@ void sleep(unsigned millis)
 
 int main(int argc, char* argv[])    // NB: This is more a unit test than an app; it does not play ghost!
 {
+    vector<double> vd { 1.1, 2.2, 3.3 };
+    vector<double>& vr = vd;
+    vr = { 9.9, 8.2 };
+
+    std::cout << vd[0] << std::endl;
+    std::cout << vr[0] << std::endl;
+
     const char *progName = argv[0] ? argv[0] : defProgramName;
     const char *yourName = (argc > 0 && argv[1]) ? argv[1] : "No Name";
     const unsigned millis = 2222;
