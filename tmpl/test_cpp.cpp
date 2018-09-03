@@ -1,4 +1,5 @@
-// testC++.cpp : test some inobvious features of C++
+// test_cpp.cpp : test some inobvious features of C++
+// BUILD: clang++ -std=c++11 test_cpp.cpp -o tmpl && tmpl
 
 #include <chrono>
 #include <iostream>
@@ -12,13 +13,17 @@
 #include <typeinfo>
 #include <unordered_map>
 #include <unordered_set>
+#include <vector>
 
-#ifdef _DEBUG
-#include <assert.h>
-#else
-#define NDEBUG          1
-#define assert(_expr_)  ((void)0)
-#endif
+// #ifdef _DEBUG
+// #include <assert.h>
+// #else
+// #define NDEBUG          1
+// #define assert(_expr_)  ((void)0)
+// #endif
+
+using std::cout;
+using std::endl;
 
 static const char *defProgramName  = "testC++";
 
@@ -184,7 +189,7 @@ int main(int argc, char* argv[])    // NB: This is more a unit test than an app;
     const char *progName = argv[0] ? argv[0] : defProgramName;
     const char *yourName = (argc > 0 && argv[1]) ? argv[1] : "No Name";
     const unsigned millis = 2222;
-    bool just_test = true;
+    bool just_test = false;
     if ( just_test ) {
 #ifdef _DEBUG
         printf("Hi %s!  Hit <RETURN> to quit . . .\n", yourName);
@@ -195,5 +200,19 @@ int main(int argc, char* argv[])    // NB: This is more a unit test than an app;
         // sleep(millis);
         exit(0);    // zoid
     }
+
+    std::vector<int> vec{1, 2, 3,};
+    // std::vector<double> ret_vec, dbl_vec { 999.9, 888.8, 777.7, 666.6, 555.5 };
+    // std::vector<int> vec{1, 2, 3,};
+
+    std::string  str("my string");
+    std::string& ref = str;
+    cout << "str: " << str << endl;
+    cout << "ref: " << ref << endl;
+    ref = std::string("new");
+
+    cout << "str: " << str << endl;
+    cout << "ref: " << ref << endl;
+
     return 0;
 }
