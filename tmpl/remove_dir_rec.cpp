@@ -2,12 +2,17 @@
 // May require C11 or later
 // BUILD: clang++ remove_dir_rec.cpp -o tmpl && tmpl
 
+#include <dirent.h>
 #include <ftw.h>
 #include <iostream>
-// #include <stdlib.h>
-// #include <stdio.h>
-// #include <sys/syslimits.h>
+#include <limits.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include <unistd.h>                 // rmdir & unlink
+
+#ifndef OPEN_MAX
+#define OPEN_MAX 0
+#endif
 
 using std::cerr;
 using std::endl;
