@@ -2,17 +2,12 @@
 // May require C11 or later
 // BUILD: clang++ remove_dir_rec.cpp -o tmpl && tmpl
 
-#include <chrono>
-#include <iostream>
-#include <time.h>
-
-
-
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <sys/syslimits.h>
 #include <ftw.h>
+#include <iostream>
+// #include <stdlib.h>
+// #include <stdio.h>
+// #include <sys/syslimits.h>
+#include <unistd.h>                 // rmdir & unlink
 
 using std::cerr;
 using std::endl;
