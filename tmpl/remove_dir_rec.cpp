@@ -13,7 +13,7 @@ using std::cerr;
 using std::endl;
 
 
-/// call unlink or rmdir on the path, depending on the flag
+/// call rmdir or unlink on the path, depending on the flag
 int rm_dir_or_file(const char *path, const struct stat *pStat, int flag, struct FTW *pFtw)
 {
     int status = 0;
