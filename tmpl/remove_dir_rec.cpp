@@ -3,7 +3,7 @@
 // BUILD: clang++ remove_dir_rec.cpp -o tmpl && tmpl
 // BUILD:     g++ remove_dir_rec.cpp -o tmpl && tmpl
 
-#include <dirent.h>
+// #include <dirent.h>
 #include <ftw.h>
 #include <iostream>
 #include <limits.h>
@@ -25,10 +25,10 @@ int rm_dir_or_file(const char *path, const struct stat *pStat, int flag, struct 
     int status = 0;
     if (flag == FTW_DP) {
         status = rmdir(path);
-        cerr << "status = rmdir(" << path << "); => " << status << endl;
+        cerr << "status = rmdir(" << path << "); // => " << status << endl;
     } else {
         status = unlink(path);
-        cerr << "status = unlink(" << path << "); => " << status << endl;
+        cerr << "status = unlink(" << path << "); // => " << status << endl;
     }
     if (status != 0) {
         perror(path);
