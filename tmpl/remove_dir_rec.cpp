@@ -1,6 +1,7 @@
 // remove_dir_rec.cpp.cpp
 // May require C11 or later
 // BUILD: clang++ remove_dir_rec.cpp -o tmpl && tmpl
+// BUILD:     g++ remove_dir_rec.cpp -o tmpl && tmpl
 
 #include <dirent.h>
 #include <ftw.h>
@@ -11,7 +12,7 @@
 #include <unistd.h>                 // rmdir & unlink
 
 #ifndef OPEN_MAX
-#define OPEN_MAX 0
+#define OPEN_MAX 0                  // Guess 256 if it must be determinate
 #endif
 
 using std::cerr;
