@@ -1,7 +1,7 @@
 // enum_temp.cpp : template classes using enum values as template parameters
 // Requires C11 or later
-// BUILD: clang++ -std=c++11 traj_map_.cpp -o tmpl && tmpl
-// BUILD: clang++ -std=c++14 traj_map_.cpp -o tmpl && tmpl
+// BUILD: clang++ -std=c++11 traj_map_.cpp -o tmpl.out && tmpl.out
+// BUILD: clang++ -std=c++14 traj_map_.cpp -o tmpl.out && tmpl.out
 // Windows:
 // BUILD in Developer Command Prompt: cl mscc.cpp && link mscc.obj && mscc.exe
 

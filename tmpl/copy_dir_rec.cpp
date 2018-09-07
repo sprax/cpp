@@ -1,7 +1,7 @@
 // remove_dir_rec.cpp.cpp
 // May require C11 or later
-// BUILD: clang++ copy_dir_rec.cpp -o tmpl && tmpl
-// BUILD:     g++ copy_dir_rec.cpp -o tmpl && tmpl
+// BUILD: clang++ copy_dir_rec.cpp -o tmpl.out && tmpl.out
+// BUILD:     g++ copy_dir_rec.cpp -o tmpl.out && tmpl.out
 
 // #include <dirent.h>
 #include <ftw.h>

@@ -1,5 +1,5 @@
 // test_cpp.cpp : test some inobvious features of C++
-// BUILD: clang++ -std=c++11 test_cpp.cpp -o tmpl && tmpl
+// BUILD: clang++ -std=c++11 test_cpp.cpp -o tmpl.out && tmpl.out
 
 #include <chrono>
 #include <iostream>

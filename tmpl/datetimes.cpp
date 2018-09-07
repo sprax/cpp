@@ -1,6 +1,6 @@
 // datetimes.cpp
 // May require C11 or later
-// BUILD: clang++ datetimes.cpp -o tmpl && tmpl
+// BUILD: clang++ datetimes.cpp -o tmpl.out && tmpl.out
 
 #include <chrono>
 #include <iostream>

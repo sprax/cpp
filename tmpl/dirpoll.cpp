@@ -1,6 +1,6 @@
 // dirpoll.cpp : template classes using enum values as template parameters
 // Requires C11 or later
-// BUILD: clang++ -std=c++11 dirpoll.cpp -o tmpl && tmpl
+// BUILD: clang++ -std=c++11 dirpoll.cpp -o tmpl.out && tmpl.out
 
 /// TODO: use full_path or rel_path, not .
 #include <dirent.h>
@@ -148,7 +148,7 @@ std::vector<std::string> get_cpp_files(int max_num_files, int verbose)
 
 int main(int argc, char *argv[])
 {
-    const char *dir_path = argc > 1 ? argv[1] : "/Users/sprax/asdf/cpp/tmpl";
+    const char *dir_path = argc > 1 ? argv[1] : "/Users/sprax/asdf/cpp/tmpl.out";
     const char *file_ext = argc > 2 ? argv[2] : "cpp";
     int verbose = argc > 3 ? atoi(argv[3]) : 1;
     std::cout << "$RUN " << argv[0] << " " << dir_path << " " << file_ext << std::endl;

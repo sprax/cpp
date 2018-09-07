@@ -1,7 +1,7 @@
 // remove_dir_rec.cpp.cpp
 // May require C11 or later
-// BUILD: clang++ backup_to_num.cpp -o tmpl && tmpl
-// BUILD:     g++ backup_to_num.cpp -o tmpl && tmpl
+// BUILD: clang++ backup_to_num.cpp -o tmpl.out && tmpl.out
+// BUILD:     g++ backup_to_num.cpp -o tmpl.out && tmpl.out
 
 // #include <dirent.h>
 #include <ftw.h>

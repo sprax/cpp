@@ -1,7 +1,7 @@
 // enum_temp.cpp : template classes using enum values as template parameters
 // Requires C11 or later
-// BUILD: clang++ -std=c++11 enum_11.cpp -o tmpl && tmpl
-// BUILD: clang++ -std=c++14 enum_11.cpp -o tmpl && tmpl
+// BUILD: clang++ -std=c++11 enum_11.cpp -o tmpl.out && tmpl.out
+// BUILD: clang++ -std=c++14 enum_11.cpp -o tmpl.out && tmpl.out
 
 #include <iostream>
 #include <chrono>
