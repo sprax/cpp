@@ -59,7 +59,7 @@ int rename_file(const std::string& old_name, const std::string& new_name)
 {
     int result = rename(old_name.c_str(), new_name.c_str());
     if (result != 0) {
-        char * error = errno ? strerror(errno) : strerror(result);
+        char *error = errno ? strerror(errno) : strerror(result);
         cerr<< "Error from rename_file(" << old_name << ", " << new_name << "): "
             << error << endl;
         return result;
@@ -108,7 +108,7 @@ int backup_to_num(const char *path)
 
 int main(int argc, char* argv[])    // NB: unit tests for MapTraj
 {
-    const char *path = argc > 1 ? argv[1] : "derp.txt";
+    const char *path = argc > 1 ? argv[1] : "derp.out";
     cerr << argv[0] << " " << (path ? path : "NULL")  << endl;
     backup_to_num(path);
     return 0;

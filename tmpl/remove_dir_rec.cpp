@@ -41,13 +41,13 @@ int rm_dir_or_file(const char *path, const struct stat *pStat, int flag, struct 
 
 
 /// implements system("rm -rf")
-int remove_dir_rec(const char *dir_name)
+int remove_dir_rec(const std::string& dir_name)
 {
-    if (nftw(dir_name, rm_dir_or_file, OPEN_MAX, FTW_DEPTH)) {
-        perror(dir_name);
-        return EXIT_FAILURE;
+    if (nftw(dir_name.c_str(), rm_dir_or_file, OPEN_MAX, FTW_DEPTH)) {
+        perror(dir_name.c_str());
+        return 1;
     }
-    return EXIT_SUCCESS;
+    return 0;
 }
 
 
