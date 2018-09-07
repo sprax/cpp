@@ -1,7 +1,7 @@
 // remove_dir_rec.cpp.cpp
 // May require C11 or later
-// BUILD: clang++ copy_dir_rec.cpp -o tmpl.out && tmpl.out
-// BUILD:     g++ copy_dir_rec.cpp -o tmpl.out && tmpl.out
+// BUILD: clang++ -std=c++11 copy_dir_rec.cpp -o tmpl.out && tmpl.out
+// BUILD:     g++ -std=c++11 copy_dir_rec.cpp -o tmpl.out && tmpl.out
 
 // #include <dirent.h>
 #include <ftw.h>
@@ -56,19 +56,21 @@ int copy_dir_or_file( const char *src_path
                     , const struct stat* sb
                     , int ftw_flag
 ) {
-    std::string dst_path = dst_root + src_path;
-    switch(ftw_flag) {
-    case FTW_D:
-        return mkdir(dst_path.c_str(), sb->st_mode);
-    case FTW_F:
-        std::ifstream src(src_path, std::ios::binary);
-        std::ofstream dst(dst_path, std::ios::binary);
-        dst << src.rdbuf();
-        return 0;               // TODO: check status?
-    default:
-        cerr << "copy_dir_or_file: ftw_flag = " << ftw_flag << " is neither FTW_D nor FTW_F" << endl;
-        return 1;
-    }
+    printf("copy_dir_or_file(%s, %s, pstat, %d)\n", src_path, dst_path, ftw_flag);
+
+    // std::string dst_full = dst_root + src_path;
+    // switch(ftw_flag) {
+    // case FTW_D:
+    //     return mkdir(dst_full.c_str(), sb->st_mode);
+    // case FTW_F:
+    //     std::ifstream src(src_path, std::ios::binary);
+    //     std::ofstream dst(dst_path, std::ios::binary);
+    //     dst << src.rdbuf();
+    //     return 0;               // TODO: check status?
+    // default:
+    //     cerr << "copy_dir_or_file: ftw_flag = " << ftw_flag << " is neither FTW_D nor FTW_F" << endl;
+    //     return 1;
+    // }
     return 0;
 }
 
@@ -78,24 +80,34 @@ int copy_dir_rec(const char *src_dir, const char *dst_dir)
     if (! src_dir || ! dst_dir) {
         return 2;
     }
-    src_len = strlen(src_dir);
-    std::string dir_spec = src_dir ? src_dir
-    if (nftw(dir_spec, copy_dir_or_file, OPEN_MAX, FTW_DEPTH)) {
-        perror(dir_spec);
+    // size_t dst_len = strlen(dst_dir);
+
+
+    auto copy_func = [](const char *src_path, const struct stat *sb,
+        int ftw_flag, struct FTW *ftw_struct) -> int {
+        return copy_dir_or_file(src_path, (std::string("hahahaha/") + src_path).c_str(), sb, ftw_flag);
+    };
+
+
+    // std::string dir_spec = src_dir ? src_dir
+    if (nftw(src_dir, copy_func, OPEN_MAX, FTW_DEPTH)) {
+        perror(src_dir);
         return 1;
     }
     return 0;
 }
 
+// #include <experimental/filesystem>
+// namespace fs = std::experimental::filesystem; // In C++17 use std::filesystem
 
 int main(int argc, char *argv[])    // NB: unit tests for MapTraj
 {
-    const auto root = fs::current_path();
-    cerr << "root = fs::current_path(); // => " << root << endl;
-    return 0;
+    // const auto root = fs::current_path();
+    // cerr << "root = fs::current_path(); // => " << root << endl;
+    // return 0;
 
-    const char *src_dir = argc > 1 ? argv[1] : "doh.sprax";
-    const char *dst_dir = argc > 2 ? argv[1] : "duh.sprax";
+    const char *src_dir = argc > 1 ? argv[1] : "doh.log";
+    const char *dst_dir = argc > 2 ? argv[1] : "DUH.log";
     cerr << argv[0] << " " << src_dir << " " << dst_dir << endl;
     copy_dir_rec(src_dir, dst_dir);
 
