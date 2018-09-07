@@ -83,9 +83,9 @@ int copy_dir_rec(const char *src_dir, const char *dst_dir)
     // size_t dst_len = strlen(dst_dir);
 
 
-    auto copy_func = [](const char *src_path, const struct stat *sb,
+    auto copy_func = [&](const char *src_path, const struct stat *sb,
         int ftw_flag, struct FTW *ftw_struct) -> int {
-        return copy_dir_or_file(src_path, (std::string("hahahaha/") + src_path).c_str(), sb, ftw_flag);
+        return copy_dir_or_file(src_path, dst_dir, sb, ftw_flag);
     };
 
 
