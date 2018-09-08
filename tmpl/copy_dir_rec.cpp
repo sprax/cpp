@@ -5,11 +5,18 @@
 
 // #include <dirent.h>
 #include <ftw.h>
+#include <fstream>
 #include <iostream>
 #include <limits.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>                 // rmdir & unlink
+#include <functional>
+
+using namespace std;
+
+
+
 
 #ifndef OPEN_MAX
 #define OPEN_MAX 0                  // Guess 256 if it must be determinate
@@ -52,27 +59,60 @@ int remove_dir_rec(const char *dir_spec)
 
 
 int copy_dir_or_file( const char *src_path
-                    , const char *dst_path      //
+                    , const std::string& dst_path
                     , const struct stat* sb
                     , int ftw_flag
 ) {
-    printf("copy_dir_or_file(%s, %s, pstat, %d)\n", src_path, dst_path, ftw_flag);
 
-    // std::string dst_full = dst_root + src_path;
-    // switch(ftw_flag) {
-    // case FTW_D:
-    //     return mkdir(dst_full.c_str(), sb->st_mode);
-    // case FTW_F:
-    //     std::ifstream src(src_path, std::ios::binary);
-    //     std::ofstream dst(dst_path, std::ios::binary);
-    //     dst << src.rdbuf();
-    //     return 0;               // TODO: check status?
+    std::string dst_full = dst_path + "/" + src_path;
+    printf("copy_dir_or_file(%s, %s, pstat, %d)\n", src_path, dst_full.c_str(), ftw_flag);
+
+    switch(ftw_flag) {
+    case FTW_D:
+        return mkdir(dst_full.c_str(), sb->st_mode);
+    case FTW_F: {
+            std::ifstream src(src_path, std::ios::binary);
+            std::ofstream dst(dst_full, std::ios::binary);
+            dst << src.rdbuf();
+        }
+        return 0;               // TODO: check status?
     // default:
     //     cerr << "copy_dir_or_file: ftw_flag = " << ftw_flag << " is neither FTW_D nor FTW_F" << endl;
     //     return 1;
-    // }
+    }
     return 0;
 }
+
+/// functor as C-function ?
+class Append {
+private:
+    const std::string dst_;
+public:
+    Append(const char *dst) : dst_(dst)
+    { }
+    std::string operator () (const char *src) { return dst_ + " | " + src; }
+};
+
+
+
+namespace {
+   thread_local size_t gTotalBytes{0};  // thread local makes this thread safe
+int GetSize(const char* path, const struct stat* statPtr, int currentFlag, struct FTW* internalFtwUsage) {
+    gTotalBytes +=  statPtr->st_size;
+    cout << path << "  total: " << gTotalBytes << endl;
+    return 0;  //ntfw continues
+ }
+} // namespace
+
+
+namespace {
+   thread_local std::string gDstDir("FLOOZLE: ");  // thread local makes this thread safe
+int CopyToDstDir(const char* path, const struct stat* statPtr, int ftw_flag, struct FTW*) {
+    return copy_dir_or_file(path, gDstDir.c_str(), statPtr, ftw_flag);
+    // return 0;  //ntfw continues
+ }
+} // namespace
+
 
 /// implements system("copy -f -R dir_spec")
 int copy_dir_rec(const char *src_dir, const char *dst_dir)
@@ -82,15 +122,36 @@ int copy_dir_rec(const char *src_dir, const char *dst_dir)
     }
     // size_t dst_len = strlen(dst_dir);
 
+    // // cannot implicitly (or otherwise) convert any capturing lambda
+    // // directly to C-function pointer.
+    // auto copy_func = [&](const char *src_path, const struct stat *sb,
+    //     int ftw_flag, struct FTW *ftw_struct) -> int {
+    //     return copy_dir_or_file(src_path, dst_dir, sb, ftw_flag);
+    // };
 
-    auto copy_func = [&](const char *src_path, const struct stat *sb,
+    // // Can convert reference-capturing lambda to std::function,
+    // // but cannot convert std::function to C-function pointer.
+    // std::function< int ( const char *src_path, const struct stat *sb
+    //                    , int ftw_flag, struct FTW *ftw_struct )>
+    //     copy_func = [&]( const char *src_path, const struct stat *sb
+    //                    , int ftw_flag, struct FTW *ftw_struct) -> int {
+    //         return copy_dir_or_file(src_path, dst_dir, sb, ftw_flag);
+    // };
+
+    Append append(dst_dir);
+    cerr << "append: " << append(src_dir) << endl;
+
+    // NOT a copy function!
+    auto copy_func = [](const char *src_path, const struct stat *sb,
         int ftw_flag, struct FTW *ftw_struct) -> int {
-        return copy_dir_or_file(src_path, dst_dir, sb, ftw_flag);
+            cerr << "////" << src_path << endl;
+            return 0;
     };
 
-
+    gDstDir = dst_dir;
     // std::string dir_spec = src_dir ? src_dir
-    if (nftw(src_dir, copy_func, OPEN_MAX, FTW_DEPTH)) {
+    mkdir(dst_dir, S_IRWXU);
+    if (nftw(src_dir, CopyToDstDir, OPEN_MAX, FTW_DEPTH)) {
         perror(src_dir);
         return 1;
     }
@@ -98,6 +159,7 @@ int copy_dir_rec(const char *src_dir, const char *dst_dir)
 }
 
 // #include <experimental/filesystem>
+// #include <filesystem>
 // namespace fs = std::experimental::filesystem; // In C++17 use std::filesystem
 
 int main(int argc, char *argv[])    // NB: unit tests for MapTraj
