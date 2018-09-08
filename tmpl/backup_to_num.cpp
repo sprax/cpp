@@ -68,9 +68,11 @@ int rename_file(const std::string& old_name, const std::string& new_name)
 }
 
 
-/// Renames an existing file named like file.ext to a numbered back up as follows:
+/// Renames an existing file named like file.ext into a series numbered back ups,
+/// as follows:
 /// file.<N-1>.ext => file.<N>.ext for N = max_numbered_backup_files down to 1;
 /// file.ext => file.1.ext
+/// If path does not include a file extension, then path => path.1, etc.
 /// Returns the number of numbered backup files left behind,
 /// which is 0 if path identifies a directory or anything but a rename-able file.
 int backup_to_num(const char *path, int max_numbered_backup_files = 9)

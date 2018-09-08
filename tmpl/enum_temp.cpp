@@ -97,10 +97,35 @@ void listMotionTypes()
     }
 }
 
+#include "enum_temp.h"
+#include "enum_temp.h"
 
-int main(int argc, char* argv[])    // NB: This is more a unit test than an app; it does not play ghost!
+/// The kinds of files we read and write, in order of preference:
+namespace my_ns {
+    /// Please keep the FileFormatExts parallel to FileFormat enum values.
+    extern const char * const FileFormatExts[] = { (char *const) ".mpac"
+                                                 , (char *const) ".bin"
+                                                 , (char *const) ".json"
+                                                 , (char *const) ""
+    };
+}   // namespace my_ns
+
+
+int main(int argc, char* argv[])
 {
     const unsigned millis = 2222;
+
+    for (int j = my_ns::FIRST_FILE_FORMAT; j < my_ns::NUM_FILE_FORMATS + 1; j++) {
+        printf("int j: %d    enum: %d    extn: <%s>\n"
+              , j
+              , static_cast<my_ns::FileFormat>(j)
+              , my_ns::FileFormatExts[j]
+        );
+    }
+
+    return 1;
+
+
     factorials();
     listMotionTypes();
 
