@@ -67,9 +67,13 @@ int rename_file(const std::string& old_name, const std::string& new_name)
     return 0;
 }
 
-const int max_num_back_ups_ = 9;
 
-int backup_to_num(const char *path)
+/// Renames an existing file named like file.ext to a numbered back up as follows:
+/// file.<N-1>.ext => file.<N>.ext for N = max_numbered_backup_files down to 1;
+/// file.ext => file.1.ext
+/// Returns the number of numbered backup files left behind,
+/// which is 0 if path identifies a directory or anything but a rename-able file.
+int backup_to_num(const char *path, int max_numbered_backup_files = 9)
 {
     int err, num_renamed = 0;
     if (nullptr == path || 0 == strlen(path)) {
@@ -87,8 +91,9 @@ int backup_to_num(const char *path)
     }
     std::string base, extn, backup_file;
     split_file_path(path, base, extn);
-    std::string backup_plus_1 = base + "." + std::to_string(max_num_back_ups_) + extn;
-    for (int j = max_num_back_ups_; --j > 0; ) {
+    std::string backup_plus_1 = base + "." + std::to_string(max_numbered_backup_files)
+                              + extn;
+    for (int j = max_numbered_backup_files; --j > 0; ) {
         backup_file = base + "." + std::to_string(j) + extn;
         if (0 == stat(backup_file.c_str(), &result)) {
             cerr << "Moving " << backup_file << " to " << backup_plus_1 << endl;
@@ -101,7 +106,7 @@ int backup_to_num(const char *path)
     }
     cerr << "Moving " << path << " to " << backup_file << endl;
     if (0 != rename_file(path, backup_file)) {
-        return -5 - max_num_back_ups_;
+        return -5 - max_numbered_backup_files;
     }
     return 1 + num_renamed;
 }
