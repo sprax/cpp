@@ -110,6 +110,14 @@ namespace my_ns {
     };
 }   // namespace my_ns
 
+class Printer {
+public:
+    static int s_num;
+    Printer(int num) { s_num = num; }
+    static void printit() { printf("This is Print::printit() saying %d.\n", s_num++); }
+};
+
+int Printer::s_num;
 
 int main(int argc, char* argv[])
 {
@@ -122,6 +130,12 @@ int main(int argc, char* argv[])
               , my_ns::FileFormatExts[j]
         );
     }
+
+    Printer::printit();
+
+    Printer printer(4);
+    printer.printit();
+    Printer::printit();
 
     return 1;
 
