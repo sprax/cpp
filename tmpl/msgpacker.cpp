@@ -20,7 +20,7 @@ public:
     std::string name;
     T value;
     NoDefConPair(std::string nom, T val) : name(nom), value(val) { }
-    NoDefConPair() : name("default_name"), value(SQRT_2) { }
+    NoDefConPair() : name("default_name"), value(SQRT_2) { }    // default constructor
 
 public:
     MSGPACK_DEFINE(name, value);
