@@ -18,7 +18,7 @@ template <typename T>
 class NoDefConPair {
 public:
     NoDefConPair(std::string nom, T val) : name(nom), value_(val) { }
-    //NoDefConPair() : name("default_name"), value_(sqrt(2.0)) { }    // default constructor
+    // NoDefConPair() : name("default_name"), value_(sqrt(2.0)) { }    // default constructor
     T value() { return value_; }
 public:
     MSGPACK_DEFINE(name, value_);
