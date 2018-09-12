@@ -13,16 +13,19 @@
 #include <string>
 
 
-struct Zoosh {
+template <typename T>
+class NoDefConPair {
+public:
     std::string name;
-    double value;
+    T value;
+public:
     MSGPACK_DEFINE(name, value);
 };
 
 namespace std {
-    //template<typename T>
-    string to_string(Zoosh zoosh) {
-        return "Zoosh(name=" + zoosh.name + ", value=" + std::to_string(zoosh.value) + ")";
+    template<typename T>
+    string to_string(NoDefConPair<T> ndcp) {
+        return "NoDefConPair(name=" + ndcp.name + ", value=" + std::to_string(ndcp.value) + ")";
     }
 }
 
@@ -170,7 +173,9 @@ int test_thing()
 int test_msgpack_unordered_map()
 {
     std::stringstream ss;
-    std::unordered_map<std::string, Zoosh> r_map, i_map { { "ABC", {"pi", 3.14159 }}, { "DEFG", {"e", 2.71}} };
+    std::unordered_map<std::string, NoDefConPair<double>> r_map;
+    std::unordered_map<std::string, NoDefConPair<double>> i_map { { "ABC", {"pi", 3.14159 }}
+                                                               , { "DEFG", {"e", 2.71828 }} };
     msgpack::pack(ss, i_map);
     hex_dump(std::cout, ss.str()) << std::endl;
 
