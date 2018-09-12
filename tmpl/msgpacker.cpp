@@ -37,7 +37,9 @@ namespace msgpack {
                         throw msgpack::type_error();
                     if (o.via.array.size != 1)
                         throw msgpack::type_error();
-                    return NoDefConPair<T>(o.via.array.ptr[0].as<std::string, T>());
+                    return NoDefConPair<T>( o.via.array.ptr[0].as<std::string>()
+                                          , o.via.array.ptr[0].as<T>()                       // FIXME
+                    );
                 }
             };
         } // adaptor
@@ -194,35 +196,35 @@ int test_thing()
 }
 
 
-// int test_msgpack_unordered_map()
-// {
-//     std::stringstream ss;
-//     std::unordered_map<std::string, NoDefConPair<double> > r_map;
-//     std::unordered_map<std::string, NoDefConPair<double> > i_map { { "ABC", {"pi", 3.14159 }}
-//                                                                , { "DEFG", {"e", 2.71828 }} };
-//     msgpack::pack(ss, i_map);
-//     hex_dump(std::cout, ss.str()) << std::endl;
-//
-//     unsigned max_bytes = ss.str().size();
-//     // write to file
-//     void *data = (void *)ss.str().data();
-//     std::string full_path = "packed.map";
-//     if (! write_binary_file(full_path, data, max_bytes)) {
-//         std::cerr << "write_binary_file FAILED!" << std::endl;
-//         return 1;
-//     }
-//
-//     // read from saved file
-//     int verbose = 2;
-//
-//     return read_into_unordered_map(r_map, full_path, max_bytes, verbose);
-// }
+int test_msgpack_unordered_map()
+{
+    std::stringstream ss;
+    std::unordered_map<std::string, NoDefConPair<double> > r_map;
+    std::unordered_map<std::string, NoDefConPair<double> > i_map { { "ABC", {"pi", 3.14159 }}
+                                                               , { "DEFG", {"e", 2.71828 }} };
+    msgpack::pack(ss, i_map);
+    hex_dump(std::cout, ss.str()) << std::endl;
+
+    unsigned max_bytes = ss.str().size();
+    // write to file
+    void *data = (void *)ss.str().data();
+    std::string full_path = "packed.map";
+    if (! write_binary_file(full_path, data, max_bytes)) {
+        std::cerr << "write_binary_file FAILED!" << std::endl;
+        return 1;
+    }
+
+    // read from saved file
+    int verbose = 2;
+
+    return read_into_unordered_map(r_map, full_path, max_bytes, verbose);
+}
 
 struct NoDefConInt {
     NoDefConInt() = delete;
-    NoDefConInt(int x):x(x) {}
+    NoDefConInt(int x, int y) : x(x), y(y)  { }
     int x, y;
-    MSGPACK_DEFINE(x);
+    MSGPACK_DEFINE(x, y);
 };
 
 /// Define 'as' class template specialization as follows:
@@ -236,7 +238,7 @@ namespace msgpack {
                         throw msgpack::type_error();
                     if (o.via.array.size != 1)
                         throw msgpack::type_error();
-                    return NoDefConInt(o.via.array.ptr[0].as<int>());
+                    return NoDefConInt(o.via.array.ptr[0].as<int>(), o.via.array.ptr[0].as<int>());
                 }
             };
         } // adaptor
@@ -246,7 +248,7 @@ namespace msgpack {
 
 int test_no_def_con()
 {
-    NoDefConInt ndci(37);
+    NoDefConInt ndci(23, 45);
 
     std::string path("ndci.bin");
     {
@@ -303,7 +305,7 @@ int main(int argc, char **argv)
 
     std::cout << MSGPACK_VERSION << std::endl;
     int bad = test_msgpack_bin();
-    int err = 0; // test_msgpack_unordered_map();
+    int err = test_msgpack_unordered_map();
     int res = test_thing();
     int eno = test_no_def_con();
     return bad + eno + err + res;
