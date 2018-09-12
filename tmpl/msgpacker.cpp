@@ -7,12 +7,12 @@
 #include <CLI/CLI.hpp>
 #endif
 #include <msgpack.hpp>
-
 #include <limits.h>
 #include <iostream>
 #include <string>
-
 #define SQRT_2 1.4142135623730
+
+
 
 template <typename T>
 class NoDefConPair {
@@ -139,6 +139,7 @@ int test_msgpack_bin(void)
 {
     // serializes multiple objects into one message containing a map using msgpack::packer.
     msgpack::sbuffer w_buffer;
+    // auto console = spdlog::stdout_color_mt("console");
 
     msgpack::packer<msgpack::sbuffer> packer(&w_buffer);
     packer.pack_map(2);
@@ -189,7 +190,6 @@ int test_thing()
     msgpack::unpacked upd;
     msgpack::unpack(upd, buffer.str().data(), buffer.str().size());
     std::cout << upd.get() << std::endl;
-
     return 0;
 }
 
@@ -217,6 +217,52 @@ int test_thing()
 //
 //     return read_into_unordered_map(r_map, full_path, max_bytes, verbose);
 // }
+
+struct NoDefConInt {
+    NoDefConInt() = delete;
+    NoDefConInt(int x):x(x) {}
+    int x, y;
+    MSGPACK_DEFINE(x);
+};
+
+/// Define 'as' class template specialization as follows:
+namespace msgpack {
+    MSGPACK_API_VERSION_NAMESPACE(MSGPACK_DEFAULT_API_NS) {
+        namespace adaptor {
+            template <>
+            struct as<NoDefConInt> {
+                NoDefConInt operator()(msgpack::object const& o) const {
+                    if (o.type != msgpack::type::ARRAY)
+                        throw msgpack::type_error();
+                    if (o.via.array.size != 1)
+                        throw msgpack::type_error();
+                    return NoDefConInt(o.via.array.ptr[0].as<int>());
+                }
+            };
+        } // adaptor
+    } // MSGPACK_API_VERSION_NAMESPACE(MSGPACK_DEFAULT_API_NS)
+} // msgpack
+
+
+int test_no_def_con()
+{
+    NoDefConInt ndci(37);
+
+    std::string path("ndci.bin");
+    {
+        std::ofstream ofs(path);
+        msgpack::pack(ofs, ndci);
+    }   // ofstream destructor closes file here.
+
+    // Deserialize the serialized data
+    std::ifstream ifs(path, std::ifstream::in);
+    std::stringstream buffer;
+    buffer << ifs.rdbuf();
+    msgpack::unpacked upd;
+    msgpack::unpack(upd, buffer.str().data(), buffer.str().size());
+    std::cout << upd.get() << std::endl;
+    return 0;
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 int main(int argc, char **argv)
@@ -259,5 +305,6 @@ int main(int argc, char **argv)
     int bad = test_msgpack_bin();
     int err = 0; // test_msgpack_unordered_map();
     int res = test_thing();
-    return bad + err + res;
+    int eno = test_no_def_con();
+    return bad + eno + err + res;
 }
