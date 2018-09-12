@@ -17,19 +17,20 @@
 template <typename T>
 class NoDefConPair {
 public:
-    std::string name;
-    T value;
-    NoDefConPair(std::string nom, T val) : name(nom), value(val) { }
-    NoDefConPair() : name("default_name"), value(SQRT_2) { }    // default constructor
-
+    NoDefConPair(std::string nom, T val) : name(nom), value_(val) { }
+    //NoDefConPair() : name("default_name"), value_(sqrt(2.0)) { }    // default constructor
+    T value() { return value_; }
 public:
-    MSGPACK_DEFINE(name, value);
+    MSGPACK_DEFINE(name, value_);
+    std::string name;
+private:
+    T value_;
 };
 
 namespace std {
     template<typename T>
     string to_string(NoDefConPair<T> ndcp) {
-        return "NoDefConPair(name=" + ndcp.name + ", value=" + std::to_string(ndcp.value) + ")";
+        return "NoDefConPair(name=" + ndcp.name + ", \tvalue=" + std::to_string(ndcp.value()) + ")";
     }
 }
 
@@ -93,7 +94,8 @@ int read_into_unordered_map( std::unordered_map<K, V>& dst_map
     const char *c_result = (const char *)v_result;
     msgpack::object_handle oh = msgpack::unpack(c_result, max_bytes);
 
-    // deserialized object is valid during the msgpack::object_handle instance is alive.
+    // deserialized object is valid as long as the msgpack::object_handle
+    // instance is alive.
     msgpack::object deserialized = oh.get();
 
     // msgpack::object supports ostream.
