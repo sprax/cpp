@@ -12,6 +12,7 @@
 #include <iostream>
 #include <string>
 
+#define SQRT_2 1.4142135623730
 
 template <typename T>
 class NoDefConPair {
@@ -19,6 +20,8 @@ public:
     std::string name;
     T value;
     NoDefConPair(std::string nom, T val) : name(nom), value(val) { }
+    NoDefConPair() : name("default_name"), value(SQRT_2) { }
+
 public:
     MSGPACK_DEFINE(name, value);
 };
