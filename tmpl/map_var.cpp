@@ -1,7 +1,7 @@
 // enum_temp.cpp : template classes using enum values as template parameters
 // Requires C11 or later
-// BUILD: clang++ -std=c++11 traj_map_.cpp -o tmpl.out && tmpl.out
-// BUILD: clang++ -std=c++14 traj_map_.cpp -o tmpl.out && tmpl.out
+// BUILD: clang++ -std=c++11 map_var.cpp -o tmpl.out && tmpl.out
+// BUILD: clang++ -std=c++14 map_var.cpp -o tmpl.out && tmpl.out
 
 #include <iostream>
 #include <chrono>
@@ -29,7 +29,7 @@ static const std::vector<std::string> default_map_keys {
     "three"
 };
 
-/// stupid trick
+/// vector streaming
 namespace std {
     template<typename T>
     string to_string(vector<T> vec) { return "std::vector(size=" + to_string(vec.size()) + ")"; }
@@ -221,6 +221,6 @@ int main(int argc, char* argv[])    // NB: unit tests for MapTraj
     map_str.showSizes();
     map_str.showMap();
 
-
+    cout<< "vector vintB: (" << std::to_string(vintB) << ")" << endl;
     return 0;
 }
