@@ -13,6 +13,20 @@
 #include <string>
 
 
+struct Zoosh {
+    std::string name;
+    double value;
+    MSGPACK_DEFINE(name, value);
+};
+
+namespace std {
+    //template<typename T>
+    string to_string(Zoosh zoosh) {
+        return "Zoosh(name=" + zoosh.name + ", value=" + std::to_string(zoosh.value) + ")";
+    }
+}
+
+
 bool write_binary_file(const std::string& full_path, void *data, unsigned max_bytes)
 {
     try {
@@ -46,18 +60,22 @@ bool read_binary_file(const std::string& full_path, void *result, unsigned max_b
 }
 
 // hex_dump is not a part of msgpack-c.
-inline std::ostream& hex_dump(std::ostream& o, std::string const& v) {
+inline std::ostream& hex_dump(std::ostream& o, std::string const& i_map) {
     std::ios::fmtflags f(o.flags());
     o << std::hex;
-    for (auto c : v) {
+    for (auto c : i_map) {
         o << "0x" << std::setw(2) << std::setfill('0') << (static_cast<int>(c) & 0xff) << ' ';
     }
     o.flags(f);
     return o;
 }
 
-int read_into_map(const std::string& full_path, unsigned max_bytes, int verbose = 1)
-{
+template <class K, class V>
+int read_into_unordered_map( std::unordered_map<K, V>& dst_map
+                           , const std::string& full_path
+                           , unsigned max_bytes
+                           , int verbose = 1
+)  {
     // read from saved file
     void *v_result = malloc(max_bytes);
     if (! read_binary_file(full_path, v_result, max_bytes)) {
@@ -78,14 +96,13 @@ int read_into_map(const std::string& full_path, unsigned max_bytes, int verbose 
     // // if the type is mismatched, it throws msgpack::type_error exception.
     // msgpack::type::tuple<int, bool, std::string> dst;
 
-    std::map<std::string, float> dst_map;
     deserialized.convert(dst_map);
 
     std::cout << "Printing deserialized and converted dst_map" << std::endl;
     for (auto const& pr : dst_map) {
         std::cout << pr.first  // string (key)
                   << ":\t"
-                  << pr.second // string's value
+                  << std::to_string(pr.second) // string's value
                   << std::endl;
     }
     return 0;
@@ -113,7 +130,8 @@ int test_msgpack_bin(void)
     }
 
     int verbose = 2;
-    return read_into_map(full_path, max_bytes, verbose);
+    std::unordered_map<std::string, double> r_map;
+    return read_into_unordered_map(r_map, full_path, max_bytes, verbose);
 }
 
 
@@ -148,11 +166,12 @@ int test_thing()
     return 0;
 }
 
-int test_msgpack_map()
+
+int test_msgpack_unordered_map()
 {
     std::stringstream ss;
-    std::map<std::string, int> v { { "ABC", 5 }, { "DEFG", 2 } };
-    msgpack::pack(ss, v);
+    std::unordered_map<std::string, Zoosh> r_map, i_map { { "ABC", {"pi", 3.14159 }}, { "DEFG", {"e", 2.71}} };
+    msgpack::pack(ss, i_map);
     hex_dump(std::cout, ss.str()) << std::endl;
 
     unsigned max_bytes = ss.str().size();
@@ -166,7 +185,8 @@ int test_msgpack_map()
 
     // read from saved file
     int verbose = 2;
-    return read_into_map(full_path, max_bytes, verbose);
+
+    return read_into_unordered_map(r_map, full_path, max_bytes, verbose);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -205,7 +225,7 @@ int main(int argc, char **argv)
 
     std::cout << MSGPACK_VERSION << std::endl;
     int bad = test_msgpack_bin();
-    int err = test_msgpack_map();
+    int err = test_msgpack_unordered_map();
     int res = test_thing();
     return bad + err + res;
 }
