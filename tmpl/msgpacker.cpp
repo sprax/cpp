@@ -18,7 +18,7 @@ template <typename T>
 class NoDefConPair {
 public:
     NoDefConPair(std::string nom, T val) : name(nom), value_(val) { }
-    // NoDefConPair() : name("default_name"), value_(sqrt(2.0)) { }    // default constructor
+    NoDefConPair() : name("default_name"), value_(sqrt(2.0)) { }    // default constructor
     T value() { return value_; }
 public:
     MSGPACK_DEFINE(name, value_);
@@ -217,8 +217,11 @@ int test_msgpack_unordered_map()
     // read from saved file
     int verbose = 2;
 
-    // FIXME BUSTED: return read_into_unordered_map(r_map, full_path, max_bytes, verbose);
+#if 1
+    return read_into_unordered_map(r_map, full_path, max_bytes, verbose);
+#else   // FIXME BUSTED: return read_into_unordered_map(r_map, full_path, max_bytes, verbose);
     return -1;
+#endif
 }
 
 #define DEFINE_DEFAULT_CONSTRUCTOR 0
@@ -246,10 +249,10 @@ namespace msgpack {
                 NoDefConDblFlt operator()(msgpack::object const& o) const {
                     if (o.type != msgpack::type::ARRAY)
                         throw msgpack::type_error();
-                    if (o.via.array.size != 1)
+                    if (o.via.array.size != 2)
                         throw msgpack::type_error();
                     return NoDefConDblFlt( o.via.array.ptr[0].as<double>()    // type does not seem to
-                                         , o.via.array.ptr[0].as<float>());   // matter, not even size
+                                         , o.via.array.ptr[1].as<float>());   // matter, not even size
                 }
             };
         } // adaptor
@@ -259,11 +262,11 @@ namespace msgpack {
 
 int test_no_def_con()
 {
-    NoDefConDblFlt ndci(23.232323, SQRT_2);
-    std::string path("ndci.bin");
+    NoDefConDblFlt i_ndcdf(23.232323, SQRT_2);
+    std::string path("i_ndcdf.bin");
     {
         std::ofstream ofs(path);
-        msgpack::pack(ofs, ndci);
+        msgpack::pack(ofs, i_ndcdf);
     }   // ofstream destructor closes file here.
 
     // Deserialize the serialized data
@@ -272,7 +275,12 @@ int test_no_def_con()
     buffer << ifs.rdbuf();
     msgpack::unpacked upd;
     msgpack::unpack(upd, buffer.str().data(), buffer.str().size());
-    std::cout << upd.get() << std::endl;
+
+    msgpack::object r_ndcdf_object = upd.get();
+    std::cout << "Got unpacked MsgPack object: r_ndcdf_object: " << r_ndcdf_object << std::endl;
+
+    NoDefConDblFlt r_ndcdf = r_ndcdf_object.as<NoDefConDblFlt>();
+    std::cout << "Got newly constructed NoDefConDblFlt: " << r_ndcdf.x << " | " << r_ndcdf.y << std::endl;
 
     ///////////////////////////////////////////////////////////////////////////
     // conclusion from below: The msgpack adaptor can deserialize an
