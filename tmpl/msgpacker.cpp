@@ -221,9 +221,17 @@ int test_msgpack_unordered_map()
     return -1;
 }
 
+#define DEFINE_DEFAULT_CONSTRUCTOR 0
+
 struct NoDefConDblFlt {
-    NoDefConDblFlt() = delete;
     NoDefConDblFlt(double x, float y) : x(x), y(y)  { }
+
+#if DEFINE_DEFAULT_CONSTRUCTOR
+    NoDefConDblFlt() : x(1.0/SQRT_2), y(SQRT_2)  { }
+#else
+    NoDefConDblFlt() = delete;
+#endif
+
     double x;
     float y;
     MSGPACK_DEFINE(x, y);
@@ -240,8 +248,8 @@ namespace msgpack {
                         throw msgpack::type_error();
                     if (o.via.array.size != 1)
                         throw msgpack::type_error();
-                    return NoDefConDblFlt( o.via.array.ptr[0].as<char>()    // type does not seem to
-                                         , o.via.array.ptr[0].as<int>());   // matter, not even size
+                    return NoDefConDblFlt( o.via.array.ptr[0].as<double>()    // type does not seem to
+                                         , o.via.array.ptr[0].as<float>());   // matter, not even size
                 }
             };
         } // adaptor
@@ -266,13 +274,15 @@ int test_no_def_con()
     msgpack::unpack(upd, buffer.str().data(), buffer.str().size());
     std::cout << upd.get() << std::endl;
 
+    ///////////////////////////////////////////////////////////////////////////
+    // conclusion from below: The msgpack adaptor can deserialize an
+    // object that has no default constructor, but std::map (and unordered_map)
+    // do need a default constructor.
+#if DEFINE_DEFAULT_CONSTRUCTOR
     std::map<std::string, NoDefConDblFlt> r_map, i_map;
-
-
     std::stringstream ss;
     msgpack::pack(ss, i_map);
     hex_dump(std::cout, ss.str()) << std::endl;
-
     unsigned max_bytes = ss.str().size();
     // write to file
     void *data = (void *)ss.str().data();
@@ -282,7 +292,19 @@ int test_no_def_con()
         return 1;
     }
 
-
+    // read from saved file
+    void *v_result = malloc(max_bytes);
+    if (! read_binary_file(full_path, v_result, max_bytes)) {
+        std::cerr << "read_binary_file FAILED!" << std::endl;
+        return 2;
+    }
+    const char *c_result = (const char *)v_result;
+    msgpack::object_handle oh = msgpack::unpack(c_result, max_bytes);
+    msgpack::object deserialized = oh.get();
+    std::cout << deserialized << std::endl;
+    deserialized.convert(r_map);
+    // show the converted map...
+#endif
     return 0;
 }
 
