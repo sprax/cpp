@@ -22,6 +22,7 @@
 // #define assert(_expr_)  ((void)0)
 // #endif
 
+using std::cerr;
 using std::cout;
 using std::endl;
 
@@ -186,8 +187,18 @@ void sleep(unsigned millis)
     std::this_thread::sleep_for(std::chrono::milliseconds(millis));
 }
 
+void count_it(int& count)
+{
+    if (count)
+        count = 0;
+    else
+        count = 9999;
+}
+
+
 int main(int argc, char* argv[])    // NB: This is more a unit test than an app; it does not play ghost!
 {
+    static int counted;
     vector<double> vd { 1.1, 2.2, 3.3 };
     vector<double>& vr = vd;
     vr = { 9.9, 8.2 };
@@ -222,6 +233,10 @@ int main(int argc, char* argv[])    // NB: This is more a unit test than an app;
 
     cout << "str: " << str << endl;
     cout << "ref: " << ref << endl;
+
+    cerr << "counted: " << counted << endl;
+    count_it(counted);
+    cerr << "counted: " << counted << endl;
 
     return 0;
 }

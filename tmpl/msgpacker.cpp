@@ -230,6 +230,7 @@ struct NoDefConDblFlt {
     NoDefConDblFlt(double x, float y) : x(x), y(y)  { }
 
 #if DEFINE_DEFAULT_CONSTRUCTOR
+#error "Don't do it!  DEFINE_DEFAULT_CONSTRUCTOR"
     NoDefConDblFlt() : x(1.0/SQRT_2), y(SQRT_2)  { }
 #else
     NoDefConDblFlt() = delete;
@@ -285,7 +286,7 @@ int test_no_def_con()
     ///////////////////////////////////////////////////////////////////////////
     // conclusion from below: The msgpack adaptor can deserialize an
     // object that has no default constructor, but std::map (and unordered_map)
-    // do need a default constructor.
+    // still do need a default constructor for their value types.
 #if DEFINE_DEFAULT_CONSTRUCTOR
     std::map<std::string, NoDefConDblFlt> r_map, i_map;
     std::stringstream ss;
