@@ -35,10 +35,10 @@ namespace msgpack {
                 NoDefConPair<T> operator()(msgpack::object const& o) const {
                     if (o.type != msgpack::type::ARRAY)
                         throw msgpack::type_error();
-                    if (o.via.array.size != 1)
+                    if (o.via.array.size != 2)
                         throw msgpack::type_error();
                     return NoDefConPair<T>( o.via.array.ptr[0].as<std::string>()
-                                          , o.via.array.ptr[0].as<T>()                       // FIXME
+                                          , o.via.array.ptr[1].as<T>()
                     );
                 }
             };
