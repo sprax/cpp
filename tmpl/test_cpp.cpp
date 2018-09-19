@@ -202,6 +202,7 @@ int main(int argc, char* argv[])    // NB: This is more a unit test than an app;
     vector<double> vd { 1.1, 2.2, 3.3 };
     vector<double>& vr = vd;
     vr = { 9.9, 8.2 };
+    register int regi;
 
     std::cout << vd[0] << std::endl;
     std::cout << vr[0] << std::endl;
@@ -238,5 +239,6 @@ int main(int argc, char* argv[])    // NB: This is more a unit test than an app;
     count_it(counted);
     cerr << "counted: " << counted << endl;
 
-    return 0;
+    regi = 0;
+    return regi;
 }
