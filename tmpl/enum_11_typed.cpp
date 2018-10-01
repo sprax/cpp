@@ -44,7 +44,7 @@ void example_enum_with_type()
 
     std::string strOne;
     strOne = ~first;
-    std::cout << strOne << std::endl; // FOUR
+    cout << "~TestEnumClass::FOUR: " << strOne << "  lit: " << ~TestEnumClass::FOUR<< endl; // FOUR
 
     std::string strTwo;
     strTwo = ("Enum-" + second) + (TestEnumClass::THREE + "-test");
@@ -55,7 +55,17 @@ void example_enum_with_type()
     std::cout << strThree << std::endl; // TestEnumClass: TWO
     std::cout << "Enum count=" << *first << std::endl;
 
-    TestEnumClassMapName;
+    cout << "TestEnumClassMapName (literally):" << endl;
+    for (const auto& pr : TestEnumClassMapName) {
+        cout << pr.first << " : " << pr.second << endl;
+    }
+
+    cout << "Is enum vaiue 0 valid? " << validTestEnumClass(0) << endl;
+    int num = 2;
+    cout << "Is enum vaiue " << num << " valid? " << validTestEnumClass(num) << endl;
+    num += 2;
+    cout << "Is enum vaiue " << num << " valid? " << validTestEnumClass(num) << endl;
+    cout << "Is enum vaiue 5 valid? " << validTestEnumClass(5) << endl;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
