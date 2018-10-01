@@ -67,7 +67,8 @@ std::map<Shape, IUserMaker> duh;
 
 class ShapeUserFactory
 {
-    typedef std::unordered_map<Shape, IUserMaker *> MakerMap;   // Hash table to map the shape to the function used to create the object.
+    // Hash table to map the shape to the function used to create the object.
+    typedef std::unordered_map<Shape, IUserMaker *> MakerMap;
 
 public:
     void Register(Shape shape, IUserMaker *maker)
