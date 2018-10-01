@@ -1,5 +1,5 @@
 // test_cpp.cpp : test some inobvious features of C++
-// BUILD: clang++ -std=c++11 test_cpp.cpp -o tmpl.out && tmpl.out
+// BUILD: clang++ -std=c++11 -Wno-deprecated-register test_cpp.cpp -o tmpl.out && tmpl.out
 
 #include <chrono>
 #include <iostream>
@@ -238,6 +238,10 @@ int main(int argc, char* argv[])    // NB: This is more a unit test than an app;
     cerr << "counted: " << counted << endl;
     count_it(counted);
     cerr << "counted: " << counted << endl;
+
+    int n = 44;
+    printf( "n == %d \t &n = %p\n", n, &n);
+    cout << "n == " << n << " \t " << "&n = " << std::hex << long(&n) << endl;
 
     regi = 0;
     return regi;
