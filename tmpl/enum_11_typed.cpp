@@ -54,6 +54,8 @@ void example_enum_with_type()
     strThree += second;
     std::cout << strThree << std::endl; // TestEnumClass: TWO
     std::cout << "Enum count=" << *first << std::endl;
+
+    TestEnumClassMapName;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
