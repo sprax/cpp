@@ -175,7 +175,7 @@ void listMotionTypes()
 }
 
 
-int main(int argc, char* argv[])    // NB: This is more a unit test than an app; it does not play ghost!
+int main(int argc, char* argv[])
 {
     const unsigned millis = 2222;
     // listMotionTypes();

@@ -22,10 +22,12 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-#define SequentialEnum(Name, ...)   \
-enum Name { __VA_ARGS__ };          \
-namespace                           \
-{   const std::initializer_list<Name> Name##List { __VA_ARGS__ }; };
+#define SequentialEnum(Name, ...)                                   \
+enum Name { __VA_ARGS__ };                                          \
+namespace {                                                         \
+    const std::initializer_list<Name> Name##List { __VA_ARGS__ };   \
+    const std::string Name##Array[] { #__VA_ARGS__ };               \
+};
 
 SequentialEnum(Shape,
     Circle,
@@ -35,7 +37,20 @@ SequentialEnum(Shape,
     Polygon
 );
 // FIXME: duplication is not DRY
+
 const std::string ShapeNames[]{ "Circle", "Square", "Triangle", "Oval", "Polygon"};
+// std::vector<Shape> zoosh ShapeList;
+
+
+void just_the_enums()
+{
+    cout << "Oval: " << Shape::Oval << "  |  ShapeNames: " << ShapeNames[Shape::Oval] << endl;
+    for (auto ss : ShapeList) {
+        cout << "Shape enum val from list: " << ss << "   name from array: " << ShapeArray[ss] << endl;
+    }
+    // cout << "ShapeList: " << ShapeList[0] << endl;
+}
+
 
 class BaseUser
 {
@@ -56,73 +71,73 @@ public:
 
 typedef std::vector<void*> MakeArgsType;
 
-class IUserMaker
-{
-public:
-    virtual BaseUser * Make(MakeArgsType &args) const = 0;
-    virtual ~IUserMaker() {}
-};
+// class IUserMaker
+// {
+// public:
+//     virtual BaseUser * Make(MakeArgsType &args) const = 0;
+//     virtual ~IUserMaker() {}
+// };
 
-std::map<Shape, IUserMaker> duh;
+// std::map<Shape, IUserMaker> duh;
+//
+// class ShapeUserFactory
+// {
+//     // Hash table to map the shape to the function used to create the object.
+//     typedef std::unordered_map<Shape, IUserMaker *> MakerMap;
+//
+// public:
+//     void Register(Shape shape, IUserMaker *maker)
+//     {
+//         // Store the maker, that is, map the shape to a pointer to a
+//         // UserMaker instance that can make the ShapeUser.
+//         maker_map_[shape] = maker;
+//     }
+//
+//     BaseUser* Make(Shape shape, MakeArgsType &args)
+//     {
+//         // This method looks for the name in the hash map.  If it is not found, then an exception is thrown.
+//         // If it is found, then it creates the specified object and returns a pointer to it.
+//         //
+//         typename MakerMap::iterator it = maker_map_.find(shape);
+//         if (it == maker_map_.end())
+//         {
+//             throw "UserFactory::Make: shape " + std::to_string(shape) + " not registered in the MakerMap";
+//         }
+//         return it->second->Make(args);
+//     }
+//
+//     int Size() {
+//         return maker_map_.size();
+//     }
+//
+// private:
+//     MakerMap maker_map_;
+// };
 
-class ShapeUserFactory
-{
-    // Hash table to map the shape to the function used to create the object.
-    typedef std::unordered_map<Shape, IUserMaker *> MakerMap;
 
-public:
-    void Register(Shape shape, IUserMaker *maker)
-    {
-        // Store the maker, that is, map the shape to a pointer to a
-        // UserMaker instance that can make the ShapeUser.
-        maker_map_[shape] = maker;
-    }
+// int register_shapes(ShapeUserFactory &factory)
+// {
+//
+//     MakeArgsType args;      // dummy args
+//     for (Shape shape : ShapeList)
+//     {
+//         cout << "Regsistering shape: " << shape << endl;
+//         factory.Register(shape, UserMaker(shape));
+//         auto shaper = factory.Make(shape, args);
+//         shaper->show();
+//     }
+//     return factory.Size();
+// }
 
-    BaseUser* Make(Shape shape, MakeArgsType &args)
-    {
-        // This method looks for the name in the hash map.  If it is not found, then an exception is thrown.
-        // If it is found, then it creates the specified object and returns a pointer to it.
-        //
-        typename MakerMap::iterator it = maker_map_.find(shape);
-        if (it == maker_map_.end())
-        {
-            throw "UserFactory::Make: shape " + std::to_string(shape) + " not registered in the MakerMap";
-        }
-        return it->second->Make(args);
-    }
-
-    int Size() {
-        return maker_map_.size();
-    }
-
-private:
-    MakerMap maker_map_;
-};
-
-
-int register_shapes(ShapeUserFactory &factory)
-{
-
-    MakeArgsType args;      // dummy args
-    for (Shape shape : ShapeList)
-    {
-        cout << "Regsistering shape: " << shape << endl;
-        factory.Register(shape, userMaker(shape));
-        auto shaper = factory.Make(shape, args);
-        shaper->show();
-    }
-    return factory.Size();
-}
-
-void list_shapes()
-{
-    for (Shape shape : ShapeList)
-    {
-        cout << "Shape: " << shape << endl;
-        BaseUser *shaper = new User<Oval>();
-        shaper->show();
-    }
-}
+// void list_shapes()
+// {
+//     for (Shape shape : ShapeList)
+//     {
+//         cout << "Shape: " << shape << endl;
+//         BaseUser *shaper = new IUser<Oval>();
+//         shaper->show();
+//     }
+// }
 
 
 typedef enum tagMotionType {
@@ -178,11 +193,12 @@ void listMotionTypes()
 
 int main(int argc, char* argv[])    // NB: This is more a unit test than an app; it does not play ghost!
 {
+    just_the_enums();
     // listMotionTypes();
-    ShapeUserFactory factory;
-    int num_reg = register_shapes(factory);
-    cout << "Registered " << num_reg << " ShapeUserMakers in the ShapeUserFactory" << endl;
-    list_shapes();
+    // ShapeUserFactory factory;
+    // int num_reg = register_shapes(factory);
+    // cout << "Registered " << num_reg << " ShapeUserMakers in the ShapeUserFactory" << endl;
+    // list_shapes();
 
     return 0;
 }
