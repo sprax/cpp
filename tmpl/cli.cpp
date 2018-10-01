@@ -8,8 +8,28 @@
 #endif
 
 #include <iostream>
+using std::cerr;
+using std::endl;
 
-int main(int argc, char **argv) {
+class A {
+protected:
+    A() { }
+    int id = 37;
+};
+class B : private A {
+public:
+    B() : A()
+    {
+        cerr << "B(): id: " << id << endl;
+    }
+};
+
+int main(int argc, char **argv)
+{
+
+    B b;
+    return 0;
+
     CLI::App app{"App description"};
 
     // Define options
