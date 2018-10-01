@@ -1,4 +1,4 @@
-// dirpoll.cpp : template classes using enum values as template parameters
+// dirpoll.cpp : poll a directory for new files
 // Requires C11 or later
 // BUILD: clang++ -std=c++11 dirpoll.cpp -o tmpl.out && tmpl.out
 
