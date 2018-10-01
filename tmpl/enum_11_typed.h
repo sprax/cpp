@@ -9,22 +9,6 @@
 #include <string>
 #include <vector>
 
-#define STRING_REMOVE_CHAR(str, ch) str.erase(std::remove(str.begin(), str.end(), ch), str.end())
-
-std::vector<std::string> splitString(std::string str, char sep = ',') {
-    std::vector<std::string> vecString;
-    std::string item;
-
-    std::stringstream stringStream(str);
-
-    while (std::getline(stringStream, item, sep))
-    {
-        vecString.push_back(item);
-    }
-
-    return vecString;
-}
-
 #define DECLARE_ENUM_WITH_TYPE(E, T, ...)                                                                     \
     enum class E : T                                                                                          \
     {                                                                                                         \
@@ -59,7 +43,26 @@ std::vector<std::string> splitString(std::string str, char sep = ',') {
     }                                                                                                         \
     bool valid##E(T value) { return (E##MapName.find(value) != E##MapName.end()); }
 
+
 #define DECLARE_ENUM(E, ...) DECLARE_ENUM_WITH_TYPE(E, int32_t, __VA_ARGS__)
+
+#define STRING_REMOVE_CHAR(str, ch) str.erase(std::remove(str.begin(), str.end(), ch), str.end())
+
+std::vector<std::string> splitString(std::string str, char sep = ',')
+{
+    std::vector<std::string> vecString;
+    std::string item;
+
+    std::stringstream stringStream(str);
+
+    while (std::getline(stringStream, item, sep))
+    {
+        vecString.push_back(item);
+    }
+
+    return vecString;
+}
+
 template <typename T>
 std::map<T, std::string> generateEnumMap(std::string strMap)
 {

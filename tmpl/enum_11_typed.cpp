@@ -95,7 +95,7 @@ void example_sequential_enum()
 
 int main(int argc, char* argv[])    // NB: This is more a unit test than an app; it does not play ghost!
 {
-    example_sequential_enum();
     example_enum_with_type();
+    example_sequential_enum();
     return 0;
 }
