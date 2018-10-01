@@ -1,3 +1,8 @@
+// spdlogs.cpp
+// May require C11 or later
+// BUILD: clang++ -std=c++11 spdlogs.cpp -o tmpl.out && tmpl.out
+// BUILD:     g++ -std=c++11 spdlogs.cpp -o tmpl.out && tmpl.out
+
 #include "spdlog/spdlog.h"
 #include <exception>    // For std::exception
 #include <iomanip>
@@ -64,4 +69,8 @@ int main(int, char* [])
     {
         std::cout << "Log initialization failed: " << ex.what() << std::endl;
     }
+    int n = 42;
+    printf( "n == %d \t &n == %p\n", n, &n);
+    std::cout << "n == " << n << " \t " << "&n == " << std::hex << long(&n) << std::endl;
+    basic_logger->warn("n == {} \t &n == {0:x}", n, long(&n));
 }
