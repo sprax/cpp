@@ -1,4 +1,4 @@
-// remove_dir_rec.cpp.cpp
+// remove_dir_rec.cpp
 // May require C11 or later
 // BUILD: clang++ -std=c++11 copy_dir_rec.cpp -o tmpl.out && tmpl.out
 // BUILD:     g++ -std=c++11 copy_dir_rec.cpp -o tmpl.out && tmpl.out
