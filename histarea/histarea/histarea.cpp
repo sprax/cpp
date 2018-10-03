@@ -4,7 +4,7 @@
 #include "stdafx.h"
 
 // default values:
-static const _TCHAR *defProgramName  = L"histarea";
+static const char *defProgramName  = "histarea";
 
 static void usage(int argc, _TCHAR* argv[], const TCHAR* programName, const _TCHAR *reason=NULL)
 {
@@ -40,7 +40,7 @@ int histarea(int histogram[], int length)
                 maxHeight = height;
             if (maxHeight > maxFromLeft[j])
                 area += maxFromLeft[j] - height;
-            else 
+            else
                 area += maxHeight - height;
         }
         free(maxFromLeft);
@@ -58,9 +58,13 @@ int test_histarea(int histogram[], int length)
 	return area;
 }
 
-int _tmain(int argc, _TCHAR* argv[])
+#ifdef _WIN64
+    int _tmain(int argc, _TCHAR* argv[])
+#else
+    int main(int argc, char* argv[])
+#endif
 {
-    const _TCHAR *programName  = argv[0] ? argv[0] : defProgramName;
+    const char *programName  = argv[0] ? argv[0] : defProgramName;
     //usage(argc, argv, programName, L"This program is a stub.");
 
 	int histoA[] = { -1, 34, 3, -14, 4, 0, -8, 17, 0 };
