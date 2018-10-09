@@ -235,6 +235,7 @@ UpgradeLog*.htm
 # Other ??
 *.VC.VC.opendb
 *.VC.db
+*.bak*
 
 #########################
 # .gitignore cribbed from github's default for C++ plus:
