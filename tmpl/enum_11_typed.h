@@ -9,6 +9,10 @@
 #include <string>
 #include <vector>
 
+/// Macro to create the enum class.
+/// NOTE: Only map< EnumValue, EnumName >,
+///       Not: map< EnumName, EnumValue >
+/// The name of each enum need not be unique, though its "primary" name should be unique.
 #define DECLARE_ENUM_WITH_TYPE(E, T, ...)                                                                     \
     enum class E : T                                                                                          \
     {                                                                                                         \
