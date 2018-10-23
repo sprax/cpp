@@ -35,7 +35,7 @@ private:
 };
 
 std::ostream &operator<<(std::ostream &os, myclass const &m) {
-    return os << m.k_ << " sqrt2: " << sqrt2;
+    return os << m.k_ << " sqrt2: " << m.sqrt2;
 }
 
 int main() {
