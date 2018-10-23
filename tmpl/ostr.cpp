@@ -24,7 +24,7 @@ using std::endl;
 
 class myclass
 {
-friend std::ostream& operator<<(std::ostream&, myclass const&);
+// friend std::ostream& operator<<(std::ostream&, myclass const&);
 public:
     myclass(int i) : k_(i) { }
 
