@@ -31,6 +31,7 @@ public:
 
 private:
     int k_;
+    const double sqrt2 = 1.41;
 };
 
 std::ostream &operator<<(std::ostream &os, myclass const &m) {
