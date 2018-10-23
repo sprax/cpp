@@ -39,8 +39,11 @@ std::ostream &operator<<(std::ostream &os, myclass const &m) {
 }
 
 int main() {
-    myclass x(10);
+    myclass xx(10);
 
-    std::cout << "myclass: " << x << std::endl;
+    std::cout << "myclass: " << xx << std::endl;
+    time_t tt = time(nullptr);
+    std::cout << "my time: " << tt << std::endl;
+
     return 0;
 }
