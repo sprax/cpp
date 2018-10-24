@@ -146,7 +146,7 @@ typedef struct Duf {
 } Duf;
 
 
-namespace std{
+namespace std {
     string to_string(Duf duf) { return duf.to_string(); }
 }
 
