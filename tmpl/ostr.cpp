@@ -40,10 +40,12 @@ std::ostream &operator<<(std::ostream &os, myclass const &m) {
 
 int main() {
     myclass xx(10);
+    myclass *my_ptr = NULL;
 
     std::cout << "myclass: " << xx << std::endl;
     time_t tt = time(nullptr);
     std::cout << "my time: " << tt << std::endl;
+    delete my_ptr;
 
     return 0;
 }
