@@ -1,9 +1,9 @@
 // spdlogs.cpp
 // May require C11 or later
-// BUILD: clang++ -std=c++11 spdlogs.cpp -o tmpl.out && tmpl.out
 // BUILD:     g++ -std=c++11 spdlogs.cpp -o tmpl.out && tmpl.out
+// BUILD: clang++ -std=c++11 spdlogs.cpp -I ~/asdf/spdlog/include -o tmpl.out && tmpl.out
 
-#include "spdlog/spdlog.h"
+#include "../../spdlog/include/spdlog/spdlog.h"
 #include "spdlog/sinks/stdout_sinks.h"
 #include "spdlog/sinks/basic_file_sink.h"
 #include "spdlog/sinks/rotating_file_sink.h"
@@ -13,6 +13,44 @@
 #include <string>
 #include <sstream>
 #include <sys/stat.h>
+
+using std::cerr;
+using std::cin;
+using std::cout;
+using std::endl;
+
+std::string getenv_var(const std::string& var) {
+     const char *val = std::getenv(var.c_str());
+     if (val == 0) {
+         return "";
+     } else {
+         return val;    // auto-converted
+     }
+}
+
+bool IsEnvCircleCi() { return getenv_var("CIRCLECI") == "true"; }
+
+#define USE_PROMPT_USER 1
+#define BUFSIZE 128
+void prompt_user(const std::string& prompt)
+{
+#if USE_PROMPT_USER
+    if (IsEnvCircleCi()) {
+        cout << "IsEnvCircleCi() => true" << endl;
+        return;
+    }
+    // std::string input;
+    std::cout << prompt << "  To continue, press enter... " << std::endl;
+    char line[BUFSIZE];
+    if (fgets(line, BUFSIZE, stdin) != 0)
+    {
+        line[strcspn(line, "\n")] = '\0';
+        std::cout << "Got <" << line << ">, continuing..." << std::endl;
+    }
+    // std::cin >> input;
+#endif
+}
+
 
 void make_dir(const std::string& path)
 {
@@ -57,6 +95,17 @@ int main(int, char* [])
     console->info("(                )", name.c_str());
     console->info(name.c_str());
     console->info(name);
+
+    prompt_user("hahahaha A");
+    prompt_user("hahahaha B");
+    prompt_user("hahahaha C");
+    prompt_user("hahahaha E");
+    prompt_user("hahahaha E");
+    return -14;
+
+
+
+
 
     try
     {
