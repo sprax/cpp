@@ -4,6 +4,9 @@
 // BUILD:     g++ -std=c++11 spdlogs.cpp -o tmpl.out && tmpl.out
 
 #include "spdlog/spdlog.h"
+#include "spdlog/sinks/stdout_sinks.h"
+#include "spdlog/sinks/basic_file_sink.h"
+#include "spdlog/sinks/rotating_file_sink.h"
 #include <exception>    // For std::exception
 #include <iomanip>
 #include <iostream>
@@ -43,8 +46,8 @@ int main(int, char* [])
     std::string log_dir_path("logs");
     make_dir(log_dir_path);
 
-    //Multithreaded console logger(with color support)
-    auto console = spdlog::stdout_color_mt("console");
+    // Multithreaded console logger
+    std::shared_ptr<spdlog::logger> console = spdlog::stdout_logger_mt("console");
     console->info("Welcome to spdlog!") ;
 
     auto name = make_xyz_name("name", 23, -0.1234, 0.5678, -0.9012);
@@ -64,13 +67,17 @@ int main(int, char* [])
         // create a file rotating logger with 5mb size max and 3 rotated files
         auto rfile_logger = spdlog::rotating_logger_mt("rfile", log_dir_path + "/rotated.txt", 1024 * 1024 * 5, 3);
         rfile_logger->info("Howdy {} {} !!", "param1", 4.5678);
+        int n = 42;
+        printf(            "printf:    n == %d \t &n == %p\n", n, &n);
+        std::cout <<       "std::cout: n == " << n << " \t " << "&n == " << std::hex << long(&n) << std::endl;
+        basic_logger->warn("basic_log: n == {} \t &n == {:x}", n, long(&n));
+        console->info("Formt string width: [12345678901234567890]");
+        console->info("Formt string width: [{:20}]", "string");
+        console->info("Formt string width: [{:>20}]", "string");
+        console->info("Formt string width: [{:>{}}]", "string", 20);
     }
     catch (const spdlog::spdlog_ex& ex)
     {
-        std::cout << "Log initialization failed: " << ex.what() << std::endl;
+        std::cerr << "Log initialization failed: " << ex.what() << std::endl;
     }
-    int n = 42;
-    printf( "n == %d \t &n == %p\n", n, &n);
-    std::cout << "n == " << n << " \t " << "&n == " << std::hex << long(&n) << std::endl;
-    basic_logger->warn("n == {} \t &n == {0:x}", n, long(&n));
 }
