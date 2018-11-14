@@ -75,5 +75,9 @@ int main() {
     string endpath = endpath_after_dir(path, lib_dir);
     cout << "FINALLY endpath: (" << endpath << ")" << endl;
 
+    double pi;
+    if ((pi = M_PI) && (pi > 3)) {
+        cout << "M_PI == " << pi << " is > 3" << endl;
+    }
     return 0;
 }
