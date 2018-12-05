@@ -103,10 +103,6 @@ int main(int, char* [])
     prompt_user("hahahaha E");
     return -14;
 
-
-
-
-
     try
     {
         // Create basic file logger (not rotated)

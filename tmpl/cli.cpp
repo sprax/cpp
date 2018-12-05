@@ -11,12 +11,14 @@
 using std::cerr;
 using std::endl;
 
+template<class T>
 class A {
 protected:
     A() { }
-    int id = 37;
+    T id = 37;
 };
-class B : private A {
+
+class B : private A<int> {
 public:
     B() : A()
     {
