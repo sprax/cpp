@@ -55,7 +55,10 @@ static void testMapVecRef()
     cout << "vec[5]: " << (vec.size() <= 5 ? "short" : to_string(vec[5])) << endl;
     cout << "cpy[5]: " << (cpy.size() <= 5 ? "short" : to_string(cpy[5])) << endl;
 
-
+    auto& nur = svi["haha"];
+    cout << "nur ? " << (nur.empty() ? "empty" : "not empty") << endl;
+    nur.push_back(117);
+    cout << "nur ! " << nur[0] << endl;
 }
 
 template <typename TV>
