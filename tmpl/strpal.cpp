@@ -1,4 +1,4 @@
-// enum_temp.cpp : template classes using enum values as template parameters
+// strpal.cpp : test if string is palindrome
 // Requires C11 or later
 // BUILD: clang++ -std=c++11 strpal.cpp -o tmpl.out && tmpl.out
 // BUILD: clang++ -std=c++14 strpal.cpp -o tmpl.out && tmpl.out
@@ -25,9 +25,11 @@ using std::string;
 
 bool is_palindrome(const std::string& ss)
 {
+    int test = 1;
     for (const char *lef = ss.c_str(), *rgt = lef + ss.size(); lef < --rgt; ) {
         printf("\nlef %c ? %c rgt\t", *lef, *rgt);
         if (*lef++ != *rgt) {
+            int test = 2;
             return false;
         }
     }

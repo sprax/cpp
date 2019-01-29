@@ -96,6 +96,10 @@ int main(int, char* [])
     console->info(name.c_str());
     console->info(name);
 
+    console->info("3-wide int({:3})", 2);
+    console->info("3-wide int({:3})", 11);
+
+
     prompt_user("hahahaha A");
     prompt_user("hahahaha B");
     prompt_user("hahahaha C");

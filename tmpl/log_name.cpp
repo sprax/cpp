@@ -1,4 +1,5 @@
-// BUILD: clang++ -std=c++14 log_name.cpp -o tmpl.out && tmpl.out
+/// log_name.cpp
+/// BUILD: clang++ -std=c++14 log_name.cpp -o tmpl.out && tmpl.out
 #include "spdlog/spdlog.h"
 #include <iomanip>
 #include <iostream>
