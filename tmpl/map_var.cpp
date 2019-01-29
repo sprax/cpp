@@ -18,11 +18,9 @@
 #include <unordered_set>
 #include <vector>
 
-using std::cin;
-using std::cout;
-using std::endl;
+using namespace std;
 
-static const std::vector<std::string> default_map_keys {
+static const vector<string> default_map_keys {
     "zero",
     "one",
     "two",
@@ -35,6 +33,33 @@ namespace std {
     string to_string(vector<T> vec) { return "std::vector(size=" + to_string(vec.size()) + ")"; }
 }
 
+
+static void testMapVecRef()
+{
+    map<string, vector<int>> svi;
+    vector<int>& vec = svi[default_map_keys[1]];
+    cout << "vec[0]: " << (vec.empty() ? "empty" : to_string(vec[0])) << endl;
+    vec.push_back(0);
+    vec.push_back(3);
+    vec.push_back(2);
+    vec.push_back(1);
+    vector<int> cpy = svi[default_map_keys[1]];
+    cout << "vec[0]: " << (vec.empty() ? "empty" : to_string(vec[0])) << endl;
+    cout << "cpy[0]: " << (cpy.empty() ? "empty" : to_string(cpy[0])) << endl;
+    cpy.push_back(4);
+    cout << "vec[4]: " << (vec.size() <= 4 ? "short" : to_string(vec[4])) << endl;
+    cout << "cpy[4]: " << (cpy.size() <= 4 ? "short" : to_string(cpy[4])) << endl;
+    vec.push_back(14);
+    vec.push_back(15);
+    cpy = svi[default_map_keys[1]];
+    cout << "vec[5]: " << (vec.size() <= 5 ? "short" : to_string(vec[5])) << endl;
+    cout << "cpy[5]: " << (cpy.size() <= 5 ? "short" : to_string(cpy[5])) << endl;
+
+    auto& nur = svi["haha"];
+    cout << "nur ? " << (nur.empty() ? "empty" : "not empty") << endl;
+    nur.push_back(117);
+    cout << "nur ! " << nur[0] << endl;
+}
 
 template <typename TV>
 class MapTraj
@@ -222,5 +247,8 @@ int main(int argc, char* argv[])    // NB: unit tests for MapTraj
     map_str.showMap();
 
     cout<< "vector vintB: (" << std::to_string(vintB) << ")" << endl;
+
+    testMapVecRef();
+
     return 0;
 }

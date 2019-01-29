@@ -12,8 +12,6 @@
 
 #else
 
-
-
 #endif
 
 #include <time.h>
@@ -24,7 +22,7 @@ class WordRectPrinter
 {
 public:
 
-	template <typename T> 
+	template <typename T>
 	static void printRect(WordRectFinder<T> *pWRF)
 	{
 		time_t timeNow ;
