@@ -79,5 +79,14 @@ int main() {
     if ((pi = M_PI) && (pi > 3)) {
         cout << "M_PI == " << pi << " is > 3" << endl;
     }
+
+    auto a = std::make_shared<int>(42);
+    auto b = a;
+    *a = 43;
+    cout << "*b after *a = 43 is now: " << *b << endl;
+    (*a.get())++;
+    cout << "*b after (*a.get())++ is now: " << *b << endl;
+    ++*a;
+    cout << "*b after ++*a is now: " << *b << endl;
     return 0;
 }
