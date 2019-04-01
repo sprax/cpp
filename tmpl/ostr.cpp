@@ -22,7 +22,7 @@ using std::cin;
 using std::cout;
 using std::endl;
 using std::string;
-
+using std::vector;
 class myclass
 {
 friend std::ostream& operator<<(std::ostream&, myclass const&);
@@ -88,5 +88,7 @@ int main() {
     cout << "*b after (*a.get())++ is now: " << *b << endl;
     ++*a;
     cout << "*b after ++*a is now: " << *b << endl;
+
+    assert(false && "asserted false");
     return 0;
 }
