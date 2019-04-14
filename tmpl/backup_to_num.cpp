@@ -118,5 +118,8 @@ int main(int argc, char* argv[])    // NB: unit tests for MapTraj
     const char *path = argc > 1 ? argv[1] : "derp.out";
     cerr << argv[0] << " " << (path ? path : "NULL")  << endl;
     backup_to_num(path);
+
+    int status = rename_file("a.out", "b.out");
+    cerr << "status = rename_file(\"a.out\", \"b.out\") ==> " << status << endl;
     return 0;
 }
