@@ -120,6 +120,8 @@ int main(int argc, char* argv[])    // NB: unit tests for MapTraj
     backup_to_num(path);
 
     int status = rename_file("a.out", "b.out");
+    int statut = rename_file("b.out", "a.out");
     cerr << "status = rename_file(\"a.out\", \"b.out\") ==> " << status << endl;
+    cerr << "statut = rename_file(\"b.out\", \"a.out\") ==> " << status << endl;
     return 0;
 }
