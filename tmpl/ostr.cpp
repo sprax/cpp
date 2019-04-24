@@ -89,6 +89,6 @@ int main() {
     ++*a;
     cout << "*b after ++*a is now: " << *b << endl;
 
-    assert(false && "asserted false");
+    // assert(false && "asserted false");
     return 0;
 }
