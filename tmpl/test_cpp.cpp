@@ -1,6 +1,7 @@
 // test_cpp.cpp : test some inobvious features of C++
 /* BUILD:
 clang++ -std=c++11 -Wno-deprecated-register test_cpp.cpp -o tmpl.out && tmpl.out
+g++ -std=c++11 test_cpp.cpp -o tmpl.out -Wall -Wunused-parameter -Wextra && tmpl.out
 */
 
 #include <chrono>
