@@ -1,5 +1,7 @@
 // test_cpp.cpp : test some inobvious features of C++
-// BUILD: clang++ -std=c++11 -Wno-deprecated-register test_cpp.cpp -o tmpl.out && tmpl.out
+/* BUILD:
+clang++ -std=c++11 -Wno-deprecated-register test_cpp.cpp -o tmpl.out && tmpl.out
+*/
 
 #include <chrono>
 #include <iostream>
@@ -196,6 +198,9 @@ void count_it(int& count)
 }
 
 
+void myfunc(int unused)
+{ }
+
 int main(int argc, char* argv[])    // NB: This is more a unit test than an app; it does not play ghost!
 {
     static int counted;
@@ -203,6 +208,8 @@ int main(int argc, char* argv[])    // NB: This is more a unit test than an app;
     vector<double>& vr = vd;
     vr = { 9.9, 8.2 };
     register int regi;
+
+    myfunc(1);
 
     std::cout << vd[0] << std::endl;
     std::cout << vr[0] << std::endl;
