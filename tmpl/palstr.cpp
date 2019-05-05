@@ -1,7 +1,8 @@
 // strpal.cpp : test if string is palindrome
-// Requires C11 or later
-// BUILD: clang++ -std=c++11 strpal.cpp -o tmpl.out && tmpl.out
-// BUILD: clang++ -std=c++14 strpal.cpp -Wall -Wextra -o tmpl.out && tmpl.out
+/* Requires C11 or later
+clang++ -std=c++11 strpal.cpp -o tmpl.out && tmpl.out
+clang++ -std=c++14 palstr.cpp -Wall -Wextra -o tmpl.out && tmpl.out
+*/
 
 #include <chrono>
 #include <iomanip>
