@@ -17,6 +17,7 @@
 #include <stdlib.h>
 #include <string>
 #include <typeinfo>
+#include <tuple>
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
@@ -110,6 +111,17 @@ int main(int argc, char* argv[])    // NB: unit tests for MapTraj
     cout << "After sorting, name_list:" << endl;
     for (auto& name : name_list) {
         cout << name << endl;
+    }
+
+    std::vector<std::pair<double, std::string>> dss{ {4, "four"}, {4, "Fourish"}, {3, "three"}, {M_PI, "PI"}};
+    cout << "DSS original order:" << endl;
+    for (const auto& ds : dss) {
+        cout << ds.first << " : " << ds.second << endl;
+    }
+    std::sort(dss.begin(), dss.end());
+    cout << "DSS sorted order:" << endl;
+    for (const auto& ds : dss) {
+        cout << ds.first << " : " << ds.second << endl;
     }
 
 #ifndef _WIN32

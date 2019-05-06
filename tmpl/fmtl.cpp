@@ -73,26 +73,39 @@ std::string endpath_after_dir(const std::string& path, const std::string& dir)
 }
 
 
-int id_uint_and_sign( uint& uint_result, char& sign_result
-                    , const double value, const double factor
-                    , const uint max_result, const std::string id = ""
-) {
 
-    if (value < 0.0) {
+/// Round any number to an int
+template <typename NUM>
+inline static int IntRound(NUM num) {
+    return static_cast<int>(std::lround(num));
+}
+
+/// Multiply input value by factor, round the result to an integral value,
+/// and return that separated into an unsigned int and a '+' or '-' character
+/// corresponding to the result's sign, where the sign of 0 is always plus.
+int scaled_uint_and_sign( uint& uint_result, char& sign_result
+                        , const double value, const double factor
+                        , const uint max_result, const std::string id_name
+) {
+    int sint_result = IntRound(factor * value);
+    if (sint_result < 0.0) {
         sign_result = '-';
-        uint_result = INT_ROUND(-factor * value);
+        uint_result = -sint_result;
     } else {
         sign_result = '+';
-        uint_result = INT_ROUND( factor * value);
+        uint_result = sint_result;
     }
     if (uint_result > max_result) {
-        string err_msg = fmt::format("bad ID({}) result {} > {} max", id, uint_result, max_result);
-        assert(uint_result <= max_result && err_msg.c_str());
+        string err_msg = fmt::format("bad ID({}) result {} > {} max"
+                                    , id_name, uint_result, max_result
+        );
+        ////assert(uint_result <= max_result && err_msg.c_str());
         throw std::runtime_error(err_msg);
         return 1;
     }
     return 0;
 }
+
 
 
 /// Returns a key position ID string formatted as _x=XXXX_y=YYYY_z=ZZZZ, where each
@@ -120,9 +133,9 @@ const std::string FractionIdKeyXyz(const Eigen::Vector3d& vec3d)
     uint x_uint, y_uint, z_uint;
     char x_sign, y_sign, z_sign;
     try {
-        id_uint_and_sign(x_uint, x_sign, vec3d[0], scale, key_max, "X");
-        id_uint_and_sign(y_uint, y_sign, vec3d[1], scale, key_max, "Y");
-        id_uint_and_sign(z_uint, z_sign, vec3d[2], scale, key_max, "Z");
+        scaled_uint_and_sign(x_uint, x_sign, vec3d[0], scale, key_max, "X");
+        scaled_uint_and_sign(y_uint, y_sign, vec3d[1], scale, key_max, "Y");
+        scaled_uint_and_sign(z_uint, z_sign, vec3d[2], scale, key_max, "Z");
     } catch(const std::exception& ex) {
         cerr << "FractionIdKeyXyz: Error: " << ex.what() << endl;
         throw;
@@ -158,8 +171,8 @@ const std::string FractionIdThetaPhi(double theta, double phi)
     char theta_sign, phi_sign;
     uint theta_fods, phi_fods;
     try {
-        id_uint_and_sign(theta_fods, theta_sign, theta, fod_factor, fod_max, "theta");
-        id_uint_and_sign(phi_fods, phi_sign, phi, fod_factor, fod_max, "phi");
+        scaled_uint_and_sign(theta_fods, theta_sign, theta, fod_factor, fod_max, "theta");
+        scaled_uint_and_sign(phi_fods, phi_sign, phi, fod_factor, fod_max, "phi");
     } catch(const std::exception& ex) {
         cerr << "FractionIdThetaPhi: Error: " << ex.what() << endl;
         throw;
@@ -283,6 +296,130 @@ void show_num_digits() {
 }
 
 
+/// Multiply input value by factor, round the result to an integral value,
+/// and return that separated into an unsigned int and a '+' or '-' character
+/// corresponding to the result's sign, where the sign of 0 is always plus.
+int angle_uint_and_sign( uint& uint_result, char& sign_result
+                       , const double angle, const double degree_factor
+                       , const uint max_result, const std::string id_name
+) {
+    double dbl_multiple;
+    double fraction = std::modf(angle/M_PI, &dbl_multiple);
+    int    int_multiple = std::lround(dbl_multiple);
+
+    int idegs = std::lround(int_multiple % 2 ? -degree_factor * fraction : degree_factor * fraction);
+
+    if (int_multiple % 2) {
+        uint_result = IntRound(degree_factor * (1.0 - fraction));
+        sign_result = '-';
+    } else {
+        uint_result = IntRound(degree_factor * fraction);
+        sign_result = '+';
+    }
+
+    cerr<< "angle_uint_and_sign(angle=" << angle << ", deg_fac=" << degree_factor << ") => "
+        << "fraction: " << fraction << ", int_mult: " << int_multiple
+        << ", uint_res: " << uint_result << ", sign_result: " << sign_result
+        << endl;
+
+
+
+    //
+    // int sint_result = IntRound(factor * value);
+    // if (sint_result < 0.0) {
+    //     sign_result = '-';
+    //     uint_result = -sint_result;
+    // } else {
+    //     sign_result = '+';
+    //     uint_result = sint_result;
+    // }
+    // if (uint_result > max_result) {
+    //     string err_msg = fmt::format("bad ID({}) result {} > {} max"
+    //                                 , id_name, uint_result, max_result
+    //     );
+    //     ////assert(uint_result <= max_result && err_msg.c_str());
+    //     throw std::runtime_error(err_msg);
+    //     return 1;
+    // }
+    return 0;
+}
+
+void show_modfs()
+{
+    double oome = 1.0/M_E;
+    double oor2 = 1.0/sqrt(2.0);
+    double eopi = M_E / M_PI;
+    double thrd = M_PI / 6.0;
+
+    double fods = 900 / M_PI;
+
+    cerr << "\t1/M_E: " << oome << "\t 1/sqrt2: " << oor2 << " \t M_E/M_PI: " << eopi << " \t pi/6: " << thrd << endl;
+    cerr << "\t1/M_E: " << oome*fods << "\t 1/sqrt2: " << oor2*fods << " \t M_E/M_PI: " << eopi*fods << " \t pi/6: " << thrd*fods << endl;
+
+    double angs[]{oome, oor2, eopi, thrd, fods};
+    for (auto aa : angs) {
+        cerr << "\t " << aa;
+    }
+    cerr << endl;
+    int j = 0;
+    for (auto& aa : angs) {
+        ++j;
+        aa += j * M_PI;
+        cerr << "\t " << aa;
+    }
+    cerr << endl;
+    for (auto& aa : angs) {
+        aa *= fods;
+        cerr << "\t " << aa;
+    }
+    cerr << endl;
+    for (auto& aa : angs) {
+        double mult = 0;
+        double frac = std::modf(aa, &mult);
+        int mint = std::lround(mult);
+        cerr << "\t (" << frac << " = modf(" << aa << ", " << mult << ") => " << mint;
+    }
+    cerr << endl;
+    for (auto& aa : angs) {
+        double frac = std::fmod(aa, M_PI*2);
+        cerr << "\t (" << frac << " = fmod(" << aa << ", " << M_PI*2 << ")  ";
+    }
+    cerr << endl;
+
+    int    imult = 0, idegs;
+    double dmult = 0.0, frac;
+    double twopi =  M_PI * 2.0;
+    double dp030 =  M_PI/6.0;
+    double dp390 =  M_PI * 13.0 / 6.0;
+    double dp210 =  M_PI * 7.0 / 6.0;
+    double dn060 = -M_PI / 3.0;
+    frac = std::modf(dp030/M_PI, &dmult);
+    imult = std::lround(dmult);
+    idegs = std::lround(imult % 2 ? -180.0 * frac : 180.0 * frac);
+    cerr << " pi/6 -> modf.frac: " << frac << ", modf.imult: " << imult << ", idegs: " << idegs << endl;
+
+
+    frac = std::modf(dp390/M_PI, &dmult);
+    imult = std::lround(dmult);
+    idegs = std::lround(imult % 2 ? -180.0 * frac : 180.0 * frac);
+    cerr << " pi*7/6 => " << idegs << endl;
+
+
+    int err;
+    uint uint_result;
+    char sign_result;
+    double degree_factor = 180.0;
+    uint   max_result    = 180;
+    const std::string id_name = "Angle";
+
+    double bad_phi = 5.497787143782138;
+    double angles[]{dp030, dp390, dp210, dn060, bad_phi};
+    for (double angle : angles) {
+        err = angle_uint_and_sign(uint_result, sign_result, angle, degree_factor, max_result, id_name);
+        cerr << "angle_uint_and_sign -> " << err << " (" << uint_result << ", " << sign_result << ")" << endl;
+    }
+}
+
 int main() {
     myclass xx(10);
     myclass *my_ptr = NULL;
@@ -325,5 +462,6 @@ int main() {
     // show_key_ids();
     // show_key_angle_ids();
     show_num_digits();
+    show_modfs();
     return 0;
 }
