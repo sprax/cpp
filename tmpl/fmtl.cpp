@@ -107,6 +107,21 @@ int scaled_uint_and_sign( uint& uint_result, char& sign_result
 }
 
 
+void show_paths()
+{
+    string path("/homes/s2/usr/sprax/traj_lib/truffle/digger/get_it");
+    string lib_dir("traj_lib");
+    size_t beg = 0, pos = path.find(lib_dir, 1);
+    if (pos != string::npos) {
+        beg = 1 + pos + lib_dir.size();
+        string subpath = path.substr(beg);
+        cout << "find " << lib_dir << " in " << path << " gives pos: " << pos << " so beg = " << beg << endl;
+        cout <<  "Thus the subpath is: (" << subpath << ")" << endl;
+    }
+    string endpath = endpath_after_dir(path, lib_dir);
+    cout << "FINALLY endpath: (" << endpath << ")" << endl;
+}
+
 
 /// Returns a key position ID string formatted as _x=XXXX_y=YYYY_z=ZZZZ, where each
 /// 3D vector component is scaled and rounded into the integer range [-999, 999]
@@ -166,7 +181,8 @@ const std::string FractionIdThetaPhi(double theta, double phi)
 {
     static const std::string sep("_");
     static const double fod_factor = 900.0 / M_PI;  // factor to convert radians to FODs
-    static const int fod_min = -901, fod_max = 901;
+////static const int fod_min = -901;
+    static const int fod_max = 901;
 
     char theta_sign, phi_sign;
     uint theta_fods, phi_fods;
@@ -296,56 +312,59 @@ void show_num_digits() {
 }
 
 
-/// Multiply input value by factor, round the result to an integral value,
-/// and return that separated into an unsigned int and a '+' or '-' character
-/// corresponding to the result's sign, where the sign of 0 is always plus.
+/// Converts an angle in radians to an unsigned int and a sign character,
+/// where the unsigned int is proportional to the smallest equivalent of
+/// the orginal angle as measured counterclockwise (positive orientation)
+/// or clockwise (negative orientation), and all angles are equivalent
+/// modulo two PI.  In other words, the usigned result represents some
+/// number of fractions of a degree, and the sign result indicates whether
+/// the number is measured counterclockwise (+) or clockwise (-).
+/// Examples with the default units of Pi radians = 180 degrees,
+/// and thus the valid interval for unsigned result is exactly [0, 180]:
+///  1*Pi/6 => ( 30, '+')
+///  2*Pi/3 => (120, '+')
+///  4*Pi/3 => (120, '-')    Not 240, which is not in [0, 180]
+///  7*Pi/6 => (150, '-')    Not 210
+///  7*Pi/3 => ( 60, '+')    Not 420, nor -300
+/// -7*Pi/3 => ( 60, '-')    Not 300, nor -420
+/// -1*Pi/3 => ( 60, '-')    Not 300
+/// -5*Pi/4 => (135, '+')    Not -225
+/// NOTE: Zero is never negative, that is, the sign of a 0 result is always '+'.
 int angle_uint_and_sign( uint& uint_result, char& sign_result
-                       , const double angle, const double degree_factor
-                       , const uint max_result, const std::string id_name
+                       , const double angle
+                       , const double degree_factor = 180.0
+                       , const std::string id_name = ""
 ) {
     double dbl_multiple;
     double fraction = std::modf(angle/M_PI, &dbl_multiple);
     int    int_multiple = std::lround(dbl_multiple);
 
-    int idegs = std::lround(int_multiple % 2 ? -degree_factor * fraction : degree_factor * fraction);
+    bool opp_sign = false;
+    if (fraction < 0.0) {
+        fraction = -fraction;
+        opp_sign = true;
+    }
 
     if (int_multiple % 2) {
         uint_result = IntRound(degree_factor * (1.0 - fraction));
-        sign_result = '-';
+        sign_result = opp_sign ? '+' : '-';
     } else {
         uint_result = IntRound(degree_factor * fraction);
-        sign_result = '+';
+        sign_result = opp_sign ? '-' : '+';
     }
 
-    cerr<< "angle_uint_and_sign(angle=" << angle << ", deg_fac=" << degree_factor << ") => "
+    cerr<< "angle_uint_and_sign(angle=" << angle << "=" << angle/M_PI << "p=" << 180*angle/M_PI
+        << "d, deg_fac=" << degree_factor << ") => "
         << "fraction: " << fraction << ", int_mult: " << int_multiple
         << ", uint_res: " << uint_result << ", sign_result: " << sign_result
+        << " ==> '" << sign_result << uint_result << "'"
         << endl;
-
-
-
-    //
-    // int sint_result = IntRound(factor * value);
-    // if (sint_result < 0.0) {
-    //     sign_result = '-';
-    //     uint_result = -sint_result;
-    // } else {
-    //     sign_result = '+';
-    //     uint_result = sint_result;
-    // }
-    // if (uint_result > max_result) {
-    //     string err_msg = fmt::format("bad ID({}) result {} > {} max"
-    //                                 , id_name, uint_result, max_result
-    //     );
-    //     ////assert(uint_result <= max_result && err_msg.c_str());
-    //     throw std::runtime_error(err_msg);
-    //     return 1;
-    // }
     return 0;
 }
 
 void show_modfs()
 {
+#ifdef DONT_DO_IT
     double oome = 1.0/M_E;
     double oor2 = 1.0/sqrt(2.0);
     double eopi = M_E / M_PI;
@@ -385,14 +404,25 @@ void show_modfs()
         cerr << "\t (" << frac << " = fmod(" << aa << ", " << M_PI*2 << ")  ";
     }
     cerr << endl;
-
+#endif
     int    imult = 0, idegs;
     double dmult = 0.0, frac;
     double twopi =  M_PI * 2.0;
+
     double dp030 =  M_PI/6.0;
-    double dp390 =  M_PI * 13.0 / 6.0;
+    double dp045 =  M_PI/4.0;
+    double dp120 =  M_PI * 2.0 / 3;
     double dp210 =  M_PI * 7.0 / 6.0;
-    double dn060 = -M_PI / 3.0;
+    double dp390 =  M_PI * 13.0 / 6.0;
+
+    double dn030 = -M_PI/6.0;
+    double dn045 = -M_PI/4.0;
+    double dn120 = -M_PI * 2.0 / 3;
+    double dn210 = -M_PI * 7.0 / 6.0;
+    double dn390 = -M_PI * 13.0 / 6.0;
+    double phi315 = 5.497787143782138;
+    double angles[]{dp030, dp045, dp120, dp210, dp390, dn030, dn045, dn120, dn210, dn390, phi315, twopi};
+
     frac = std::modf(dp030/M_PI, &dmult);
     imult = std::lround(dmult);
     idegs = std::lround(imult % 2 ? -180.0 * frac : 180.0 * frac);
@@ -408,16 +438,25 @@ void show_modfs()
     int err;
     uint uint_result;
     char sign_result;
-    double degree_factor = 180.0;
-    uint   max_result    = 180;
+    double degree_factor = 180.0;       // use 900.0 for units of one fifth of a degree
     const std::string id_name = "Angle";
 
-    double bad_phi = 5.497787143782138;
-    double angles[]{dp030, dp390, dp210, dn060, bad_phi};
     for (double angle : angles) {
-        err = angle_uint_and_sign(uint_result, sign_result, angle, degree_factor, max_result, id_name);
+        err = angle_uint_and_sign(uint_result, sign_result, angle, degree_factor, id_name);
         cerr << "angle_uint_and_sign -> " << err << " (" << uint_result << ", " << sign_result << ")" << endl;
     }
+}
+
+void show_ptr_inc()
+{
+    auto a = std::make_shared<int>(42);
+    auto b = a;
+    *a = 43;
+    cout << "*b after *a = 43 is now: " << *b << endl;
+    (*a.get())++;
+    cout << "*b after (*a.get())++ is now: " << *b << endl;
+    ++*a;
+    cout << "*b after ++*a is now: " << *b << endl;
 }
 
 int main() {
@@ -428,40 +467,18 @@ int main() {
     time_t tt = time(nullptr);
     std::cout << "my time: " << tt << std::endl;
     delete my_ptr;
-
-
-    string path("/homes/s2/usr/sprax/traj_lib/truffle/digger/get_it");
-    string lib_dir("traj_lib");
-    size_t beg = 0, pos = path.find(lib_dir, 1);
-    if (pos != string::npos) {
-        beg = 1 + pos + lib_dir.size();
-        string subpath = path.substr(beg);
-        cout << "find " << lib_dir << " in " << path << " gives pos: " << pos << " so beg = " << beg << endl;
-        cout <<  "Thus the subpath is: (" << subpath << ")" << endl;
-    }
-
-    string endpath = endpath_after_dir(path, lib_dir);
-    cout << "FINALLY endpath: (" << endpath << ")" << endl;
-
     double pi;
     if ((pi = M_PI) && (pi > 3)) {
         cout << "M_PI == " << pi << " is > 3" << endl;
     }
 
-    auto a = std::make_shared<int>(42);
-    auto b = a;
-    *a = 43;
-    cout << "*b after *a = 43 is now: " << *b << endl;
-    (*a.get())++;
-    cout << "*b after (*a.get())++ is now: " << *b << endl;
-    ++*a;
-    cout << "*b after ++*a is now: " << *b << endl;
-
     // assert(false && "asserted false");
+    // show_ptr_inc();
+    // show_paths();
     // show_angle_ids();
     // show_key_ids();
     // show_key_angle_ids();
-    show_num_digits();
+    // show_num_digits();
     show_modfs();
     return 0;
 }
