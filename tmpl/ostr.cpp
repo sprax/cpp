@@ -18,6 +18,7 @@
 #include <unordered_set>
 #include <vector>
 
+using std::cerr;
 using std::cin;
 using std::cout;
 using std::endl;
@@ -90,5 +91,9 @@ int main() {
     cout << "*b after ++*a is now: " << *b << endl;
 
     // assert(false && "asserted false");
+    bool yes = 1;
+    size_t duh = true;
+    size_t doh = yes;
+    cerr << "true as size_t: " << duh << "    and bool true var as size_t: " << doh << endl;
     return 0;
 }
