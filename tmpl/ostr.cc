@@ -3,7 +3,6 @@
 // BUILD: clang++ -std=c++11 ostr.cpp -o tmpl.out && tmpl.out
 // BUILD: clang++ -std=c++14 ostr.cpp -o tmpl.out && tmpl.out
 
-#include <iostream>
 #include <chrono>
 #include <iostream>
 #include <list>

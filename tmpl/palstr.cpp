@@ -3,13 +3,14 @@
 // BUILD: clang++ -std=c++11 strpal.cpp -o tmpl.out && tmpl.out
 // BUILD: clang++ -std=c++14 strpal.cpp -Wall -Wextra -o tmpl.out && tmpl.out
 
-#include <iostream>
 #include <chrono>
+#include <iomanip>
 #include <iostream>
 #include <list>
 #include <map>
 #include <set>
 #include <signal.h>
+#include <sstream>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
@@ -48,8 +49,53 @@ int main() {
     ans = 4;
     cerr << "ans: " << ans << endl;
 
-    int flag = 0;
-    flag |= -1;
-    cerr << "flag: " << flag << endl;
+    int iflag = 0;
+    iflag |= -1;
+    cerr << "iflag 0 |= -1: " << iflag << endl;
+    iflag = iflag | -2;
+    cerr << "iflag 0 |= -2: " << iflag << endl;
+    iflag |= -4;
+    cerr << "iflag 0 |= -4: " << iflag << endl;
+    iflag |= +4;
+    cerr << "iflag 0 |= +4: " << iflag << endl;
+    iflag += +4;
+    cerr << "iflag 0 += +4: " << iflag << endl;
+
+    unsigned int uflag = 0;
+    uflag |= 1;
+    cerr << "uflag 0 |= 1: " << uflag << endl;
+    uflag = uflag | 2;
+    cerr << "uflag 0 |= 2: " << uflag << endl;
+    uflag |= 4;
+    cerr << "uflag 0 |= 4: " << uflag << endl;
+
+    iflag = 0;
+    iflag |= 1;
+    cerr << "iflag 0 |= 1: " << iflag << endl;
+    iflag = iflag | 2;
+    cerr << "iflag |= 2: " << iflag << endl;
+    iflag |= 4;
+    cerr << "iflag |= 4: " << iflag << endl;
+    iflag |= +8;
+    cerr << "iflag |= +8: " << iflag << endl;
+    iflag |= +8;
+    cerr << "-iflag: " << -iflag << endl;
+
+    iflag = -15;
+    std::ostringstream oss;
+    oss << "Bad ApproachToFinishPlan:";
+    if (iflag & -8)
+        oss << " AtoE";
+    if (iflag & -4)
+        oss << " EtoF";
+    cerr << "err_msg: " << oss.str() << endl;
+  
+    for (int j = 100; j > -5; j--) {
+        int r = rand();
+        if (j & -1 || r & -1) {
+            cerr << "j & -1: " << (j&-1) << " and r & -1: " << (r&-1) << endl;
+        }
+    }
+
     return 0;
 }
