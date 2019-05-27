@@ -47,5 +47,9 @@ int main() {
     auto ans = duh();
     ans = 4;
     cerr << "ans: " << ans << endl;
+
+    int flag = 0;
+    flag |= -1;
+    cerr << "flag: " << flag << endl;
     return 0;
 }
