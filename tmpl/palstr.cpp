@@ -84,7 +84,7 @@ int main() {
 
     iflag = -15;
     std::ostringstream oss;
-    oss << "Bad ApproachToFinishPlan:";
+    oss << "Badness :";
     if (iflag & -8)
         oss << " AtoE";
     if (iflag & -4)
