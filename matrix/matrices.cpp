@@ -1,5 +1,5 @@
-// Compile and Run:
-// Mac osx:
+/// Compile and Run:
+/// Mac osx:
 /*  GCC g++ vs. CLANG clang++ (both supply C++ library linkage):
         g++ hello.cpp -o hello.out && hello.out  	# [you might need ./hello.out]
         clang++ hello.cpp -o hello.out && hello.out  	# [you might need ./hello.out]
