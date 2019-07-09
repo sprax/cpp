@@ -154,9 +154,10 @@ public:
         return 0;
     }
 };
+#endif
 
 
-// subclasses that inherit of inner classes
+// subclasses that inherit from inner classes
 class AA {
 public:
     class BB {
@@ -169,6 +170,7 @@ public:
 
 class CC : public AA
 {
+public:
     class DD : public BB {
         DD() {}
     };
@@ -182,8 +184,12 @@ class EE {
     };
 };
 
+int makeAA(AA& aa, int nn) {
+    AA *pa = new AA();
+    aa = *pa;
+    return nn;
+}
 
-#endif
 
 void sleep(unsigned millis)
 {
@@ -209,6 +215,12 @@ int main(int argc, char* argv[])    // NB: This is more a unit test than an app;
     vector<double>& vr = vd;
     vr = { 9.9, 8.2 };
     register int regi;
+
+    AA aa;
+    int j = makeAA(aa, 5);
+
+    CC cc;
+    j = makeAA(cc, 6);
 
     myfunc(1);
 

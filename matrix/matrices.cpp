@@ -9,7 +9,7 @@
         clang -lstdc++ hello.cpp -o hello.out && hello.out (Use libstdc++ for compatibility with libMLi3)
     CC is a symbolic link to clang:  /usr/bin/CC@ -> clang
    Windows 10: very similar:
-   	g++ hello.cpp -o hello.exe && hello
+        g++ hello.cpp -o hello.exe && hello
 */
 #include <iostream>
 #include <string>
