@@ -23,7 +23,8 @@ class VVMatrix {
     public:
 
     // Parameter Constructor
-    VVMatrix(unsigned rows_, unsigned cols_, const T& value) : rows(rows_), cols(cols_)
+    VVMatrix(unsigned rows_, unsigned cols_, const T& value)
+            : rows(rows_), cols(cols_)
     {
         vecs.resize(rows);
         for (unsigned i = 0; i < vecs.size(); i++) {
