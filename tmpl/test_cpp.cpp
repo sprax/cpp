@@ -166,6 +166,7 @@ public:
     };
 
     AA() {}
+    void DoIt() { cerr << "AA.Done!" << endl; }
 };
 
 class CC : public AA
@@ -263,6 +264,12 @@ int main(int argc, char* argv[])    // NB: This is more a unit test than an app;
     printf( "n == %d \t &n = %p\n", n, &n);
     cout << "n == " << n << " \t " << "&n = " << std::hex << long(&n) << endl;
 
+    {
+        AA *pp = nullptr;
+        if ((pp = new AA())) {
+            pp->DoIt();
+        }
+    }
     regi = 0;
     return regi;
 }
