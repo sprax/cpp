@@ -1,15 +1,15 @@
 /// Compile and Run:
 /// Mac osx:
-/*  GCC g++ vs. CLANG clang++ (both supply C++ library linkage):
-        g++ hello.cpp -o hello.out && hello.out  	# [you might need ./hello.out]
-        clang++ hello.cpp -o hello.out && hello.out  	# [you might need ./hello.out]
+/*  CLANG clang++ vs. GCC g++ (both supply C++ library linkage):
+        clang++ -std=c++17 matrices.cpp -o tmp.out && tmp.out  	# [you might need ./tmp.out]
+            g++ -std=c++17 matrices.cpp -o tmp.out && tmp.out  	# [you might need ./tmp.out]
     GCC and CLANG front ends, with explicit C++ library link options:
-        gcc -lc++ hello.cpp -o hello.out && hello.out
-        clang -lc++ hello.cpp -o hello.out && hello.out (default C++ library)
-        clang -lstdc++ hello.cpp -o hello.out && hello.out (Use libstdc++ for compatibility with libMLi3)
+        gcc -std=c++17 -lc++ matrices.cpp -o tmp.out && tmp.out
+        clang -lc++ matrices.cpp -o tmp.out && tmp.out (default C++ library)
+        clang -std=c++11 -lstdc++ matrices.cpp -o tmp.out && tmp.out #(Use libstdc++ for compatibility with libMLi3)
     CC is a symbolic link to clang:  /usr/bin/CC@ -> clang
    Windows 10: very similar:
-        g++ hello.cpp -o hello.exe && hello
+        g++  -std=c++11 matrices.cpp -o matrices.exe && matrices
 */
 #include <iostream>
 #include <string>
