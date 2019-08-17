@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C64A7B3B2307B17D00608D0F /* DVGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C64A7B212307B17C00608D0F /* DVGraph.cpp */; };
+		C64A7B3C2307B17D00608D0F /* graphs.hpp in Headers */ = {isa = PBXBuildFile; fileRef = C64A7B232307B17C00608D0F /* graphs.hpp */; };
+		C64A7B3D2307B17D00608D0F /* stdafx.h in Headers */ = {isa = PBXBuildFile; fileRef = C64A7B252307B17C00608D0F /* stdafx.h */; };
+		C64A7B3E2307B17D00608D0F /* DEGraph.hpp in Headers */ = {isa = PBXBuildFile; fileRef = C64A7B2C2307B17C00608D0F /* DEGraph.hpp */; };
+		C64A7B3F2307B17D00608D0F /* GridGuards.hpp in Headers */ = {isa = PBXBuildFile; fileRef = C64A7B2D2307B17C00608D0F /* GridGuards.hpp */; };
+		C64A7B402307B17D00608D0F /* DEGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C64A7B2E2307B17C00608D0F /* DEGraph.cpp */; };
+		C64A7B412307B17D00608D0F /* targetver.h in Headers */ = {isa = PBXBuildFile; fileRef = C64A7B2F2307B17C00608D0F /* targetver.h */; };
+		C64A7B422307B17D00608D0F /* GridGuards.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C64A7B302307B17C00608D0F /* GridGuards.cpp */; };
+		C64A7B432307B17D00608D0F /* GridGuardsTest.hpp in Headers */ = {isa = PBXBuildFile; fileRef = C64A7B312307B17C00608D0F /* GridGuardsTest.hpp */; };
+		C64A7B442307B17D00608D0F /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C64A7B322307B17C00608D0F /* stdafx.cpp */; };
+		C64A7B452307B17D00608D0F /* DVGraph.hpp in Headers */ = {isa = PBXBuildFile; fileRef = C64A7B332307B17C00608D0F /* DVGraph.hpp */; };
+		C64A7B462307B17D00608D0F /* graphsMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C64A7B342307B17C00608D0F /* graphsMain.cpp */; };
+		C64A7B472307B17D00608D0F /* GridGuardsTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C64A7B372307B17D00608D0F /* GridGuardsTest.cpp */; };
+		C64A7B482307B17D00608D0F /* BVGraph.hpp in Headers */ = {isa = PBXBuildFile; fileRef = C64A7B382307B17D00608D0F /* BVGraph.hpp */; };
+		C64A7B492307B17D00608D0F /* Vertex.hpp in Headers */ = {isa = PBXBuildFile; fileRef = C64A7B3A2307B17D00608D0F /* Vertex.hpp */; };
 		C6A5309B1D064F4B00C371A3 /* printArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6A530911D064F4B00C371A3 /* printArray.cpp */; };
 		C6A5309C1D064F4B00C371A3 /* printArray.h in Headers */ = {isa = PBXBuildFile; fileRef = C6A530921D064F4B00C371A3 /* printArray.h */; };
 		C6A5309D1D064F4B00C371A3 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6A530961D064F4B00C371A3 /* stdafx.cpp */; };
@@ -16,7 +31,38 @@
 		C6A530A11D064F4B00C371A3 /* targetver.h in Headers */ = {isa = PBXBuildFile; fileRef = C6A5309A1D064F4B00C371A3 /* targetver.h */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		C64A7B2A2307B17C00608D0F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C64A7B262307B17C00608D0F /* graphs.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C608F87C1CF6913A00DDD57C;
+			remoteInfo = graphs;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		C64A7B212307B17C00608D0F /* DVGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DVGraph.cpp; path = ../graphs/DVGraph.cpp; sourceTree = "<group>"; };
+		C64A7B222307B17C00608D0F /* graphs.sln */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = graphs.sln; path = ../graphs/graphs.sln; sourceTree = "<group>"; };
+		C64A7B232307B17C00608D0F /* graphs.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = graphs.hpp; path = ../graphs/graphs.hpp; sourceTree = "<group>"; };
+		C64A7B242307B17C00608D0F /* graphs.vcxproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = graphs.vcxproj; path = ../graphs/graphs.vcxproj; sourceTree = "<group>"; };
+		C64A7B252307B17C00608D0F /* stdafx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stdafx.h; path = ../graphs/stdafx.h; sourceTree = "<group>"; };
+		C64A7B262307B17C00608D0F /* graphs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = graphs.xcodeproj; path = ../graphs/graphs.xcodeproj; sourceTree = "<group>"; };
+		C64A7B2C2307B17C00608D0F /* DEGraph.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DEGraph.hpp; path = ../graphs/DEGraph.hpp; sourceTree = "<group>"; };
+		C64A7B2D2307B17C00608D0F /* GridGuards.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GridGuards.hpp; path = ../graphs/GridGuards.hpp; sourceTree = "<group>"; };
+		C64A7B2E2307B17C00608D0F /* DEGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DEGraph.cpp; path = ../graphs/DEGraph.cpp; sourceTree = "<group>"; };
+		C64A7B2F2307B17C00608D0F /* targetver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = targetver.h; path = ../graphs/targetver.h; sourceTree = "<group>"; };
+		C64A7B302307B17C00608D0F /* GridGuards.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GridGuards.cpp; path = ../graphs/GridGuards.cpp; sourceTree = "<group>"; };
+		C64A7B312307B17C00608D0F /* GridGuardsTest.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GridGuardsTest.hpp; path = ../graphs/GridGuardsTest.hpp; sourceTree = "<group>"; };
+		C64A7B322307B17C00608D0F /* stdafx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = stdafx.cpp; path = ../graphs/stdafx.cpp; sourceTree = "<group>"; };
+		C64A7B332307B17C00608D0F /* DVGraph.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DVGraph.hpp; path = ../graphs/DVGraph.hpp; sourceTree = "<group>"; };
+		C64A7B342307B17C00608D0F /* graphsMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = graphsMain.cpp; path = ../graphs/graphsMain.cpp; sourceTree = "<group>"; };
+		C64A7B352307B17D00608D0F /* graphs.vcxproj.filters */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = graphs.vcxproj.filters; path = ../graphs/graphs.vcxproj.filters; sourceTree = "<group>"; };
+		C64A7B362307B17D00608D0F /* ReadMeGraphs.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ReadMeGraphs.txt; path = ../graphs/ReadMeGraphs.txt; sourceTree = "<group>"; };
+		C64A7B372307B17D00608D0F /* GridGuardsTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GridGuardsTest.cpp; path = ../graphs/GridGuardsTest.cpp; sourceTree = "<group>"; };
+		C64A7B382307B17D00608D0F /* BVGraph.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = BVGraph.hpp; path = ../graphs/BVGraph.hpp; sourceTree = "<group>"; };
+		C64A7B392307B17D00608D0F /* graphs.vcxproj copy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "graphs.vcxproj copy"; path = "../graphs/graphs.vcxproj copy"; sourceTree = "<group>"; };
+		C64A7B3A2307B17D00608D0F /* Vertex.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Vertex.hpp; path = ../graphs/Vertex.hpp; sourceTree = "<group>"; };
 		C6A530841D064E9C00C371A3 /* libSpraxLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSpraxLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6A530911D064F4B00C371A3 /* printArray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = printArray.cpp; path = SpraxLib/printArray.cpp; sourceTree = "<group>"; };
 		C6A530921D064F4B00C371A3 /* printArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = printArray.h; path = SpraxLib/printArray.h; sourceTree = "<group>"; };
@@ -41,6 +87,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C64A7B272307B17C00608D0F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C64A7B2B2307B17C00608D0F /* graphs */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		C6A5307B1D064E9C00C371A3 = {
 			isa = PBXGroup;
 			children = (
@@ -49,12 +103,33 @@
 				C6A530931D064F4B00C371A3 /* ReadMe.txt */,
 				C6A530941D064F4B00C371A3 /* SpraxLib.vcxproj */,
 				C6A530951D064F4B00C371A3 /* SpraxLib.vcxproj.filters */,
+				C64A7B362307B17D00608D0F /* ReadMeGraphs.txt */,
 				C6A530961D064F4B00C371A3 /* stdafx.cpp */,
+				C64A7B392307B17D00608D0F /* graphs.vcxproj copy */,
+				C64A7B352307B17D00608D0F /* graphs.vcxproj.filters */,
+				C64A7B262307B17C00608D0F /* graphs.xcodeproj */,
+				C64A7B342307B17C00608D0F /* graphsMain.cpp */,
+				C64A7B302307B17C00608D0F /* GridGuards.cpp */,
+				C64A7B2D2307B17C00608D0F /* GridGuards.hpp */,
+				C64A7B372307B17D00608D0F /* GridGuardsTest.cpp */,
+				C64A7B312307B17C00608D0F /* GridGuardsTest.hpp */,
+				C64A7B322307B17C00608D0F /* stdafx.cpp */,
 				C6A530971D064F4B00C371A3 /* stdafx.h */,
+				C64A7B2F2307B17C00608D0F /* targetver.h */,
+				C64A7B3A2307B17D00608D0F /* Vertex.hpp */,
 				C6A530981D064F4B00C371A3 /* Sx.cpp */,
 				C6A530991D064F4B00C371A3 /* Sx.h */,
 				C6A5309A1D064F4B00C371A3 /* targetver.h */,
 				C6A530851D064E9C00C371A3 /* Products */,
+				C64A7B382307B17D00608D0F /* BVGraph.hpp */,
+				C64A7B2E2307B17C00608D0F /* DEGraph.cpp */,
+				C64A7B2C2307B17C00608D0F /* DEGraph.hpp */,
+				C64A7B212307B17C00608D0F /* DVGraph.cpp */,
+				C64A7B332307B17C00608D0F /* DVGraph.hpp */,
+				C64A7B232307B17C00608D0F /* graphs.hpp */,
+				C64A7B222307B17C00608D0F /* graphs.sln */,
+				C64A7B242307B17C00608D0F /* graphs.vcxproj */,
+				C64A7B252307B17C00608D0F /* stdafx.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,10 +148,19 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C64A7B492307B17D00608D0F /* Vertex.hpp in Headers */,
+				C64A7B3F2307B17D00608D0F /* GridGuards.hpp in Headers */,
+				C64A7B3D2307B17D00608D0F /* stdafx.h in Headers */,
+				C64A7B432307B17D00608D0F /* GridGuardsTest.hpp in Headers */,
+				C64A7B412307B17D00608D0F /* targetver.h in Headers */,
+				C64A7B3C2307B17D00608D0F /* graphs.hpp in Headers */,
 				C6A5309E1D064F4B00C371A3 /* stdafx.h in Headers */,
+				C64A7B3E2307B17D00608D0F /* DEGraph.hpp in Headers */,
+				C64A7B452307B17D00608D0F /* DVGraph.hpp in Headers */,
 				C6A530A11D064F4B00C371A3 /* targetver.h in Headers */,
 				C6A530A01D064F4B00C371A3 /* Sx.h in Headers */,
 				C6A5309C1D064F4B00C371A3 /* printArray.h in Headers */,
+				C64A7B482307B17D00608D0F /* BVGraph.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +208,12 @@
 			mainGroup = C6A5307B1D064E9C00C371A3;
 			productRefGroup = C6A530851D064E9C00C371A3 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = C64A7B272307B17C00608D0F /* Products */;
+					ProjectRef = C64A7B262307B17C00608D0F /* graphs.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				C6A530831D064E9C00C371A3 /* SpraxLib */,
@@ -131,13 +221,29 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		C64A7B2B2307B17C00608D0F /* graphs */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = graphs;
+			remoteRef = C64A7B2A2307B17C00608D0F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C6A530801D064E9C00C371A3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C64A7B402307B17D00608D0F /* DEGraph.cpp in Sources */,
+				C64A7B462307B17D00608D0F /* graphsMain.cpp in Sources */,
+				C64A7B422307B17D00608D0F /* GridGuards.cpp in Sources */,
+				C64A7B3B2307B17D00608D0F /* DVGraph.cpp in Sources */,
 				C6A5309F1D064F4B00C371A3 /* Sx.cpp in Sources */,
 				C6A5309B1D064F4B00C371A3 /* printArray.cpp in Sources */,
+				C64A7B442307B17D00608D0F /* stdafx.cpp in Sources */,
+				C64A7B472307B17D00608D0F /* GridGuardsTest.cpp in Sources */,
 				C6A5309D1D064F4B00C371A3 /* stdafx.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,6 +365,7 @@
 				C6A5308A1D064E9C00C371A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

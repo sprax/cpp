@@ -7,12 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C6A5305F1D061F7900C371A3 /* DEGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6A5304F1D061F7900C371A3 /* DEGraph.cpp */; };
-		C6A530601D061F7900C371A3 /* DVGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6A530511D061F7900C371A3 /* DVGraph.cpp */; };
-		C6A530611D061F7900C371A3 /* graphsMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6A530551D061F7900C371A3 /* graphsMain.cpp */; };
-		C6A530621D061F7900C371A3 /* GridGuards.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6A530561D061F7900C371A3 /* GridGuards.cpp */; };
-		C6A530631D061F7900C371A3 /* GridGuardsTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6A530581D061F7900C371A3 /* GridGuardsTest.cpp */; };
-		C6A530641D061F7900C371A3 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6A5305B1D061F7900C371A3 /* stdafx.cpp */; };
 		C6A530A41D0660E100C371A3 /* libSpraxLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C6A530901D064E9E00C371A3 /* libSpraxLib.a */; };
 /* End PBXBuildFile section */
 
@@ -47,22 +41,6 @@
 
 /* Begin PBXFileReference section */
 		C608F87C1CF6913A00DDD57C /* graphs */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = graphs; sourceTree = BUILT_PRODUCTS_DIR; };
-		C6A5304F1D061F7900C371A3 /* DEGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DEGraph.cpp; path = ../../asm/cpp_git/graphs/DEGraph.cpp; sourceTree = "<group>"; };
-		C6A530501D061F7900C371A3 /* DEGraph.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DEGraph.hpp; path = ../../asm/cpp_git/graphs/DEGraph.hpp; sourceTree = "<group>"; };
-		C6A530511D061F7900C371A3 /* DVGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DVGraph.cpp; path = ../../asm/cpp_git/graphs/DVGraph.cpp; sourceTree = "<group>"; };
-		C6A530521D061F7900C371A3 /* DVGraph.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DVGraph.hpp; path = ../../asm/cpp_git/graphs/DVGraph.hpp; sourceTree = "<group>"; };
-		C6A530531D061F7900C371A3 /* graphs.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = graphs.hpp; path = ../../asm/cpp_git/graphs/graphs.hpp; sourceTree = "<group>"; };
-		C6A530541D061F7900C371A3 /* graphs.sln */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = graphs.sln; path = ../../asm/cpp_git/graphs/graphs.sln; sourceTree = "<group>"; };
-		C6A530551D061F7900C371A3 /* graphsMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = graphsMain.cpp; path = ../../asm/cpp_git/graphs/graphsMain.cpp; sourceTree = "<group>"; };
-		C6A530561D061F7900C371A3 /* GridGuards.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GridGuards.cpp; path = ../../asm/cpp_git/graphs/GridGuards.cpp; sourceTree = "<group>"; };
-		C6A530571D061F7900C371A3 /* GridGuards.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GridGuards.hpp; path = ../../asm/cpp_git/graphs/GridGuards.hpp; sourceTree = "<group>"; };
-		C6A530581D061F7900C371A3 /* GridGuardsTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GridGuardsTest.cpp; path = ../../asm/cpp_git/graphs/GridGuardsTest.cpp; sourceTree = "<group>"; };
-		C6A530591D061F7900C371A3 /* GridGuardsTest.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GridGuardsTest.hpp; path = ../../asm/cpp_git/graphs/GridGuardsTest.hpp; sourceTree = "<group>"; };
-		C6A5305A1D061F7900C371A3 /* ReadMeGraphs.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ReadMeGraphs.txt; path = ../../asm/cpp_git/graphs/ReadMeGraphs.txt; sourceTree = "<group>"; };
-		C6A5305B1D061F7900C371A3 /* stdafx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = stdafx.cpp; path = ../../asm/cpp_git/graphs/stdafx.cpp; sourceTree = "<group>"; };
-		C6A5305C1D061F7900C371A3 /* stdafx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stdafx.h; path = ../../asm/cpp_git/graphs/stdafx.h; sourceTree = "<group>"; };
-		C6A5305D1D061F7900C371A3 /* targetver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = targetver.h; path = ../../asm/cpp_git/graphs/targetver.h; sourceTree = "<group>"; };
-		C6A5305E1D061F7900C371A3 /* Vertex.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Vertex.hpp; path = ../../asm/cpp_git/graphs/Vertex.hpp; sourceTree = "<group>"; };
 		C6A5308B1D064E9C00C371A3 /* SpraxLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SpraxLib.xcodeproj; path = ../SpraxLib/SpraxLib.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,22 +60,6 @@
 			isa = PBXGroup;
 			children = (
 				C6A5308B1D064E9C00C371A3 /* SpraxLib.xcodeproj */,
-				C6A5304F1D061F7900C371A3 /* DEGraph.cpp */,
-				C6A530501D061F7900C371A3 /* DEGraph.hpp */,
-				C6A530511D061F7900C371A3 /* DVGraph.cpp */,
-				C6A530521D061F7900C371A3 /* DVGraph.hpp */,
-				C6A530531D061F7900C371A3 /* graphs.hpp */,
-				C6A530541D061F7900C371A3 /* graphs.sln */,
-				C6A530551D061F7900C371A3 /* graphsMain.cpp */,
-				C6A530561D061F7900C371A3 /* GridGuards.cpp */,
-				C6A530571D061F7900C371A3 /* GridGuards.hpp */,
-				C6A530581D061F7900C371A3 /* GridGuardsTest.cpp */,
-				C6A530591D061F7900C371A3 /* GridGuardsTest.hpp */,
-				C6A5305A1D061F7900C371A3 /* ReadMeGraphs.txt */,
-				C6A5305B1D061F7900C371A3 /* stdafx.cpp */,
-				C6A5305C1D061F7900C371A3 /* stdafx.h */,
-				C6A5305D1D061F7900C371A3 /* targetver.h */,
-				C6A5305E1D061F7900C371A3 /* Vertex.hpp */,
 				C608F87E1CF6913A00DDD57C /* graphs */,
 				C608F87D1CF6913A00DDD57C /* Products */,
 			);
@@ -199,12 +161,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6A530611D061F7900C371A3 /* graphsMain.cpp in Sources */,
-				C6A530601D061F7900C371A3 /* DVGraph.cpp in Sources */,
-				C6A530631D061F7900C371A3 /* GridGuardsTest.cpp in Sources */,
-				C6A530641D061F7900C371A3 /* stdafx.cpp in Sources */,
-				C6A5305F1D061F7900C371A3 /* DEGraph.cpp in Sources */,
-				C6A530621D061F7900C371A3 /* GridGuards.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

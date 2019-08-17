@@ -9,7 +9,9 @@
 
 #include <stdio.h>
 //#include <stdlib.h>
+#if defined(_WIN32) || defined(_WIN64)
 #include <tchar.h>
+#endif
 #include <assert.h>
 #include <time.h>
 
