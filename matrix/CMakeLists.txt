@@ -77,6 +77,7 @@ message(STATUS "PYTHON_INCLUDE_DIRS: ${PYTHON_INCLUDE_DIRS}")
 
 include_directories(
 	include
+	/usr/local/include
 )
 
 add_library(matrix SHARED

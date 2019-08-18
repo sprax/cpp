@@ -13,6 +13,7 @@
 [Rr]elease/
 x64/
 build/
+build_*/
 [Bb]in/
 [Oo]bj/
 
