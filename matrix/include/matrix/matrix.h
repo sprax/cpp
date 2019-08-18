@@ -1,7 +1,6 @@
-/// @file  matrix.h
+/// @file  include/matrix/matrix.h
 #pragma once
-#include <iostream>
-#include <string>
+
 #include <vector>
 
 using namespace std;

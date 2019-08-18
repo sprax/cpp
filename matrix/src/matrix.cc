@@ -1,2 +1,2 @@
-// @file  matrix.cc
-#include "matrix.h"
+// @file     src/matrix.cc
+#include "matrix/matrix.h"

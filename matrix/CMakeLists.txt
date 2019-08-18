@@ -90,11 +90,9 @@ target_link_libraries(matrix
 	${PYTHON_LIBRARIES}
 )
 
-add_executable(matrices src/matrices.cc)
-target_link_libraries(matrices
-	matrix
-)
-set_property(TARGET matrices PROPERTY RULE_LAUNCH_COMPILE "${CMAKE_COMMAND} -E time")
+add_executable(assign examples/assign.cc)
+target_link_libraries(assign matrix)
+# set_property(TARGET matrices PROPERTY RULE_LAUNCH_COMPILE "${CMAKE_COMMAND} -E time")
 
 #-------------------
 # Unit Testing
