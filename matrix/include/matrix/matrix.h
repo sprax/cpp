@@ -3,11 +3,14 @@
 
 #include <vector>
 
-using namespace std;
 
 /** STL vector-of-vectors-based matrix */
 template <typename T>
 class VVMatrix {
+
+    template<typename U>
+    using vector = std::vector<U>;      // private templated typedef
+
     public:
 
     // Parameter Constructor
