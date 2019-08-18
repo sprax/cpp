@@ -1,0 +1,1196 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		2034001F9FFC471F93B282FC /* RUN_TESTS */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = D75ACD40BB444AEA86341844 /* Build configuration list for PBXAggregateTarget "RUN_TESTS" */;
+			buildPhases = (
+				97043196926249C58AFB6CBB /* CMake PostBuild Rules */,
+			);
+			dependencies = (
+			);
+			name = RUN_TESTS;
+			productName = RUN_TESTS;
+		};
+		BECEA3744AFA427190EE7A5F /* ZERO_CHECK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = CB05C3BE5FA141B4B667EE08 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildPhases = (
+				DB0C43A260AA468BBBC9661B /* CMake Rules */,
+			);
+			dependencies = (
+			);
+			name = ZERO_CHECK;
+			productName = ZERO_CHECK;
+		};
+		EB90E486CE4F440088DEDD65 /* ALL_BUILD */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 4C9715A90B2B43DC870349AA /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildPhases = (
+				E3B945C2CA8E47EAA22BA2FE /* CMake Rules */,
+			);
+			dependencies = (
+				186F09F78AE94821A6ABD207 /* PBXTargetDependency */,
+				BFD3D93140544FE0B1F87A14 /* PBXTargetDependency */,
+				43A018C5FE3344E09ABC546A /* PBXTargetDependency */,
+				836ABE1805354D93A4E11850 /* PBXTargetDependency */,
+			);
+			name = ALL_BUILD;
+			productName = ALL_BUILD;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		4F62A8C2E82044E48ABD4FFC /* /Users/sprax/asdf/cpp/matrix/examples/assign.cc */ = {isa = PBXBuildFile; fileRef = 15F059E1B1A44899BEDED20B /* /Users/sprax/asdf/cpp/matrix/examples/assign.cc */; };
+		6E660B05AA514332A5466D8B /* /Users/sprax/asdf/cpp/matrix/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = 6576D3682DF144E88BA58BC7 /* /Users/sprax/asdf/cpp/matrix/CMakeLists.txt */; };
+		7F20D456604E463F88D7CD78 /* /Users/sprax/asdf/cpp/matrix/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = 2C2EACBC6B2C43A68BF1B530 /* /Users/sprax/asdf/cpp/matrix/CMakeLists.txt */; };
+		8BEF86D6D14044A68A8BC81E /* /Users/sprax/asdf/cpp/matrix/tests/test_matrix.cc */ = {isa = PBXBuildFile; fileRef = B234926653084485BE943323 /* /Users/sprax/asdf/cpp/matrix/tests/test_matrix.cc */; };
+		D19E106C7014402BB03B6D07 /* /Users/sprax/asdf/cpp/matrix/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = B80A511099284C79B1B70FA6 /* /Users/sprax/asdf/cpp/matrix/CMakeLists.txt */; };
+		E82C5F6854E745458D3C3800 /* /Users/sprax/asdf/cpp/matrix/src/matrix.cc */ = {isa = PBXBuildFile; fileRef = D123DB5EF821457F82E1EC40 /* /Users/sprax/asdf/cpp/matrix/src/matrix.cc */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildStyle section */
+		78FE12D390124F2C9FBF1D66 /* Debug */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Debug;
+		};
+		84BD00185D574ACA8FCDEEF0 /* MinSizeRel */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = MinSizeRel;
+		};
+		BB206AD3A7DB48D492CE6986 /* RelWithDebInfo */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = RelWithDebInfo;
+		};
+		F30036A275FB4631A05E7C44 /* Release */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Release;
+		};
+/* End PBXBuildStyle section */
+
+/* Begin PBXContainerItemProxy section */
+		2F1E9DC940794998BDBA5423 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 13CF8C6632684B078B2FDD10 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BECEA3744AFA427190EE7A5F;
+			remoteInfo = ZERO_CHECK;
+		};
+		35D7F2B689144171A44FA3CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 13CF8C6632684B078B2FDD10 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BECEA3744AFA427190EE7A5F;
+			remoteInfo = ZERO_CHECK;
+		};
+		4CFAC78AA6354982838A4A44 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 13CF8C6632684B078B2FDD10 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6EB586C2EFDD40A491A08D25;
+			remoteInfo = matrix;
+		};
+		54E78133DC9845F198B3AE7E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 13CF8C6632684B078B2FDD10 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BECEA3744AFA427190EE7A5F;
+			remoteInfo = ZERO_CHECK;
+		};
+		95C9D1F87EF74E99BC59959E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 13CF8C6632684B078B2FDD10 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6EB586C2EFDD40A491A08D25;
+			remoteInfo = matrix;
+		};
+		B1AB19AF601540478E4A8780 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 13CF8C6632684B078B2FDD10 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4C60EB81CD6E4A8880DC4F4C;
+			remoteInfo = assign;
+		};
+		B87916488AC5468F9C76DC5C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 13CF8C6632684B078B2FDD10 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BECEA3744AFA427190EE7A5F;
+			remoteInfo = ZERO_CHECK;
+		};
+		DE0B4D955A034EE2B05E5AA6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 13CF8C6632684B078B2FDD10 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6EB586C2EFDD40A491A08D25;
+			remoteInfo = matrix;
+		};
+		EB425713415B46E6A69AC1CC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 13CF8C6632684B078B2FDD10 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 89D20CEB25AB4F82A466704C;
+			remoteInfo = test_matrix;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		15F059E1B1A44899BEDED20B /* /Users/sprax/asdf/cpp/matrix/examples/assign.cc */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = assign.cc; path = examples/assign.cc; sourceTree = SOURCE_ROOT; };
+		2C2EACBC6B2C43A68BF1B530 /* /Users/sprax/asdf/cpp/matrix/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		2CD97177C8A9415B924D21D9 /* assign */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = assign; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DA8948B754345678736864B /* matrix */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libmatrix.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		57E3107DF2E8476CB5F72BA3 /* test_matrix */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = test_matrix; sourceTree = BUILT_PRODUCTS_DIR; };
+		6576D3682DF144E88BA58BC7 /* /Users/sprax/asdf/cpp/matrix/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		B234926653084485BE943323 /* /Users/sprax/asdf/cpp/matrix/tests/test_matrix.cc */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = test_matrix.cc; path = tests/test_matrix.cc; sourceTree = SOURCE_ROOT; };
+		B80A511099284C79B1B70FA6 /* /Users/sprax/asdf/cpp/matrix/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		D123DB5EF821457F82E1EC40 /* /Users/sprax/asdf/cpp/matrix/src/matrix.cc */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = matrix.cc; path = src/matrix.cc; sourceTree = SOURCE_ROOT; };
+		E6122E4042BC4045BFDB6761 /* /Users/sprax/asdf/cpp/matrix/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		2A7CA073E21A43FC84462530 /* test_matrix */ = {
+			isa = PBXGroup;
+			children = (
+				D9FE0C088D384BDDA705D8DA /* Source Files */,
+				B80A511099284C79B1B70FA6 /* /Users/sprax/asdf/cpp/matrix/CMakeLists.txt */,
+			);
+			name = test_matrix;
+			sourceTree = "<group>";
+		};
+		41F39F1E0E7341C4B29CBF05 /* ALL_BUILD */ = {
+			isa = PBXGroup;
+			children = (
+				816A8FC0F0294CB2AA455E87 /* CMake Rules */,
+				E6122E4042BC4045BFDB6761 /* /Users/sprax/asdf/cpp/matrix/CMakeLists.txt */,
+			);
+			name = ALL_BUILD;
+			sourceTree = "<group>";
+		};
+		44DF67E971BF44EEBDCDD867 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				15F059E1B1A44899BEDED20B /* /Users/sprax/asdf/cpp/matrix/examples/assign.cc */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		6A872180B5504C75B879961B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2CD97177C8A9415B924D21D9 /* assign */,
+				4DA8948B754345678736864B /* matrix */,
+				57E3107DF2E8476CB5F72BA3 /* test_matrix */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		816A8FC0F0294CB2AA455E87 /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		822A9B0D5DAB4FFD9822A99A /* matrix */ = {
+			isa = PBXGroup;
+			children = (
+				CFD9E99A0B714F1F9D7B3CA7 /* Source Files */,
+				6576D3682DF144E88BA58BC7 /* /Users/sprax/asdf/cpp/matrix/CMakeLists.txt */,
+			);
+			name = matrix;
+			sourceTree = "<group>";
+		};
+		C0C7937F09DE447D9F57AFA8 = {
+			isa = PBXGroup;
+			children = (
+				2A7CA073E21A43FC84462530 /* test_matrix */,
+				DA582D1C9481433BA871CAB8 /* assign */,
+				822A9B0D5DAB4FFD9822A99A /* matrix */,
+				41F39F1E0E7341C4B29CBF05 /* ALL_BUILD */,
+				6A872180B5504C75B879961B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CFD9E99A0B714F1F9D7B3CA7 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				D123DB5EF821457F82E1EC40 /* /Users/sprax/asdf/cpp/matrix/src/matrix.cc */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		D9FE0C088D384BDDA705D8DA /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				B234926653084485BE943323 /* /Users/sprax/asdf/cpp/matrix/tests/test_matrix.cc */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		DA582D1C9481433BA871CAB8 /* assign */ = {
+			isa = PBXGroup;
+			children = (
+				44DF67E971BF44EEBDCDD867 /* Source Files */,
+				2C2EACBC6B2C43A68BF1B530 /* /Users/sprax/asdf/cpp/matrix/CMakeLists.txt */,
+			);
+			name = assign;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4C60EB81CD6E4A8880DC4F4C /* assign */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64D65E9F48164AFE951D2E3E /* Build configuration list for PBXNativeTarget "assign" */;
+			buildPhases = (
+				F6AC191BFF5848B09E5F796B /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				94F399253D074AAC87BFEB30 /* PBXTargetDependency */,
+				8A7C080DDC0C4D80943947B4 /* PBXTargetDependency */,
+			);
+			name = assign;
+			productName = assign;
+			productReference = 2CD97177C8A9415B924D21D9 /* assign */;
+			productType = "com.apple.product-type.tool";
+		};
+		6EB586C2EFDD40A491A08D25 /* matrix */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B53EAEBCF41A44EDB84B293D /* Build configuration list for PBXNativeTarget "matrix" */;
+			buildPhases = (
+				482A3DA46CC44B778A41F206 /* Sources */,
+				A62AEABA95094182BA37722D /* CMake PostBuild Rules */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5C1AACFBF2E4418AB3C53157 /* PBXTargetDependency */,
+			);
+			name = matrix;
+			productName = matrix;
+			productReference = 4DA8948B754345678736864B /* matrix */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		89D20CEB25AB4F82A466704C /* test_matrix */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1444BF551512403096056CB9 /* Build configuration list for PBXNativeTarget "test_matrix" */;
+			buildPhases = (
+				38DDAD71B05142458FDB3C9A /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				055D07E95B0E44EB8B87D0F6 /* PBXTargetDependency */,
+				6DA5B427273C4877A92D25AA /* PBXTargetDependency */,
+			);
+			name = test_matrix;
+			productName = test_matrix;
+			productReference = 57E3107DF2E8476CB5F72BA3 /* test_matrix */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		13CF8C6632684B078B2FDD10 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1010;
+			};
+			buildConfigurationList = 5ADFCE306EAB40099233454F /* Build configuration list for PBXProject "matrix" */;
+			buildSettings = {
+			};
+			buildStyles = (
+				78FE12D390124F2C9FBF1D66 /* Debug */,
+				F30036A275FB4631A05E7C44 /* Release */,
+				84BD00185D574ACA8FCDEEF0 /* MinSizeRel */,
+				BB206AD3A7DB48D492CE6986 /* RelWithDebInfo */,
+			);
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 0;
+			mainGroup = C0C7937F09DE447D9F57AFA8;
+			projectDirPath = ../;
+			projectRoot = "";
+			targets = (
+				EB90E486CE4F440088DEDD65 /* ALL_BUILD */,
+				2034001F9FFC471F93B282FC /* RUN_TESTS */,
+				BECEA3744AFA427190EE7A5F /* ZERO_CHECK */,
+				4C60EB81CD6E4A8880DC4F4C /* assign */,
+				6EB586C2EFDD40A491A08D25 /* matrix */,
+				89D20CEB25AB4F82A466704C /* test_matrix */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1271398FBA054E4C9FF848CB = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		748362D67F404124ACA4E41B = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		97043196926249C58AFB6CBB /* CMake PostBuild Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake PostBuild Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/sprax/asdf/cpp/matrix/build_xcode -f /Users/sprax/asdf/cpp/matrix/build_xcode/CMakeScripts/RUN_TESTS_postBuildPhase.make$CONFIGURATION OBJDIR=$(basename \"$OBJECT_FILE_DIR_normal\") all";
+			showEnvVarsInLog = 0;
+		};
+		A62AEABA95094182BA37722D /* CMake PostBuild Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake PostBuild Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/sprax/asdf/cpp/matrix/build_xcode -f /Users/sprax/asdf/cpp/matrix/build_xcode/CMakeScripts/matrix_postBuildPhase.make$CONFIGURATION OBJDIR=$(basename \"$OBJECT_FILE_DIR_normal\") all";
+			showEnvVarsInLog = 0;
+		};
+		AE4EDE9649F94F5397BAA0CE = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		DB0C43A260AA468BBBC9661B /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/sprax/asdf/cpp/matrix/build_xcode -f /Users/sprax/asdf/cpp/matrix/build_xcode/CMakeScripts/ZERO_CHECK_cmakeRulesBuildPhase.make$CONFIGURATION OBJDIR=$(basename \"$OBJECT_FILE_DIR_normal\") all";
+			showEnvVarsInLog = 0;
+		};
+		E3B945C2CA8E47EAA22BA2FE /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/sprax/asdf/cpp/matrix/build_xcode -f /Users/sprax/asdf/cpp/matrix/build_xcode/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION OBJDIR=$(basename \"$OBJECT_FILE_DIR_normal\") all";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		38DDAD71B05142458FDB3C9A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8BEF86D6D14044A68A8BC81E /* /Users/sprax/asdf/cpp/matrix/tests/test_matrix.cc */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		482A3DA46CC44B778A41F206 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E82C5F6854E745458D3C3800 /* /Users/sprax/asdf/cpp/matrix/src/matrix.cc */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6AC191BFF5848B09E5F796B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F62A8C2E82044E48ABD4FFC /* /Users/sprax/asdf/cpp/matrix/examples/assign.cc */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		055D07E95B0E44EB8B87D0F6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6EB586C2EFDD40A491A08D25 /* matrix */;
+			targetProxy = 95C9D1F87EF74E99BC59959E /* PBXContainerItemProxy */;
+		};
+		186F09F78AE94821A6ABD207 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4C60EB81CD6E4A8880DC4F4C /* assign */;
+			targetProxy = B1AB19AF601540478E4A8780 /* PBXContainerItemProxy */;
+		};
+		43A018C5FE3344E09ABC546A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 89D20CEB25AB4F82A466704C /* test_matrix */;
+			targetProxy = EB425713415B46E6A69AC1CC /* PBXContainerItemProxy */;
+		};
+		5C1AACFBF2E4418AB3C53157 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BECEA3744AFA427190EE7A5F /* ZERO_CHECK */;
+			targetProxy = 35D7F2B689144171A44FA3CD /* PBXContainerItemProxy */;
+		};
+		6DA5B427273C4877A92D25AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BECEA3744AFA427190EE7A5F /* ZERO_CHECK */;
+			targetProxy = B87916488AC5468F9C76DC5C /* PBXContainerItemProxy */;
+		};
+		836ABE1805354D93A4E11850 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BECEA3744AFA427190EE7A5F /* ZERO_CHECK */;
+			targetProxy = 54E78133DC9845F198B3AE7E /* PBXContainerItemProxy */;
+		};
+		8A7C080DDC0C4D80943947B4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BECEA3744AFA427190EE7A5F /* ZERO_CHECK */;
+			targetProxy = 2F1E9DC940794998BDBA5423 /* PBXContainerItemProxy */;
+		};
+		94F399253D074AAC87BFEB30 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6EB586C2EFDD40A491A08D25 /* matrix */;
+			targetProxy = DE0B4D955A034EE2B05E5AA6 /* PBXContainerItemProxy */;
+		};
+		BFD3D93140544FE0B1F87A14 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6EB586C2EFDD40A491A08D25 /* matrix */;
+			targetProxy = 4CFAC78AA6354982838A4A44 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		059CF2C37771422189968CCA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk;
+				SYMROOT = /Users/sprax/asdf/cpp/matrix/build_xcode/build;
+			};
+			name = Debug;
+		};
+		0703A699815C46F78CABDD15 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = RUN_TESTS;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/sprax/asdf/cpp/matrix/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		114E430B68EA4D9583A6DDFE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/sprax/asdf/cpp/matrix/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		13D629EB469D4FDDBCB0EC1F /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/sprax/asdf/cpp/matrix/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		14174217551449BCB554AD8F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/sprax/asdf/cpp/matrix/include,/usr/local/include);
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = /Users/sprax/asdf/cpp/matrix/build_xcode/Release;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "-D_GLIBCXX_USE_CXX11_ABI=1 -pthread -Wall -Wextra -Wsign-compare -Wuninitialized -Wno-unused-function -Wno-unused-parameter -Wno-deprecated-register -Wunused-const-variable -Wno-unused-command-line-argument     -DNDEBUG '-std=gnu++14'  ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/sprax/asdf/cpp/matrix/build_xcode/Release/libmatrix.dylib -lgtest -lgtest_main /usr/local/opt/python/Frameworks/Python.framework/Versions/3.7/lib/libpython3.7m.dylib";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test_matrix;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/sprax/asdf/cpp/matrix/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		1F842BCACAC44C5EBDB4FBB9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/sprax/asdf/cpp/matrix/include,/usr/local/include);
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = /Users/sprax/asdf/cpp/matrix/build_xcode/Debug;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "-D_GLIBCXX_USE_CXX11_ABI=1 -pthread -Wall -Wextra -Wsign-compare -Wuninitialized -Wno-unused-function -Wno-unused-parameter -Wno-deprecated-register -Wunused-const-variable -Wno-unused-command-line-argument    '-std=gnu++14'  ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/sprax/asdf/cpp/matrix/build_xcode/Debug/libmatrix.dylib -lgtest -lgtest_main /usr/local/opt/python/Frameworks/Python.framework/Versions/3.7/lib/libpython3.7m.dylib";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test_matrix;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/sprax/asdf/cpp/matrix/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		222E1DBC2EB348D687E667D7 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/sprax/asdf/cpp/matrix/include,/usr/local/include);
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = /Users/sprax/asdf/cpp/matrix/build_xcode/MinSizeRel;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "-D_GLIBCXX_USE_CXX11_ABI=1 -pthread -Wall -Wextra -Wsign-compare -Wuninitialized -Wno-unused-function -Wno-unused-parameter -Wno-deprecated-register -Wunused-const-variable -Wno-unused-command-line-argument     -DNDEBUG '-std=gnu++14'  ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/sprax/asdf/cpp/matrix/build_xcode/MinSizeRel/libmatrix.dylib -lgtest -lgtest_main /usr/local/opt/python/Frameworks/Python.framework/Versions/3.7/lib/libpython3.7m.dylib";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test_matrix;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/sprax/asdf/cpp/matrix/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		23F4BE8656DB430395ECB225 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/sprax/asdf/cpp/matrix/include,/usr/local/include);
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = /Users/sprax/asdf/cpp/matrix/build_xcode/MinSizeRel;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "-D_GLIBCXX_USE_CXX11_ABI=1 -pthread -Wall -Wextra -Wsign-compare -Wuninitialized -Wno-unused-function -Wno-unused-parameter -Wno-deprecated-register -Wunused-const-variable -Wno-unused-command-line-argument     -DNDEBUG '-std=gnu++14'  ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/sprax/asdf/cpp/matrix/build_xcode/MinSizeRel/libmatrix.dylib /usr/local/opt/python/Frameworks/Python.framework/Versions/3.7/lib/libpython3.7m.dylib";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = assign;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/sprax/asdf/cpp/matrix/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		47F9F2A219EF4F4CAF98CFFE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/sprax/asdf/cpp/matrix/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		48B4895AA0F24B74A25939B2 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/sprax/asdf/cpp/matrix/include,/usr/local/include);
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = /Users/sprax/asdf/cpp/matrix/build_xcode/RelWithDebInfo;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "-D_GLIBCXX_USE_CXX11_ABI=1 -pthread -Wall -Wextra -Wsign-compare -Wuninitialized -Wno-unused-function -Wno-unused-parameter -Wno-deprecated-register -Wunused-const-variable -Wno-unused-command-line-argument        -DNDEBUG '-std=gnu++14'  ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/sprax/asdf/cpp/matrix/build_xcode/RelWithDebInfo/libmatrix.dylib /usr/local/opt/python/Frameworks/Python.framework/Versions/3.7/lib/libpython3.7m.dylib";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = assign;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/sprax/asdf/cpp/matrix/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		554CAECE79874011BD8DDEA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = RUN_TESTS;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/sprax/asdf/cpp/matrix/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		597EB5295C684DF094E09F8A /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk;
+				SYMROOT = /Users/sprax/asdf/cpp/matrix/build_xcode/build;
+			};
+			name = MinSizeRel;
+		};
+		622C76965C6941C1808601DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = "";
+				DYLIB_CURRENT_VERSION = "";
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .dylib;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",matrix_EXPORTS);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/sprax/asdf/cpp/matrix/include,/usr/local/include);
+				INSTALL_PATH = "@rpath";
+				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_STYLE = DYNAMIC;
+				OTHER_CPLUSPLUSFLAGS = "-D_GLIBCXX_USE_CXX11_ABI=1 -pthread -Wall -Wextra -Wsign-compare -Wuninitialized -Wno-unused-function -Wno-unused-parameter -Wno-deprecated-register -Wunused-const-variable -Wno-unused-command-line-argument    -fPIC '-std=gnu++14'  ";
+				OTHER_LDFLAGS = " -dynamiclib -Wl,-headerpad_max_install_names  /usr/local/opt/python/Frameworks/Python.framework/Versions/3.7/lib/libpython3.7m.dylib";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = matrix;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/sprax/asdf/cpp/matrix/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		6500C646F57E48E09175F23C /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/sprax/asdf/cpp/matrix/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		7CB8E30F706D4C50A3573D7F /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk;
+				SYMROOT = /Users/sprax/asdf/cpp/matrix/build_xcode/build;
+			};
+			name = RelWithDebInfo;
+		};
+		81EDF80F430F4ACD8F4818E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/sprax/asdf/cpp/matrix/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		8D935BF857B84798A4A04300 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = "";
+				DYLIB_CURRENT_VERSION = "";
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .dylib;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",matrix_EXPORTS);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/sprax/asdf/cpp/matrix/include,/usr/local/include);
+				INSTALL_PATH = "@rpath";
+				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_STYLE = DYNAMIC;
+				OTHER_CPLUSPLUSFLAGS = "-D_GLIBCXX_USE_CXX11_ABI=1 -pthread -Wall -Wextra -Wsign-compare -Wuninitialized -Wno-unused-function -Wno-unused-parameter -Wno-deprecated-register -Wunused-const-variable -Wno-unused-command-line-argument        -DNDEBUG -fPIC '-std=gnu++14'  ";
+				OTHER_LDFLAGS = " -dynamiclib -Wl,-headerpad_max_install_names  /usr/local/opt/python/Frameworks/Python.framework/Versions/3.7/lib/libpython3.7m.dylib";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = matrix;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/sprax/asdf/cpp/matrix/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		9E0C258372CA42AF9D3C4C09 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/sprax/asdf/cpp/matrix/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		B3D8F83F10284F9689C218AC /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/sprax/asdf/cpp/matrix/include,/usr/local/include);
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = /Users/sprax/asdf/cpp/matrix/build_xcode/RelWithDebInfo;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "-D_GLIBCXX_USE_CXX11_ABI=1 -pthread -Wall -Wextra -Wsign-compare -Wuninitialized -Wno-unused-function -Wno-unused-parameter -Wno-deprecated-register -Wunused-const-variable -Wno-unused-command-line-argument        -DNDEBUG '-std=gnu++14'  ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/sprax/asdf/cpp/matrix/build_xcode/RelWithDebInfo/libmatrix.dylib -lgtest -lgtest_main /usr/local/opt/python/Frameworks/Python.framework/Versions/3.7/lib/libpython3.7m.dylib";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test_matrix;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/sprax/asdf/cpp/matrix/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		C38E0541984E4349A811A31C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/sprax/asdf/cpp/matrix/include,/usr/local/include);
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = /Users/sprax/asdf/cpp/matrix/build_xcode/Release;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "-D_GLIBCXX_USE_CXX11_ABI=1 -pthread -Wall -Wextra -Wsign-compare -Wuninitialized -Wno-unused-function -Wno-unused-parameter -Wno-deprecated-register -Wunused-const-variable -Wno-unused-command-line-argument     -DNDEBUG '-std=gnu++14'  ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/sprax/asdf/cpp/matrix/build_xcode/Release/libmatrix.dylib /usr/local/opt/python/Frameworks/Python.framework/Versions/3.7/lib/libpython3.7m.dylib";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = assign;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/sprax/asdf/cpp/matrix/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		C511880C0A3640E3874E6F59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/sprax/asdf/cpp/matrix/include,/usr/local/include);
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = /Users/sprax/asdf/cpp/matrix/build_xcode/Debug;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "-D_GLIBCXX_USE_CXX11_ABI=1 -pthread -Wall -Wextra -Wsign-compare -Wuninitialized -Wno-unused-function -Wno-unused-parameter -Wno-deprecated-register -Wunused-const-variable -Wno-unused-command-line-argument    '-std=gnu++14'  ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/sprax/asdf/cpp/matrix/build_xcode/Debug/libmatrix.dylib /usr/local/opt/python/Frameworks/Python.framework/Versions/3.7/lib/libpython3.7m.dylib";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = assign;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/sprax/asdf/cpp/matrix/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		CF114157A35249E6B3E06CEA /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/sprax/asdf/cpp/matrix/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		D9555443182545768ED75376 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/sprax/asdf/cpp/matrix/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		EC8370B11874453F9E198D35 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = "";
+				DYLIB_CURRENT_VERSION = "";
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .dylib;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",matrix_EXPORTS);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/sprax/asdf/cpp/matrix/include,/usr/local/include);
+				INSTALL_PATH = "@rpath";
+				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_STYLE = DYNAMIC;
+				OTHER_CPLUSPLUSFLAGS = "-D_GLIBCXX_USE_CXX11_ABI=1 -pthread -Wall -Wextra -Wsign-compare -Wuninitialized -Wno-unused-function -Wno-unused-parameter -Wno-deprecated-register -Wunused-const-variable -Wno-unused-command-line-argument     -DNDEBUG -fPIC '-std=gnu++14'  ";
+				OTHER_LDFLAGS = " -dynamiclib -Wl,-headerpad_max_install_names  /usr/local/opt/python/Frameworks/Python.framework/Versions/3.7/lib/libpython3.7m.dylib";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = matrix;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/sprax/asdf/cpp/matrix/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		F232F1FDB93849BD8631ABE9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = RUN_TESTS;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/sprax/asdf/cpp/matrix/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		F27F4BD29AB44BD1B9B07D13 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = RUN_TESTS;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/sprax/asdf/cpp/matrix/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		F2B891ED28574B93AD36EC90 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = "";
+				DYLIB_CURRENT_VERSION = "";
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .dylib;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",matrix_EXPORTS);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/sprax/asdf/cpp/matrix/include,/usr/local/include);
+				INSTALL_PATH = "@rpath";
+				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_STYLE = DYNAMIC;
+				OTHER_CPLUSPLUSFLAGS = "-D_GLIBCXX_USE_CXX11_ABI=1 -pthread -Wall -Wextra -Wsign-compare -Wuninitialized -Wno-unused-function -Wno-unused-parameter -Wno-deprecated-register -Wunused-const-variable -Wno-unused-command-line-argument     -DNDEBUG -fPIC '-std=gnu++14'  ";
+				OTHER_LDFLAGS = " -dynamiclib -Wl,-headerpad_max_install_names  /usr/local/opt/python/Frameworks/Python.framework/Versions/3.7/lib/libpython3.7m.dylib";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = matrix;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/sprax/asdf/cpp/matrix/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		FC47EFD712D44AC2839EC507 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk;
+				SYMROOT = /Users/sprax/asdf/cpp/matrix/build_xcode/build;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1444BF551512403096056CB9 /* Build configuration list for PBXNativeTarget "test_matrix" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F842BCACAC44C5EBDB4FBB9 /* Debug */,
+				14174217551449BCB554AD8F /* Release */,
+				222E1DBC2EB348D687E667D7 /* MinSizeRel */,
+				B3D8F83F10284F9689C218AC /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		4C9715A90B2B43DC870349AA /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				47F9F2A219EF4F4CAF98CFFE /* Debug */,
+				114E430B68EA4D9583A6DDFE /* Release */,
+				13D629EB469D4FDDBCB0EC1F /* MinSizeRel */,
+				CF114157A35249E6B3E06CEA /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		5ADFCE306EAB40099233454F /* Build configuration list for PBXProject "matrix" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				059CF2C37771422189968CCA /* Debug */,
+				FC47EFD712D44AC2839EC507 /* Release */,
+				597EB5295C684DF094E09F8A /* MinSizeRel */,
+				7CB8E30F706D4C50A3573D7F /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		64D65E9F48164AFE951D2E3E /* Build configuration list for PBXNativeTarget "assign" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C511880C0A3640E3874E6F59 /* Debug */,
+				C38E0541984E4349A811A31C /* Release */,
+				23F4BE8656DB430395ECB225 /* MinSizeRel */,
+				48B4895AA0F24B74A25939B2 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B53EAEBCF41A44EDB84B293D /* Build configuration list for PBXNativeTarget "matrix" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				622C76965C6941C1808601DA /* Debug */,
+				EC8370B11874453F9E198D35 /* Release */,
+				F2B891ED28574B93AD36EC90 /* MinSizeRel */,
+				8D935BF857B84798A4A04300 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		CB05C3BE5FA141B4B667EE08 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9555443182545768ED75376 /* Debug */,
+				81EDF80F430F4ACD8F4818E7 /* Release */,
+				9E0C258372CA42AF9D3C4C09 /* MinSizeRel */,
+				6500C646F57E48E09175F23C /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D75ACD40BB444AEA86341844 /* Build configuration list for PBXAggregateTarget "RUN_TESTS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				554CAECE79874011BD8DDEA7 /* Debug */,
+				F232F1FDB93849BD8631ABE9 /* Release */,
+				F27F4BD29AB44BD1B9B07D13 /* MinSizeRel */,
+				0703A699815C46F78CABDD15 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 13CF8C6632684B078B2FDD10 /* Project object */;
+}
