@@ -217,6 +217,10 @@ int main(int argc, char* argv[])    // NB: This is more a unit test than an app;
     vr = { 9.9, 8.2 };
     register int regi;
 
+    int *int_ptr = nullptr, &int_ref = *int_ptr, my_number = 51;
+    cerr << "I'd like to refer you to this number: " << int_ref << endl;
+
+
     AA aa;
     int j = makeAA(aa, 5);
 
