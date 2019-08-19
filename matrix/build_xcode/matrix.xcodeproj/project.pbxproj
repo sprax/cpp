@@ -121,12 +121,13 @@
 /* Begin PBXFileReference section */
 		15F059E1B1A44899BEDED20B /* assign.cc */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = assign.cc; path = examples/assign.cc; sourceTree = SOURCE_ROOT; };
 		2C2EACBC6B2C43A68BF1B530 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
-		2CD97177C8A9415B924D21D9 /* assign */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = assign; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CD97177C8A9415B924D21D9 /* assign */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; name = assign; path = /Users/sprax/asdf/cpp/matrix/build_xcode/Debug/assign; sourceTree = "<absolute>"; };
 		4DA8948B754345678736864B /* libmatrix.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libmatrix.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		57E3107DF2E8476CB5F72BA3 /* test_matrix */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = test_matrix; sourceTree = BUILT_PRODUCTS_DIR; };
 		6576D3682DF144E88BA58BC7 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
 		B234926653084485BE943323 /* test_matrix.cc */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = test_matrix.cc; path = tests/test_matrix.cc; sourceTree = SOURCE_ROOT; };
 		B80A511099284C79B1B70FA6 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		C64568B02309AFEB00A1D163 /* en */ = {isa = PBXFileReference; lastKnownFileType = text; name = en; path = en.lproj/assign; sourceTree = "<group>"; };
 		C67D7F9D23090B6A00C1EFAC /* MatrixPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MatrixPrefixHeader.pch; path = include/MatrixPrefixHeader.pch; sourceTree = "<group>"; };
 		D123DB5EF821457F82E1EC40 /* matrix.cc */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = matrix.cc; path = src/matrix.cc; sourceTree = SOURCE_ROOT; };
 		E6122E4042BC4045BFDB6761 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
@@ -162,7 +163,7 @@
 		6A872180B5504C75B879961B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2CD97177C8A9415B924D21D9 /* assign */,
+				C64568B12309AFEB00A1D163 /* assign */,
 				4DA8948B754345678736864B /* libmatrix.dylib */,
 				57E3107DF2E8476CB5F72BA3 /* test_matrix */,
 			);
@@ -427,6 +428,17 @@
 			targetProxy = 4CFAC78AA6354982838A4A44 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C64568B12309AFEB00A1D163 /* assign */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C64568B02309AFEB00A1D163 /* en */,
+			);
+			name = assign;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		059CF2C37771422189968CCA /* Debug */ = {
