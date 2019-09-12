@@ -209,8 +209,30 @@ void count_it(int& count)
 void myfunc(int unused)
 { }
 
+class Zoid {
+public:
+    int MakeIt() { return 23; }
+};
+
+namespace zoid_factory {
+    static Zoid& MakeZoid() {
+        static Zoid instance;
+        return instance;
+    }
+}
+
 int main(int argc, char* argv[])    // NB: This is more a unit test than an app; it does not play ghost!
 {
+    using namespace zoid_factory;
+    Zoid zoid = MakeZoid();
+    int num = zoid.MakeIt();
+    cerr << "=============================================== " << num << endl;
+    return 0;
+
+
+
+
+
     static int counted;
     vector<double> vd { 1.1, 2.2, 3.3 };
     vector<double>& vr = vd;
