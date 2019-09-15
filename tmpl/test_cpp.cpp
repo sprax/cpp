@@ -215,8 +215,9 @@ public:
 };
 
 namespace zoid_factory {
-    static Zoid& MakeZoid() {
-        static Zoid instance;
+    static Zoid& MakeZoid()
+    {
+        static Zoid instance;   // never
         return instance;
     }
 }
@@ -227,7 +228,11 @@ int main(int argc, char* argv[])    // NB: This is more a unit test than an app;
     Zoid zoid = MakeZoid();
     int num = zoid.MakeIt();
     cerr << "=============================================== " << num << endl;
-    // return 0;
+    return 0;
+
+
+
+
 
     static int counted;
     vector<double> vd { 1.1, 2.2, 3.3 };
