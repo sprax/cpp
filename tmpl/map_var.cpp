@@ -20,6 +20,78 @@
 
 using namespace std;
 
+/// https://stackoverflow.com/questions/1443793/iterate-keys-in-a-c-map/35262398#35262398
+/// Below the more general templated solution to which Ian referred...
+
+#include <map>
+
+template<typename Key, typename Value>
+using Map = std::map<Key, Value>;
+
+template<typename Key, typename Value>
+using MapIterator = typename Map<Key, Value>::iterator;
+
+template<typename Key, typename Value>
+class MapKeyIterator : public MapIterator<Key, Value> {
+
+public:
+
+    MapKeyIterator ( ) : MapIterator<Key, Value> ( ) { };
+    MapKeyIterator ( MapIterator<Key, Value> it_ ) : MapIterator<Key, Value> ( it_ ) { };
+
+    Key *operator -> ( ) { return ( Key * const ) &( MapIterator<Key, Value>::operator -> ( )->first ); }
+    Key operator * ( ) { return MapIterator<Key, Value>::operator * ( ).first; }
+};
+
+template<typename Key, typename Value>
+class MapValueIterator : public MapIterator<Key, Value> {
+
+public:
+
+    MapValueIterator ( ) : MapIterator<Key, Value> ( ) { };
+    MapValueIterator ( MapIterator<Key, Value> it_ ) : MapIterator<Key, Value> ( it_ ) { };
+
+    Value *operator -> ( ) { return ( Value * const ) &( MapIterator<Key, Value>::operator -> ( )->second ); }
+    Value operator * ( ) { return MapIterator<Key, Value>::operator * ( ).second; }
+};
+
+/// https://stackoverflow.com/questions/1443793/iterate-keys-in-a-c-map
+/// Lots of good answers here, below is an approach using a couple of them which lets you write this:
+/// If that's what you always wanted, then here is the code for MapKeys():
+
+template <class MapType>
+class MapKeyIterator {
+public:
+    class iterator {
+    public:
+        iterator(typename MapType::iterator it) : it(it) {}
+        iterator operator++() { return ++it; }
+        bool operator!=(const iterator & other) { return it != other.it; }
+        typename MapType::key_type operator*() const { return it->first; }  // Return key part of map
+    private:
+        typename MapType::iterator it;
+    };
+private:
+    MapType& map;
+public:
+    MapKeyIterator(MapType& m) : map(m) {}
+    iterator begin() { return iterator(map.begin()); }
+    iterator end() { return iterator(map.end()); }
+};
+template <class MapType>
+MapKeyIterator<MapType> MapKeys(MapType& m)
+{
+    return MapKeyIterator<MapType>(m);
+}
+
+void use_map_keys()
+{
+    std::map<std::string, int> m { {"jim", 1000}, {"sally", 2000} };
+    for (auto key : MapKeys(m))
+        std::cout << key << std::endl;
+}
+
+////----////----////----////----////----////----////----////----////----////----////----////----////
 static const vector<string> default_map_keys {
     "zero",
     "one",

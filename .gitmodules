@@ -1,0 +1,15 @@
+[submodule "externals/json"]
+	path = externals/json
+	url = https://github.com/nlohmann/json.git
+	ignore = dirty	
+[submodule "externals/gitversion"]
+	path = externals/gitversion
+	url = https://github.com/smessmer/gitversion.git
+	ignore = dirty
+[submodule "externals/pybind11"]
+	path = externals/pybind11
+	url = https://github.com/pybind/pybind11.git
+	ignore = dirty
+[submodule "externals/filesystem"]
+	path = externals/filesystem
+	url = https://github.com/gulrak/filesystem.git
