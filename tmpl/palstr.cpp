@@ -1,6 +1,6 @@
-// strpal.cpp : test if string is palindrome
+// palstr.cpp : test if string is palindrome
 /* Requires C11 or later
-clang++ -std=c++11 strpal.cpp -o tmpl.out && tmpl.out
+clang++ -std=c++11 palstr.cpp -o tmpl.out && tmpl.out
 clang++ -std=c++14 palstr.cpp -Wall -Wextra -o tmpl.out && tmpl.out
 */
 
@@ -42,10 +42,12 @@ int duh() { return 2; }
 
 int main() {
 
-    string strs[]{ "radar", "sonar", "guitar", "redder" };
+    string strs[]{ "radar", "sonar", "guitar", "redder", "" };
     for (const string st : strs) {
-	cout << st << "\t=>\t" << is_palindrome(st) << endl;
+	    cout << "[" << st << "]\t=>\t" << (is_palindrome(st) ? "True" : "False") << endl;
     }
+    return 0;
+
     auto ans = duh();
     ans = 4;
     cerr << "ans: " << ans << endl;
@@ -90,7 +92,7 @@ int main() {
     if (iflag & -4)
         oss << " EtoF";
     cerr << "err_msg: " << oss.str() << endl;
-  
+
     for (int j = 100; j > -5; j--) {
         int r = rand();
         if (j & -1 || r & -1) {
