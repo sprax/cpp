@@ -1,4 +1,4 @@
-// remove_dir_rec.cpp.cpp
+// remove_dir_rec.cpp
 // May require C11 or later
 /** BUILD:
 clang++ -std=c++17 -I ../externals/filesystem/include/ file_tree.cpp -o tmpl.out && tmpl.out
