@@ -11,6 +11,6 @@ function do_it {
 declare THE_VAR="$(do_it these are arguments)"
 echo "THE_VAR ($THE_VAR)"
 
-
-declare CPP_VAR="$(do_it.out these are arguments)"
+command=do_it.out
+declare CPP_VAR="$($command)"
 echo "CPP_VAR ($CPP_VAR)"
