@@ -1,13 +1,15 @@
 // @file: hostnip.cpp
 // @from: https://www.geeksforgeeks.org/c-program-display-hostname-ip-address/
 // C program to display hostname and IP address
-#include <stdio.h>
-#include <stdlib.h>
+
+// #include <stdio.h>
+// #include <stdlib.h>
+#include <iostream>
 #include <unistd.h>
 #include <errno.h>
 #include <netdb.h>
-#include <sys/types.h>
-#include <sys/socket.h>
+// #include <sys/types.h>
+// #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
@@ -60,11 +62,10 @@ int main()
 
 	// To convert an Internet network
 	// address into ASCII string
-	IPbuffer = inet_ntoa(*((struct in_addr*)
-						host_entry->h_addr_list[0]));
+	IPbuffer = inet_ntoa(*((struct in_addr*)host_entry->h_addr_list[0]));
 
-	printf("Hostname: %s\n", hostbuffer);
-	printf("Host IP: %s\n", IPbuffer);
+	std::cout << "Host name: " << hostbuffer << std::endl;
+	std::cout << "Host IPv4: " << IPbuffer << std::endl;
 
 	return 0;
 }
