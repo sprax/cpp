@@ -13,3 +13,6 @@
 [submodule "externals/filesystem"]
 	path = externals/filesystem
 	url = https://github.com/gulrak/filesystem.git
+[submodule "metrics"]
+	path = metrics
+	url = git@github.com:sprax/metrics.git
