@@ -1,6 +1,11 @@
 /// file: detach.cc
 /// http://www.cplusplus.com/reference/thread/thread/detach/
 
+/** Example build commands:
+clang++ -std=c++11 detach.cc -o tmp.out && tmp.out
+    g++ -std=c++14 detach.cc -o tmp.out && tmp.out
+*/
+
 #include <iostream>       // std::cout
 #include <thread>         // std::thread, std::this_thread::sleep_for
 #include <chrono>         // std::chrono::seconds
@@ -24,5 +29,3 @@ int main()
   pause_thread(5);
   return 0;
 }
-
-
