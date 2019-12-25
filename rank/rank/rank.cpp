@@ -1,7 +1,14 @@
 // rank.cpp : Defines the main entry point for the console application.
-//
+// rank?  All this does is time a sleep utility.
 
+/** Example build commands:
+clang++ -std=c++11 rank.cpp -o tmp.out && tmp.out
+    g++ -std=c++14 rank.cpp -o tmp.out && tmp.out
+*/
+#ifdef WIN32
 #include "stdafx.h"
+#endif
+
 #include <iostream>
 #include <chrono>
 
