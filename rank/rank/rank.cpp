@@ -1,4 +1,4 @@
-// rank.cpp : Defines the entry point for the console application.
+// rank.cpp : Defines the main entry point for the console application.
 //
 
 #include "stdafx.h"
