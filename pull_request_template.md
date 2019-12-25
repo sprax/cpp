@@ -10,7 +10,7 @@ Example: https://github.com/sprax/cpp/compare/fixify?expand=1&template=bug_fix.m
 - [ ] [What does it do?  Issues in thie repo can be added as #N.  Others need the full link.]
 - [ ] Feature has unit and/or system tests [or reason that does not apply, e.g., only the README changed]
 - [ ] Feature documented in code (doxygen-style comments in headers).
-- [ ] Feature demonstrated on robot [or reason that does not apply, e.g., ONLY a test changed].
+- [ ] Feature demonstrated in context [or reason that does not apply, e.g., ONLY a test changed].
 
 PR's that this one needs -- Check this box only after they are all merged:
 - [ ] [Add links to any PR's this one requires to go in first, or delete this.]
@@ -20,7 +20,7 @@ PR's that need this one -- Check this box only after they are ready and reviewed
 
 Platform
 - [ ] [Test any other downstream package that may be affected.]
-- [ ] Code formatted to be readable and not cause annoying PR diffs.
+- [ ] Code format: Is it readable?  Will the PR diffs annoy reviewers?
 
 TODOs / Nice-To-Haves:
 - [Edit or delete this list as appropriate.]
