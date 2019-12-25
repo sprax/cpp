@@ -11,9 +11,9 @@ Either reference an issue or project #number (from this same repo),
 a Trello card [link], or describe here what the feature does and
 why we want that.
 
-- [ ] [What does it do?  Issues in thie repo can be added as #N.  Others need the full link.]
+- [ ] [What does it do?  Issues in this repo can be added as #N.  Others need the full link.]
 - [ ] Feature has unit and/or system tests [or reason that does not apply, e.g., only the README changed]
-- [ ] Feature documented in code (doxygen-style comments in headers).
+- [ ] Feature documented in code (Doxygen-style comments in headers).
 - [ ] Feature demonstrated in context [or reason that does not apply, e.g., ONLY a test changed].
 
 **How To Use This Feature**
