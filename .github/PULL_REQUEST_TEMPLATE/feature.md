@@ -1,7 +1,8 @@
 ---
-title: Feature
-about: What this feature accomplish?
+name: Feature
+title: [Feature]
 label: 'feature'
+about: What this feature accomplish?
 assignees: ''
 ---
 
