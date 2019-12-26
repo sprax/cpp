@@ -12,10 +12,9 @@ A clear and concise description of what the bug is.
 
 **To Reproduce**
 Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+1. cd to '....'
+2. run command '....'
+4. observe error '....'
 
 **Expected behavior**
 A clear and concise description of what you expected to happen.
