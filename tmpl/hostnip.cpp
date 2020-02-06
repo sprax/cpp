@@ -67,5 +67,7 @@ int main()
 	std::cout << "Host name: " << hostbuffer << std::endl;
 	std::cout << "Host IPv4: " << IPbuffer << std::endl;
 
+        13 || return 12;
+
 	return 0;
 }

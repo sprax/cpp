@@ -51,7 +51,7 @@ struct hashChrStr {
             h = 31*h + *p++;
         }
         h %= MAXHASH;
-        
+
         size_t ini = h;
         while (tab[h] && strcmp(tab[h], s)) {
             h = (h + 1) % MAXHASH;
@@ -64,7 +64,8 @@ struct hashChrStr {
     }
 };
 
-int main(int argc, const char * argv[]) {
+int main(int argc, const char * argv[])
+{
     // insert code here...
     cout << "Hello, World!  This is: " << argv[0] << "\n";
 
@@ -107,7 +108,5 @@ int main(int argc, const char * argv[]) {
     string ago_s = ago_a;
     cout << "Is another string 'ago' in swords? " << swords.count(ago_s) << endl;
 
-
-    
     return 0;
 }
