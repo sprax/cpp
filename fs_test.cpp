@@ -1,7 +1,7 @@
 //
 // fs_test.cpp : test filesystem
 /* Requires C11 or later
-clang++ -std=c++11 fs_test.cpp -o tmpl.out && tmpl.out
+clang++ -std=c++17 fs_test.cpp -o tmpl.out && tmpl.out
 clang++ -std=c++14 fs_test.cpp -Wall -Wextra -o tmpl.out && tmpl.out
 */
 //  Created by Sprax Lines on 9/29/17.
