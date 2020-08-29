@@ -13,7 +13,7 @@
 
 //#include <string.h>
 //#include <stdlib.h>
- 
+
  /*
   * Find the first occurrence of find in s.
   */
@@ -68,36 +68,42 @@ There are a number of ways to find a string inside another string. Its important
 
 
 Method1
-
-
-
-
-
 Method2
 
 The second method is called the Rabin-Karp method.
 
-Instead of checking at each position of the text if the pattern occurs or not, it is better to check first if the
-contents of the current string "window" looks like the pattern or not. In order to check the resemblance between
-these two patterns, a hashing function is used. Hashing a string involves computing a numerical value from the 
+/*
+Instead of checking at each position of the text if the pattern occurs or not,
+it is better to check first if the contents of the current string "window"
+looks like the pattern or not. In order to check the resemblance between
+these two patterns, a hashing function is used. Hashing a string involves
+computing a numerical value from the
 value of its characters using a hash function.
 
-The Rabin-Karp method uses the rule that if two strings are equal, their hash values must also be equal.
-Note that the converse of this statement is not always true, but a good hash function tries to reduce the
-number of such hash collisions. Rabin-Karp computes hash value of the pattern, and then goes through the 
-string computing hash values of all of its substrings and checking if the pattern's hash value is equal 
-to the substring hash value, and advancing by 1 character every time. If the two hash values are the same,
-then the algorithm verifies if the two string really are equal, rather than this being a fluke of the hashing
-scheme. It uses regular string comparison for this final check. Rabin-Karp is an algorithm of choice for multiple 
-pattern search. If we want to find any of a large number, say k, fixed length patterns in a text, 
-a variant Rabin-Karp that uses a hash table to check whether the hash of a given string belongs to a 
-set of hash values of patterns we are looking for. Other algorithms can search for a single pattern in 
-time order O(n), hence they will search for k patterns in time order O(n*k). The variant Rabin-Karp will 
-still work in time order O(n) in the best and average case because a hash table allows to check whether or 
+The Rabin-Karp method uses the rule that if two strings are equal,
+their hash values must also be equal.
+Note that the converse of this statement is not always true, but a
+good hash function tries to reduce the number of such hash collisions.
+Rabin-Karp computes hash value of the pattern, and then goes through the
+string computing hash values of all of its substrings and checking if
+the pattern's hash value is equal to the substring hash value,
+and advancing by 1 character every time. If the two hash values are the same,
+then the algorithm verifies if the two string really are equal,
+rather than this being a fluke of the hashing scheme.
+It uses regular string comparison for this final check. Rabin-Karp is
+an algorithm of choice for multiple pattern search.
+If we want to find any of a large number, say k, fixed length patterns
+in a text,
+a variant Rabin-Karp that uses a hash table to check whether the hash of
+a given string belongs to a set of hash values of patterns we are looking for.
+Other algorithms can search for a single pattern in time order O(n),
+hence they will search for k patterns in time order O(n*k).
+The variant Rabin-Karp will still work in time order O(n) in the best
+and average case because a hash table allows to check whether or
 not substring hash equals any of the pattern hashes in time order of O(1).
 
 Here is some code (not working though!)
-
+*/
 
 #include
 
@@ -394,12 +400,12 @@ a b b a b
 
 The pattern is shifted by the longest of the two distances that are given by the bad character and the good suffix heuristics.
 
-The Boyer-Moore algorithm uses two different heuristics for determining the 
-maximum possible shift distance in case of a mismatch: the "bad character" 
+The Boyer-Moore algorithm uses two different heuristics for determining the
+maximum possible shift distance in case of a mismatch: the "bad character"
 and the "good suffix" heuristics. Both heuristics can lead to a shift distance
 of m. For the bad character heuristics this is the case, if the first comparison
 causes a mismatch and the corresponding text symbol does not occur in the pattern
-at all. For the good suffix heuristics this is the case, if only the first 
+at all. For the good suffix heuristics this is the case, if only the first
 comparison was a match, but that symbol does not occur elsewhere in the pattern.
 Posted by Vijay Agrawal at 2:17 PM
 4 comments:
@@ -407,15 +413,15 @@ Posted by Vijay Agrawal at 2:17 PM
 Noelani said...
 
     Good words.
-    November 10, 2008 7:46 AM 
+    November 10, 2008 7:46 AM
 Anonymous said...
 
     in 1st method some mistakes r there i think.. there it should be x(i+j)==y(i) and if(i>=n).. i think.
     verify that one
-    November 19, 2008 2:32 AM 
+    November 19, 2008 2:32 AM
 Udit said...
 
-    Boyer–Moore string search algorithm
+    Boyerï¿½Moore string search algorithm
 
     #include "limits.h"
     #include "string.h"
@@ -538,7 +544,7 @@ Udit said...
     }
 #endif // FIXME
 
-// to reverse a whole string, end should point to the last char before the NULL at its end 
+// to reverse a whole string, end should point to the last char before the NULL at its end
 void strrevptr(char *beg, char *end)        // beg <= end < beg + strlen(beg)
 {
     assert(beg && end && beg <= end);
@@ -549,7 +555,7 @@ void strrevptr(char *beg, char *end)        // beg <= end < beg + strlen(beg)
 	}
 }
 
-static inline bool isWordEnd(char c) 
+static inline bool isWordEnd(char c)
 {
     return (isspace(c) || c == '.' || c == ';');
 }
@@ -591,7 +597,7 @@ int sttrevGood(char *str)
 
 
 // Good implementation:
-void strrevlenGood(char *str, int len) 
+void strrevlenGood(char *str, int len)
 {
      strrevptr(str, str + len - 1);
 }
@@ -599,7 +605,7 @@ void strrevlenGood(char *str, int len)
 
 
 // Dumb implementation:
-void strrevlenDumb(char *charray, int len) 
+void strrevlenDumb(char *charray, int len)
 {
     assert(charray && len >= 0);
 	char c;
@@ -676,7 +682,7 @@ void upperCaseEveryNthChars(char *pc, int nth)
 }
 
 void lowerCaseEveryMthButChangeCaseEveryNthChars(char *pc, int mth, int nth)
-{   
+{
     if (pc == NULL) {
         return;
     }
@@ -747,7 +753,7 @@ int test_map()      // (int argc, char* argv[])
 }
 
 
-static void test_bins() 
+static void test_bins()
 {
     char bins[9] = { 0 };
     char subs[9] = { 0 };
@@ -760,7 +766,7 @@ static void test_bins()
     }
 }
 
-int test_charString() 
+int test_charString()
 {
   //const unsigned int N = 2;
 	char charray[] = "This string is  8 words and 42 characters.";

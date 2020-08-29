@@ -37,4 +37,7 @@ TEST(Matrix, Make)
     EXPECT_EQ( vec[0], 2.2 );
     EXPECT_EQ( vec[1], 4.4 );
     EXPECT_EQ( vec[2], 6.6 );
+
+    EXPECT_EQ( 2, 8 );
+    EXPECT_TRUE( false );
 }
