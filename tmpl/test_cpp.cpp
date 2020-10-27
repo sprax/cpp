@@ -228,7 +228,7 @@ int main(int argc, char* argv[])    // NB: This is more a unit test than an app;
     Zoid zoid = MakeZoid();
     int num = zoid.MakeIt();
     cerr << "=============================================== " << num << endl;
-    return 0;
+    // return 0;
 
 
 
@@ -240,8 +240,14 @@ int main(int argc, char* argv[])    // NB: This is more a unit test than an app;
     vr = { 9.9, 8.2 };
     register int regi;
 
-    int *int_ptr = nullptr, &int_ref = *int_ptr, my_number = 51;
-    cerr << "I'd like to refer you to this number: " << int_ref << endl;
+    try {
+        int *int_ptr = nullptr, my_number = 51;
+        int_ptr = &my_number;
+        int &int_ref = *int_ptr;
+        cerr << "I'd like to refer you to this number: " << int_ref << endl;
+    } catch(const std::exception& ex) {
+        cerr << "catch and release: " << ex.what() << endl;
+    }
 
 
     AA aa;
