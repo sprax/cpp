@@ -1,4 +1,4 @@
 # cpp
-sandbox for C++
-Snippets bound for other repos.
-Try GitHub features.
+sandbox for C++ snippets en route to other repos.
+- Try C++17 additions.
+- Try newer GitHub features.
