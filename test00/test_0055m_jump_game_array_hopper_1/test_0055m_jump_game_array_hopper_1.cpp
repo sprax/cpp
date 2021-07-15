@@ -125,7 +125,7 @@ class SolutionEarlyReturn : public SolutionBase
 ///////////////////////////////////////////////////////////////////////////////
 
 class Solution : public SolutionGreedyBackward { };
-// class Solution : public SolutionFindLastOf { };
+// class Solution : public SolutionEarlyReturn { };
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -142,7 +142,7 @@ void test_soln(SolutionBase&soln) {
         EXPECT_EQ(actual, tpair.second);
     }
 }
-}
+}   // anonymous namespace
 
 TEST(SolutionGreedyBackward, canJump)
 {
