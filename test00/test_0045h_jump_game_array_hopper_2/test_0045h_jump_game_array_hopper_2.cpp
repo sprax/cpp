@@ -60,16 +60,12 @@ public:
 /**
 Greedy algorithm checking feasibility only at the end.
 
-Runtime: 12 ms, faster than 75.56% of C++ online submissions for Jump Game II.
-Memory Usage: 16.3 MB, less than 74.31% of C++ online submissions for Jump Game II.
+    Runtime: 12 ms, faster than 75.56% in C++.
+    Memory Usage: 16.3 MB, less than 74.31% in C++.
 */
 class SolutionGreedy : public SolutionBase
 {
 public:
-
-    //     Runtime: 4 ms, faster than 46.80% in C++.
-    // Memory Usage: 7.9 MB, less than 96.43% in C++.
-
     int jump(vector<int>& nums) {
         size_t min_jumps = 0, jump_end = 0, max_idx = 0;
         size_t last_idx = nums.size() - 1;
@@ -168,9 +164,8 @@ class Solution {
 C++ Code:
 The best result for the code below is 0ms / 7.9MB (beats 100% / 100%).
 
-Runtime: 16 ms, faster than 57.93% of C++ online submissions for Jump Game II.
-Memory Usage: 16.3 MB, less than 50.48% of C++ online submissions for Jump Game II.
-
+    Runtime: 16 ms, faster than 57.93% in C++.
+    Memory Usage: 16.3 MB, less than 50.48% in C++.
 */
 class SolutionSloppy : public SolutionBase
 {
@@ -197,10 +192,9 @@ class Solution : public SolutionSloppy { };
 
 namespace { // anonymous
 vector<pair<vector<int>, int> > tpairs {
-
     { { 2, 3, 1, 1, 4}, 2 },
     { { 2, 3, 1, 1, 4 }, 2 },
-    { { 3, 2, 1, 0, 4 }, -1 },
+    // { { 3, 2, 1, 0, 4 }, -1 },   // invalid because end is unreachable
 };
 
 /// Expected: All test pairs pass.
@@ -213,6 +207,7 @@ void test_soln(SolutionBase&soln) {
 }
 }   // anonymous namespace
 
+
 TEST(SolutionGreedy, jump)
 {
     SolutionGreedy soln;
@@ -220,12 +215,12 @@ TEST(SolutionGreedy, jump)
     test_soln(soln);
 }
 
-// TEST(SolutionSloppy, jump)
-// {
-//     SolutionSloppy soln;
-//
-//     test_soln(soln);
-// }
+TEST(SolutionSloppy, jump)
+{
+    SolutionSloppy soln;
+
+    test_soln(soln);
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 
