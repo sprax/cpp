@@ -1,9 +1,6 @@
 /// @file: std_gtest.h
-/// @auth: 
-/// @date: 2021-07-15
-
-/// @auth:
-/// @date: 2021-07-15
+/// @auth: Sprax Lines
+/// @date: 2021-07-15 12:11:27 Thu 15 Jul
 
 #pragma once
 
@@ -152,8 +149,9 @@ T median_even(std::vector < T > vec)
  * [compile  description]
  * @param  [name] [description]
  * @return        [description]
-*/
- * (float, double, long double) or it will not compile (as in: `error: no matching function`).
+
+ * (float, double, long double) or it will not compile (as in: `error:
+ no matching function`).
 */
 template < typename T >
 T median(std::vector < T > vec,
