@@ -200,8 +200,8 @@ vector<pair<vector<int>, int> > tpairs {
 /// Expected: All test pairs pass.
 void test_soln(SolutionBase&soln) {
     for (auto& tpair : tpairs) {
-        auto sample(tpair.first);
-        auto actual = soln.jump(sample);
+        // auto sample(tpair.first);   // copy?  No need.
+        auto actual = soln.jump(tpair.first);
         EXPECT_EQ(actual, tpair.second);
     }
 }
