@@ -44,7 +44,7 @@ find_package(GTest REQUIRED)
 
 # find_package(Boost 1.65.1 REQUIRED COMPONENTS date_time regex program_options filesystem system thread)
 
-find_package( Python3 3.6 REQUIRED Interpreter Development)
+find_package( Python3 3.9 REQUIRED Interpreter Development)
 set(PYTHON_LIBRARIES ${Python3_LIBRARIES} )
 
 if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
