@@ -1,9 +1,10 @@
-// @file: test_1059m_all_paths_from_source_lead_to_destination.cpp
+// @file: test_0055m_jump_game_array_hopper_1.cpp
 // @auth: Sprax Lines
-// @date: 2021-06-22 20:22:18 Tue 22 Jun
+// @date: 2020-04-25 13:39:17 Sat 25 Apr
 
 /** Example build commands:
-g++ -I../../include -Wall -Wextra -std=gnu++14 -pthread test_*.cpp -lgtest -lgtest_main -o tmp.out && ./tmp.out
+g++ -I../../include -Wall -Wextra -std=gnu++14 -pthread test_*.cpp -lgtest
+-lgtest_main -o tmp.out && ./tmp.out
 */
 #include "std_gtest.h"
 using namespace std;
@@ -20,12 +21,12 @@ Determine if you are able to reach the last index.
 
 Example 1:
 Input:  {2, 3, 1, 1, 4}
-Output: True
+Output: true
 Logic:  Jump 1 step from index 0 to 1, then 3 steps to the last index.
 
 Example 2:
 Input:  {3, 2, 1, 0, 4}
-Output: False
+Output: false
 Logic:  You will always arrive at index 3 no matter what.  Its maximum
              jump length is 0, which makes it impossible to reach the last
              index.
@@ -47,9 +48,9 @@ class SolutionShort:
         max_idx = 0
         for idx in range(len(nums)):
             if idx > max_idx:       # Exceeded the max_idx?
-                return False        # Then we could not have jumped here.
+                return false        # Then we could not have jumped here.
             max_idx = max(max_idx, idx + nums[idx])
-        return True
+        return true
 */
 
 class SolutionBase
@@ -71,9 +72,9 @@ IDEA: Observe that the last position is reachable
 NOTE: Every position is visited exactly once.
 A greedier forward-hopping algo might skip some steps, but fail.
 
-Runtime: 36 ms, faster than 94.35% of C++ online submissions for Jump Game.
-Memory Usage: 48.3 MB, less than 38.01% of C++ online submissions for Jump Game.
- */
+    Runtime: 36 ms, faster than 94.35% in C++.
+    Memory Usage: 48.3 MB, less than 38.01% in C++.
+*/
 class SolutionGreedyBackward : public SolutionBase
 {
 public:

@@ -1,6 +1,6 @@
 // @file: test_1453h_max_darts_in_any_circle.cpp
 // @auth: Sprax Lines
-// @date: 2021-07-15
+// @date: 2021-07-15 17:53:44 Thu 15 Jul
 
 /** Example build commands:
 g++ -I../../include -Wall -Wextra -std=gnu++14 -pthread test_*.cpp -lgtest
@@ -96,7 +96,7 @@ class SolutionOther:
 class SolutionSmall:    # FIXME
     def numPoints(self, points: List[List[int]], r: int) -> int:
         size = len(points)
-        # pair_dists = [[NULL] * size for _ in range(size)]
+        # pair_dists = [[NULLptr] * size for _ in range(size)]
         ans = 0
         for i in range(size - 1):
             for j in range(i + 1, size):

@@ -46,6 +46,15 @@ int copy_into(Container &container, std::vector<T> vec)
     return container.size();
 }
 
+template <template<typename, class> class Container, typename T = int, class A>
+int copy_into_dependent_type(Container<T, A> &container, std::vector<T> vec)
+{
+    for (auto& elt : vec) {
+        container.push_back(elt);
+    }
+    return container.size();
+}
+
 /** Determins if two values are 'close enough' based on a scaled tolerance */
 template<typename T>
 bool EpsEq(T a, T b, T relTol = std::numeric_limits<T>::epsilon())
@@ -89,7 +98,7 @@ bool EpsEq(T a, T b, T relTol = std::numeric_limits<T>::epsilon())
   }
 
 
-int main(int argc, char* argv[])    // NB: unit tests for MapTraj
+int main(/* int argc, char* argv[] */)    // NB: unit tests for MapTraj
 {
     int j = 2;
     for (auto& key : default_map_keys) {
@@ -102,6 +111,12 @@ int main(int argc, char* argv[])    // NB: unit tests for MapTraj
     std::list<std::string> name_list;
     int count = copy_into(name_list, default_map_keys);
     cout << "copy_into copied " << count << " keys from default_map_keys into name_list:" << endl;
+    for (auto& name : name_list) {
+        cout << name << endl;
+    }
+
+    int recount = copy_into_dependent_type(name_list, default_map_keys);
+    cout << "copy_into_dependent_type copied " << recount << " keys from default_map_keys into name_list:" << endl;
     for (auto& name : name_list) {
         cout << name << endl;
     }

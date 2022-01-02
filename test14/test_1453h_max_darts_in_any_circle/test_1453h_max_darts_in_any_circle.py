@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # @file: test_1453h_max_darts_in_any_circle.py
 # @auth: Sprax Lines
-# @date: 2021-07-15
+# @date: 2020-05-17 23:31:59 Sun 17 May
 
 import math
 import statistics
@@ -220,7 +220,7 @@ class Solution(SOLNS[-1]):
 ###############################################################################
 
 
-class TestSolution:
+class TestSolutions:
     """ unit tests for Solution class """
 
     def test_solutions(self, verbose=2):
@@ -251,4 +251,4 @@ class TestSolution:
 
 
 if __name__ == "__main__":
-    TestSolution().test_solutions()
+    TestSolutions().test_solutions()

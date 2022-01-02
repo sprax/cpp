@@ -69,7 +69,6 @@ public:
     int jump(vector<int>& nums) {
         size_t min_jumps = 0, jump_end = 0, max_idx = 0;
         size_t last_idx = nums.size() - 1;
-
         for (size_t idx = 0; idx < last_idx; idx++) {
             max_idx = max(max_idx, idx + nums[idx]);
             if (idx == jump_end) {
@@ -172,7 +171,6 @@ class SolutionSloppy : public SolutionBase
 public:
     int jump(vector<int>& N) {
         int len = N.size() - 1, curr = -1, next = 0, ans = 0;
-
         for (int i = 0; next < len; i++) {
             if (i > curr) {
                 ans++, curr = next;
@@ -192,13 +190,13 @@ class Solution : public SolutionSloppy { };
 
 namespace { // anonymous
 vector<pair<vector<int>, int> > tpairs {
-    { { 2, 3, 1, 1, 4}, 2 },
+    { { 2, 3, 1, 1, 4 }, 2 },
     { { 2, 3, 1, 1, 4 }, 2 },
     // { { 3, 2, 1, 0, 4 }, -1 },   // invalid because end is unreachable
 };
 
 /// Expected: All test pairs pass.
-void test_soln(SolutionBase&soln) {
+void test_soln(SolutionBase& soln) {
     for (auto& tpair : tpairs) {
         // auto sample(tpair.first);   // copy?  No need.
         auto actual = soln.jump(tpair.first);
@@ -211,7 +209,6 @@ void test_soln(SolutionBase&soln) {
 TEST(SolutionGreedy, jump)
 {
     SolutionGreedy soln;
-
     test_soln(soln);
 }
 
